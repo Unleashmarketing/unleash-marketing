@@ -65,32 +65,32 @@
     <section class="hero">
         <div class="container">
             <div class="hero__content">
-                <div class="hero__announcement">
+                <div class="hero__announcement hero-animate" data-delay="0">
                     <div class="announcement-badge">
                         <span class="announcement-badge__text">Neu: KI-gestützte Designlösungen</span>
                         <a href="#leistungen" class="announcement-badge__link">Mehr erfahren</a>
                     </div>
                 </div>
                 
-                <h1 class="hero__headline">
+                <h1 class="hero__headline hero-animate" data-delay="200">
                     Kreative Lösungen<br>
                     für jedes Unternehmen
                 </h1>
                 
-                <p class="hero__description">
+                <p class="hero__description hero-animate" data-delay="400">
                     UNLEASH ist dein kreativer Problemlöser. Egal ob Digital oder Print – wir bieten dir maßgeschneiderte Dienstleistungen und Produkte, die wirklich funktionieren.
                 </p>
                 
-                <div class="hero__cta">
+                <div class="hero__cta hero-animate" data-delay="600">
                     <a href="#kontakt" class="hero__button">Projekt anfragen</a>
                 </div>
                 
-                <div class="hero__stats">
+                <div class="hero__stats hero-animate" data-delay="800">
                     <span class="hero__stats-text">Über <strong>150+ erfolgreiche Projekte</strong> mit zufriedenen Kunden realisiert.</span>
                 </div>
                 
                 <!-- Client Logos Section -->
-                <div class="clients__container">
+                <div class="clients__container hero-animate" data-delay="1000">
                     <div class="clients__logos" id="clientLogos">
                         <!-- Position 1 -->
                         <div class="logo-slot">
@@ -614,7 +614,44 @@ body {
     opacity: 1;
 }
 
-/* Hero Section */
+/* Hero Animation Styles */
+.hero-animate {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(12px);
+    transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-animate.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+}
+
+/* Specific animation timings for different elements */
+.hero__announcement.animate-in {
+    transition-delay: 0ms;
+}
+
+.hero__headline.animate-in {
+    transition-delay: 200ms;
+}
+
+.hero__description.animate-in {
+    transition-delay: 400ms;
+}
+
+.hero__cta.animate-in {
+    transition-delay: 600ms;
+}
+
+.hero__stats.animate-in {
+    transition-delay: 800ms;
+}
+
+.clients__container.animate-in {
+    transition-delay: 1000ms;
+}
 .hero {
     padding: 180px 0 120px;
     position: relative;
@@ -1200,14 +1237,33 @@ setTimeout(() => {
     setInterval(rotateClientLogos, 3000);
 }, 3000);
 
-// Initialize first set of logos with staggered animation
-document.addEventListener('DOMContentLoaded', () => {
-    const firstSetLogos = document.querySelectorAll('.client-logo[data-set="1"]');
-    firstSetLogos.forEach((logo, index) => {
+// Hero entrance animations
+function initHeroAnimations() {
+    const heroElements = document.querySelectorAll('.hero-animate');
+    
+    // Trigger animations with staggered delays
+    heroElements.forEach((element, index) => {
+        const delay = element.getAttribute('data-delay') || (index * 200);
+        
         setTimeout(() => {
-            logo.classList.add('active');
-        }, index * 150);
+            element.classList.add('animate-in');
+        }, parseInt(delay) + 750); // Base delay of 750ms like in React version
     });
+}
+
+// Initialize hero animations when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    initHeroAnimations();
+    
+    // Also initialize client logos with staggered animation
+    setTimeout(() => {
+        const firstSetLogos = document.querySelectorAll('.client-logo[data-set="1"]');
+        firstSetLogos.forEach((logo, index) => {
+            setTimeout(() => {
+                logo.classList.add('active');
+            }, index * 150);
+        });
+    }, 1750); // After hero animations
 });
 
 // Smooth scrolling for navigation links
