@@ -161,42 +161,102 @@
     <section class="services" id="leistungen">
         <div class="container">
             <div class="services__content">
-                <h2 class="services__title">Unsere Leistungen</h2>
-                <p class="services__description">
-                    Wir bieten ein umfassendes Leistungsspektrum, das auf deine individuellen Ziele abgestimmt ist. Von kreativem Design über innovative digitale Lösungen bis hin zu strategischer Beratung – bei uns erhältst du alles aus einer Hand, um deine Marke nach vorne zu bringen.
-                </p>
+                <div class="services__left">
+                    <div class="services__badge">
+                        <span>UNLEASH IN AKTION</span>
+                    </div>
+                    
+                    <h2 class="services__title">Unsere Leistungen</h2>
+                    
+                    <p class="services__description">
+                        UNLEASH bietet eine Vielzahl von Leistungen für Unternehmen, die nach sicheren und profitablen kreativen Lösungen suchen.
+                    </p>
+                </div>
                 
-                <div class="services__grid">
-                    <div class="service-card">
-                        <div class="service-card__icon">
-                            <div class="icon-webdesign"></div>
+                <div class="services__right">
+                    <div class="service-slide active" data-service="webdesign">
+                        <div class="service-card">
+                            <h3 class="service-card__title">Webdesign & Development</h3>
+                            <p class="service-card__text">
+                                Integriere moderne Webtechnologien nahtlos in deine Plattform mit entwicklerfreundlichen APIs und SDKs, die Zugang zu hochwertigen Designlösungen und Echtzeit-Daten ermöglichen.
+                            </p>
+                            <a href="#webdesign" class="service-card__cta">
+                                Mehr erfahren <span class="arrow">→</span>
+                            </a>
+                            <div class="service-card__visual">
+                                <div class="code-block">
+                                    <div class="code-line"><span class="code-number">1</span> <span class="code-keyword">const</span> <span class="code-variable">websiteDesign</span> = <span class="code-keyword">await</span> <span class="code-function">UNLEASH.createWebsite</span>({</div>
+                                    <div class="code-line"><span class="code-number">2</span>   <span class="code-property">responsive</span>,</div>
+                                    <div class="code-line"><span class="code-number">3</span>   <span class="code-property">modern</span>,</div>
+                                    <div class="code-line"><span class="code-number">4</span>   <span class="code-property">optimized</span></div>
+                                    <div class="code-line"><span class="code-number">5</span> });</div>
+                                    <div class="code-line"><span class="code-number">6</span> </div>
+                                    <div class="code-line"><span class="code-number">7</span> <span class="code-keyword">const</span> <span class="code-variable">performance</span> = <span class="code-string">"100%"</span>; <span class="code-comment">// 100% optimiert</span></div>
+                                    <div class="code-line"><span class="code-number">8</span> <span class="code-keyword">const</span> <span class="code-variable">result</span> = <span class="code-keyword">await</span> <span class="code-function">websiteDesign.launch</span>({</div>
+                                    <div class="code-line"><span class="code-number">9</span>   <span class="code-property">performance</span>,</div>
+                                    <div class="code-line"><span class="code-number">10</span>   <span class="code-property">seo</span>: <span class="code-number">10</span> <span class="code-comment">// 10 Punkte</span></div>
+                                    <div class="code-line"><span class="code-number">11</span> });</div>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="service-card__title">Webdesign</h3>
-                        <p class="service-card__text">Moderne, responsive Websites die Ihre Marke perfekt repräsentieren und Besucher zu Kunden machen.</p>
                     </div>
                     
-                    <div class="service-card service-card--highlighted">
-                        <div class="service-card__icon">
-                            <div class="icon-graphic"></div>
+                    <div class="service-slide" data-service="branding">
+                        <div class="service-card">
+                            <h3 class="service-card__title">Branding & Corporate Design</h3>
+                            <p class="service-card__text">
+                                Steigere die Nutzerinteraktion durch professionelles Branding – eine sichere, durchdachte Markenidentität mit hoher Wiedererkennung, die deinen Kunden ermöglicht, mühelos mit deiner Marke zu interagieren.
+                            </p>
+                            <a href="#branding" class="service-card__cta">
+                                Mehr erfahren <span class="arrow">→</span>
+                            </a>
+                            <div class="service-card__visual">
+                                <div class="branding-visual">
+                                    <div class="brand-pillar">
+                                        <div class="pillar-base"></div>
+                                        <div class="pillar-column"></div>
+                                        <div class="pillar-top"></div>
+                                    </div>
+                                    <div class="brand-pillar">
+                                        <div class="pillar-base"></div>
+                                        <div class="pillar-column"></div>
+                                        <div class="pillar-top"></div>
+                                    </div>
+                                    <div class="brand-pillar">
+                                        <div class="pillar-base"></div>
+                                        <div class="pillar-column"></div>
+                                        <div class="pillar-top"></div>
+                                    </div>
+                                    <div class="brand-roof">
+                                        <div class="roof-front"></div>
+                                        <div class="roof-top"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="service-card__title">Grafikdesign</h3>
-                        <p class="service-card__text">Kreative Designlösungen für Print und Digital – von Corporate Design bis zu Werbemitteln.</p>
                     </div>
                     
-                    <div class="service-card">
-                        <div class="service-card__icon">
-                            <div class="icon-social"></div>
+                    <div class="service-slide" data-service="marketing">
+                        <div class="service-card">
+                            <h3 class="service-card__title">Digital Marketing</h3>
+                            <p class="service-card__text">
+                                Optimiere dein Marketing-Management mit UNLEASH und biete stabile, risikofreie Erträge durch strategische Kampagnen, während du sofortige Sichtbarkeit und komplette Transparenz sicherstellst.
+                            </p>
+                            <a href="#marketing" class="service-card__cta">
+                                Mehr erfahren <span class="arrow">→</span>
+                            </a>
+                            <div class="service-card__visual">
+                                <div class="marketing-visual">
+                                    <div class="safe-box">
+                                        <div class="safe-door">
+                                            <div class="safe-handle"></div>
+                                            <div class="safe-lock"></div>
+                                        </div>
+                                        <div class="safe-side"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <h3 class="service-card__title">Social Media</h3>
-                        <p class="service-card__text">Strategisches Social Media Marketing das Ihre Zielgruppe erreicht und bindet.</p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <div class="service-card__icon">
-                            <div class="icon-advertising"></div>
-                        </div>
-                        <h3 class="service-card__title">Werbung</h3>
-                        <p class="service-card__text">Durchdachte Werbekampagnen die Aufmerksamkeit erzeugen und Ergebnisse liefern.</p>
                     </div>
                 </div>
             </div>
@@ -281,7 +341,8 @@
             <div class="faq__content">
                 <div class="faq__header">
                     <h2 class="faq__title">
-                        Frequently Asked<br>
+                        Frequently<br>
+                        Asked<br>
                         <span class="faq__title-highlight">Questions</span>
                     </h2>
                     <p class="faq__description">
@@ -988,41 +1049,92 @@ body {
 
 /* Services Section */
 .services {
-    padding: 120px 0;
+    padding: 0;
     background: var(--color-bg-secondary);
     position: relative;
+    min-height: 100vh;
+}
+
+.services__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+}
+
+.services__left {
+    background: var(--color-bg-secondary);
+    padding: 120px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    border-right: 1px solid #2A2A2A;
+}
+
+.services__badge {
+    display: inline-block;
+    background: var(--color-primary);
+    color: var(--color-text-primary);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 32px;
+    text-transform: uppercase;
+    width: fit-content;
 }
 
 .services__title {
-    font-size: var(--font-size-h2);
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
     font-weight: 700;
-    color: var(--color-primary);
+    color: var(--color-text-primary);
+    line-height: 1.2;
     margin-bottom: 32px;
     letter-spacing: -0.02em;
 }
 
 .services__description {
     font-size: var(--font-size-body-large);
-    color: var(--color-text-invert);
-    margin-bottom: 80px;
-    max-width: 800px;
+    color: var(--color-text-secondary);
     line-height: 1.7;
+    max-width: 400px;
 }
 
-.services__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 32px;
+.services__right {
+    position: relative;
+    background: var(--color-bg-secondary);
+}
+
+.service-slide {
+    min-height: 100vh;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--color-bg-secondary);
+    border-bottom: 1px solid #2A2A2A;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease;
+}
+
+.service-slide.active {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .service-card {
     background: var(--color-bg-primary);
     border: 1px solid #2A2A2A;
-    border-radius: 8px;
-    padding: 40px 32px;
+    border-radius: 16px;
+    padding: 40px;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
 }
 
 .service-card::before {
@@ -1043,59 +1155,323 @@ body {
 .service-card:hover {
     transform: translateY(-8px);
     border-color: var(--color-primary);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-}
-
-.service-card--highlighted {
-    border-color: var(--color-primary);
-    background: linear-gradient(135deg, var(--color-bg-primary) 0%, #1A1A1A 100%);
-}
-
-.service-card__icon {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 24px;
-    position: relative;
-}
-
-.service-card__icon > div {
-    width: 100%;
-    height: 100%;
-    background: var(--color-text-secondary);
-    transition: all 0.3s ease;
-}
-
-.service-card:hover .service-card__icon > div {
-    background: var(--color-primary);
-}
-
-/* Icon Shapes */
-.icon-webdesign {
-    clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
-}
-
-.icon-graphic {
-    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
-}
-
-.icon-social {
-    clip-path: polygon(0 0, 70% 0, 100% 30%, 100% 100%, 30% 100%, 0 70%);
-}
-
-.icon-advertising {
-    clip-path: polygon(20% 0, 100% 0, 80% 100%, 0 100%);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
 }
 
 .service-card__title {
-    font-size: var(--font-size-h3);
+    font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 600;
     color: var(--color-text-primary);
-    margin-bottom: 16px;
+    margin-bottom: 20px;
+    line-height: 1.3;
 }
 
 .service-card__text {
+    font-size: var(--font-size-body);
     color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: 24px;
+}
+
+.service-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+    margin-bottom: 32px;
+    transition: all 0.3s ease;
+}
+
+.service-card__cta:hover {
+    transform: translateX(4px);
+}
+
+.service-card__cta .arrow {
+    transition: transform 0.3s ease;
+}
+
+.service-card__cta:hover .arrow {
+    transform: translateX(4px);
+}
+
+.service-card__visual {
+    background: var(--color-bg-secondary);
+    border-radius: 12px;
+    padding: 24px;
+    border: 1px solid #2A2A2A;
+    margin-top: 24px;
+}
+
+/* Code Block Styling */
+.code-block {
+    background: #0a0a0a;
+    border-radius: 8px;
+    padding: 20px;
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 12px;
     line-height: 1.6;
+    overflow-x: auto;
+    border: 1px solid #333;
+}
+
+.code-line {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.code-number {
+    color: #666;
+    margin-right: 16px;
+    min-width: 20px;
+    text-align: right;
+    user-select: none;
+}
+
+.code-keyword {
+    color: var(--color-primary);
+}
+
+.code-variable {
+    color: #4ECDC4;
+}
+
+.code-function {
+    color: #45B7D1;
+}
+
+.code-property {
+    color: #96CEB4;
+}
+
+.code-string {
+    color: #FECA57;
+}
+
+.code-comment {
+    color: #666;
+    font-style: italic;
+}
+
+/* 3D Branding Visual */
+.branding-visual {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 180px;
+    perspective: 1000px;
+    position: relative;
+}
+
+.brand-pillar {
+    position: relative;
+    margin: 0 8px;
+    transform-style: preserve-3d;
+    animation: pillarsFloat 4s ease-in-out infinite;
+}
+
+.brand-pillar:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.brand-pillar:nth-child(3) {
+    animation-delay: 1s;
+}
+
+.pillar-base {
+    width: 32px;
+    height: 10px;
+    background: linear-gradient(45deg, #444, #555);
+    border-radius: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+.pillar-column {
+    width: 24px;
+    height: 100px;
+    background: linear-gradient(90deg, #333, #444);
+    margin: 0 auto;
+    position: relative;
+    border-radius: 3px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.pillar-top {
+    width: 32px;
+    height: 6px;
+    background: linear-gradient(45deg, #555, #666);
+    border-radius: 16px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.brand-roof {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    transform-style: preserve-3d;
+}
+
+.roof-front {
+    width: 120px;
+    height: 16px;
+    background: linear-gradient(45deg, var(--color-primary), #FF7A40);
+    transform: rotateX(-45deg);
+    border-radius: 6px;
+}
+
+.roof-top {
+    width: 120px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--color-primary), #E64600);
+    transform: translateY(-8px) rotateX(45deg);
+    border-radius: 6px;
+}
+
+/* Marketing Safe Visual */
+.marketing-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 180px;
+    perspective: 1000px;
+}
+
+.safe-box {
+    position: relative;
+    transform-style: preserve-3d;
+    animation: safeFloat 6s ease-in-out infinite;
+}
+
+.safe-door {
+    width: 100px;
+    height: 120px;
+    background: linear-gradient(45deg, #333, #444);
+    border-radius: 6px;
+    position: relative;
+    border: 2px solid #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.safe-handle {
+    width: 16px;
+    height: 16px;
+    background: linear-gradient(45deg, var(--color-primary), #FF7A40);
+    border-radius: 50%;
+    position: absolute;
+    right: 16px;
+}
+
+.safe-lock {
+    width: 10px;
+    height: 10px;
+    background: #222;
+    border-radius: 50%;
+    position: absolute;
+    right: 20px;
+    top: 50px;
+}
+
+.safe-side {
+    position: absolute;
+    right: -8px;
+    top: 4px;
+    width: 8px;
+    height: 120px;
+    background: linear-gradient(90deg, #222, #333);
+    transform: rotateY(90deg);
+    transform-origin: left;
+    border-radius: 0 6px 6px 0;
+}
+
+/* Animations */
+@keyframes pillarsFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes safeFloat {
+    0%, 100% { transform: rotateY(-5deg) translateY(0px); }
+    50% { transform: rotateY(5deg) translateY(-3px); }
+}primary), #E64600);
+    transform: translateY(-10px) rotateX(45deg);
+    border-radius: 8px;
+}
+
+/* Marketing Safe Visual */
+.marketing-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    perspective: 1000px;
+}
+
+.safe-box {
+    position: relative;
+    transform-style: preserve-3d;
+    animation: safeFloat 6s ease-in-out infinite;
+}
+
+.safe-door {
+    width: 120px;
+    height: 140px;
+    background: linear-gradient(45deg, #F0F0F0, #E0E0E0);
+    border-radius: 8px;
+    position: relative;
+    border: 2px solid #CCC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.safe-handle {
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(45deg, var(--color-primary), #FF7A40);
+    border-radius: 50%;
+    position: absolute;
+    right: 20px;
+}
+
+.safe-lock {
+    width: 12px;
+    height: 12px;
+    background: #666;
+    border-radius: 50%;
+    position: absolute;
+    right: 25px;
+    top: 60px;
+}
+
+.safe-side {
+    position: absolute;
+    right: -10px;
+    top: 5px;
+    width: 10px;
+    height: 140px;
+    background: linear-gradient(90deg, #D0D0D0, #E8E8E8);
+    transform: rotateY(90deg);
+    transform-origin: left;
+    border-radius: 0 8px 8px 0;
+}
+
+/* Animations */
+@keyframes pillarsFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes safeFloat {
+    0%, 100% { transform: rotateY(-10deg) translateY(0px); }
+    50% { transform: rotateY(10deg) translateY(-5px); }
 }
 
 /* About Section */
@@ -1610,8 +1986,63 @@ body {
         max-width: 80px;
     }
     
-    .services__grid {
+    .services__content {
         grid-template-columns: 1fr;
+    }
+    
+    .services__left {
+        position: static;
+        height: auto;
+        padding: 60px 40px;
+        border-right: none;
+        border-bottom: 1px solid #2A2A2A;
+        text-align: center;
+    }
+    
+    .service-slide {
+        padding: 40px 20px;
+        min-height: auto;
+    }
+    
+    .service-card {
+        padding: 32px 24px;
+    }
+    
+    .service-card__visual {
+        padding: 20px;
+        margin-top: 20px;
+    }
+    
+    .code-block {
+        padding: 16px;
+        font-size: 11px;
+    }
+    
+    .branding-visual {
+        height: 140px;
+    }
+    
+    .marketing-visual {
+        height: 140px;
+    }
+    
+    .safe-door {
+        width: 80px;
+        height: 100px;
+    }
+    
+    .brand-roof {
+        top: 25px;
+    }
+    
+    .roof-front {
+        width: 100px;
+        height: 14px;
+    }
+    
+    .roof-top {
+        width: 100px;
+        height: 50px;
     }
     
     .about__content {
@@ -1835,6 +2266,32 @@ function initHeroAnimations() {
     });
 }
 
+// Services scroll animation
+function initServicesScroll() {
+    const serviceSlides = document.querySelectorAll('.service-slide');
+    const servicesSection = document.querySelector('.services');
+    
+    if (!servicesSection) return;
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Remove active from all slides
+                serviceSlides.forEach(slide => slide.classList.remove('active'));
+                // Add active to current slide
+                entry.target.classList.add('active');
+            }
+        });
+    }, {
+        threshold: 0.5,
+        rootMargin: '-20% 0px -20% 0px'
+    });
+    
+    serviceSlides.forEach(slide => {
+        observer.observe(slide);
+    });
+}
+
 // FAQ functionality
 function initFAQ() {
     const faqItems = document.querySelectorAll('.faq-item__question');
@@ -1867,6 +2324,7 @@ function initFAQ() {
 document.addEventListener('DOMContentLoaded', () => {
     initHeroAnimations();
     initFAQ();
+    initServicesScroll();
     
     // Also initialize client logos with staggered animation
     setTimeout(() => {
