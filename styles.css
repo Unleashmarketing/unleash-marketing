@@ -422,6 +422,9 @@ body {
     overflow: hidden;
     background: linear-gradient(135deg, #121212 0%, #1E1E1E 100%);
     text-align: center;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
 }
 
 .hero--left-align {
@@ -444,6 +447,7 @@ body {
             rgba(255, 81, 0, 0.12) 17px
         );
     pointer-events: none;
+    z-index: 1;
 }
 
 .hero--services::before {
@@ -462,6 +466,7 @@ body {
     margin: 0 auto;
     position: relative;
     z-index: 2;
+    width: 100%;
 }
 
 .hero__content--grid {
