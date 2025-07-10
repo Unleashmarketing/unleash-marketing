@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNLEASH - Services & Leistungen</title>
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'FK Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #FFFFFF;
+            background-color: #121212;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Container & Grid System */
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Grid Variables */
+        :root {
+            --grid-columns: 12;
+            --column-width: 72px;
+            --gutter: 24px;
+            --baseline: 8px;
+            
+            /* Colors */
+            --color-primary: #FF5100;
+            --color-bg-primary: #121212;
+            --color-bg-secondary: #1E1E1E;
+            --color-text-primary: #FFFFFF;
+            --color-text-secondary: #8E8E8E;
+            --color-text-invert: #F4F4F4;
+            
+            /* Typography */
+            --font-size-h1: clamp(2.5rem, 5vw, 4.5rem);
+            --font-size-h2: clamp(2rem, 4vw, 3rem);
+            --font-size-h3: clamp(1.25rem, 2.5vw, 1.5rem);
+            --font-size-body: 1rem;
+            --font-size-body-large: 1.125rem;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            width: 100%;
+            padding: 0 8px;
+        }
+
+        .header__nav {
+            transition: all 0.3s ease;
+        }
+
+        .header__container {
+            max-width: 1024px;
+            margin: 0 auto;
+            margin-top: 8px;
+            background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid #1E1E1E;
+            border-radius: 16px;
+            padding: 0 20px;
+            transition: all 0.3s ease;
+        }
+
+        .header__content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            padding: 12px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo__text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .logo__pattern {
+            width: 4px;
+            height: 24px;
+            background: var(--color-primary);
+            margin-left: 12px;
+            transform: skewX(-45deg);
+            transition: transform 0.4s ease-out;
+        }
+
+        .logo:hover .logo__pattern {
+            transform: skewX(0deg) scaleY(1.2);
+        }
+
+        .nav__list {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+
+        .nav__link {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav__link:hover,
+        .nav__link--active {
+            color: var(--color-primary);
+        }
+
+        .nav__button {
+            background: var(--color-primary);
+            color: var(--color-text-primary);
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .nav__button:hover {
+            background: #E64600;
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 120px;
+            position: relative;
+            overflow: hidden;
+            background: var(--color-bg-primary);
+            text-align: left;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(
+                    -45deg,
+                    transparent,
+                    transparent 16px,
+                    rgba(255, 81, 0, 0.08) 16px,
+                    rgba(255, 81, 0, 0.08) 17px
+                );
+            pointer-events: none;
+        }
+
+        .hero__content {
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero__badge {
+            display: inline-block;
+            background: var(--color-primary);
+            color: var(--color-text-primary);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 32px;
+            text-transform: uppercase;
+        }
+
+        .hero__title {
+            font-size: var(--font-size-h1);
+            font-weight: 700;
+            color: var(--color-text-primary);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero__description {
+            font-size: var(--font-size-body-large);
+            color: var(--color-text-secondary);
+            margin-bottom: 48px;
+            line-height: 1.7;
+            max-width: 600px;
+        }
+
+        .hero__cta {
+            display: inline-flex;
+            align-items: center;
+            background: var(--color-primary);
+            color: var(--color-text-primary);
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .hero__cta:hover {
+            background: #E64600;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(255, 81, 0, 0.3);
+        }
+
+        /* Services Grid Section */
+        .services-grid {
+            padding: 120px 0;
+            background: var(--color-bg-primary);
+            position: relative;
+        }
+
+        .services-grid::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(
+                    -45deg,
+                    transparent,
+                    transparent 16px,
+                    rgba(255, 81, 0, 0.08) 16px,
+                    rgba(255, 81, 0, 0.08) 17px
+                );
+            pointer-events: none;
+        }
+
+        .services__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card {
+            background: var(--color-bg-secondary);
+            border: 1px solid #2A2A2A;
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 81, 0, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--color-primary);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .service-card__icon {
+            width: 64px;
+            height: 64px;
+            background: var(--color-primary);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .service-card__title {
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--color-text-primary);
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .service-card__description {
+            font-size: var(--font-size-body);
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .service-card__features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .service-card__features li {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .service-card__features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .service-card__cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .service-card__cta:hover {
+            transform: translateX(4px);
+        }
+
+        .service-card__cta .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .service-card__cta:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 120px 0;
+            background: var(--color-bg-primary);
+            position: relative;
+        }
+
+        .process-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(
+                    135deg,
+                    transparent,
+                    transparent 24px,
+                    rgba(255, 81, 0, 0.04) 24px,
+                    rgba(255, 81, 0, 0.04) 25px
+                );
+            pointer-events: none;
+        }
+
+        .process__header {
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .process__title {
+            font-size: var(--font-size-h2);
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .process__description {
+            font-size: var(--font-size-body-large);
+            color: var(--color-text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .process__steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .process-step::after {
+            content: '';
+            position: absolute;
+            top: 32px;
+            right: -20px;
+            width: 40px;
+            height: 2px;
+            background: var(--color-primary);
+            opacity: 0.3;
+        }
+
+        .process-step:last-child::after {
+            display: none;
+        }
+
+        .process-step__number {
+            width: 64px;
+            height: 64px;
+            background: var(--color-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin: 0 auto 24px;
+        }
+
+        .process-step__title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-text-primary);
+            margin-bottom: 12px;
+        }
+
+        .process-step__description {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 120px 0;
+            background: var(--color-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta__content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta__title {
+            font-size: var(--font-size-h2);
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .cta__text {
+            font-size: var(--font-size-body-large);
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 48px;
+        }
+
+        .cta__button {
+            display: inline-block;
+            background: var(--color-text-primary);
+            color: var(--color-primary);
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: var(--font-size-body-large);
+            transition: all 0.3s ease;
+        }
+
+        .cta__button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta__pattern {
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.1),
+                rgba(255, 255, 255, 0.1) 2px,
+                transparent 2px,
+                transparent 32px
+            );
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 80px 0 40px;
+            background: var(--color-bg-primary);
+            border-top: 1px solid #1E1E1E;
+        }
+
+        .footer__content {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .footer__top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer__brand {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer__brand .logo__text {
+            font-size: 1.25rem;
+        }
+
+        .footer__tagline {
+            color: var(--color-text-secondary);
+            margin: 0;
+        }
+
+        .footer__social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer__social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--color-bg-secondary);
+            border: 1px solid #2A2A2A;
+            border-radius: 50%;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer__social-link:hover {
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+            color: var(--color-text-primary);
+            transform: translateY(-2px);
+        }
+
+        .footer__bottom {
+            border-top: 1px solid #2A2A2A;
+            padding-top: 32px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .footer__links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer__links a {
+            color: var(--color-text-primary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer__links a:hover {
+            color: var(--color-primary);
+        }
+
+        .footer__legal {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer__legal a {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer__legal a:hover {
+            color: var(--color-primary);
+        }
+
+        .footer__copyright {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            line-height: 1.5;
+        }
+
+        @media (min-width: 768px) {
+            .footer__bottom {
+                grid-template-columns: 2fr 2fr 1fr;
+                align-items: start;
+            }
+
+            .footer__links {
+                justify-content: flex-start;
+            }
+
+            .footer__legal {
+                justify-content: flex-end;
+            }
+
+            .footer__copyright {
+                text-align: left;
+                grid-column: 1;
+                grid-row: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header__content {
+                flex-wrap: wrap;
+            }
+
+            .nav__list {
+                display: none;
+            }
+
+            .hero {
+                padding: 140px 0 80px;
+            }
+
+            .services__grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .process__steps {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .process-step::after {
+                display: none;
+            }
+
+            .footer__top {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer__bottom {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .footer__links {
+                justify-content: center;
+                gap: 16px;
+            }
+
+            .footer__legal {
+                justify-content: center;
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .service-card {
+                padding: 32px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="header__nav">
+            <div class="header__container">
+                <div class="header__content">
+                    <a href="/" class="logo">
+                        <span class="logo__text">UNLEASH</span>
+                        <div class="logo__pattern"></div>
+                    </a>
+
+                    <ul class="nav__list">
+                        <li><a href="#team" class="nav__link">Unser Team</a></li>
+                        <li><a href="/" class="nav__link nav__link--active">Leistungen</a></li>
+                        <li><a href="#bereiche" class="nav__link">Bereiche</a></li>
+                        <li><a href="#projekte" class="nav__link">Projekte</a></li>
+                    </ul>
+
+                    <a href="#kontakt" class="nav__button">Projekt anfragen</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero__content">
+                <div class="hero__badge">
+                    <span>UNSERE EXPERTISE</span>
+                </div>
+                
+                <h1 class="hero__title">
+                    Leistungen, die dein Unternehmen voranbringen
+                </h1>
+                
+                <p class="hero__description">
+                    Von strategischem Branding über modernes Webdesign bis hin zu datengetriebenen Marketing-Kampagnen – wir bieten ganzheitliche Lösungen für den digitalen Erfolg deines Unternehmens.
+                </p>
+                
+                <a href="#services" class="hero__cta">Unsere Services entdecken</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid Section -->
+    <section class="services-grid" id="services">
+        <div class="container">
+            <div class="services__grid">
+                <!-- Webdesign & Development -->
+                <div class="service-card">
+                    <div class="service-card__icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="18" height="18" x="3" y="3" rx="2"/>
+                            <path d="M9 9h6v6H9z"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-card__title">Webdesign & Development</h3>
+                    <p class="service-card__description">
+                        Moderne, responsive Websites und Web-Anwendungen, die nicht nur beeindrucken, sondern auch konvertieren und performen.
+                    </p>
+                    <ul class="service-card__features">
+                        <li>Responsive Design für alle Geräte</li>
+                        <li>Performance-Optimierung</li>
+                        <li>SEO-freundliche Struktur</li>
+                        <li>Content Management Systeme</li>
+                        <li>E-Commerce Lösungen</li>
+                    </ul>
+                    <a href="#webdesign" class="service-card__cta">
+                        Mehr erfahren <span class="arrow">→</span>
+                    </a>
+                </div>
+
+                <!-- Branding & Corporate Design -->
+                <div class="service-card">
+                    <div class="service-card__icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 10 9 10s9-4.45 9-10V7z"/>
+                            <path d="M9 12l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-card__title">Branding & Corporate Design</h3>
+                    <p class="service-card__description">
+                        Einzigartige Markenidentitäten, die deine Werte verkörpern und eine emotionale Verbindung zu deiner Zielgruppe schaffen.
+                    </p>
+                    <ul class="service-card__features">
+                        <li>Logo & Visual Identity Design</li>
+                        <li>Corporate Design Guidelines</li>
+                        <li>Packaging & Print Design</li>
+                        <li>Brand Strategy & Positioning</li>
+                        <li>Rebranding & Marken-Refresh</li>
+                    </ul>
+                    <a href="#branding" class="service-card__cta">
+                        Mehr erfahren <span class="arrow">→</span>
+                    </a>
+                </div>
+
+                <!-- Digital Marketing -->
+                <div class="service-card">
+                    <div class="service-card__icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 3v18h18"/>
+                            <path d="M7 12L12 7l5 5"/>
+                            <circle cx="12" cy="7" r="1"/>
+                            <circle cx="7" cy="12" r="1"/>
+                            <circle cx="17" cy="12" r="1"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-card__title">Digital Marketing</h3>
+                    <p class="service-card__description">
+                        Datengetriebene Marketing-Strategien, die deine Reichweite maximieren und messbare Ergebnisse für dein Business liefern.
+                    </p>
+                    <ul class="service-card__features">
+                        <li>Social Media Marketing</li>
+                        <li>Google Ads & SEA</li>
+                        <li>Content Marketing</li>
+                        <li>E-Mail Marketing Automation</li>
+                        <li>Analytics & Performance Tracking</li>
+                    </ul>
+                    <a href="#marketing" class="service-card__cta">
+                        Mehr erfahren <span class="arrow">→</span>
+                    </a>
+                </div>
+
+                <!-- UX/UI Design -->
+                <div class="service-card">
+                    <div class="service-card__icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="16" height="20" x="4" y="2" rx="2" ry="2"/>
+                            <path d="M8 6h8"/>
+                            <path d="M8 10h8"/>
+                            <path d="M8 14h5"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-card__title">UX/UI Design</h3>
+                    <p class="service-card__description">
+                        Intuitive Benutzeroberflächen und nahtlose User Experiences, die deine Nutzer begeistern und zum Handeln motivieren.
+                    </p>
+                    <ul class="service-card__features">
+                        <li>User Research & Testing</li>
+                        <li>Wireframing & Prototyping</li>
+                        <li>Interface Design</li>
+                        <li>Design Systems</li>
+                        <li>Mobile App Design</li>
+                    </ul>
+                    <a href="#uxui" class="service-card__cta">
+                        Mehr erfahren <span class="arrow">→</span>
+                    </a>
+                </div>
+
+                <!-- E-Commerce Solutions -->
+                <div class="service-card">
+                    <div class="service-card__icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="8" cy="21" r="1"/>
+                            <circle cx="19" cy="21" r="1"/>
+                            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-card__title">E-Commerce Solutions</h3>
+                    <p class="service-card__description">
+                        Leistungsstarke Online-Shops und E-Commerce-Plattformen, die deine Produkte optimal präsentieren und den Verkauf maximieren.
+                    </p>
+                    <ul class="service-card__features">
+                        <li>Shopify & WooCommerce</li>
+                        <li>Payment Integration</li>
+                        <li>Inventory Management</li>
+                        <li>Multi-Channel Selling</li>
+                        <li>Conversion Optimierung</li>
+                    </ul>
+                    <a href="#ecommerce" class="service-card__cta">
+                        Mehr erfahren <span class="arrow">→</span>
+                    </a>
+                </div>
+
+                <!-- Consulting & Strategy -->
+                <div class="service-card">
+                    <div class="service-card__icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 12l2 2 4-4"/>
+                            <path d="M21 12c.552 0 1-.448 1-1V8a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v3c0 .552.448 1 1 1"/>
+                            <path d="M3 12v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-card__title">Consulting & Strategy</h3>
+                    <p class="service-card__description">
+                        Strategische Beratung und digitale Transformation, um dein Unternehmen zukunftssicher zu positionieren und nachhaltiges Wachstum zu ermöglichen.
+                    </p>
+                    <ul class="service-card__features">
+                        <li>Digital Strategy Development</li>
+                        <li>Business Process Optimization</li>
+                        <li>Technology Consulting</li>
+                        <li>Market Analysis & Research</li>
+                        <li>Growth Strategy Planning</li>
+                    </ul>
+                    <a href="#consulting" class="service-card__cta">
+                        Mehr erfahren <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="process__header">
+                <h2 class="process__title">Unser Arbeitsprozess</h2>
+                <p class="process__description">
+                    In vier strukturierten Phasen entwickeln wir gemeinsam mit dir die perfekte Lösung für deine Herausforderungen – transparent, effizient und ergebnisorientiert.
+                </p>
+            </div>
+
+            <div class="process__steps">
+                <div class="process-step">
+                    <div class="process-step__number">1</div>
+                    <h3 class="process-step__title">Discovery & Analyse</h3>
+                    <p class="process-step__description">
+                        Wir lernen dein Unternehmen, deine Ziele und deine Zielgruppe kennen, um die optimale Strategie zu entwickeln.
+                    </p>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-step__number">2</div>
+                    <h3 class="process-step__title">Konzept & Design</h3>
+                    <p class="process-step__description">
+                        Basierend auf unserer Analyse erstellen wir ein maßgeschneidertes Konzept und die ersten Design-Entwürfe.
+                    </p>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-step__number">3</div>
+                    <h3 class="process-step__title">Entwicklung & Umsetzung</h3>
+                    <p class="process-step__description">
+                        Unser erfahrenes Team setzt das Konzept technisch um und erweckt deine Vision zum Leben.
+                    </p>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-step__number">4</div>
+                    <h3 class="process-step__title">Launch & Optimierung</h3>
+                    <p class="process-step__description">
+                        Nach dem erfolgreichen Launch optimieren wir kontinuierlich und sorgen für nachhaltigen Erfolg.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta__content">
+                <h2 class="cta__title">Bereit für dein nächstes Projekt?</h2>
+                <p class="cta__text">Lass uns gemeinsam herausfinden, welche Leistungen perfekt zu deinen Zielen passen.</p>
+                <a href="#kontakt" class="cta__button">Kostenlose Beratung anfragen</a>
+            </div>
+            <div class="cta__pattern"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__top">
+                    <div class="footer__brand">
+                        <div class="logo">
+                            <span class="logo__text">UNLEASH</span>
+                            <div class="logo__pattern"></div>
+                        </div>
+                        <p class="footer__tagline">Kreativer Problemlöser</p>
+                    </div>
+                    <div class="footer__social">
+                        <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="footer__social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                                <path d="m15.5 6.5-1.1 1.1"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="footer__social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect width="4" height="12" x="2" y="9"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer__bottom">
+                    <div class="footer__links">
+                        <a href="#team">Unser Team</a>
+                        <a href="/">Leistungen</a>
+                        <a href="#bereiche">Bereiche</a>
+                        <a href="#projekte">Projekte</a>
+                    </div>
+                    <div class="footer__legal">
+                        <a href="#datenschutz">Datenschutz</a>
+                        <a href="#impressum">Impressum</a>
+                        <a href="#kontakt">Kontakt</a>
+                    </div>
+                    <div class="footer__copyright">
+                        <div>© 2024 UNLEASH</div>
+                        <div>Alle Rechte vorbehalten</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Logo pattern hover effect
+        const logo = document.querySelector('.logo');
+        const logoPattern = document.querySelector('.logo__pattern');
+
+        logo.addEventListener('mouseenter', () => {
+            logoPattern.style.transform = 'skewX(0deg) scaleY(1.2)';
+            logoPattern.style.background = 'linear-gradient(45deg, #FF5100, #FF7A40)';
+        });
+
+        logo.addEventListener('mouseleave', () => {
+            logoPattern.style.transform = 'skewX(-45deg)';
+            logoPattern.style.background = '#FF5100';
+        });
+
+        // Service cards hover effects
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe service cards for entrance animations
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Process steps animation
+        document.querySelectorAll('.process-step').forEach((step, index) => {
+            step.style.opacity = '0';
+            step.style.transform = 'translateY(30px)';
+            step.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            step.style.transitionDelay = `${index * 0.1}s`;
+            observer.observe(step);
+        });
+    </script>
+</body>
+</html>
