@@ -24,6 +24,7 @@
             color: #FFFFFF;
             background-color: #121212;
             font-variant-numeric: tabular-nums;
+            overflow-x: hidden;
         }
 
         /* Container & Grid System */
@@ -159,8 +160,11 @@
             padding: 180px 0 120px;
             position: relative;
             overflow: hidden;
-            background: var(--color-bg-primary);
+            background: linear-gradient(135deg, #121212 0%, #1E1E1E 50%, #121212 100%);
             text-align: left;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
         }
 
         .hero::before {
@@ -179,275 +183,576 @@
                     rgba(255, 81, 0, 0.08) 17px
                 );
             pointer-events: none;
+            z-index: 1;
         }
 
-        .hero__content {
-            max-width: 800px;
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 81, 0, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: heroGlow 8s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes heroGlow {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg);
+                opacity: 0.3;
+            }
+            50% { 
+                transform: scale(1.2) rotate(180deg);
+                opacity: 0.6;
+            }
+        }
+
+        .hero__container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
             position: relative;
             z-index: 2;
         }
 
+        .hero__content {
+            position: relative;
+        }
+
         .hero__badge {
-            display: inline-block;
-            background: var(--color-primary);
-            color: var(--color-text-primary);
-            padding: 8px 16px;
-            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 81, 0, 0.1);
+            border: 1px solid rgba(255, 81, 0, 0.3);
+            color: var(--color-primary);
+            padding: 12px 20px;
+            border-radius: 50px;
             font-size: 12px;
             font-weight: 600;
             letter-spacing: 0.5px;
             margin-bottom: 32px;
             text-transform: uppercase;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            animation: badgePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { 
+                box-shadow: 0 0 0 0 rgba(255, 81, 0, 0.4);
+            }
+            50% { 
+                box-shadow: 0 0 0 10px rgba(255, 81, 0, 0);
+            }
+        }
+
+        .hero__badge::before {
+            content: '●';
+            color: var(--color-primary);
+            animation: blink 2s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.3; }
         }
 
         .hero__title {
-            font-size: var(--font-size-h1);
-            font-weight: 700;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 900;
             color: var(--color-text-primary);
-            line-height: 1.1;
-            margin-bottom: 24px;
-            letter-spacing: -0.02em;
+            line-height: 0.95;
+            margin-bottom: 32px;
+            letter-spacing: -0.03em;
+            position: relative;
+        }
+
+        .hero__title-highlight {
+            background: linear-gradient(135deg, var(--color-primary) 0%, #FF7A40 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+
+        .hero__title-highlight::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--color-primary), #FF7A40);
+            transform: skewX(-20deg);
+            opacity: 0.8;
+            animation: underlineExpand 2s ease-out 0.5s both;
+        }
+
+        @keyframes underlineExpand {
+            0% { 
+                width: 0;
+                left: 50%;
+            }
+            100% { 
+                width: 100%;
+                left: 0;
+            }
         }
 
         .hero__description {
             font-size: var(--font-size-body-large);
             color: var(--color-text-secondary);
             margin-bottom: 48px;
-            line-height: 1.7;
-            max-width: 600px;
+            line-height: 1.8;
+            max-width: 500px;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero__cta-group {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.2s both;
         }
 
         .hero__cta {
             display: inline-flex;
             align-items: center;
+            gap: 8px;
             background: var(--color-primary);
             color: var(--color-text-primary);
-            padding: 16px 32px;
-            border-radius: 8px;
+            padding: 18px 32px;
+            border-radius: 12px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .hero__cta:hover {
-            background: #E64600;
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(255, 81, 0, 0.3);
-        }
-
-        /* Services Grid Section */
-        .services-grid {
-            padding: 120px 0;
-            background: var(--color-bg-primary);
-            position: relative;
-        }
-
-        .services-grid::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                repeating-linear-gradient(
-                    -45deg,
-                    transparent,
-                    transparent 16px,
-                    rgba(255, 81, 0, 0.08) 16px,
-                    rgba(255, 81, 0, 0.08) 17px
-                );
-            pointer-events: none;
-        }
-
-        .services__grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .service-card {
-            background: var(--color-bg-secondary);
-            border: 1px solid #2A2A2A;
-            border-radius: 20px;
-            padding: 40px;
-            transition: all 0.3s ease;
+            font-size: 16px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
-            text-align: left;
         }
 
-        .service-card::before {
+        .hero__cta::before {
             content: '';
             position: absolute;
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 81, 0, 0.1), transparent);
-            transition: left 0.5s ease;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
         }
 
-        .service-card:hover::before {
+        .hero__cta:hover::before {
             left: 100%;
         }
 
-        .service-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--color-primary);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        .hero__cta:hover {
+            background: #E64600;
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(255, 81, 0, 0.4);
         }
 
-        .service-card__icon {
-            width: 64px;
-            height: 64px;
-            background: var(--color-primary);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 24px;
-        }
-
-        .service-card__title {
-            font-size: 24px;
-            font-weight: 600;
-            color: var(--color-text-primary);
-            margin-bottom: 16px;
-            line-height: 1.3;
-        }
-
-        .service-card__description {
-            font-size: var(--font-size-body);
-            color: var(--color-text-secondary);
-            line-height: 1.7;
-            margin-bottom: 24px;
-        }
-
-        .service-card__features {
-            list-style: none;
-            margin-bottom: 32px;
-        }
-
-        .service-card__features li {
-            font-size: 14px;
-            color: var(--color-text-secondary);
-            margin-bottom: 8px;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .service-card__features li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--color-primary);
-            font-weight: 600;
-        }
-
-        .service-card__cta {
+        .hero__cta-secondary {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            color: var(--color-primary);
+            color: var(--color-text-primary);
             text-decoration: none;
             font-weight: 500;
+            font-size: 16px;
+            padding: 18px 24px;
+            border: 1px solid #2A2A2A;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero__cta-secondary:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+
+        .hero__visual {
+            position: relative;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero__cards-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            perspective: 1000px;
+        }
+
+        .hero__service-card {
+            position: absolute;
+            width: 280px;
+            height: 120px;
+            background: var(--color-bg-secondary);
+            border: 1px solid #2A2A2A;
+            border-radius: 20px;
+            padding: 24px;
+            backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .hero__service-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            border-color: var(--color-primary);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero__service-card--1 {
+            top: 60px;
+            left: 40px;
+            animation: cardFloat1 8s ease-in-out infinite;
+            z-index: 4;
+        }
+
+        .hero__service-card--2 {
+            top: 140px;
+            right: 20px;
+            animation: cardFloat2 8s ease-in-out infinite 2s;
+            z-index: 3;
+        }
+
+        .hero__service-card--3 {
+            bottom: 120px;
+            left: 80px;
+            animation: cardFloat3 8s ease-in-out infinite 4s;
+            z-index: 2;
+        }
+
+        .hero__service-card--4 {
+            bottom: 40px;
+            right: 60px;
+            animation: cardFloat4 8s ease-in-out infinite 6s;
+            z-index: 1;
+        }
+
+        @keyframes cardFloat1 {
+            0%, 100% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
+            25% { transform: translateY(-15px) rotateX(5deg) rotateY(-5deg); }
+            50% { transform: translateY(-8px) rotateX(-3deg) rotateY(3deg); }
+            75% { transform: translateY(-12px) rotateX(2deg) rotateY(-2deg); }
+        }
+
+        @keyframes cardFloat2 {
+            0%, 100% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
+            25% { transform: translateY(-12px) rotateX(-4deg) rotateY(4deg); }
+            50% { transform: translateY(-18px) rotateX(6deg) rotateY(-3deg); }
+            75% { transform: translateY(-6px) rotateX(-2deg) rotateY(5deg); }
+        }
+
+        @keyframes cardFloat3 {
+            0%, 100% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
+            25% { transform: translateY(-10px) rotateX(3deg) rotateY(-6deg); }
+            50% { transform: translateY(-14px) rotateX(-5deg) rotateY(2deg); }
+            75% { transform: translateY(-20px) rotateX(4deg) rotateY(-4deg); }
+        }
+
+        @keyframes cardFloat4 {
+            0%, 100% { transform: translateY(0px) rotateX(0deg) rotateY(0deg); }
+            25% { transform: translateY(-8px) rotateX(-2deg) rotateY(7deg); }
+            50% { transform: translateY(-16px) rotateX(4deg) rotateY(-5deg); }
+            75% { transform: translateY(-11px) rotateX(-6deg) rotateY(3deg); }
+        }
+
+        .service-card__icon {
+            width: 48px;
+            height: 48px;
+            background: var(--color-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
             transition: all 0.3s ease;
         }
 
-        .service-card__cta:hover {
-            transform: translateX(4px);
+        .service-card__title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--color-text-primary);
+            margin: 0;
         }
 
-        .service-card__cta .arrow {
-            transition: transform 0.3s ease;
+        .hero__background-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            z-index: 0;
         }
 
-        .service-card__cta:hover .arrow {
-            transform: translateX(4px);
+        .bg-element {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 81, 0, 0.05);
+            animation: bgFloat 15s ease-in-out infinite;
         }
 
-        /* Process Section */
-        .process-section {
-            padding: 120px 0;
+        .bg-element--1 {
+            width: 200px;
+            height: 200px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .bg-element--2 {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 5s;
+        }
+
+        .bg-element--3 {
+            width: 100px;
+            height: 100px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 10s;
+        }
+
+        @keyframes bgFloat {
+            0%, 100% { 
+                transform: translate(0, 0) scale(1);
+                opacity: 0.3;
+            }
+            50% { 
+                transform: translate(30px, -30px) scale(1.1);
+                opacity: 0.6;
+            }
+        }
+
+        /* Services Section */
+        .services-section {
             background: var(--color-bg-primary);
             position: relative;
         }
 
-        .process-section::before {
+        .services-container {
+            position: relative;
+            height: 400vh; /* 4 Services × 100vh */
+        }
+
+        /* Service Item Layout */
+        .service-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 120px;
+            align-items: center;
+            height: 100vh;
+            padding: 60px 0;
+            position: sticky;
+            top: 0;
+            background: var(--color-bg-primary);
+        }
+
+        .service-item:nth-child(1) { 
+            z-index: 1; 
+        }
+        .service-item:nth-child(2) { 
+            z-index: 2; 
+            top: 0;
+        }
+        .service-item:nth-child(3) { 
+            z-index: 3; 
+            top: 0;
+        }
+        .service-item:nth-child(4) { 
+            z-index: 4; 
+            top: 0;
+        }
+
+        .service-item:nth-child(even) {
+            direction: rtl;
+        }
+
+        .service-item:nth-child(even) .service-content,
+        .service-item:nth-child(even) .service-visual {
+            direction: ltr;
+        }
+
+        /* Service Content */
+        .service-content h2 {
+            font-size: clamp(3rem, 8vw, 8rem);
+            font-weight: 900;
+            color: var(--color-text-primary);
+            line-height: 0.9;
+            margin-bottom: 40px;
+            letter-spacing: -0.02em;
+        }
+
+        .service-description {
+            font-size: var(--font-size-body-large);
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            margin-bottom: 32px;
+            max-width: 480px;
+        }
+
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .service-tag {
+            background: transparent;
+            border: 1px solid var(--color-text-secondary);
+            color: var(--color-text-secondary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .service-tag:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+
+        /* Service Visual */
+        .service-visual {
+            position: relative;
+            height: 400px;
+            border-radius: 24px;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--color-bg-secondary) 0%, #2A2A2A 100%);
+        }
+
+        .service-visual::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: 
-                repeating-linear-gradient(
-                    135deg,
-                    transparent,
-                    transparent 24px,
-                    rgba(255, 81, 0, 0.04) 24px,
-                    rgba(255, 81, 0, 0.04) 25px
-                );
-            pointer-events: none;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 81, 0, 0.1) 0%,
+                rgba(255, 81, 0, 0.05) 50%,
+                transparent 100%
+            );
+            z-index: 1;
         }
 
-        .process__header {
-            text-align: center;
-            margin-bottom: 80px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .process__title {
-            font-size: var(--font-size-h2);
-            font-weight: 700;
-            color: var(--color-text-primary);
-            margin-bottom: 24px;
-            letter-spacing: -0.02em;
-        }
-
-        .process__description {
-            font-size: var(--font-size-body-large);
-            color: var(--color-text-secondary);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-
-        .process__steps {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .process-step {
-            text-align: center;
-            position: relative;
-        }
-
-        .process-step::after {
-            content: '';
+        .visual-content {
             position: absolute;
-            top: 32px;
-            right: -20px;
-            width: 40px;
-            height: 2px;
-            background: var(--color-primary);
-            opacity: 0.3;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70%;
+            height: 70%;
+            background: var(--color-bg-primary);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid #2A2A2A;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
-        .process-step:last-child::after {
-            display: none;
+        /* Design Visual */
+        .design-visual {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+            height: 100%;
         }
 
-        .process-step__number {
-            width: 64px;
-            height: 64px;
+        .design-card {
+            background: var(--color-bg-secondary);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease;
+            animation: designFloat 6s ease-in-out infinite;
+        }
+
+        .design-card:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .design-card:nth-child(2) {
+            animation-delay: 2s;
+        }
+
+        .design-card:nth-child(3) {
+            animation-delay: 4s;
+        }
+
+        .design-card:nth-child(4) {
+            animation-delay: 1s;
+        }
+
+        .design-card h4 {
+            color: var(--color-primary);
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .design-card p {
+            color: var(--color-text-secondary);
+            font-size: 10px;
+            line-height: 1.4;
+        }
+
+        /* Branding Visual */
+        .branding-visual {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+        }
+
+        .brand-logo {
+            width: 80px;
+            height: 80px;
             background: var(--color-primary);
             border-radius: 50%;
             display: flex;
@@ -455,21 +760,167 @@
             justify-content: center;
             font-size: 24px;
             font-weight: 700;
-            color: var(--color-text-primary);
-            margin: 0 auto 24px;
+            color: white;
+            animation: brandPulse 4s ease-in-out infinite;
         }
 
-        .process-step__title {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--color-text-primary);
+        .brand-elements {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .brand-element {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            animation: brandFloat 5s ease-in-out infinite;
+        }
+
+        .brand-element:nth-child(1) {
+            background: var(--color-primary);
+            animation-delay: 0s;
+        }
+
+        .brand-element:nth-child(2) {
+            background: #FF7A40;
+            animation-delay: 1s;
+        }
+
+        .brand-element:nth-child(3) {
+            background: #E64600;
+            animation-delay: 2s;
+        }
+
+        /* Development Visual */
+        .development-visual {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .code-editor {
+            background: #0a0a0a;
+            border-radius: 12px;
+            padding: 16px;
+            width: 100%;
+            max-width: 280px;
+            border: 1px solid #333;
+        }
+
+        .code-header {
+            display: flex;
+            gap: 6px;
             margin-bottom: 12px;
         }
 
-        .process-step__description {
-            font-size: 14px;
+        .code-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .code-dot:nth-child(1) { background: #ff5f56; }
+        .code-dot:nth-child(2) { background: #ffbd2e; }
+        .code-dot:nth-child(3) { background: #27ca3f; }
+
+        .code-line {
+            margin-bottom: 6px;
+            font-family: 'Monaco', monospace;
+            font-size: 10px;
             color: var(--color-text-secondary);
-            line-height: 1.6;
+        }
+
+        .code-keyword { color: var(--color-primary); }
+        .code-string { color: #FECA57; }
+        .code-function { color: #45B7D1; }
+
+        /* Marketing Visual */
+        .marketing-visual {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 140px;
+            height: 140px;
+        }
+
+        .chart-circle {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--color-primary) 0deg 120deg,
+                #FF7A40 120deg 240deg,
+                #333 240deg 360deg
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: chartRotate 8s linear infinite;
+        }
+
+        .chart-center {
+            width: 80px;
+            height: 80px;
+            background: var(--color-bg-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .marketing-stats {
+            display: flex;
+            gap: 16px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .stat-label {
+            font-size: 8px;
+            color: var(--color-text-secondary);
+        }
+
+        /* Animations */
+        @keyframes designFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes brandPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes brandFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-5px) rotate(5deg); }
+        }
+
+        @keyframes chartRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         /* CTA Section */
@@ -520,23 +971,6 @@
         .cta__button:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .cta__pattern {
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 600px;
-            height: 600px;
-            background: repeating-linear-gradient(
-                45deg,
-                rgba(255, 255, 255, 0.1),
-                rgba(255, 255, 255, 0.1) 2px,
-                transparent 2px,
-                transparent 32px
-            );
-            border-radius: 50%;
-            opacity: 0.3;
         }
 
         /* Footer */
@@ -684,18 +1118,23 @@
                 padding: 140px 0 80px;
             }
 
-            .services__grid {
+            .service-item {
                 grid-template-columns: 1fr;
-                gap: 32px;
+                gap: 60px;
+                text-align: center;
             }
 
-            .process__steps {
-                grid-template-columns: 1fr;
-                gap: 40px;
+            .service-item:nth-child(even) {
+                direction: ltr;
             }
 
-            .process-step::after {
-                display: none;
+            .service-visual {
+                height: 400px;
+                order: -1;
+            }
+
+            .services-container {
+                gap: 120px;
             }
 
             .footer__top {
@@ -725,8 +1164,16 @@
                 padding: 0 16px;
             }
 
-            .service-card {
-                padding: 32px 24px;
+            .service-content h2 {
+                font-size: clamp(2rem, 12vw, 4rem);
+            }
+
+            .service-visual {
+                height: 300px;
+            }
+
+            .visual-content {
+                padding: 20px;
             }
         }
     </style>
@@ -737,13 +1184,13 @@
         <nav class="header__nav">
             <div class="header__container">
                 <div class="header__content">
-                    <a href="/" class="logo">
+                    <a href="index.html" class="logo">
                         <span class="logo__text">UNLEASH</span>
                         <div class="logo__pattern"></div>
                     </a>
 
                     <ul class="nav__list">
-                        <li><a href="#team" class="nav__link">Unser Team</a></li>
+                        <li><a href="team.html" class="nav__link">Unser Team</a></li>
                         <li><a href="/" class="nav__link nav__link--active">Leistungen</a></li>
                         <li><a href="#bereiche" class="nav__link">Bereiche</a></li>
                         <li><a href="#projekte" class="nav__link">Projekte</a></li>
@@ -757,225 +1204,250 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <div class="hero__content">
-                <div class="hero__badge">
-                    <span>UNSERE EXPERTISE</span>
-                </div>
-                
-                <h1 class="hero__title">
-                    Leistungen, die dein Unternehmen voranbringen
-                </h1>
-                
-                <p class="hero__description">
-                    Von strategischem Branding über modernes Webdesign bis hin zu datengetriebenen Marketing-Kampagnen – wir bieten ganzheitliche Lösungen für den digitalen Erfolg deines Unternehmens.
-                </p>
-                
-                <a href="#services" class="hero__cta">Unsere Services entdecken</a>
-            </div>
+        <div class="hero__background-elements">
+            <div class="bg-element bg-element--1"></div>
+            <div class="bg-element bg-element--2"></div>
+            <div class="bg-element bg-element--3"></div>
         </div>
-    </section>
-
-    <!-- Services Grid Section -->
-    <section class="services-grid" id="services">
+        
         <div class="container">
-            <div class="services__grid">
-                <!-- Webdesign & Development -->
-                <div class="service-card">
-                    <div class="service-card__icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect width="18" height="18" x="3" y="3" rx="2"/>
-                            <path d="M9 9h6v6H9z"/>
-                        </svg>
+            <div class="hero__container">
+                <div class="hero__content">
+                    <div class="hero__badge">
+                        <span>UNSERE EXPERTISE</span>
                     </div>
-                    <h3 class="service-card__title">Webdesign & Development</h3>
-                    <p class="service-card__description">
-                        Moderne, responsive Websites und Web-Anwendungen, die nicht nur beeindrucken, sondern auch konvertieren und performen.
+                    
+                    <h1 class="hero__title">
+                        Leistungen, die dein<br>
+                        <span class="hero__title-highlight">Unternehmen</span><br>
+                        voranbringen
+                    </h1>
+                    
+                    <p class="hero__description">
+                        Von strategischem Branding über modernes Webdesign bis hin zu datengetriebenen Marketing-Kampagnen – wir bieten ganzheitliche Lösungen für den digitalen Erfolg deines Unternehmens.
                     </p>
-                    <ul class="service-card__features">
-                        <li>Responsive Design für alle Geräte</li>
-                        <li>Performance-Optimierung</li>
-                        <li>SEO-freundliche Struktur</li>
-                        <li>Content Management Systeme</li>
-                        <li>E-Commerce Lösungen</li>
-                    </ul>
-                    <a href="#webdesign" class="service-card__cta">
-                        Mehr erfahren <span class="arrow">→</span>
-                    </a>
+                    
+                    <div class="hero__cta-group">
+                        <a href="#services" class="hero__cta">
+                            Unsere Services entdecken
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </a>
+                        <a href="#kontakt" class="hero__cta-secondary">
+                            Kostenlose Beratung
+                        </a>
+                    </div>
                 </div>
-
-                <!-- Branding & Corporate Design -->
-                <div class="service-card">
-                    <div class="service-card__icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 2L2 7v10c0 5.55 3.84 10 9 10s9-4.45 9-10V7z"/>
-                            <path d="M9 12l2 2 4-4"/>
-                        </svg>
+                
+                <div class="hero__visual">
+                    <div class="hero__cards-container">
+                        <div class="hero__service-card hero__service-card--1">
+                            <div class="service-card__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="18" height="18" x="3" y="3" rx="2"/>
+                                    <path d="M9 9h6v6H9z"/>
+                                </svg>
+                            </div>
+                            <h3 class="service-card__title">Design</h3>
+                        </div>
+                        
+                        <div class="hero__service-card hero__service-card--2">
+                            <div class="service-card__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 2L2 7v10c0 5.55 3.84 10 9 10s9-4.45 9-10V7z"/>
+                                    <path d="M9 12l2 2 4-4"/>
+                                </svg>
+                            </div>
+                            <h3 class="service-card__title">Branding</h3>
+                        </div>
+                        
+                        <div class="hero__service-card hero__service-card--3">
+                            <div class="service-card__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="16 18 22 12 16 6"/>
+                                    <polyline points="8 6 2 12 8 18"/>
+                                </svg>
+                            </div>
+                            <h3 class="service-card__title">Development</h3>
+                        </div>
+                        
+                        <div class="hero__service-card hero__service-card--4">
+                            <div class="service-card__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 3v18h18"/>
+                                    <path d="M7 12L12 7l5 5"/>
+                                </svg>
+                            </div>
+                            <h3 class="service-card__title">Marketing</h3>
+                        </div>
                     </div>
-                    <h3 class="service-card__title">Branding & Corporate Design</h3>
-                    <p class="service-card__description">
-                        Einzigartige Markenidentitäten, die deine Werte verkörpern und eine emotionale Verbindung zu deiner Zielgruppe schaffen.
-                    </p>
-                    <ul class="service-card__features">
-                        <li>Logo & Visual Identity Design</li>
-                        <li>Corporate Design Guidelines</li>
-                        <li>Packaging & Print Design</li>
-                        <li>Brand Strategy & Positioning</li>
-                        <li>Rebranding & Marken-Refresh</li>
-                    </ul>
-                    <a href="#branding" class="service-card__cta">
-                        Mehr erfahren <span class="arrow">→</span>
-                    </a>
-                </div>
-
-                <!-- Digital Marketing -->
-                <div class="service-card">
-                    <div class="service-card__icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M3 3v18h18"/>
-                            <path d="M7 12L12 7l5 5"/>
-                            <circle cx="12" cy="7" r="1"/>
-                            <circle cx="7" cy="12" r="1"/>
-                            <circle cx="17" cy="12" r="1"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-card__title">Digital Marketing</h3>
-                    <p class="service-card__description">
-                        Datengetriebene Marketing-Strategien, die deine Reichweite maximieren und messbare Ergebnisse für dein Business liefern.
-                    </p>
-                    <ul class="service-card__features">
-                        <li>Social Media Marketing</li>
-                        <li>Google Ads & SEA</li>
-                        <li>Content Marketing</li>
-                        <li>E-Mail Marketing Automation</li>
-                        <li>Analytics & Performance Tracking</li>
-                    </ul>
-                    <a href="#marketing" class="service-card__cta">
-                        Mehr erfahren <span class="arrow">→</span>
-                    </a>
-                </div>
-
-                <!-- UX/UI Design -->
-                <div class="service-card">
-                    <div class="service-card__icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect width="16" height="20" x="4" y="2" rx="2" ry="2"/>
-                            <path d="M8 6h8"/>
-                            <path d="M8 10h8"/>
-                            <path d="M8 14h5"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-card__title">UX/UI Design</h3>
-                    <p class="service-card__description">
-                        Intuitive Benutzeroberflächen und nahtlose User Experiences, die deine Nutzer begeistern und zum Handeln motivieren.
-                    </p>
-                    <ul class="service-card__features">
-                        <li>User Research & Testing</li>
-                        <li>Wireframing & Prototyping</li>
-                        <li>Interface Design</li>
-                        <li>Design Systems</li>
-                        <li>Mobile App Design</li>
-                    </ul>
-                    <a href="#uxui" class="service-card__cta">
-                        Mehr erfahren <span class="arrow">→</span>
-                    </a>
-                </div>
-
-                <!-- E-Commerce Solutions -->
-                <div class="service-card">
-                    <div class="service-card__icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="8" cy="21" r="1"/>
-                            <circle cx="19" cy="21" r="1"/>
-                            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-card__title">E-Commerce Solutions</h3>
-                    <p class="service-card__description">
-                        Leistungsstarke Online-Shops und E-Commerce-Plattformen, die deine Produkte optimal präsentieren und den Verkauf maximieren.
-                    </p>
-                    <ul class="service-card__features">
-                        <li>Shopify & WooCommerce</li>
-                        <li>Payment Integration</li>
-                        <li>Inventory Management</li>
-                        <li>Multi-Channel Selling</li>
-                        <li>Conversion Optimierung</li>
-                    </ul>
-                    <a href="#ecommerce" class="service-card__cta">
-                        Mehr erfahren <span class="arrow">→</span>
-                    </a>
-                </div>
-
-                <!-- Consulting & Strategy -->
-                <div class="service-card">
-                    <div class="service-card__icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M9 12l2 2 4-4"/>
-                            <path d="M21 12c.552 0 1-.448 1-1V8a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v3c0 .552.448 1 1 1"/>
-                            <path d="M3 12v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-                        </svg>
-                    </div>
-                    <h3 class="service-card__title">Consulting & Strategy</h3>
-                    <p class="service-card__description">
-                        Strategische Beratung und digitale Transformation, um dein Unternehmen zukunftssicher zu positionieren und nachhaltiges Wachstum zu ermöglichen.
-                    </p>
-                    <ul class="service-card__features">
-                        <li>Digital Strategy Development</li>
-                        <li>Business Process Optimization</li>
-                        <li>Technology Consulting</li>
-                        <li>Market Analysis & Research</li>
-                        <li>Growth Strategy Planning</li>
-                    </ul>
-                    <a href="#consulting" class="service-card__cta">
-                        Mehr erfahren <span class="arrow">→</span>
-                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Process Section -->
-    <section class="process-section">
+    <!-- Services Section -->
+    <section class="services-section" id="services">
         <div class="container">
-            <div class="process__header">
-                <h2 class="process__title">Unser Arbeitsprozess</h2>
-                <p class="process__description">
-                    In vier strukturierten Phasen entwickeln wir gemeinsam mit dir die perfekte Lösung für deine Herausforderungen – transparent, effizient und ergebnisorientiert.
-                </p>
-            </div>
-
-            <div class="process__steps">
-                <div class="process-step">
-                    <div class="process-step__number">1</div>
-                    <h3 class="process-step__title">Discovery & Analyse</h3>
-                    <p class="process-step__description">
-                        Wir lernen dein Unternehmen, deine Ziele und deine Zielgruppe kennen, um die optimale Strategie zu entwickeln.
-                    </p>
+            <div class="services-container">
+                
+                <!-- Design Service -->
+                <div class="service-item">
+                    <div class="service-content">
+                        <h2>DESIGN</h2>
+                        <p class="service-description">
+                            Our design services bring creativity and function together, delivering user-friendly experiences and products. Whether it's graphic design, UI/UX, or motion graphics, we shape ideas into designs that captivate and engage.
+                        </p>
+                        <div class="service-tags">
+                            <span class="service-tag">GRAPHIC DESIGN</span>
+                            <span class="service-tag">UI/UX DESIGN</span>
+                            <span class="service-tag">MOTION DESIGN</span>
+                            <span class="service-tag">PRINT DESIGN</span>
+                            <span class="service-tag">ENVIRONMENTAL DESIGN</span>
+                        </div>
+                    </div>
+                    <div class="service-visual">
+                        <div class="visual-content">
+                            <div class="design-visual">
+                                <div class="design-card">
+                                    <h4>Branding</h4>
+                                    <p>Entwicklung einzigartiger Markenidentitäten</p>
+                                </div>
+                                <div class="design-card">
+                                    <h4>Design Development</h4>
+                                    <p>Von Konzept zur fertigen Umsetzung</p>
+                                </div>
+                                <div class="design-card">
+                                    <h4>Photography</h4>
+                                    <p>Professionelle Bildsprache für Ihre Marke</p>
+                                </div>
+                                <div class="design-card">
+                                    <h4>Marketing</h4>
+                                    <p>Design das verkauft und überzeugt</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="process-step">
-                    <div class="process-step__number">2</div>
-                    <h3 class="process-step__title">Konzept & Design</h3>
-                    <p class="process-step__description">
-                        Basierend auf unserer Analyse erstellen wir ein maßgeschneidertes Konzept und die ersten Design-Entwürfe.
-                    </p>
+                <!-- Branding Service -->
+                <div class="service-item">
+                    <div class="service-content">
+                        <h2>BRANDING</h2>
+                        <p class="service-description">
+                            We craft compelling brand identities that resonate with your audience and leave a lasting impression. From logo design to comprehensive brand strategies, we help you define who you are and stand out in a crowded market.
+                        </p>
+                        <div class="service-tags">
+                            <span class="service-tag">BRAND STRATEGY</span>
+                            <span class="service-tag">LOGO DESIGN</span>
+                            <span class="service-tag">BRAND GUIDELINES</span>
+                            <span class="service-tag">REBRANDING</span>
+                            <span class="service-tag">PACKAGING DESIGN</span>
+                        </div>
+                    </div>
+                    <div class="service-visual">
+                        <div class="visual-content">
+                            <div class="branding-visual">
+                                <div class="brand-logo">U</div>
+                                <div class="brand-elements">
+                                    <div class="brand-element"></div>
+                                    <div class="brand-element"></div>
+                                    <div class="brand-element"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="process-step">
-                    <div class="process-step__number">3</div>
-                    <h3 class="process-step__title">Entwicklung & Umsetzung</h3>
-                    <p class="process-step__description">
-                        Unser erfahrenes Team setzt das Konzept technisch um und erweckt deine Vision zum Leben.
-                    </p>
+                <!-- Development Service -->
+                <div class="service-item">
+                    <div class="service-content">
+                        <h2>DEVELOPMENT</h2>
+                        <p class="service-description">
+                            Hochwertige Web-Entwicklung und digitale Lösungen, die nicht nur beeindrucken, sondern auch funktionieren. Von responsiven Websites bis zu komplexen Web-Anwendungen – wir setzen Ihre Vision technisch um.
+                        </p>
+                        <div class="service-tags">
+                            <span class="service-tag">WEB DEVELOPMENT</span>
+                            <span class="service-tag">E-COMMERCE</span>
+                            <span class="service-tag">CMS SYSTEME</span>
+                            <span class="service-tag">API INTEGRATION</span>
+                            <span class="service-tag">PERFORMANCE OPTIMIZATION</span>
+                        </div>
+                    </div>
+                    <div class="service-visual">
+                        <div class="visual-content">
+                            <div class="development-visual">
+                                <div class="code-editor">
+                                    <div class="code-header">
+                                        <div class="code-dot"></div>
+                                        <div class="code-dot"></div>
+                                        <div class="code-dot"></div>
+                                    </div>
+                                    <div class="code-line">
+                                        <span class="code-keyword">const</span> 
+                                        <span class="code-function">unleashWebsite</span> = {
+                                    </div>
+                                    <div class="code-line">
+                                        &nbsp;&nbsp;responsive: <span class="code-string">'true'</span>,
+                                    </div>
+                                    <div class="code-line">
+                                        &nbsp;&nbsp;performance: <span class="code-string">'optimized'</span>,
+                                    </div>
+                                    <div class="code-line">
+                                        &nbsp;&nbsp;seo: <span class="code-string">'enhanced'</span>
+                                    </div>
+                                    <div class="code-line">
+                                        };
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="process-step">
-                    <div class="process-step__number">4</div>
-                    <h3 class="process-step__title">Launch & Optimierung</h3>
-                    <p class="process-step__description">
-                        Nach dem erfolgreichen Launch optimieren wir kontinuierlich und sorgen für nachhaltigen Erfolg.
-                    </p>
+                <!-- Marketing Service -->
+                <div class="service-item">
+                    <div class="service-content">
+                        <h2>MARKETING</h2>
+                        <p class="service-description">
+                            Datengetriebene Marketing-Strategien, die Ihre Reichweite maximieren und messbare Ergebnisse liefern. Von Social Media bis Performance Marketing – wir sorgen für nachhaltigen Erfolg Ihres Unternehmens.
+                        </p>
+                        <div class="service-tags">
+                            <span class="service-tag">SOCIAL MEDIA</span>
+                            <span class="service-tag">PERFORMANCE MARKETING</span>
+                            <span class="service-tag">CONTENT STRATEGY</span>
+                            <span class="service-tag">EMAIL MARKETING</span>
+                            <span class="service-tag">ANALYTICS</span>
+                        </div>
+                    </div>
+                    <div class="service-visual">
+                        <div class="visual-content">
+                            <div class="marketing-visual">
+                                <div class="chart-container">
+                                    <div class="chart-circle">
+                                        <div class="chart-center">ROI<br>+285%</div>
+                                    </div>
+                                </div>
+                                <div class="marketing-stats">
+                                    <div class="stat-item">
+                                        <div class="stat-number">2.4M</div>
+                                        <div class="stat-label">Reach</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-number">18.5%</div>
+                                        <div class="stat-label">CTR</div>
+                                    </div>
+                                    <div class="stat-item">
+                                        <div class="stat-number">94%</div>
+                                        <div class="stat-label">Satisfaction</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -988,7 +1460,6 @@
                 <p class="cta__text">Lass uns gemeinsam herausfinden, welche Leistungen perfekt zu deinen Zielen passen.</p>
                 <a href="#kontakt" class="cta__button">Kostenlose Beratung anfragen</a>
             </div>
-            <div class="cta__pattern"></div>
         </div>
     </section>
 
@@ -1023,7 +1494,7 @@
                 </div>
                 <div class="footer__bottom">
                     <div class="footer__links">
-                        <a href="#team">Unser Team</a>
+                        <a href="team.html">Unser Team</a>
                         <a href="/">Leistungen</a>
                         <a href="#bereiche">Bereiche</a>
                         <a href="#projekte">Projekte</a>
@@ -1057,17 +1528,6 @@
             logoPattern.style.background = '#FF5100';
         });
 
-        // Service cards hover effects
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-8px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1085,36 +1545,50 @@
             });
         });
 
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
+        // Service tag hover effects
+        document.querySelectorAll('.service-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px) scale(1.05)';
             });
-        }, observerOptions);
-
-        // Observe service cards for entrance animations
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
+            
+            tag.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
         });
 
-        // Process steps animation
-        document.querySelectorAll('.process-step').forEach((step, index) => {
-            step.style.opacity = '0';
-            step.style.transform = 'translateY(30px)';
-            step.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            step.style.transitionDelay = `${index * 0.1}s`;
-            observer.observe(step);
+        // Enhanced visual interactions
+        document.querySelectorAll('.service-visual').forEach(visual => {
+            visual.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.02)';
+            });
+            
+            visual.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+
+        // Add subtle animation to design cards
+        document.querySelectorAll('.design-card').forEach((card, index) => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+                this.style.borderColor = '#FF5100';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+                this.style.borderColor = '#333';
+            });
+        });
+
+        // Interactive brand elements
+        document.querySelectorAll('.brand-element').forEach((element, index) => {
+            element.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.2) rotate(15deg)';
+            });
+            
+            element.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) rotate(0deg)';
+            });
         });
     </script>
 </body>
