@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNLEASH - Unsere Leistungen</title>
+    <title>UNLEASH - Unser Team</title>
     <style>
         /* Reset & Base Styles */
         * {
@@ -77,6 +77,16 @@
             margin-top: 8px;
             padding: 0 24px;
             transition: all 0.3s ease;
+        }
+
+        /* Default state */
+        .header[data-state="inactive"] .header__container {
+            max-width: 1536px;
+            padding: 0 48px;
+        }
+
+        /* Scrolled state */
+        .header[data-state="active"] .header__container {
             max-width: 1024px;
             background: rgba(18, 18, 18, 0.8);
             backdrop-filter: blur(16px);
@@ -89,13 +99,46 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap;
             gap: 24px;
             padding: 12px 0;
+            position: relative;
+        }
+
+        .header__brand {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .header__center {
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            width: fit-content;
+            height: fit-content;
+            display: none;
+        }
+
+        .header__actions {
+            display: none;
+            align-items: center;
+            width: 100%;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 24px;
+            background: var(--color-bg-primary);
+            border: 1px solid #1E1E1E;
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
         }
 
         .logo {
             display: flex;
             align-items: center;
+            position: relative;
             text-decoration: none;
         }
 
@@ -133,6 +176,9 @@
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
+            position: relative;
+            display: block;
+            transition: all 0.15s ease;
         }
 
         .nav__link:hover,
@@ -141,19 +187,211 @@
         }
 
         .nav__button {
-            background: var(--color-primary);
-            color: var(--color-text-primary);
-            padding: 8px 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
             border-radius: 6px;
-            text-decoration: none;
-            font-weight: 500;
             font-size: 14px;
+            font-weight: 500;
             transition: all 0.3s ease;
+            text-decoration: none;
+            height: 36px;
+            padding: 0 12px;
         }
 
-        .nav__button:hover {
+        .nav__button--outline {
+            border: 1px solid #2A2A2A;
+            background: var(--color-bg-primary);
+            color: var(--color-text-primary);
+        }
+
+        .nav__button--outline:hover {
+            background: var(--color-bg-secondary);
+            color: var(--color-text-primary);
+        }
+
+        .nav__button--primary {
+            background: var(--color-primary);
+            color: var(--color-text-primary);
+            border: 1px solid transparent;
+        }
+
+        .nav__button--primary:hover {
             background: #E64600;
             transform: translateY(-1px);
+        }
+
+        .nav__desktop-buttons {
+            display: flex;
+            gap: 12px;
+            width: 100%;
+            flex-direction: column;
+        }
+
+        .nav__scrolled-button {
+            display: none;
+        }
+
+        .mobile-menu-toggle {
+            position: relative;
+            z-index: 20;
+            margin: -10px -16px -10px -10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            display: block;
+        }
+
+        .menu-icon {
+            display: block;
+            width: 24px;
+            height: 24px;
+            position: relative;
+        }
+
+        .menu-icon::before,
+        .menu-icon::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 24px;
+            height: 2px;
+            background: var(--color-text-primary);
+            transition: all 0.2s ease;
+        }
+
+        .menu-icon::before {
+            top: 7px;
+        }
+
+        .menu-icon::after {
+            top: 15px;
+        }
+
+        .close-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-180deg) scale(0);
+            font-size: 24px;
+            color: var(--color-text-primary);
+            transition: all 0.2s ease;
+            opacity: 0;
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            display: none;
+            width: 100%;
+            background: var(--color-bg-primary);
+            border: 1px solid #1E1E1E;
+            border-radius: 24px;
+            padding: 24px;
+            margin-top: 24px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .mobile-menu__content {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .mobile-nav__list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .mobile-nav__link {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.15s ease;
+            display: block;
+        }
+
+        .mobile-nav__link:hover {
+            color: var(--color-text-primary);
+        }
+
+        /* Desktop Navigation */
+        @media (min-width: 768px) {
+            .header__brand {
+                width: auto;
+            }
+            
+            .header__center {
+                display: block;
+            }
+            
+            .header__actions {
+                display: flex;
+                width: fit-content;
+                gap: 24px;
+                margin: 0;
+                background: transparent;
+                border: none;
+                border-radius: 0;
+                padding: 0;
+                box-shadow: none;
+                flex-direction: row;
+            }
+            
+            .nav__desktop-buttons {
+                flex-direction: row;
+                width: auto;
+            }
+            
+            .mobile-menu-toggle {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: none !important;
+            }
+            
+            /* Scrolled state for desktop */
+            .header[data-state="active"] .nav__desktop-buttons {
+                display: none;
+            }
+            
+            .header[data-state="active"] .nav__scrolled-button {
+                display: block;
+            }
+        }
+
+        /* Active mobile menu state */
+        .header[data-state="active"] .mobile-menu {
+            display: block;
+        }
+
+        .header[data-state="active"] .menu-icon::before,
+        .header[data-state="active"] .menu-icon::after {
+            opacity: 0;
+            transform: rotate(180deg) scale(0);
+        }
+
+        .header[data-state="active"] .close-icon {
+            transform: translate(-50%, -50%) rotate(0deg) scale(1);
+            opacity: 1;
+        }
+
+        /* Responsive Design for Header */
+        @media (max-width: 767px) {
+            .header__center {
+                display: none !important;
+            }
+            
+            .mobile-menu-toggle {
+                display: block !important;
+            }
         }
 
         /* Hero Section */
@@ -288,14 +526,14 @@
 
         .team__grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 32px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
             position: relative;
             z-index: 2;
         }
 
         .team-member {
-            text-align: center;
+            text-align: left;
             transition: transform 0.3s ease;
         }
 
@@ -305,7 +543,7 @@
 
         .team-member__image {
             width: 100%;
-            height: 280px;
+            height: 360px;
             border-radius: 16px;
             overflow: hidden;
             margin-bottom: 20px;
@@ -543,14 +781,6 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .header__content {
-                flex-wrap: wrap;
-            }
-
-            .nav__list {
-                display: none;
-            }
-
             .hero {
                 padding: 140px 0 80px;
             }
@@ -572,7 +802,7 @@
             }
 
             .team-member__image {
-                height: 240px;
+                height: 300px;
             }
 
             .mission__content {
@@ -624,22 +854,52 @@
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
+    <header class="header" data-state="inactive">
         <nav class="header__nav">
             <div class="header__container">
                 <div class="header__content">
-                    <a href="index.html" class="logo">
-                        <span class="logo__text">UNLEASH</span>
-                        <div class="logo__pattern"></div>
-                    </a>
+                    <div class="header__brand">
+                        <a href="index.html" class="logo">
+                            <span class="logo__text">UNLEASH</span>
+                            <div class="logo__pattern"></div>
+                        </a>
 
-                    <ul class="nav__list">
-                        <li><a href="/" class="nav__link nav__link--active">Unser Team</a></li>
-                        <li><a href="services.html" class="nav__link">Leistungen</a></li>
-                        <li><a href="#projekte" class="nav__link">Projekte</a></li>
-                    </ul>
+                        <button class="mobile-menu-toggle" aria-label="Menu">
+                            <span class="menu-icon"></span>
+                            <span class="close-icon">×</span>
+                        </button>
+                    </div>
 
-                    <a href="#kontakt" class="nav__button">Projekt anfragen</a>
+                    <div class="header__center">
+                        <ul class="nav__list">
+                            <li><a href="team.html" class="nav__link nav__link--active">Unser Team</a></li>
+                            <li><a href="services.html" class="nav__link">Leistungen</a></li>
+                            <li><a href="#projekte" class="nav__link">Projekte</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="header__actions">
+                        <div class="nav__desktop-buttons">
+                            <a href="#kontakt" class="nav__button nav__button--primary">Projekt anfragen</a>
+                        </div>
+                        <div class="nav__scrolled-button">
+                            <a href="#kontakt" class="nav__button nav__button--primary">Projekt anfragen</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu -->
+                <div class="mobile-menu">
+                    <div class="mobile-menu__content">
+                        <ul class="mobile-nav__list">
+                            <li><a href="team.html" class="mobile-nav__link">Unser Team</a></li>
+                            <li><a href="services.html" class="mobile-nav__link">Leistungen</a></li>
+                            <li><a href="#projekte" class="mobile-nav__link">Projekte</a></li>
+                        </ul>
+                        <div class="mobile-nav__buttons">
+                            <a href="#kontakt" class="nav__button nav__button--primary">Projekt anfragen</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -677,75 +937,68 @@
                 <!-- Row 1 -->
                 <div class="team-member">
                     <div class="team-member__image">
-                        <img src="https://images.unsplash.com/photo-1494790108755-2616c39ba4c0?w=280&h=280&fit=crop&crop=face" alt="Leslie Alexander">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616c39ba4c0?w=280&h=360&fit=crop&crop=face" alt="Leslie Alexander">
                     </div>
                     <h3 class="team-member__name">Leslie Alexander</h3>
                     <div class="team-member__role">Co-Founder / CEO</div>
-                    <div class="team-member__location">Mannheim, Deutschland</div>
                 </div>
 
                 <div class="team-member">
                     <div class="team-member__image">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=280&h=280&fit=crop&crop=face" alt="Michael Foster">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=280&h=360&fit=crop&crop=face" alt="Michael Foster">
                     </div>
                     <h3 class="team-member__name">Michael Foster</h3>
                     <div class="team-member__role">Co-Founder / CTO</div>
-                    <div class="team-member__location">Mannheim, Deutschland</div>
                 </div>
 
                 <div class="team-member">
                     <div class="team-member__image">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=280&h=280&fit=crop&crop=face" alt="Dries Vincent">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=280&h=360&fit=crop&crop=face" alt="Dries Vincent">
                     </div>
                     <h3 class="team-member__name">Dries Vincent</h3>
                     <div class="team-member__role">Business Relations</div>
-                    <div class="team-member__location">Heidelberg, Deutschland</div>
-                </div>
-
-                <div class="team-member">
-                    <div class="team-member__image">
-                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=280&h=280&fit=crop&crop=face" alt="Lindsay Walton">
-                    </div>
-                    <h3 class="team-member__name">Lindsay Walton</h3>
-                    <div class="team-member__role">Front-end Developer</div>
-                    <div class="team-member__location">Frankfurt, Deutschland</div>
                 </div>
 
                 <!-- Row 2 -->
                 <div class="team-member">
                     <div class="team-member__image">
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=280&h=280&fit=crop&crop=face" alt="Courtney Henry">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=280&h=360&fit=crop&crop=face" alt="Lindsay Walton">
+                    </div>
+                    <h3 class="team-member__name">Lindsay Walton</h3>
+                    <div class="team-member__role">Front-end Developer</div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-member__image">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=280&h=360&fit=crop&crop=face" alt="Courtney Henry">
                     </div>
                     <h3 class="team-member__name">Courtney Henry</h3>
                     <div class="team-member__role">Designer</div>
-                    <div class="team-member__location">Mannheim, Deutschland</div>
                 </div>
 
                 <div class="team-member">
                     <div class="team-member__image">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=280&h=280&fit=crop&crop=face" alt="Tom Cook">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=280&h=360&fit=crop&crop=face" alt="Tom Cook">
                     </div>
                     <h3 class="team-member__name">Tom Cook</h3>
                     <div class="team-member__role">Director of Product</div>
-                    <div class="team-member__location">Mannheim, Deutschland</div>
                 </div>
 
+                <!-- Row 3 -->
                 <div class="team-member">
                     <div class="team-member__image">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=280&h=280&fit=crop&crop=face" alt="Whitney Francis">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=280&h=360&fit=crop&crop=face" alt="Whitney Francis">
                     </div>
                     <h3 class="team-member__name">Whitney Francis</h3>
                     <div class="team-member__role">Copywriter</div>
-                    <div class="team-member__location">Mannheim, Deutschland</div>
                 </div>
 
                 <div class="team-member">
                     <div class="team-member__image">
-                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=280&h=280&fit=crop&crop=face" alt="Leonard Krasner">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=280&h=360&fit=crop&crop=face" alt="Leonard Krasner">
                     </div>
                     <h3 class="team-member__name">Leonard Krasner</h3>
                     <div class="team-member__role">Senior Designer</div>
-                    <div class="team-member__location">Mannheim, Deutschland</div>
                 </div>
             </div>
         </div>
@@ -836,6 +1089,52 @@
     </footer>
 
     <script>
+        // Header scroll effect - same as index.html
+        let isScrolled = false;
+        let menuState = false;
+
+        function updateHeaderState() {
+            const header = document.querySelector('.header');
+            isScrolled = window.scrollY > 50;
+            
+            if (isScrolled) {
+                header.setAttribute('data-state', 'active');
+            } else {
+                header.setAttribute('data-state', 'inactive');
+            }
+        }
+
+        window.addEventListener('scroll', updateHeaderState);
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const header = document.querySelector('.header');
+
+        function toggleMobileMenu() {
+            menuState = !menuState;
+            
+            if (menuState && !isScrolled) {
+                header.setAttribute('data-state', 'active');
+            } else if (!menuState && !isScrolled) {
+                header.setAttribute('data-state', 'inactive');
+            }
+        }
+
+        mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+
+        // Close mobile menu when clicking nav links
+        document.querySelectorAll('.mobile-nav__link').forEach(link => {
+            link.addEventListener('click', () => {
+                menuState = false;
+                if (!isScrolled) {
+                    header.setAttribute('data-state', 'inactive');
+                }
+            });
+        });
+
+        // Initialize header state
+        updateHeaderState();
+
         // Logo pattern hover effect
         const logo = document.querySelector('.logo');
         const logoPattern = document.querySelector('.logo__pattern');
