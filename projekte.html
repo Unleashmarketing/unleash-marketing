@@ -24,6 +24,27 @@
             color: #FFFFFF;
             background-color: #121212;
             font-variant-numeric: tabular-nums;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #121212 0%, #1E1E1E 50%, #121212 100%);
+            background-image: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 16px,
+                    rgba(255, 81, 0, 0.12) 16px,
+                    rgba(255, 81, 0, 0.12) 17px
+                );
+            pointer-events: none;
+            z-index: -1;
         }
 
         /* Container & Grid System */
@@ -170,35 +191,26 @@
         .hero {
             padding: 120px 0;
             position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, #121212 0%, #1E1E1E 50%, #121212 100%);
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                repeating-linear-gradient(
-                    45deg,
-                    transparent,
-                    transparent 16px,
-                    rgba(255, 81, 0, 0.12) 16px,
-                    rgba(255, 81, 0, 0.12) 17px
-                );
-            pointer-events: none;
         }
 
         .hero__content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 120px;
+            gap: 80px;
             align-items: center;
             position: relative;
             z-index: 2;
+        }
+
+        .hero__left {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero__right {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .hero__badge {
@@ -219,7 +231,7 @@
             font-weight: 700;
             color: var(--color-text-primary);
             line-height: 1.1;
-            margin-bottom: 24px;
+            margin-bottom: 0;
             letter-spacing: -0.02em;
         }
 
@@ -227,8 +239,8 @@
             font-size: var(--font-size-body-large);
             color: var(--color-text-secondary);
             line-height: 1.7;
-            margin-bottom: 40px;
-            max-width: 500px;
+            margin-bottom: 0;
+            max-width: none;
         }
 
         .hero__stats {
@@ -257,26 +269,8 @@
         /* Projects Grid Section */
         .projects-section {
             padding: 120px 0;
-            background: var(--color-bg-primary);
+            background: transparent;
             position: relative;
-        }
-
-        .projects-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                repeating-linear-gradient(
-                    -45deg,
-                    transparent,
-                    transparent 16px,
-                    rgba(255, 81, 0, 0.08) 16px,
-                    rgba(255, 81, 0, 0.08) 17px
-                );
-            pointer-events: none;
         }
 
         .projects__grid {
@@ -371,26 +365,8 @@
         /* References Section */
         .references-section {
             padding: 120px 0;
-            background: var(--color-bg-primary);
+            background: transparent;
             position: relative;
-        }
-
-        .references-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                repeating-linear-gradient(
-                    135deg,
-                    transparent,
-                    transparent 24px,
-                    rgba(255, 81, 0, 0.04) 24px,
-                    rgba(255, 81, 0, 0.04) 25px
-                );
-            pointer-events: none;
         }
 
         .references__header {
@@ -465,7 +441,7 @@
         /* CTA Cards Section */
         .cta-cards-section {
             padding: 120px 0;
-            background: var(--color-bg-primary);
+            background: transparent;
         }
 
         .cta-cards__grid {
@@ -707,12 +683,16 @@
 
             .hero__content {
                 grid-template-columns: 1fr;
-                gap: 60px;
+                gap: 40px;
                 text-align: center;
             }
 
-            .hero__stats {
-                justify-content: center;
+            .hero__left {
+                order: 1;
+            }
+
+            .hero__right {
+                order: 2;
             }
 
             .projects__grid {
@@ -807,26 +787,14 @@
     <section class="hero">
         <div class="container">
             <div class="hero__content">
-                <div class="hero__text">
+                <div class="hero__left">
                     <div class="hero__badge">PROJEKTE</div>
                     <h1 class="hero__title">Referenzen und aktuelle Projekte</h1>
+                </div>
+                <div class="hero__right">
                     <p class="hero__description">
                         Wir können mittlerweile eine beachtliche Menge an abgeschlossenen Projekten vorweisen, auf die wir sehr stolz sind. Da wir Sie nicht nur mit schönen Worten von unserem Know-how überzeugen wollen, finden Sie hier einige unserer aktuellen Projekte für Kunden aus den unterschiedlichsten Branchen.
                     </p>
-                    <div class="hero__stats">
-                        <div class="stat-item">
-                            <div class="stat-item__number">80+</div>
-                            <div class="stat-item__label">Projekte</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-item__number">50+</div>
-                            <div class="stat-item__label">Kunden</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-item__number">95%</div>
-                            <div class="stat-item__label">Zufriedenheit</div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
