@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNLEASH - Unsere Projekte</title>
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'FK Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #FFFFFF;
+            background-color: #121212;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Container & Grid System */
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Grid Variables */
+        :root {
+            --grid-columns: 12;
+            --column-width: 72px;
+            --gutter: 24px;
+            --baseline: 8px;
+            
+            /* Colors */
+            --color-primary: #FF5100;
+            --color-bg-primary: #121212;
+            --color-bg-secondary: #1E1E1E;
+            --color-text-primary: #FFFFFF;
+            --color-text-secondary: #8E8E8E;
+            --color-text-invert: #F4F4F4;
+            
+            /* Typography */
+            --font-size-h1: clamp(2.5rem, 5vw, 4.5rem);
+            --font-size-h2: clamp(2rem, 4vw, 3rem);
+            --font-size-h3: clamp(1.25rem, 2.5vw, 1.5rem);
+            --font-size-body: 1rem;
+            --font-size-body-large: 1.125rem;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            width: 100%;
+            padding: 0 8px;
+        }
+
+        .header__nav {
+            transition: all 0.3s ease;
+        }
+
+        .header__container {
+            max-width: 1440px;
+            margin: 0 auto;
+            margin-top: 8px;
+            padding: 0 24px;
+            transition: all 0.3s ease;
+        }
+
+        /* Default state */
+        .header[data-state="inactive"] .header__container {
+            max-width: 1536px;
+            padding: 0 48px;
+        }
+
+        /* Scrolled state */
+        .header[data-state="active"] .header__container {
+            max-width: 1024px;
+            background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid #1E1E1E;
+            border-radius: 16px;
+            padding: 0 20px;
+        }
+
+        .header__content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            padding: 12px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo__text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .logo__pattern {
+            width: 4px;
+            height: 24px;
+            background: var(--color-primary);
+            margin-left: 12px;
+            transform: skewX(-45deg);
+            transition: transform 0.4s ease-out;
+        }
+
+        .logo:hover .logo__pattern {
+            transform: skewX(0deg) scaleY(1.2);
+        }
+
+        .nav__list {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+
+        .nav__link {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav__link:hover,
+        .nav__link--active {
+            color: var(--color-primary);
+        }
+
+        .nav__button {
+            background: var(--color-primary);
+            color: var(--color-text-primary);
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .nav__button:hover {
+            background: #E64600;
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #121212 0%, #1E1E1E 50%, #121212 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 16px,
+                    rgba(255, 81, 0, 0.12) 16px,
+                    rgba(255, 81, 0, 0.12) 17px
+                );
+            pointer-events: none;
+        }
+
+        .hero__content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 120px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero__badge {
+            display: inline-block;
+            background: var(--color-primary);
+            color: var(--color-text-primary);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 32px;
+            text-transform: uppercase;
+        }
+
+        .hero__title {
+            font-size: var(--font-size-h1);
+            font-weight: 700;
+            color: var(--color-text-primary);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero__description {
+            font-size: var(--font-size-body-large);
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        .hero__stats {
+            display: flex;
+            gap: 32px;
+        }
+
+        .stat-item {
+            text-align: left;
+        }
+
+        .stat-item__number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .stat-item__label {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            font-weight: 500;
+        }
+
+        /* Projects Grid Section */
+        .projects-section {
+            padding: 120px 0;
+            background: var(--color-bg-primary);
+            position: relative;
+        }
+
+        .projects-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(
+                    -45deg,
+                    transparent,
+                    transparent 16px,
+                    rgba(255, 81, 0, 0.08) 16px,
+                    rgba(255, 81, 0, 0.08) 17px
+                );
+            pointer-events: none;
+        }
+
+        .projects__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-card {
+            background: var(--color-bg-secondary);
+            border: 1px solid #2A2A2A;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--color-primary);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .project-card__image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--color-primary) 0%, #FF7A40 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card__image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 8px,
+                rgba(255, 255, 255, 0.1) 8px,
+                rgba(255, 255, 255, 0.1) 9px
+            );
+        }
+
+        .project-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            z-index: 2;
+            position: relative;
+        }
+
+        .project-card__content {
+            padding: 32px;
+        }
+
+        .project-card__title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-text-primary);
+            margin-bottom: 16px;
+        }
+
+        .project-card__tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 0;
+        }
+
+        .project-tag {
+            background: transparent;
+            border: 1px solid var(--color-text-secondary);
+            color: var(--color-text-secondary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .project-tag {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        /* References Section */
+        .references-section {
+            padding: 120px 0;
+            background: var(--color-bg-primary);
+            position: relative;
+        }
+
+        .references-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(
+                    135deg,
+                    transparent,
+                    transparent 24px,
+                    rgba(255, 81, 0, 0.04) 24px,
+                    rgba(255, 81, 0, 0.04) 25px
+                );
+            pointer-events: none;
+        }
+
+        .references__header {
+            text-align: left;
+            margin-bottom: 80px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .references__badge {
+            display: inline-block;
+            background: var(--color-primary);
+            color: var(--color-text-primary);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 32px;
+            text-transform: uppercase;
+        }
+
+        .references__title {
+            font-size: var(--font-size-h2);
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+            max-width: 600px;
+        }
+
+        .references__description {
+            font-size: var(--font-size-body-large);
+            color: var(--color-text-secondary);
+            max-width: 800px;
+            line-height: 1.7;
+        }
+
+        .references__grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .reference-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80px;
+            background: var(--color-bg-secondary);
+            border: 1px solid #2A2A2A;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+
+        .reference-item:hover {
+            opacity: 1;
+            border-color: var(--color-primary);
+            transform: translateY(-4px);
+        }
+
+        .reference-logo {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-text-primary);
+            text-align: center;
+        }
+
+        /* CTA Cards Section */
+        .cta-cards-section {
+            padding: 120px 0;
+            background: var(--color-bg-primary);
+        }
+
+        .cta-cards__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        .cta-card {
+            padding: 60px;
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .cta-card--services {
+            background: var(--color-bg-secondary);
+            border: 1px solid #2A2A2A;
+        }
+
+        .cta-card--contact {
+            background: var(--color-primary);
+        }
+
+        .cta-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .cta-card__title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .cta-card--services .cta-card__title {
+            color: var(--color-text-primary);
+        }
+
+        .cta-card--contact .cta-card__title {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .cta-card__text {
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .cta-card--services .cta-card__text {
+            color: var(--color-text-secondary);
+        }
+
+        .cta-card--contact .cta-card__text {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .cta-card__button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .cta-card--services .cta-card__button {
+            background: transparent;
+            border: 1px solid var(--color-text-secondary);
+            color: var(--color-text-primary);
+        }
+
+        .cta-card--services .cta-card__button:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+
+        .cta-card--contact .cta-card__button {
+            background: white;
+            color: var(--color-primary);
+            border: 1px solid transparent;
+        }
+
+        .cta-card--contact .cta-card__button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 80px 0 40px;
+            background: var(--color-bg-primary);
+            border-top: 1px solid #1E1E1E;
+        }
+
+        .footer__content {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .footer__top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer__brand {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer__brand .logo__text {
+            font-size: 1.25rem;
+        }
+
+        .footer__tagline {
+            color: var(--color-text-secondary);
+            margin: 0;
+        }
+
+        .footer__social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer__social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--color-bg-secondary);
+            border: 1px solid #2A2A2A;
+            border-radius: 50%;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer__social-link:hover {
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+            color: var(--color-text-primary);
+            transform: translateY(-2px);
+        }
+
+        .footer__bottom {
+            border-top: 1px solid #2A2A2A;
+            padding-top: 32px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .footer__links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer__links a {
+            color: var(--color-text-primary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer__links a:hover {
+            color: var(--color-primary);
+        }
+
+        .footer__legal {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer__legal a {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer__legal a:hover {
+            color: var(--color-primary);
+        }
+
+        .footer__copyright {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            line-height: 1.5;
+        }
+
+        @media (min-width: 768px) {
+            .footer__bottom {
+                grid-template-columns: 2fr 2fr 1fr;
+                align-items: start;
+            }
+
+            .footer__links {
+                justify-content: flex-start;
+            }
+
+            .footer__legal {
+                justify-content: flex-end;
+            }
+
+            .footer__copyright {
+                text-align: left;
+                grid-column: 1;
+                grid-row: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header__content {
+                flex-wrap: wrap;
+            }
+
+            .nav__list {
+                display: none;
+            }
+
+            .hero {
+                padding: 100px 0 80px;
+            }
+
+            .hero__content {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                text-align: center;
+            }
+
+            .hero__stats {
+                justify-content: center;
+            }
+
+            .projects__grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .references__grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+
+            .cta-cards__grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .cta-card {
+                padding: 40px;
+            }
+
+            .footer__top {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer__bottom {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .footer__links {
+                justify-content: center;
+                gap: 16px;
+            }
+
+            .footer__legal {
+                justify-content: center;
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .projects__grid {
+                gap: 20px;
+            }
+
+            .project-card__content {
+                padding: 24px;
+            }
+
+            .references__grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .cta-card {
+                padding: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" data-state="inactive">
+        <nav class="header__nav">
+            <div class="header__container">
+                <div class="header__content">
+                    <a href="index.html" class="logo">
+                        <span class="logo__text">UNLEASH</span>
+                        <div class="logo__pattern"></div>
+                    </a>
+
+                    <ul class="nav__list">
+                        <li><a href="team.html" class="nav__link">Unser Team</a></li>
+                        <li><a href="services.html" class="nav__link">Leistungen</a></li>
+                        <li><a href="/" class="nav__link nav__link--active">Projekte</a></li>
+                    </ul>
+
+                    <a href="#kontakt" class="nav__button">Projekt anfragen</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero__content">
+                <div class="hero__text">
+                    <div class="hero__badge">PROJEKTE</div>
+                    <h1 class="hero__title">Referenzen und aktuelle Projekte</h1>
+                    <p class="hero__description">
+                        Wir können mittlerweile eine beachtliche Menge an abgeschlossenen Projekten vorweisen, auf die wir sehr stolz sind. Da wir Sie nicht nur mit schönen Worten von unserem Know-how überzeugen wollen, finden Sie hier einige unserer aktuellen Projekte für Kunden aus den unterschiedlichsten Branchen.
+                    </p>
+                    <div class="hero__stats">
+                        <div class="stat-item">
+                            <div class="stat-item__number">80+</div>
+                            <div class="stat-item__label">Projekte</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-item__number">50+</div>
+                            <div class="stat-item__label">Kunden</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-item__number">95%</div>
+                            <div class="stat-item__label">Zufriedenheit</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Grid Section -->
+    <section class="projects-section">
+        <div class="container">
+            <div class="projects__grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-card__image">
+                        <div class="project-logo">McSHARK</div>
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">McSHARK</h3>
+                        <div class="project-card__tags">
+                            <span class="project-tag">Grafikdesign</span>
+                            <span class="project-tag">Print</span>
+                            <span class="project-tag">Webdesign</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-card__image" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%);">
+                        <div class="project-logo">Kinderhospiz</div>
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">Kinderhospiz Netz</h3>
+                        <div class="project-card__tags">
+                            <span class="project-tag">Grafikdesign</span>
+                            <span class="project-tag">Print</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-card__image" style="background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);">
+                        <div class="project-logo">Bluecode</div>
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">Bluecode</h3>
+                        <div class="project-card__tags">
+                            <span class="project-tag">Grafikdesign</span>
+                            <span class="project-tag">Print</span>
+                            <span class="project-tag">Webdesign</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-card__image" style="background: linear-gradient(135deg, #6f42c1 0%, #8e44ad 100%);">
+                        <div class="project-logo">TechFlow</div>
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">TechFlow Solutions</h3>
+                        <div class="project-card__tags">
+                            <span class="project-tag">Branding</span>
+                            <span class="project-tag">Webdesign</span>
+                            <span class="project-tag">Development</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card">
+                    <div class="project-card__image" style="background: linear-gradient(135deg, #fd7e14 0%, #e85d04 100%);">
+                        <div class="project-logo">GreenLife</div>
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">GreenLife Organic</h3>
+                        <div class="project-card__tags">
+                            <span class="project-tag">Packaging</span>
+                            <span class="project-tag">Branding</span>
+                            <span class="project-tag">Marketing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card">
+                    <div class="project-card__image" style="background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);">
+                        <div class="project-logo">FinanceHub</div>
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">FinanceHub</h3>
+                        <div class="project-card__tags">
+                            <span class="project-tag">App Design</span>
+                            <span class="project-tag">UX/UI</span>
+                            <span class="project-tag">Development</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 7 -->
+                <div class="project-card">
+                    <div class="project-card__image" style="background: linear-gradient(135deg, #17a2b8 0%, #117a8b 100%);">
+                        <div class="project-logo">EduTech</div>
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">EduTech Platform</h3>
+                        <div class="project-card__tags">
+                            <span class="project-tag">Web App</span>
+                            <span class="project-tag">Branding</span>
+                            <span class="project-tag">Marketing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 8 -->
+                <div class="project-card">
+                    <div class="project-card__image" style="background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%);">
+                        <div class="project-logo">FoodMart</div>
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">FoodMart Express</h3>
+                        <div class="project-card__tags">
+                            <span class="project-tag">E-Commerce</span>
+                            <span class="project-tag">Mobile App</span>
+                            <span class="project-tag">Branding</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 9 -->
+                <div class="project-card">
+                    <div class="project-card__image" style="background: linear-gradient(135deg, #6c757d 0%, #495057 100%);">
+                        <div class="project-logo">HealthCare+</div>
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">HealthCare Plus</h3>
+                        <div class="project-card__tags">
+                            <span class="project-tag">Digital Health</span>
+                            <span class="project-tag">UI/UX</span>
+                            <span class="project-tag">Consulting</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- References Section -->
+    <section class="references-section">
+        <div class="container">
+            <div class="references__header">
+                <div class="references__badge">REFERENZEN</div>
+                <h2 class="references__title">Gemeinsam erfolgreich</h2>
+                <p class="references__description">
+                    Seit unserer Gründung im Jahr 2020 haben wir uns, national und international, einen beachtlichen Stamm von über 50 Kund*innen aufgebaut und betreuen viele dieser Kund*innen bereits seit mehreren Jahren! Von Einzelunternehmen und KMU, bis hin zu dezentralisierten internationalen Unternehmen. Aktuell betreuen wir im Schnitt monatlich über 50 Kund*innen. Hier finden Sie einen Auszug unserer Referenzen.
+                </p>
+            </div>
+
+            <div class="references__grid">
+                <!-- Row 1 -->
+                <div class="reference-item">
+                    <div class="reference-logo">McSHARK</div>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-logo">Bluecode</div>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-logo">RHI Magnesita</div>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-logo">Lasselsberger</div>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-logo">Vienna Business School</div>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-logo">Horvath's</div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="reference-item">
+                    <div class="reference-logo">HAAI</div>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-logo">BMF</div>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-logo">CRRC</div>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-logo">FONDS</div>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-logo">Xiaomi</div>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-logo">EcoProjekt</div>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="reference-item">
+                    <div class="reference-logo">WU</div>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-logo">SHH</div>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-logo">ÖBB</div>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-logo">Gebrüder Haider</div>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-logo">Kinderhospiz Netz</div>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-logo">Echte Freude</div>
+                </div>
+
+                <!-- Row 4 -->
+                <div class="reference-item">
+                    <div class="reference-logo">FUSEON</div>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-logo">IKP</div>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-logo">Silbermayr</div>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-logo">Dunkin'</div>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-logo">Climastore</div>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-logo">Austrian Institute</div>
+                </div>
+
+                <!-- Row 5 -->
+                <div class="reference-item">
+                    <div class="reference-logo">PUHM</div>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-logo">Nostalgie</div>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-logo">Jäger</div>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-logo">Alkemy</div>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-logo">Tesla</div>
+                </div>
+                <div class="reference-item">
+                    <div class="reference-logo">+20 weitere</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Cards Section -->
+    <section class="cta-cards-section">
+        <div class="container">
+            <div class="cta-cards__grid">
+                <!-- Services Card -->
+                <div class="cta-card cta-card--services">
+                    <h3 class="cta-card__title">Als Full-Service Kreativagentur bieten wir ein breites Spektrum an Leistungen in verschiedenen Bereichen an. Von Grafikdesign und Webdesign bis hin zu IT-Services und Webhosting.</h3>
+                    <p class="cta-card__text">Entdecken Sie unser komplettes Leistungsportfolio und finden Sie die perfekte Lösung für Ihr Unternehmen.</p>
+                    <a href="services.html" class="cta-card__button">
+                        Services 
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Contact Card -->
+                <div class="cta-card cta-card--contact">
+                    <div class="cta-card__content">
+                        <p class="cta-card__text">Kontaktieren Sie uns!</p>
+                        <h3 class="cta-card__title">Start a project</h3>
+                        <a href="#kontakt" class="cta-card__button">
+                            Kontakt
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__top">
+                    <div class="footer__brand">
+                        <div class="logo">
+                            <span class="logo__text">UNLEASH</span>
+                            <div class="logo__pattern"></div>
+                        </div>
+                        <p class="footer__tagline">Kreativer Problemlöser</p>
+                    </div>
+                    <div class="footer__social">
+                        <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="footer__social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                                <path d="m15.5 6.5-1.1 1.1"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="footer__social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect width="4" height="12" x="2" y="9"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer__bottom">
+                    <div class="footer__links">
+                        <a href="team.html">Unser Team</a>
+                        <a href="services.html">Leistungen</a>
+                        <a href="#bereiche">Bereiche</a>
+                        <a href="/">Projekte</a>
+                    </div>
+                    <div class="footer__legal">
+                        <a href="#datenschutz">Datenschutz</a>
+                        <a href="#impressum">Impressum</a>
+                        <a href="#kontakt">Kontakt</a>
+                    </div>
+                    <div class="footer__copyright">
+                        <div>© 2024 UNLEASH</div>
+                        <div>Alle Rechte vorbehalten</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        let isScrolled = false;
+
+        function updateHeaderState() {
+            const header = document.querySelector('.header');
+            isScrolled = window.scrollY > 50;
+            
+            if (isScrolled) {
+                header.setAttribute('data-state', 'active');
+            } else {
+                header.setAttribute('data-state', 'inactive');
+            }
+        }
+
+        window.addEventListener('scroll', updateHeaderState);
+
+        // Initialize header state
+        updateHeaderState();
+
+        // Logo pattern hover effect
+        const logo = document.querySelector('.logo');
+        const logoPattern = document.querySelector('.logo__pattern');
+
+        logo.addEventListener('mouseenter', () => {
+            logoPattern.style.transform = 'skewX(0deg) scaleY(1.2)';
+            logoPattern.style.background = 'linear-gradient(45deg, #FF5100, #FF7A40)';
+        });
+
+        logo.addEventListener('mouseleave', () => {
+            logoPattern.style.transform = 'skewX(-45deg)';
+            logoPattern.style.background = '#FF5100';
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Project card hover effects
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Reference item hover effects
+        document.querySelectorAll('.reference-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-4px) scale(1.05)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // CTA card hover effects
+        document.querySelectorAll('.cta-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
