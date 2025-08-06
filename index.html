@@ -24,6 +24,199 @@
             color: #FFFFFF;
             background-color: #121212;
             font-variant-numeric: tabular-nums;
+            position: relative;
+        }
+
+        /* Global Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #121212 0%, #1E1E1E 50%, #121212 100%);
+            background-image: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 16px,
+                    rgba(255, 81, 0, 0.12) 16px,
+                    rgba(255, 81, 0, 0.12) 17px
+                );
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        /* Loader Styles */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #121212 0%, #1E1E1E 50%, #121212 100%);
+            background-image: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 16px,
+                    rgba(255, 81, 0, 0.12) 16px,
+                    rgba(255, 81, 0, 0.12) 17px
+                );
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        .loader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .loader-logo {
+            display: flex;
+            align-items: center;
+            animation: logoFloat 2s ease-in-out infinite;
+        }
+
+        .loader-logo-text {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            letter-spacing: -0.02em;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.2s forwards;
+        }
+
+        .loader-logo-pattern {
+            width: 8px;
+            height: 48px;
+            background: linear-gradient(45deg, #FF5100, #FF7A40);
+            margin-left: 20px;
+            transform: skewX(-45deg);
+            opacity: 0;
+            animation: slideInRight 1s ease 0.4s forwards, patternPulse 2s ease-in-out 1.4s infinite;
+        }
+
+        .loader-spinner {
+            position: relative;
+            width: 60px;
+            height: 60px;
+        }
+
+        .loader-spinner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top: 3px solid #FF5100;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .loader-text {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.8s forwards;
+        }
+
+        .loader-progress {
+            width: 200px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeIn 1s ease 1s forwards;
+        }
+
+        .loader-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #FF5100, #FF7A40);
+            border-radius: 2px;
+            transform: translateX(-100%);
+            animation: loadProgress 2.5s ease 1.2s forwards;
+        }
+
+        /* Animations */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from { 
+                opacity: 0;
+                transform: translateX(-20px) skewX(-45deg);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0) skewX(-45deg);
+            }
+        }
+
+        @keyframes patternPulse {
+            0%, 100% { 
+                transform: skewX(-45deg) scaleY(1);
+                filter: brightness(1);
+            }
+            50% { 
+                transform: skewX(-45deg) scaleY(1.2);
+                filter: brightness(1.2);
+            }
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @keyframes loadProgress {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(0%); }
+        }
+
+        /* Main content initially hidden */
+        .main-content {
+            opacity: 0;
+            transition: opacity 0.5s ease 0.3s;
+        }
+
+        .main-content.visible {
+            opacity: 1;
         }
 
         /* Container & Grid System */
@@ -425,27 +618,11 @@
             padding: 180px 0 120px;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, #121212 0%, #1E1E1E 100%);
+            background: transparent;
             text-align: center;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                repeating-linear-gradient(
-                    45deg,
-                    transparent,
-                    transparent 16px,
-                    rgba(255, 81, 0, 0.12) 16px,
-                    rgba(255, 81, 0, 0.12) 17px
-                );
-            pointer-events: none;
-        }
+        /* Remove the hero::before since we now have the global background */
 
         .hero__content {
             max-width: 800px;
@@ -617,28 +794,12 @@
         /* Services Section */
         .services {
             padding: 0;
-            background: var(--color-bg-primary);
+            background: transparent;
             position: relative;
             min-height: 100vh;
         }
 
-        .services::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                repeating-linear-gradient(
-                    -45deg,
-                    transparent,
-                    transparent 16px,
-                    rgba(255, 81, 0, 0.08) 16px,
-                    rgba(255, 81, 0, 0.08) 17px
-                );
-            pointer-events: none;
-        }
+        /* Remove services::before since we have the global background */
 
         .services__content {
             display: grid;
@@ -649,7 +810,7 @@
         }
 
         .services__left {
-            background: var(--color-bg-primary);
+            background: transparent;
             padding: 120px 60px;
             display: flex;
             flex-direction: column;
@@ -692,7 +853,7 @@
 
         .services__right {
             position: relative;
-            background: var(--color-bg-primary);
+            background: transparent;
         }
 
         .service-slide {
@@ -701,7 +862,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            background: var(--color-bg-primary);
+            background: transparent;
             border-bottom: 1px solid #2A2A2A;
             opacity: 0;
             transform: translateY(50px);
@@ -992,28 +1153,12 @@
         /* About Section */
         .about-section {
             padding: 120px 0;
-            background: var(--color-bg-primary);
+            background: transparent;
             position: relative;
             overflow: hidden;
         }
 
-        .about-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                repeating-linear-gradient(
-                    45deg,
-                    transparent,
-                    transparent 32px,
-                    rgba(255, 81, 0, 0.02) 32px,
-                    rgba(255, 81, 0, 0.02) 33px
-                );
-            pointer-events: none;
-        }
+        /* Remove about-section::before since we have the global background */
 
         .about__content {
             display: grid;
@@ -1168,28 +1313,12 @@
         /* FAQ Section */
         .faq-section {
             padding: 120px 0;
-            background: var(--color-bg-primary);
+            background: transparent;
             position: relative;
             overflow: hidden;
         }
 
-        .faq-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                repeating-linear-gradient(
-                    135deg,
-                    transparent,
-                    transparent 24px,
-                    rgba(255, 81, 0, 0.04) 24px,
-                    rgba(255, 81, 0, 0.04) 25px
-                );
-            pointer-events: none;
-        }
+        /* Remove faq-section::before since we have the global background */
 
         .faq__content {
             display: grid;
@@ -1317,28 +1446,12 @@
         /* CTA Section */
         .cta-section {
             padding: 120px 0;
-            background: var(--color-bg-primary);
+            background: transparent;
             position: relative;
             overflow: hidden;
         }
 
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                repeating-linear-gradient(
-                    90deg,
-                    transparent,
-                    transparent 20px,
-                    rgba(255, 81, 0, 0.06) 20px,
-                    rgba(255, 81, 0, 0.06) 21px
-                );
-            pointer-events: none;
-        }
+        /* Remove cta-section::before since we have the global background */
 
         .cta-section .container {
             position: relative;
@@ -1550,7 +1663,7 @@
         /* Footer */
         .footer {
             padding: 80px 0 40px;
-            background: var(--color-bg-primary);
+            background: transparent;
             border-top: 1px solid #1E1E1E;
         }
 
@@ -1891,6 +2004,21 @@
                 justify-content: center;
                 gap: 16px;
             }
+
+            /* Loader responsive */
+            .loader-logo-text {
+                font-size: 2rem;
+            }
+
+            .loader-logo-pattern {
+                width: 6px;
+                height: 36px;
+                margin-left: 16px;
+            }
+
+            .loader-progress {
+                width: 150px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1927,309 +2055,345 @@
             .cta-section {
                 padding: 80px 0;
             }
+
+            /* Smaller loader on mobile */
+            .loader-content {
+                gap: 30px;
+            }
+
+            .loader-spinner {
+                width: 40px;
+                height: 40px;
+            }
+
+            .loader-text {
+                font-size: 12px;
+            }
+
+            .loader-progress {
+                width: 120px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header" data-state="inactive">
-        <nav class="header__nav">
-            <div class="header__container">
-                <div class="header__content">
-                    <div class="header__brand">
-                        <div class="logo">
-                            <span class="logo__text">UNLEASH</span>
-                            <div class="logo__pattern"></div>
-                        </div>
-
-                        <button class="mobile-menu-toggle" aria-label="Menu">
-                            <span class="menu-icon"></span>
-                            <span class="close-icon">×</span>
-                        </button>
-                    </div>
-
-                    <div class="header__center">
-                        <ul class="nav__list">
-                            <li><a href="team.html" class="nav__link">Unser Team</a></li>
-                            <li><a href="services.html" class="nav__link">Leistungen</a></li>
-                            <li><a href="#projekte" class="nav__link">Projekte</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="header__actions">
-                        <div class="nav__desktop-buttons">
-                            <a href="#kontakt" class="nav__button nav__button--primary">Projekt anfragen</a>
-                        </div>
-                        <div class="nav__scrolled-button">
-                            <a href="#kontakt" class="nav__button nav__button--primary">Projekt anfragen</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Mobile Menu -->
-                <div class="mobile-menu">
-                    <div class="mobile-menu__content">
-                        <ul class="mobile-nav__list">
-                            <li><a href="#team" class="mobile-nav__link">Unser Team</a></li>
-                            <li><a href="#leistungen" class="mobile-nav__link">Leistungen</a></li>
-                            <li><a href="#bereiche" class="mobile-nav__link">Bereiche</a></li>
-                            <li><a href="#projekte" class="mobile-nav__link">Projekte</a></li>
-                        </ul>
-                        <div class="mobile-nav__buttons">
-                            <a href="#kontakt" class="nav__button nav__button--primary">Projekt anfragen</a>
-                        </div>
-                    </div>
-                </div>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <div class="loader-logo-text">UNLEASH</div>
+                <div class="loader-logo-pattern"></div>
             </div>
-        </nav>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero__content">
-                <div class="hero__announcement hero-animate" data-delay="0">
-                    <div class="announcement-badge">
-                        <span class="announcement-badge__text">Limitiert: 5 Plätze für unsere Designflatrate</span>
-                        <a href="#leistungen" class="announcement-badge__link">Mehr erfahren</a>
-                    </div>
-                </div>
-                
-                <h1 class="hero__headline hero-animate" data-delay="100">
-                    Kreative Lösungen<br>
-                    für jedes Unternehmen
-                </h1>
-                
-                <p class="hero__description hero-animate" data-delay="200">
-                    UNLEASH ist dein kreativer Problemlöser. Egal ob Digital oder Print – wir bieten dir maßgeschneiderte Dienstleistungen und Produkte, die wirklich funktionieren.
-                </p>
-                
-                <div class="hero__cta hero-animate" data-delay="300">
-                    <a href="#kontakt" class="hero__button">Projekt anfragen</a>
-                </div>
-                
-                <div class="hero__stats hero-animate" data-delay="400">
-                    <span class="hero__stats-text">Über <strong>80+ erfolgreiche Projekte</strong> mit zufriedenen Kunden realisiert.</span>
-                </div>
-                
-                <!-- Client Logos Section -->
-                <div class="clients__container hero-animate" data-delay="500">
-                    <div class="clients__logos" id="clientLogos">
-                        <!-- Position 1 -->
-                        <div class="logo-slot">
-                            <div class="client-logo active" data-set="1">
-                                <img src="bilder/logos/cyclers.png" alt="Cyclers" />
-                            </div>
-                            <div class="client-logo" data-set="2">
-                                <img src="bilder/logos/charibee.png" alt="Charibee" />
-                            </div>
-                        </div>
-                        
-                        <!-- Position 2 -->
-                        <div class="logo-slot">
-                            <div class="client-logo active" data-set="1">
-                                <img src="bilder/logos/allianz.png" alt="Allianz" />
-                            </div>
-                            <div class="client-logo" data-set="2">
-                                <img src="bilder/logos/akad.png" alt="Akad" />
-                            </div>
-                        </div>
-                        
-                        <!-- Position 3 -->
-                        <div class="logo-slot">
-                            <div class="client-logo active" data-set="1">
-                                <img src="bilder/logos/obama.png" alt="Microsoft" />
-                            </div>
-                            <div class="client-logo" data-set="2">
-                                <img src="bilder/logos/nobu.png" alt="Nobuhiko Asaeda" />
-                            </div>
-                        </div>
-                        
-                        <!-- Position 4 -->
-                        <div class="logo-slot">
-                            <div class="client-logo active" data-set="1">
-                                <img src="bilder/logos/cuvee.svg" alt="La Cuveé" />
-                            </div>
-                            <div class="client-logo" data-set="2">
-                                <img src="bilder/logos/asano.png" alt="Asano" />
-                            </div>
-                        </div>
-                        
-                        <!-- Position 5 -->
-                        <div class="logo-slot">
-                            <div class="client-logo active" data-set="1">
-                                <img src="bilder/logos/hsf.png" alt="Health Staff Finders" />
-                            </div>
-                            <div class="client-logo" data-set="2">
-                                <img src="bilder/logos/joscot.png" alt="Joscot" />
-                            </div>
-                        </div>
-                        
-                        <!-- Position 6 -->
-                        <div class="logo-slot">
-                            <div class="client-logo active" data-set="1">
-                                <img src="bilder/logos/gagos.png" alt="Gagos" />
-                            </div>
-                            <div class="client-logo" data-set="2">
-                                <img src="bilder/logos/saarland.png" alt="Saarland University" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Kreative Lösungen werden geladen...</div>
+            <div class="loader-progress">
+                <div class="loader-progress-bar"></div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- About Section -->
-    <section class="about-section">
-        <div class="container">
-            <div class="about__content">
-                <div class="about__left">
-                    <h2 class="about__title">
-                        Was ist <span class="about__title-highlight">UNLEASH</span>?
-                    </h2>
-                    
-                    <div class="about__description">
-                        <p>
-                            UNLEASH ist eine Kreativagentur, die Unternehmen dabei hilft, alle Barrieren zu überwinden, die sie normalerweise im digitalen Raum zurückhalten – von komplizierter UX bis hin zu den hohen Kosten der Skalierung.
-                        </p>
-                        
-                        <p>
-                            Seit 2020 haben wir das perfekte Zusammenspiel aus Design, Technologie und Strategie entwickelt – eine ganzheitliche Alternative zu fragmentierten Lösungen. Unser Ansatz ist transparent, zugänglich und nachhaltig, der die Komplexität des digitalen Marketings vereinfacht.
-                        </p>
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <!-- Header -->
+        <header class="header" data-state="inactive">
+            <nav class="header__nav">
+                <div class="header__container">
+                    <div class="header__content">
+                        <div class="header__brand">
+                            <div class="logo">
+                                <span class="logo__text">UNLEASH</span>
+                                <div class="logo__pattern"></div>
+                            </div>
+
+                            <button class="mobile-menu-toggle" aria-label="Menu">
+                                <span class="menu-icon"></span>
+                                <span class="close-icon">×</span>
+                            </button>
+                        </div>
+
+                        <div class="header__center">
+                            <ul class="nav__list">
+                                <li><a href="team.html" class="nav__link">Unser Team</a></li>
+                                <li><a href="services.html" class="nav__link">Leistungen</a></li>
+                                <li><a href="#projekte" class="nav__link">Projekte</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="header__actions">
+                            <div class="nav__desktop-buttons">
+                                <a href="#kontakt" class="nav__button nav__button--primary">Projekt anfragen</a>
+                            </div>
+                            <div class="nav__scrolled-button">
+                                <a href="#kontakt" class="nav__button nav__button--primary">Projekt anfragen</a>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <a href="#leistungen" class="about__cta">
-                        Lerne uns kennen <span class="arrow">→</span>
-                    </a>
-                </div>
-                
-                <div class="about__right">
-                    <div class="about__visual">
-                        <div class="use-cases__container">
-                            <div class="use-case use-case--1">
-                                <h3 class="use-case__title">Grenzenlose Kreativität</h3>
-                                <p class="use-case__text">
-                                    Mit modernsten Design-Tools öffnen wir die Türen zu professionellem Design für Unternehmen jeder Größe.
-                                </p>
-                            </div>
-                            
-                            <div class="use-case use-case--2">
-                                <h3 class="use-case__title">Skalierbare Lösungen</h3>
-                                <p class="use-case__text">
-                                    Durch modulare Designsysteme erreichen wir unvergleichliche Skalierbarkeit für jeden Wachstumsschub.
-                                </p>
-                            </div>
-                            
-                            <div class="use-case use-case--3">
-                                <h3 class="use-case__title">Nahtlose Benutzerfreundlichkeit</h3>
-                                <p class="use-case__text">
-                                    Fokus auf UX und Strategie schafft intuitive Erlebnisse, die Verwirrung eliminieren.
-                                </p>
+
+                    <!-- Mobile Menu -->
+                    <div class="mobile-menu">
+                        <div class="mobile-menu__content">
+                            <ul class="mobile-nav__list">
+                                <li><a href="#team" class="mobile-nav__link">Unser Team</a></li>
+                                <li><a href="#leistungen" class="mobile-nav__link">Leistungen</a></li>
+                                <li><a href="#bereiche" class="mobile-nav__link">Bereiche</a></li>
+                                <li><a href="#projekte" class="mobile-nav__link">Projekte</a></li>
+                            </ul>
+                            <div class="mobile-nav__buttons">
+                                <a href="#kontakt" class="nav__button nav__button--primary">Projekt anfragen</a>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </nav>
+        </header>
 
-    <!-- Services Section -->
-    <section class="services" id="leistungen">
-        <div class="container">
-            <div class="services__content">
-                <div class="services__left">
-                    <div class="services__badge">
-                        <span>UNSERE EXPERTISE</span>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero__content">
+                    <div class="hero__announcement hero-animate" data-delay="0">
+                        <div class="announcement-badge">
+                            <span class="announcement-badge__text">Limitiert: 5 Plätze für unsere Designflatrate</span>
+                            <a href="#leistungen" class="announcement-badge__link">Mehr erfahren</a>
+                        </div>
                     </div>
                     
-                    <h2 class="services__title">Unsere Leistungen</h2>
+                    <h1 class="hero__headline hero-animate" data-delay="100">
+                        Kreative Lösungen<br>
+                        für jedes Unternehmen
+                    </h1>
                     
-                    <p class="services__description">
-                        UNLEASH bietet eine Vielzahl von Leistungen für Unternehmen, die nach sicheren und profitablen kreativen Lösungen suchen.
+                    <p class="hero__description hero-animate" data-delay="200">
+                        UNLEASH ist dein kreativer Problemlöser. Egal ob Digital oder Print – wir bieten dir maßgeschneiderte Dienstleistungen und Produkte, die wirklich funktionieren.
                     </p>
+                    
+                    <div class="hero__cta hero-animate" data-delay="300">
+                        <a href="#kontakt" class="hero__button">Projekt anfragen</a>
+                    </div>
+                    
+                    <div class="hero__stats hero-animate" data-delay="400">
+                        <span class="hero__stats-text">Über <strong>80+ erfolgreiche Projekte</strong> mit zufriedenen Kunden realisiert.</span>
+                    </div>
+                    
+                    <!-- Client Logos Section -->
+                    <div class="clients__container hero-animate" data-delay="500">
+                        <div class="clients__logos" id="clientLogos">
+                            <!-- Position 1 -->
+                            <div class="logo-slot">
+                                <div class="client-logo active" data-set="1">
+                                    <img src="bilder/logos/cyclers.png" alt="Cyclers" />
+                                </div>
+                                <div class="client-logo" data-set="2">
+                                    <img src="bilder/logos/charibee.png" alt="Charibee" />
+                                </div>
+                            </div>
+                            
+                            <!-- Position 2 -->
+                            <div class="logo-slot">
+                                <div class="client-logo active" data-set="1">
+                                    <img src="bilder/logos/allianz.png" alt="Allianz" />
+                                </div>
+                                <div class="client-logo" data-set="2">
+                                    <img src="bilder/logos/akad.png" alt="Akad" />
+                                </div>
+                            </div>
+                            
+                            <!-- Position 3 -->
+                            <div class="logo-slot">
+                                <div class="client-logo active" data-set="1">
+                                    <img src="bilder/logos/obama.png" alt="Microsoft" />
+                                </div>
+                                <div class="client-logo" data-set="2">
+                                    <img src="bilder/logos/nobu.png" alt="Nobuhiko Asaeda" />
+                                </div>
+                            </div>
+                            
+                            <!-- Position 4 -->
+                            <div class="logo-slot">
+                                <div class="client-logo active" data-set="1">
+                                    <img src="bilder/logos/cuvee.svg" alt="La Cuveé" />
+                                </div>
+                                <div class="client-logo" data-set="2">
+                                    <img src="bilder/logos/asano.png" alt="Asano" />
+                                </div>
+                            </div>
+                            
+                            <!-- Position 5 -->
+                            <div class="logo-slot">
+                                <div class="client-logo active" data-set="1">
+                                    <img src="bilder/logos/hsf.png" alt="Health Staff Finders" />
+                                </div>
+                                <div class="client-logo" data-set="2">
+                                    <img src="bilder/logos/joscot.png" alt="Joscot" />
+                                </div>
+                            </div>
+                            
+                            <!-- Position 6 -->
+                            <div class="logo-slot">
+                                <div class="client-logo active" data-set="1">
+                                    <img src="bilder/logos/gagos.png" alt="Gagos" />
+                                </div>
+                                <div class="client-logo" data-set="2">
+                                    <img src="bilder/logos/saarland.png" alt="Saarland University" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="services__right">
-                    <div class="service-slide active" data-service="webdesign">
-                        <div class="service-card">
-                            <h3 class="service-card__title">Webdesign & Development</h3>
-                            <p class="service-card__text">
-                                Integriere moderne Webtechnologien nahtlos in deine Plattform mit entwicklerfreundlichen APIs und SDKs, die Zugang zu hochwertigen Designlösungen und Echtzeit-Daten ermöglichen.
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section">
+            <div class="container">
+                <div class="about__content">
+                    <div class="about__left">
+                        <h2 class="about__title">
+                            Was ist <span class="about__title-highlight">UNLEASH</span>?
+                        </h2>
+                        
+                        <div class="about__description">
+                            <p>
+                                UNLEASH ist eine Kreativagentur, die Unternehmen dabei hilft, alle Barrieren zu überwinden, die sie normalerweise im digitalen Raum zurückhalten – von komplizierter UX bis hin zu den hohen Kosten der Skalierung.
                             </p>
-                            <a href="#webdesign" class="service-card__cta">
-                                Mehr erfahren <span class="arrow">→</span>
-                            </a>
-                            <div class="service-card__visual">
-                                <div class="code-block">
-                                    <div class="code-line"><span class="code-number">1</span> <span class="code-keyword">const</span> <span class="code-variable">websiteDesign</span> = <span class="code-keyword">await</span> <span class="code-function">UNLEASH.createWebsite</span>({</div>
-                                    <div class="code-line"><span class="code-number">2</span>   <span class="code-property">responsive</span>,</div>
-                                    <div class="code-line"><span class="code-number">3</span>   <span class="code-property">modern</span>,</div>
-                                    <div class="code-line"><span class="code-number">4</span>   <span class="code-property">optimized</span></div>
-                                    <div class="code-line"><span class="code-number">5</span> });</div>
-                                    <div class="code-line"><span class="code-number">6</span> </div>
-                                    <div class="code-line"><span class="code-number">7</span> <span class="code-keyword">const</span> <span class="code-variable">performance</span> = <span class="code-string">"100%"</span>; <span class="code-comment">// 100% optimiert</span></div>
-                                    <div class="code-line"><span class="code-number">8</span> <span class="code-keyword">const</span> <span class="code-variable">result</span> = <span class="code-keyword">await</span> <span class="code-function">websiteDesign.launch</span>({</div>
-                                    <div class="code-line"><span class="code-number">9</span>   <span class="code-property">performance</span>,</div>
-                                    <div class="code-line"><span class="code-number">10</span>   <span class="code-property">seo</span>: <span class="code-number">10</span> <span class="code-comment">// 10 Punkte</span></div>
-                                    <div class="code-line"><span class="code-number">11</span> });</div>
+                            
+                            <p>
+                                Seit 2020 haben wir das perfekte Zusammenspiel aus Design, Technologie und Strategie entwickelt – eine ganzheitliche Alternative zu fragmentierten Lösungen. Unser Ansatz ist transparent, zugänglich und nachhaltig, der die Komplexität des digitalen Marketings vereinfacht.
+                            </p>
+                        </div>
+                        
+                        <a href="#leistungen" class="about__cta">
+                            Lerne uns kennen <span class="arrow">→</span>
+                        </a>
+                    </div>
+                    
+                    <div class="about__right">
+                        <div class="about__visual">
+                            <div class="use-cases__container">
+                                <div class="use-case use-case--1">
+                                    <h3 class="use-case__title">Grenzenlose Kreativität</h3>
+                                    <p class="use-case__text">
+                                        Mit modernsten Design-Tools öffnen wir die Türen zu professionellem Design für Unternehmen jeder Größe.
+                                    </p>
+                                </div>
+                                
+                                <div class="use-case use-case--2">
+                                    <h3 class="use-case__title">Skalierbare Lösungen</h3>
+                                    <p class="use-case__text">
+                                        Durch modulare Designsysteme erreichen wir unvergleichliche Skalierbarkeit für jeden Wachstumsschub.
+                                    </p>
+                                </div>
+                                
+                                <div class="use-case use-case--3">
+                                    <h3 class="use-case__title">Nahtlose Benutzerfreundlichkeit</h3>
+                                    <p class="use-case__text">
+                                        Fokus auf UX und Strategie schafft intuitive Erlebnisse, die Verwirrung eliminieren.
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services" id="leistungen">
+            <div class="container">
+                <div class="services__content">
+                    <div class="services__left">
+                        <div class="services__badge">
+                            <span>UNSERE EXPERTISE</span>
+                        </div>
+                        
+                        <h2 class="services__title">Unsere Leistungen</h2>
+                        
+                        <p class="services__description">
+                            UNLEASH bietet eine Vielzahl von Leistungen für Unternehmen, die nach sicheren und profitablen kreativen Lösungen suchen.
+                        </p>
+                    </div>
                     
-                    <div class="service-slide" data-service="branding">
-                        <div class="service-card">
-                            <h3 class="service-card__title">Branding & Corporate Design</h3>
-                            <p class="service-card__text">
-                                Steigere die Nutzerinteraktion durch professionelles Branding – eine sichere, durchdachte Markenidentität mit hoher Wiedererkennung, die deinen Kunden ermöglicht, mühelos mit deiner Marke zu interagieren.
-                            </p>
-                            <a href="#branding" class="service-card__cta">
-                                Mehr erfahren <span class="arrow">→</span>
-                            </a>
-                            <div class="service-card__visual">
-                                <div class="branding-visual">
-                                    <div class="brand-pillar">
-                                        <div class="pillar-base"></div>
-                                        <div class="pillar-column"></div>
-                                        <div class="pillar-top"></div>
-                                    </div>
-                                    <div class="brand-pillar">
-                                        <div class="pillar-base"></div>
-                                        <div class="pillar-column"></div>
-                                        <div class="pillar-top"></div>
-                                    </div>
-                                    <div class="brand-pillar">
-                                        <div class="pillar-base"></div>
-                                        <div class="pillar-column"></div>
-                                        <div class="pillar-top"></div>
-                                    </div>
-                                    <div class="brand-roof">
-                                        <div class="roof-front"></div>
-                                        <div class="roof-top"></div>
+                    <div class="services__right">
+                        <div class="service-slide active" data-service="webdesign">
+                            <div class="service-card">
+                                <h3 class="service-card__title">Webdesign & Development</h3>
+                                <p class="service-card__text">
+                                    Integriere moderne Webtechnologien nahtlos in deine Plattform mit entwicklerfreundlichen APIs und SDKs, die Zugang zu hochwertigen Designlösungen und Echtzeit-Daten ermöglichen.
+                                </p>
+                                <a href="#webdesign" class="service-card__cta">
+                                    Mehr erfahren <span class="arrow">→</span>
+                                </a>
+                                <div class="service-card__visual">
+                                    <div class="code-block">
+                                        <div class="code-line"><span class="code-number">1</span> <span class="code-keyword">const</span> <span class="code-variable">websiteDesign</span> = <span class="code-keyword">await</span> <span class="code-function">UNLEASH.createWebsite</span>({</div>
+                                        <div class="code-line"><span class="code-number">2</span>   <span class="code-property">responsive</span>,</div>
+                                        <div class="code-line"><span class="code-number">3</span>   <span class="code-property">modern</span>,</div>
+                                        <div class="code-line"><span class="code-number">4</span>   <span class="code-property">optimized</span></div>
+                                        <div class="code-line"><span class="code-number">5</span> });</div>
+                                        <div class="code-line"><span class="code-number">6</span> </div>
+                                        <div class="code-line"><span class="code-number">7</span> <span class="code-keyword">const</span> <span class="code-variable">performance</span> = <span class="code-string">"100%"</span>; <span class="code-comment">// 100% optimiert</span></div>
+                                        <div class="code-line"><span class="code-number">8</span> <span class="code-keyword">const</span> <span class="code-variable">result</span> = <span class="code-keyword">await</span> <span class="code-function">websiteDesign.launch</span>({</div>
+                                        <div class="code-line"><span class="code-number">9</span>   <span class="code-property">performance</span>,</div>
+                                        <div class="code-line"><span class="code-number">10</span>   <span class="code-property">seo</span>: <span class="code-number">10</span> <span class="code-comment">// 10 Punkte</span></div>
+                                        <div class="code-line"><span class="code-number">11</span> });</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="service-slide" data-service="marketing">
-                        <div class="service-card">
-                            <h3 class="service-card__title">Digital Marketing</h3>
-                            <p class="service-card__text">
-                                Optimiere dein Marketing-Management mit UNLEASH und biete stabile, risikofreie Erträge durch strategische Kampagnen, während du sofortige Sichtbarkeit und komplette Transparenz sicherstellst.
-                            </p>
-                            <a href="#marketing" class="service-card__cta">
-                                Mehr erfahren <span class="arrow">→</span>
-                            </a>
-                            <div class="service-card__visual">
-                                <div class="marketing-visual">
-                                    <div class="safe-box">
-                                        <div class="safe-door">
-                                            <div class="safe-handle"></div>
-                                            <div class="safe-lock"></div>
+                        
+                        <div class="service-slide" data-service="branding">
+                            <div class="service-card">
+                                <h3 class="service-card__title">Branding & Corporate Design</h3>
+                                <p class="service-card__text">
+                                    Steigere die Nutzerinteraktion durch professionelles Branding – eine sichere, durchdachte Markenidentität mit hoher Wiedererkennung, die deinen Kunden ermöglicht, mühelos mit deiner Marke zu interagieren.
+                                </p>
+                                <a href="#branding" class="service-card__cta">
+                                    Mehr erfahren <span class="arrow">→</span>
+                                </a>
+                                <div class="service-card__visual">
+                                    <div class="branding-visual">
+                                        <div class="brand-pillar">
+                                            <div class="pillar-base"></div>
+                                            <div class="pillar-column"></div>
+                                            <div class="pillar-top"></div>
                                         </div>
-                                        <div class="safe-side"></div>
+                                        <div class="brand-pillar">
+                                            <div class="pillar-base"></div>
+                                            <div class="pillar-column"></div>
+                                            <div class="pillar-top"></div>
+                                        </div>
+                                        <div class="brand-pillar">
+                                            <div class="pillar-base"></div>
+                                            <div class="pillar-column"></div>
+                                            <div class="pillar-top"></div>
+                                        </div>
+                                        <div class="brand-roof">
+                                            <div class="roof-front"></div>
+                                            <div class="roof-top"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="service-slide" data-service="marketing">
+                            <div class="service-card">
+                                <h3 class="service-card__title">Digital Marketing</h3>
+                                <p class="service-card__text">
+                                    Optimiere dein Marketing-Management mit UNLEASH und biete stabile, risikofreie Erträge durch strategische Kampagnen, während du sofortige Sichtbarkeit und komplette Transparenz sicherstellst.
+                                </p>
+                                <a href="#marketing" class="service-card__cta">
+                                    Mehr erfahren <span class="arrow">→</span>
+                                </a>
+                                <div class="service-card__visual">
+                                    <div class="marketing-visual">
+                                        <div class="safe-box">
+                                            <div class="safe-door">
+                                                <div class="safe-handle"></div>
+                                                <div class="safe-lock"></div>
+                                            </div>
+                                            <div class="safe-side"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -2237,231 +2401,232 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- FAQ Section -->
-    <section class="faq-section">
-        <div class="container">
-            <div class="faq__content">
-                <div class="faq__header">
-                    <h2 class="faq__title">
-                        Frequently<br>
-                        Asked<br>
-                        <span class="faq__title-highlight">Questions</span>
-                    </h2>
-                    <p class="faq__description">
-                        Wenn du weitere Fragen hast, beantworten wir sie gerne für dich – zögere nicht, uns zu kontaktieren.
-                    </p>
-                </div>
-                
-                <div class="faq__questions">
-                    <div class="faq-item">
-                        <button class="faq-item__question" aria-expanded="false">
-                            <span>Was kann ich von einem Branding-Projekt erwarten?</span>
-                            <span class="faq-item__icon">+</span>
-                        </button>
-                        <div class="faq-item__answer">
-                            <p>Ein umfassendes Branding-Projekt umfasst die Entwicklung deiner visuellen Identität, einschließlich Logo, Farbpalette, Typografie und Designrichtlinien. Wir analysieren deine Zielgruppe, entwickeln eine einzigartige Markenstrategie und erstellen alle notwendigen Materialien für einen konsistenten Markenauftritt.</p>
-                        </div>
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <div class="faq__content">
+                    <div class="faq__header">
+                        <h2 class="faq__title">
+                            Frequently<br>
+                            Asked<br>
+                            <span class="faq__title-highlight">Questions</span>
+                        </h2>
+                        <p class="faq__description">
+                            Wenn du weitere Fragen hast, beantworten wir sie gerne für dich – zögere nicht, uns zu kontaktieren.
+                        </p>
                     </div>
                     
-                    <div class="faq-item">
-                        <button class="faq-item__question" aria-expanded="false">
-                            <span>Wie lange dauern Branding-Projekte?</span>
-                            <span class="faq-item__icon">+</span>
-                        </button>
-                        <div class="faq-item__answer">
-                            <p>Die Dauer variiert je nach Projektumfang. Ein komplettes Branding-Projekt dauert in der Regel 4-8 Wochen, während kleinere Projekte wie Logo-Design 2-3 Wochen benötigen. Wir besprechen den Zeitrahmen ausführlich in unserem Erstgespräch.</p>
+                    <div class="faq__questions">
+                        <div class="faq-item">
+                            <button class="faq-item__question" aria-expanded="false">
+                                <span>Was kann ich von einem Branding-Projekt erwarten?</span>
+                                <span class="faq-item__icon">+</span>
+                            </button>
+                            <div class="faq-item__answer">
+                                <p>Ein umfassendes Branding-Projekt umfasst die Entwicklung deiner visuellen Identität, einschließlich Logo, Farbpalette, Typografie und Designrichtlinien. Wir analysieren deine Zielgruppe, entwickeln eine einzigartige Markenstrategie und erstellen alle notwendigen Materialien für einen konsistenten Markenauftritt.</p>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <button class="faq-item__question" aria-expanded="false">
-                            <span>Funktioniert euer Prozess für mich und mein Team?</span>
-                            <span class="faq-item__icon">+</span>
-                        </button>
-                        <div class="faq-item__answer">
-                            <p>Absolut! Unser kollaborativer Ansatz passt sich an deine Arbeitsweise an. Wir integrieren uns nahtlos in dein Team, halten regelmäßige Abstimmungen ab und sorgen für transparente Kommunikation während des gesamten Projekts.</p>
+                        
+                        <div class="faq-item">
+                            <button class="faq-item__question" aria-expanded="false">
+                                <span>Wie lange dauern Branding-Projekte?</span>
+                                <span class="faq-item__icon">+</span>
+                            </button>
+                            <div class="faq-item__answer">
+                                <p>Die Dauer variiert je nach Projektumfang. Ein komplettes Branding-Projekt dauert in der Regel 4-8 Wochen, während kleinere Projekte wie Logo-Design 2-3 Wochen benötigen. Wir besprechen den Zeitrahmen ausführlich in unserem Erstgespräch.</p>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <button class="faq-item__question" aria-expanded="false">
-                            <span>Mit welcher Unternehmensgröße arbeitet UNLEASH?</span>
-                            <span class="faq-item__icon">+</span>
-                        </button>
-                        <div class="faq-item__answer">
-                            <p>Wir arbeiten mit Unternehmen jeder Größe – von Start-ups bis hin zu etablierten Konzernen. Unser flexibler Ansatz ermöglicht es uns, maßgeschneiderte Lösungen für verschiedene Budgets und Anforderungen zu entwickeln.</p>
+                        
+                        <div class="faq-item">
+                            <button class="faq-item__question" aria-expanded="false">
+                                <span>Funktioniert euer Prozess für mich und mein Team?</span>
+                                <span class="faq-item__icon">+</span>
+                            </button>
+                            <div class="faq-item__answer">
+                                <p>Absolut! Unser kollaborativer Ansatz passt sich an deine Arbeitsweise an. Wir integrieren uns nahtlos in dein Team, halten regelmäßige Abstimmungen ab und sorgen für transparente Kommunikation während des gesamten Projekts.</p>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="faq-item">
-                        <button class="faq-item__question" aria-expanded="false">
-                            <span>Was ist der Unterschied zwischen Rebranding und Refresh?</span>
-                            <span class="faq-item__icon">+</span>
-                        </button>
-                        <div class="faq-item__answer">
-                            <p>Ein Refresh modernisiert bestehende Designelemente, während ein Rebranding eine komplette Neuausrichtung der Markenidentität bedeutet. Wir helfen dir zu entscheiden, welcher Ansatz für deine Ziele am besten geeignet ist.</p>
+                        
+                        <div class="faq-item">
+                            <button class="faq-item__question" aria-expanded="false">
+                                <span>Mit welcher Unternehmensgröße arbeitet UNLEASH?</span>
+                                <span class="faq-item__icon">+</span>
+                            </button>
+                            <div class="faq-item__answer">
+                                <p>Wir arbeiten mit Unternehmen jeder Größe – von Start-ups bis hin zu etablierten Konzernen. Unser flexibler Ansatz ermöglicht es uns, maßgeschneiderte Lösungen für verschiedene Budgets und Anforderungen zu entwickeln.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <button class="faq-item__question" aria-expanded="false">
+                                <span>Was ist der Unterschied zwischen Rebranding und Refresh?</span>
+                                <span class="faq-item__icon">+</span>
+                            </button>
+                            <div class="faq-item__answer">
+                                <p>Ein Refresh modernisiert bestehende Designelemente, während ein Rebranding eine komplette Neuausrichtung der Markenidentität bedeutet. Wir helfen dir zu entscheiden, welcher Ansatz für deine Ziele am besten geeignet ist.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta__content">
-                <div class="cta__header">
-                    <h2 class="cta__title">Bereit für dein nächstes Projekt?</h2>
-                    <p class="cta__subtitle">Lass uns gemeinsam herausfinden, wie wir deine Ziele erreichen können. Kontaktiere uns über deine bevorzugte Methode.</p>
-                </div>
-                
-                <div class="cta__grid">
-                    <!-- Contact Info -->
-                    <div class="cta__info">
-                        <h3 class="cta__info-title">Kontaktiere uns direkt</h3>
+        <!-- CTA Section -->
+        <section class="cta-section" id="kontakt">
+            <div class="container">
+                <div class="cta__content">
+                    <div class="cta__header">
+                        <h2 class="cta__title">Bereit für dein nächstes Projekt?</h2>
+                        <p class="cta__subtitle">Lass uns gemeinsam herausfinden, wie wir deine Ziele erreichen können. Kontaktiere uns über deine bevorzugte Methode.</p>
+                    </div>
+                    
+                    <div class="cta__grid">
+                        <!-- Contact Info -->
+                        <div class="cta__info">
+                            <h3 class="cta__info-title">Kontaktiere uns direkt</h3>
+                            
+                            <div class="cta__contact-methods">
+                                <a href="tel:+4962143569780" class="cta__contact-item">
+                                    <div class="cta__contact-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="cta__contact-text">
+                                        <div class="cta__contact-label">Telefon</div>
+                                        <div class="cta__contact-value">+49 621 43569780</div>
+                                    </div>
+                                </a>
+                                
+                                <a href="mailto:hello@unleash.de" class="cta__contact-item">
+                                    <div class="cta__contact-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                            <polyline points="22,6 12,13 2,6"/>
+                                        </svg>
+                                    </div>
+                                    <div class="cta__contact-text">
+                                        <div class="cta__contact-label">E-Mail</div>
+                                        <div class="cta__contact-value">hello@unleash.de</div>
+                                    </div>
+                                </a>
+                            </div>
+                            
+                            <div style="color: var(--color-text-secondary); font-size: 16px; line-height: 1.6;">
+                                <p><strong style="color: var(--color-text-primary);">Bürozeiten:</strong><br>
+                                Montag - Freitag: 9:00 - 18:00 Uhr<br>
+                                Samstag: 10:00 - 14:00 Uhr</p>
+                                
+                                <p style="margin-top: 16px;"><strong style="color: var(--color-text-primary);">Reaktionszeit:</strong><br>
+                                Wir antworten innerhalb von 24 Stunden auf alle Anfragen.</p>
+                            </div>
+                        </div>
                         
-                        <div class="cta__contact-methods">
-                            <a href="tel:+4962143569780" class="cta__contact-item">
-                                <div class="cta__contact-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                                    </svg>
+                        <!-- Contact Form -->
+                        <div class="cta__form-container">
+                            <h3 class="cta__form-title">Projekt anfragen</h3>
+                            <p class="cta__form-subtitle">Erzähle uns von deinem Projekt und wir melden uns schnellstmöglich bei dir.</p>
+                            
+                            <form>
+                                <div class="form-row">
+                                    <div class="form-group" style="margin-bottom: 0;">
+                                        <label class="form-label">Vorname *</label>
+                                        <input type="text" class="form-input" placeholder="Max" required>
+                                    </div>
+                                    <div class="form-group" style="margin-bottom: 0;">
+                                        <label class="form-label">Nachname *</label>
+                                        <input type="text" class="form-input" placeholder="Mustermann" required>
+                                    </div>
                                 </div>
-                                <div class="cta__contact-text">
-                                    <div class="cta__contact-label">Telefon</div>
-                                    <div class="cta__contact-value">+49 621 43569780</div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">E-Mail Adresse *</label>
+                                    <input type="email" class="form-input" placeholder="max@beispiel.de" required>
                                 </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Unternehmen</label>
+                                    <input type="text" class="form-input" placeholder="Beispiel GmbH">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Projektart</label>
+                                    <select class="form-select">
+                                        <option>Webdesign & Development</option>
+                                        <option>Branding & Corporate Design</option>
+                                        <option>Digital Marketing</option>
+                                        <option>Beratung</option>
+                                        <option>Sonstiges</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Projektbeschreibung *</label>
+                                    <textarea class="form-textarea" placeholder="Beschreibe dein Projekt, deine Ziele und was du dir vorstellst..." required></textarea>
+                                </div>
+                                
+                                <button type="submit" class="form-submit">Anfrage senden</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="cta__pattern"></div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer__content">
+                    <div class="footer__top">
+                        <div class="footer__brand">
+                            <div class="logo">
+                                <span class="logo__text">UNLEASH</span>
+                                <div class="logo__pattern"></div>
+                            </div>
+                            <p class="footer__tagline">Kreativer Problemlöser</p>
+                        </div>
+                        <div class="footer__social">
+                            <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="footer__social-link">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                                    <path d="m15.5 6.5-1.1 1.1"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>
                             </a>
-                            
-                            <a href="mailto:hello@unleash.de" class="cta__contact-item">
-                                <div class="cta__contact-icon">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                        <polyline points="22,6 12,13 2,6"/>
-                                    </svg>
-                                </div>
-                                <div class="cta__contact-text">
-                                    <div class="cta__contact-label">E-Mail</div>
-                                    <div class="cta__contact-value">hello@unleash.de</div>
-                                </div>
+                            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="footer__social-link">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                    <rect width="4" height="12" x="2" y="9"/>
+                                    <circle cx="4" cy="4" r="2"/>
+                                </svg>
                             </a>
                         </div>
-                        
-                        <div style="color: var(--color-text-secondary); font-size: 16px; line-height: 1.6;">
-                            <p><strong style="color: var(--color-text-primary);">Bürozeiten:</strong><br>
-                            Montag - Freitag: 9:00 - 18:00 Uhr<br>
-                            Samstag: 10:00 - 14:00 Uhr</p>
-                            
-                            <p style="margin-top: 16px;"><strong style="color: var(--color-text-primary);">Reaktionszeit:</strong><br>
-                            Wir antworten innerhalb von 24 Stunden auf alle Anfragen.</p>
-                        </div>
                     </div>
-                    
-                    <!-- Contact Form -->
-                    <div class="cta__form-container">
-                        <h3 class="cta__form-title">Projekt anfragen</h3>
-                        <p class="cta__form-subtitle">Erzähle uns von deinem Projekt und wir melden uns schnellstmöglich bei dir.</p>
-                        
-                        <form>
-                            <div class="form-row">
-                                <div class="form-group" style="margin-bottom: 0;">
-                                    <label class="form-label">Vorname *</label>
-                                    <input type="text" class="form-input" placeholder="Max" required>
-                                </div>
-                                <div class="form-group" style="margin-bottom: 0;">
-                                    <label class="form-label">Nachname *</label>
-                                    <input type="text" class="form-input" placeholder="Mustermann" required>
-                                </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label">E-Mail Adresse *</label>
-                                <input type="email" class="form-input" placeholder="max@beispiel.de" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label">Unternehmen</label>
-                                <input type="text" class="form-input" placeholder="Beispiel GmbH">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label">Projektart</label>
-                                <select class="form-select">
-                                    <option>Webdesign & Development</option>
-                                    <option>Branding & Corporate Design</option>
-                                    <option>Digital Marketing</option>
-                                    <option>Beratung</option>
-                                    <option>Sonstiges</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label class="form-label">Projektbeschreibung *</label>
-                                <textarea class="form-textarea" placeholder="Beschreibe dein Projekt, deine Ziele und was du dir vorstellst..." required></textarea>
-                            </div>
-                            
-                            <button type="submit" class="form-submit">Anfrage senden</button>
-                        </form>
+                    <div class="footer__bottom">
+                        <div class="footer__links">
+                            <a href="#team">Unser Team</a>
+                            <a href="#leistungen">Leistungen</a>
+                            <a href="#bereiche">Bereiche</a>
+                            <a href="#projekte">Projekte</a>
+                        </div>
+                        <div class="footer__legal">
+                            <a href="#datenschutz">Datenschutz</a>
+                            <a href="#impressum">Impressum</a>
+                            <a href="#kontakt">Kontakt</a>
+                        </div>
+                        <div class="footer__copyright">
+                            <div>© 2024 UNLEASH</div>
+                            <div>Alle Rechte vorbehalten</div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="cta__pattern"></div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer__content">
-                <div class="footer__top">
-                    <div class="footer__brand">
-                        <div class="logo">
-                            <span class="logo__text">UNLEASH</span>
-                            <div class="logo__pattern"></div>
-                        </div>
-                        <p class="footer__tagline">Kreativer Problemlöser</p>
-                    </div>
-                    <div class="footer__social">
-                        <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="footer__social-link">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
-                                <path d="m15.5 6.5-1.1 1.1"/>
-                                <circle cx="12" cy="12" r="3"/>
-                            </svg>
-                        </a>
-                        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="footer__social-link">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                                <rect width="4" height="12" x="2" y="9"/>
-                                <circle cx="4" cy="4" r="2"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <div class="footer__bottom">
-                    <div class="footer__links">
-                        <a href="#team">Unser Team</a>
-                        <a href="#leistungen">Leistungen</a>
-                        <a href="#bereiche">Bereiche</a>
-                        <a href="#projekte">Projekte</a>
-                    </div>
-                    <div class="footer__legal">
-                        <a href="#datenschutz">Datenschutz</a>
-                        <a href="#impressum">Impressum</a>
-                        <a href="#kontakt">Kontakt</a>
-                    </div>
-                    <div class="footer__copyright">
-                        <div>© 2024 UNLEASH</div>
-                        <div>Alle Rechte vorbehalten</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
+</body>
 
     <script>
         // Header scroll effect
