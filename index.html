@@ -11,8 +11,7 @@
     <div class="loader" id="loader">
         <div class="loader-content">
             <div class="loader-logo">
-                <div class="loader-logo-text">UNLEASH</div>
-                <div class="loader-logo-pattern"></div>
+                <img src="bilder/logos/unleash-logo.png" alt="UNLEASH" class="loader-logo-image">
             </div>
             <div class="loader-spinner"></div>
             <div class="loader-text">Kreative Lösungen werden geladen...</div>
@@ -31,8 +30,7 @@
                     <div class="header__content">
                         <div class="header__brand">
                             <div class="logo">
-                                <span class="logo__text">UNLEASH</span>
-                                <div class="logo__pattern"></div>
+                                <img src="bilder/logos/unleash-logo.png" alt="UNLEASH" class="logo__image">
                             </div>
 
                             <button class="mobile-menu-toggle" aria-label="Menu">
@@ -513,8 +511,7 @@
                     <div class="footer__top">
                         <div class="footer__brand">
                             <div class="logo">
-                                <span class="logo__text">UNLEASH</span>
-                                <div class="logo__pattern"></div>
+                                <img src="bilder/logos/unleash-logo.png" alt="UNLEASH" class="footer-logo__image">
                             </div>
                             <p class="footer__tagline">Kreativer Problemlöser</p>
                         </div>
@@ -556,7 +553,6 @@
             </div>
         </footer>
     </div>
-</body>
 
     <script>
  // Loader functionality
@@ -810,18 +806,19 @@ document.querySelectorAll('.service-card').forEach(card => {
    observer.observe(card);
 });
 
-// Logo pattern hover effect
-const logo = document.querySelector('.logo');
-const logoPattern = document.querySelector('.logo__pattern');
+// Logo hover effect (updated for image logos)
+const logoImages = document.querySelectorAll('.logo__image, .footer-logo__image');
 
-logo.addEventListener('mouseenter', () => {
-   logoPattern.style.transform = 'skewX(0deg) scaleY(1.2)';
-   logoPattern.style.background = 'linear-gradient(45deg, #FF5100, #FF7A40)';
-});
-
-logo.addEventListener('mouseleave', () => {
-   logoPattern.style.transform = 'skewX(-45deg)';
-   logoPattern.style.background = '#FF5100';
+logoImages.forEach(logoImg => {
+   const logo = logoImg.parentElement;
+   
+   logo.addEventListener('mouseenter', () => {
+       logoImg.style.transform = 'scale(1.05)';
+   });
+   
+   logo.addEventListener('mouseleave', () => {
+       logoImg.style.transform = 'scale(1)';
+   });
 });
 
 // CTA button ripple effect
