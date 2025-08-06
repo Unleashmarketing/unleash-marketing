@@ -2629,290 +2629,314 @@
 </body>
 
     <script>
-        // Header scroll effect
-        let isScrolled = false;
-        let menuState = false;
+ // Loader functionality
+window.addEventListener('load', function() {
+   const loader = document.getElementById('loader');
+   const mainContent = document.getElementById('mainContent');
+   
+   // Minimum loading time for better UX
+   setTimeout(() => {
+       loader.classList.add('fade-out');
+       
+       // Show main content after loader fades out
+       setTimeout(() => {
+           mainContent.classList.add('visible');
+           // Start hero animations after content is visible
+           setTimeout(() => {
+               initHeroAnimations();
+           }, 300);
+       }, 500);
+   }, 2400); // Total loader duration: ~4 seconds
+});
 
-        function updateHeaderState() {
-            const header = document.querySelector('.header');
-            isScrolled = window.scrollY > 50;
-            
-            if (isScrolled) {
-                header.setAttribute('data-state', 'active');
-            } else {
-                header.setAttribute('data-state', 'inactive');
-            }
-        }
+// Header scroll effect
+let isScrolled = false;
+let menuState = false;
 
-        window.addEventListener('scroll', updateHeaderState);
+function updateHeaderState() {
+   const header = document.querySelector('.header');
+   isScrolled = window.scrollY > 50;
+   
+   if (isScrolled) {
+       header.setAttribute('data-state', 'active');
+   } else {
+       header.setAttribute('data-state', 'inactive');
+   }
+}
 
-        // Mobile menu toggle
-        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-        const header = document.querySelector('.header');
+window.addEventListener('scroll', updateHeaderState);
 
-        function toggleMobileMenu() {
-            menuState = !menuState;
-            
-            if (menuState && !isScrolled) {
-                header.setAttribute('data-state', 'active');
-            } else if (!menuState && !isScrolled) {
-                header.setAttribute('data-state', 'inactive');
-            }
-        }
+// Mobile menu toggle
+const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+const header = document.querySelector('.header');
 
-        mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+function toggleMobileMenu() {
+   menuState = !menuState;
+   
+   if (menuState && !isScrolled) {
+       header.setAttribute('data-state', 'active');
+   } else if (!menuState && !isScrolled) {
+       header.setAttribute('data-state', 'inactive');
+   }
+}
 
-        // Close mobile menu when clicking nav links
-        document.querySelectorAll('.mobile-nav__link').forEach(link => {
-            link.addEventListener('click', () => {
-                menuState = false;
-                if (!isScrolled) {
-                    header.setAttribute('data-state', 'inactive');
-                }
-            });
-        });
+mobileMenuToggle.addEventListener('click', toggleMobileMenu);
 
-        // Initialize header state
-        updateHeaderState();
+// Close mobile menu when clicking nav links
+document.querySelectorAll('.mobile-nav__link').forEach(link => {
+   link.addEventListener('click', () => {
+       menuState = false;
+       if (!isScrolled) {
+           header.setAttribute('data-state', 'inactive');
+       }
+   });
+});
 
-        // Client logo rotation
-        let currentLogoSet = 1;
-        const totalLogoSets = 2;
+// Initialize header state
+updateHeaderState();
 
-        function rotateClientLogos() {
-            const allLogos = document.querySelectorAll('.client-logo');
-            const currentLogos = document.querySelectorAll(`.client-logo[data-set="${currentLogoSet}"]`);
-            
-            // Hide current logos
-            currentLogos.forEach(logo => {
-                logo.classList.remove('active');
-            });
-            
-            // Move to next set
-            currentLogoSet = currentLogoSet === totalLogoSets ? 1 : currentLogoSet + 1;
-            
-            // Show new logos after a short delay
-            setTimeout(() => {
-                const newLogos = document.querySelectorAll(`.client-logo[data-set="${currentLogoSet}"]`);
-                newLogos.forEach((logo, index) => {
-                    setTimeout(() => {
-                        logo.classList.add('active');
-                    }, index * 100); // Staggered animation
-                });
-            }, 300);
-        }
+// Client logo rotation
+let currentLogoSet = 1;
+const totalLogoSets = 2;
 
-        // Start logo rotation
-        setTimeout(() => {
-            rotateClientLogos();
-            setInterval(rotateClientLogos, 3000);
-        }, 3000);
+function rotateClientLogos() {
+   const allLogos = document.querySelectorAll('.client-logo');
+   const currentLogos = document.querySelectorAll(`.client-logo[data-set="${currentLogoSet}"]`);
+   
+   // Hide current logos
+   currentLogos.forEach(logo => {
+       logo.classList.remove('active');
+   });
+   
+   // Move to next set
+   currentLogoSet = currentLogoSet === totalLogoSets ? 1 : currentLogoSet + 1;
+   
+   // Show new logos after a short delay
+   setTimeout(() => {
+       const newLogos = document.querySelectorAll(`.client-logo[data-set="${currentLogoSet}"]`);
+       newLogos.forEach((logo, index) => {
+           setTimeout(() => {
+               logo.classList.add('active');
+           }, index * 100); // Staggered animation
+       });
+   }, 300);
+}
 
-        // Hero entrance animations
-        function initHeroAnimations() {
-            const heroElements = document.querySelectorAll('.hero-animate');
-            
-            // Trigger animations with staggered delays
-            heroElements.forEach((element, index) => {
-                const delay = element.getAttribute('data-delay') || (index * 100);
-                
-                setTimeout(() => {
-                    element.classList.add('animate-in');
-                }, parseInt(delay) + 300); // Reduced base delay to 300ms
-            });
-        }
+// Start logo rotation
+function startLogoRotation() {
+   setTimeout(() => {
+       rotateClientLogos();
+       setInterval(rotateClientLogos, 3000);
+   }, 3000);
+}
 
-        // Services scroll animation
-        function initServicesScroll() {
-            const serviceSlides = document.querySelectorAll('.service-slide');
-            const servicesSection = document.querySelector('.services');
-            
-            if (!servicesSection) return;
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Remove active from all slides
-                        serviceSlides.forEach(slide => slide.classList.remove('active'));
-                        // Add active to current slide
-                        entry.target.classList.add('active');
-                    }
-                });
-            }, {
-                threshold: 0.5,
-                rootMargin: '-20% 0px -20% 0px'
-            });
-            
-            serviceSlides.forEach(slide => {
-                observer.observe(slide);
-            });
-        }
+// Hero entrance animations
+function initHeroAnimations() {
+   const heroElements = document.querySelectorAll('.hero-animate');
+   
+   // Trigger animations with staggered delays
+   heroElements.forEach((element, index) => {
+       const delay = element.getAttribute('data-delay') || (index * 100);
+       
+       setTimeout(() => {
+           element.classList.add('animate-in');
+       }, parseInt(delay) + 300);
+   });
 
-        // FAQ functionality
-        function initFAQ() {
-            const faqItems = document.querySelectorAll('.faq-item__question');
-            
-            faqItems.forEach(question => {
-                question.addEventListener('click', () => {
-                    const answer = question.nextElementSibling;
-                    const isOpen = question.getAttribute('aria-expanded') === 'true';
-                    
-                    // Close all other FAQ items
-                    faqItems.forEach(otherQuestion => {
-                        if (otherQuestion !== question) {
-                            otherQuestion.setAttribute('aria-expanded', 'false');
-                            otherQuestion.nextElementSibling.classList.remove('open');
-                        }
-                    });
-                    
-                    // Toggle current FAQ item
-                    if (isOpen) {
-                        question.setAttribute('aria-expanded', 'false');
-                        answer.classList.remove('open');
-                    } else {
-                        question.setAttribute('aria-expanded', 'true');
-                        answer.classList.add('open');
-                    }
-                });
-            });
-        }
+   // Start client logos animation after hero elements
+   setTimeout(() => {
+       const firstSetLogos = document.querySelectorAll('.client-logo[data-set="1"]');
+       firstSetLogos.forEach((logo, index) => {
+           setTimeout(() => {
+               logo.classList.add('active');
+           }, index * 80);
+       });
+       
+       // Start the rotation cycle
+       startLogoRotation();
+   }, 900);
+}
 
-        // Initialize hero animations when page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            initHeroAnimations();
-            initFAQ();
-            initServicesScroll();
-            
-            // Also initialize client logos with staggered animation
-            setTimeout(() => {
-                const firstSetLogos = document.querySelectorAll('.client-logo[data-set="1"]');
-                firstSetLogos.forEach((logo, index) => {
-                    setTimeout(() => {
-                        logo.classList.add('active');
-                    }, index * 80); // Faster logo animation
-                });
-            }, 900); // Starts after hero animations (300 + 500 + 100 buffer)
-        });
+// Services scroll animation
+function initServicesScroll() {
+   const serviceSlides = document.querySelectorAll('.service-slide');
+   const servicesSection = document.querySelector('.services');
+   
+   if (!servicesSection) return;
+   
+   const observer = new IntersectionObserver((entries) => {
+       entries.forEach(entry => {
+           if (entry.isIntersecting) {
+               // Remove active from all slides
+               serviceSlides.forEach(slide => slide.classList.remove('active'));
+               // Add active to current slide
+               entry.target.classList.add('active');
+           }
+       });
+   }, {
+       threshold: 0.5,
+       rootMargin: '-20% 0px -20% 0px'
+   });
+   
+   serviceSlides.forEach(slide => {
+       observer.observe(slide);
+   });
+}
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const headerHeight = document.querySelector('.header').offsetHeight;
-                    const targetPosition = target.offsetTop - headerHeight - 20;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
+// FAQ functionality
+function initFAQ() {
+   const faqItems = document.querySelectorAll('.faq-item__question');
+   
+   faqItems.forEach(question => {
+       question.addEventListener('click', () => {
+           const answer = question.nextElementSibling;
+           const isOpen = question.getAttribute('aria-expanded') === 'true';
+           
+           // Close all other FAQ items
+           faqItems.forEach(otherQuestion => {
+               if (otherQuestion !== question) {
+                   otherQuestion.setAttribute('aria-expanded', 'false');
+                   otherQuestion.nextElementSibling.classList.remove('open');
+               }
+           });
+           
+           // Toggle current FAQ item
+           if (isOpen) {
+               question.setAttribute('aria-expanded', 'false');
+               answer.classList.remove('open');
+           } else {
+               question.setAttribute('aria-expanded', 'true');
+               answer.classList.add('open');
+           }
+       });
+   });
+}
 
-        // Service cards hover effect enhancement
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-8px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
+// Initialize all components when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+   initFAQ();
+   initServicesScroll();
+});
 
-        // Pattern animation on scroll
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const patterns = document.querySelectorAll('.hero__pattern, .cta__pattern');
-            
-            patterns.forEach(pattern => {
-                const speed = 0.5;
-                pattern.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
-            });
-        });
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+   anchor.addEventListener('click', function (e) {
+       e.preventDefault();
+       const target = document.querySelector(this.getAttribute('href'));
+       if (target) {
+           const headerHeight = document.querySelector('.header').offsetHeight;
+           const targetPosition = target.offsetTop - headerHeight - 20;
+           
+           window.scrollTo({
+               top: targetPosition,
+               behavior: 'smooth'
+           });
+       }
+   });
+});
 
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+// Service cards hover effect enhancement
+document.querySelectorAll('.service-card').forEach(card => {
+   card.addEventListener('mouseenter', function() {
+       this.style.transform = 'translateY(-8px) scale(1.02)';
+   });
+   
+   card.addEventListener('mouseleave', function() {
+       this.style.transform = 'translateY(0) scale(1)';
+   });
+});
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
+// Pattern animation on scroll
+window.addEventListener('scroll', () => {
+   const scrolled = window.pageYOffset;
+   const patterns = document.querySelectorAll('.hero__pattern, .cta__pattern');
+   
+   patterns.forEach(pattern => {
+       const speed = 0.5;
+       pattern.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
+   });
+});
 
-        // Observe service cards for entrance animations
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(card);
-        });
+// Intersection Observer for animations
+const observerOptions = {
+   threshold: 0.1,
+   rootMargin: '0px 0px -50px 0px'
+};
 
-        // Logo pattern hover effect
-        const logo = document.querySelector('.logo');
-        const logoPattern = document.querySelector('.logo__pattern');
+const observer = new IntersectionObserver((entries) => {
+   entries.forEach(entry => {
+       if (entry.isIntersecting) {
+           entry.target.style.opacity = '1';
+           entry.target.style.transform = 'translateY(0)';
+       }
+   });
+}, observerOptions);
 
-        logo.addEventListener('mouseenter', () => {
-            logoPattern.style.transform = 'skewX(0deg) scaleY(1.2)';
-            logoPattern.style.background = 'linear-gradient(45deg, #FF5100, #FF7A40)';
-        });
+// Observe service cards for entrance animations
+document.querySelectorAll('.service-card').forEach(card => {
+   card.style.opacity = '0';
+   card.style.transform = 'translateY(30px)';
+   card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+   observer.observe(card);
+});
 
-        logo.addEventListener('mouseleave', () => {
-            logoPattern.style.transform = 'skewX(-45deg)';
-            logoPattern.style.background = '#FF5100';
-        });
+// Logo pattern hover effect
+const logo = document.querySelector('.logo');
+const logoPattern = document.querySelector('.logo__pattern');
 
-        // CTA button ripple effect
-        document.querySelectorAll('.nav__cta, .cta__button').forEach(button => {
-            button.addEventListener('click', function(e) {
-                const ripple = document.createElement('span');
-                const rect = this.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
-                
-                ripple.style.cssText = `
-                    position: absolute;
-                    width: ${size}px;
-                    height: ${size}px;
-                    left: ${x}px;
-                    top: ${y}px;
-                    background: rgba(255, 255, 255, 0.3);
-                    border-radius: 50%;
-                    transform: scale(0);
-                    animation: ripple 0.6s ease-out;
-                    pointer-events: none;
-                `;
-                
-                this.style.position = 'relative';
-                this.style.overflow = 'hidden';
-                this.appendChild(ripple);
-                
-                setTimeout(() => {
-                    ripple.remove();
-                }, 600);
-            });
-        });
+logo.addEventListener('mouseenter', () => {
+   logoPattern.style.transform = 'skewX(0deg) scaleY(1.2)';
+   logoPattern.style.background = 'linear-gradient(45deg, #FF5100, #FF7A40)';
+});
 
-        // Add ripple animation keyframes
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes ripple {
-                to {
-                    transform: scale(2);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
+logo.addEventListener('mouseleave', () => {
+   logoPattern.style.transform = 'skewX(-45deg)';
+   logoPattern.style.background = '#FF5100';
+});
+
+// CTA button ripple effect
+document.querySelectorAll('.nav__cta, .cta__button').forEach(button => {
+   button.addEventListener('click', function(e) {
+       const ripple = document.createElement('span');
+       const rect = this.getBoundingClientRect();
+       const size = Math.max(rect.width, rect.height);
+       const x = e.clientX - rect.left - size / 2;
+       const y = e.clientY - rect.top - size / 2;
+       
+       ripple.style.cssText = `
+           position: absolute;
+           width: ${size}px;
+           height: ${size}px;
+           left: ${x}px;
+           top: ${y}px;
+           background: rgba(255, 255, 255, 0.3);
+           border-radius: 50%;
+           transform: scale(0);
+           animation: ripple 0.6s ease-out;
+           pointer-events: none;
+       `;
+       
+       this.style.position = 'relative';
+       this.style.overflow = 'hidden';
+       this.appendChild(ripple);
+       
+       setTimeout(() => {
+           ripple.remove();
+       }, 600);
+   });
+});
+
+// Add ripple animation keyframes
+const style = document.createElement('style');
+style.textContent = `
+   @keyframes ripple {
+       to {
+           transform: scale(2);
+           opacity: 0;
+       }
+   }
+`;
+document.head.appendChild(style);
     </script>
 </body>
 </html>
