@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 123.72 27.11">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f37123;
+      }
+
+      .cls-2 {
+        fill: #fff;
+        font-family: FKGroteskNeueTrial-Bold, 'FK Grotesk Neue Trial';
+        font-size: 22.88px;
+        font-weight: 700;
+      }
+
+      .cls-3 {
+        letter-spacing: -.05em;
+      }
+
+      .cls-4 {
+        letter-spacing: -.04em;
+      }
+
+      .cls-5 {
+        letter-spacing: -.04em;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1-2">
+    <g>
+      <rect class="cls-1" width="4.1" height="22.9"/>
+      <polygon class="cls-1" points="9.9 8.9 9.9 22.8 5.8 22.8 5.8 15.9 9.9 8.9"/>
+      <rect class="cls-1" x="11.6" width="4.1" height="22.9"/>
+      <text class="cls-2" transform="translate(18.88 22.26)"><tspan class="cls-5" x="0" y="0">UNLE</tspan><tspan class="cls-3" x="58.52" y="0">A</tspan><tspan class="cls-4" x="73.91" y="0">SH</tspan></text>
+    </g>
+  </g>
+</svg>
