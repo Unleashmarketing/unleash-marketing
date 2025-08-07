@@ -1216,9 +1216,9 @@
             background: var(--color-bg-secondary);
             border: 1px solid #2A2A2A;
             border-radius: 20px;
-            padding: 28px 32px;
-            width: 380px;
-            height: 160px;
+            padding: 20px 32px;
+            width: 360px;
+            height: 140px;
             transition: all 0.3s ease;
             z-index: 2;
             animation: floatGentle 6s ease-in-out infinite;
