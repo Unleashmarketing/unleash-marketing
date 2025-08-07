@@ -134,7 +134,7 @@
             background: linear-gradient(90deg, #FF5100, #FF7A40);
             border-radius: 2px;
             transform: translateX(-100%);
-            animation: loadProgress 2.5s ease 1.2s forwards;
+            animation: loadProgress 2s ease 1.2s forwards;
         }
 
         /* Animations */
