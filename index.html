@@ -42,7 +42,46 @@
                         <div class="header__center">
                             <ul class="nav__list">
                                 <li><a href="team.html" class="nav__link">Unser Team</a></li>
-                                <li><a href="services.html" class="nav__link">Leistungen</a></li>
+                                
+<li class="nav__item nav__item--has-mega">
+  <button class="nav__link nav__link--with-caret" aria-expanded="false" aria-haspopup="true">
+    Leistungen
+    <svg class="nav__caret" width="12" height="12" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+  <div class="mega" role="menu" aria-label="Leistungen">
+    <a class="mega__item" href="services.html#grafikdesign" role="menuitem">
+      <div class="mega__icon mega__icon--pen" aria-hidden="true"></div>
+      <div class="mega__content">
+        <strong>Grafikdesign</strong>
+        <span>Layouts, Kampagnen-Assets & Creatives, die performen.</span>
+      </div>
+    </a>
+    <a class="mega__item" href="services.html#branding" role="menuitem">
+      <div class="mega__icon mega__icon--brand" aria-hidden="true"></div>
+      <div class="mega__content">
+        <strong>Branding</strong>
+        <span>Vom Logo bis zum System – konsistent, wiedererkennbar, skalierbar.</span>
+      </div>
+    </a>
+    <a class="mega__item" href="services.html#webdesign" role="menuitem">
+      <div class="mega__icon mega__icon--web" aria-hidden="true"></div>
+      <div class="mega__content">
+        <strong>Webdesign</strong>
+        <span>Schnelle, SEO-starke Websites mit klarer UX und sauberem Code.</span>
+      </div>
+    </a>
+    <a class="mega__item" href="services.html#marketing" role="menuitem">
+      <div class="mega__icon mega__icon--target" aria-hidden="true"></div>
+      <div class="mega__content">
+        <strong>Marketing</strong>
+        <span>Performance & Content – messbar mehr Reichweite und Leads.</span>
+      </div>
+    </a>
+  </div>
+</li>
+
                                 <li><a href="#projekte" class="nav__link">Projekte</a></li>
                             </ul>
                         </div>
@@ -62,7 +101,46 @@
                         <div class="mobile-menu__content">
                             <ul class="mobile-nav__list">
                                 <li><a href="#team" class="mobile-nav__link">Unser Team</a></li>
-                                <li><a href="#leistungen" class="mobile-nav__link">Leistungen</a></li>
+                                
+<li class="nav__item nav__item--has-mega">
+  <button class="nav__link nav__link--with-caret" aria-expanded="false" aria-haspopup="true">
+    Leistungen
+    <svg class="nav__caret" width="12" height="12" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+  <div class="mega" role="menu" aria-label="Leistungen">
+    <a class="mega__item" href="services.html#grafikdesign" role="menuitem">
+      <div class="mega__icon mega__icon--pen" aria-hidden="true"></div>
+      <div class="mega__content">
+        <strong>Grafikdesign</strong>
+        <span>Layouts, Kampagnen-Assets & Creatives, die performen.</span>
+      </div>
+    </a>
+    <a class="mega__item" href="services.html#branding" role="menuitem">
+      <div class="mega__icon mega__icon--brand" aria-hidden="true"></div>
+      <div class="mega__content">
+        <strong>Branding</strong>
+        <span>Vom Logo bis zum System – konsistent, wiedererkennbar, skalierbar.</span>
+      </div>
+    </a>
+    <a class="mega__item" href="services.html#webdesign" role="menuitem">
+      <div class="mega__icon mega__icon--web" aria-hidden="true"></div>
+      <div class="mega__content">
+        <strong>Webdesign</strong>
+        <span>Schnelle, SEO-starke Websites mit klarer UX und sauberem Code.</span>
+      </div>
+    </a>
+    <a class="mega__item" href="services.html#marketing" role="menuitem">
+      <div class="mega__icon mega__icon--target" aria-hidden="true"></div>
+      <div class="mega__content">
+        <strong>Marketing</strong>
+        <span>Performance & Content – messbar mehr Reichweite und Leads.</span>
+      </div>
+    </a>
+  </div>
+</li>
+
                                 <li><a href="#bereiche" class="mobile-nav__link">Bereiche</a></li>
                                 <li><a href="#projekte" class="mobile-nav__link">Projekte</a></li>
                             </ul>
@@ -240,19 +318,47 @@ Von der ersten Idee bis zur finalen Umsetzung kümmern wir uns um jedes Detail �
                         </p>
                     </div>
                     
-                    <div class="services__right">
-                        <div class="service-slide active" data-service="webdesign">
-                            <div class="service-card">
-                                <h3 class="service-card__title">Webdesign & Development</h3>
-                                <p class="service-card__text">
-                                    Integriere moderne Webtechnologien nahtlos in deine Plattform mit entwicklerfreundlichen APIs und SDKs, die Zugang zu hochwertigen Designlösungen und Echtzeit-Daten ermöglichen.
-                                </p>
-                                <a href="#webdesign" class="service-card__cta">
-                                    Mehr erfahren <span class="arrow">→</span>
-                                </a>
-                                <div class="service-card__visual">
-                                    <div class="code-block">
-                                        <div class="code-line"><span class="code-number">1</span> <span class="code-keyword">const</span> <span class="code-variable">websiteDesign</span> = <span class="code-keyword">await</span> <span class="code-function">UNLEASH.createWebsite</span>({</div>
+                    
+<div class="services__right">
+  <div class="services__grid">
+    <article class="service-card service-card--minimal" id="grafikdesign">
+      <div class="service-card__visual svg-tiles" aria-hidden="true">
+        <svg viewBox="0 0 120 80" class="tile"><rect x="8" y="8" width="40" height="24" rx="6"/></svg>
+        <svg viewBox="0 0 120 80" class="tile"><rect x="20" y="18" width="80" height="44" rx="10"/></svg>
+      </div>
+      <h3 class="service-card__title">Grafikdesign</h3>
+      <p class="service-card__text">Anzeigen, Social Assets & Print – schnell, on-brand und ready to ship.</p>
+      <a href="services.html#grafikdesign" class="service-card__cta">Mehr erfahren <span class="arrow">→</span></a>
+    </article>
+    <article class="service-card service-card--minimal" id="branding">
+      <div class="service-card__visual svg-badge" aria-hidden="true">
+        <svg viewBox="0 0 120 80"><circle cx="40" cy="40" r="24"/><rect x="62" y="24" width="40" height="32" rx="8"/></svg>
+      </div>
+      <h3 class="service-card__title">Branding</h3>
+      <p class="service-card__text">Markensysteme, die Wiedererkennung schaffen – vom Logo bis zum Designsystem.</p>
+      <a href="services.html#branding" class="service-card__cta">Mehr erfahren <span class="arrow">→</span></a>
+    </article>
+    <article class="service-card service-card--minimal" id="webdesign">
+      <div class="service-card__visual svg-window" aria-hidden="true">
+        <svg viewBox="0 0 120 80"><rect x="10" y="16" width="100" height="52" rx="10"/><rect x="18" y="24" width="84" height="8" rx="4"/></svg>
+      </div>
+      <h3 class="service-card__title">Webdesign</h3>
+      <p class="service-card__text">Schnelle, SEO-starke Websites mit klarer UX, sauberem Code und Core Web Vitals.</p>
+      <a href="services.html#webdesign" class="service-card__cta">Mehr erfahren <span class="arrow">→</span></a>
+    </article>
+    <article class="service-card service-card--minimal" id="marketing">
+      <div class="service-card__visual svg-target" aria-hidden="true">
+        <svg viewBox="0 0 120 80">
+          <circle cx="60" cy="40" r="24"/><circle cx="60" cy="40" r="16"/><circle cx="60" cy="40" r="8"/>
+        </svg>
+      </div>
+      <h3 class="service-card__title">Marketing</h3>
+      <p class="service-card__text">Performance & Content – Kampagnen, die sichtbar sind und verkaufen.</p>
+      <a href="services.html#marketing" class="service-card__cta">Mehr erfahren <span class="arrow">→</span></a>
+    </article>
+  </div>
+</div>
+
                                         <div class="code-line"><span class="code-number">2</span>   <span class="code-property">responsive</span>,</div>
                                         <div class="code-line"><span class="code-number">3</span>   <span class="code-property">modern</span>,</div>
                                         <div class="code-line"><span class="code-number">4</span>   <span class="code-property">optimized</span></div>
