@@ -24,6 +24,28 @@
             color: #FFFFFF;
             background-color: #121212;
             font-variant-numeric: tabular-nums;
+            position: relative;
+        }
+
+        /* Global Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #121212 0%, #1E1E1E 50%, #121212 100%);
+            background-image: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 16px,
+                    rgba(255, 81, 0, 0.12) 16px,
+                    rgba(255, 81, 0, 0.12) 17px
+                );
+            pointer-events: none;
+            z-index: -2;
         }
 
         /* Container & Grid System */
@@ -85,14 +107,26 @@
             padding: 0 48px;
         }
 
-        /* Scrolled state */
-        .header[data-state="active"] .header__container {
-            max-width: 1024px;
-            background: rgba(18, 18, 18, 0.8);
-            backdrop-filter: blur(16px);
-            border: 1px solid #1E1E1E;
-            border-radius: 16px;
-            padding: 0 20px;
+        /* Scrolled state - only for desktop */
+        @media (min-width: 769px) {
+            .header[data-state="active"] .header__container {
+                max-width: 1024px;
+                background: rgba(18, 18, 18, 0.8);
+                backdrop-filter: blur(16px);
+                border: 1px solid #1E1E1E;
+                border-radius: 16px;
+                padding: 0 20px;
+            }
+        }
+
+        /* Mobile always has glass effect */
+        @media (max-width: 768px) {
+            .header__container {
+                background: rgba(18, 18, 18, 0.8) !important;
+                backdrop-filter: blur(16px) !important;
+                border: 1px solid #1E1E1E !important;
+                border-radius: 16px !important;
+            }
         }
 
         .header__content {
@@ -142,24 +176,16 @@
             text-decoration: none;
         }
 
-        .logo__text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--color-text-primary);
-            letter-spacing: -0.02em;
+        .logo__image,
+        .footer-logo__image {
+            height: 32px;
+            width: auto;
+            transition: transform 0.3s ease;
         }
 
-        .logo__pattern {
-            width: 4px;
-            height: 24px;
-            background: var(--color-primary);
-            margin-left: 12px;
-            transform: skewX(-45deg);
-            transition: transform 0.4s ease-out;
-        }
-
-        .logo:hover .logo__pattern {
-            transform: skewX(0deg) scaleY(1.2);
+        .logo:hover .logo__image,
+        .logo:hover .footer-logo__image {
+            transform: scale(1.05);
         }
 
         .nav__list {
@@ -171,19 +197,149 @@
             font-size: 14px;
         }
 
+        .nav__item {
+            position: relative;
+        }
+
         .nav__link {
             color: var(--color-text-secondary);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
             position: relative;
-            display: block;
+            display: flex;
+            align-items: center;
+            gap: 6px;
             transition: all 0.15s ease;
         }
 
         .nav__link:hover,
         .nav__link--active {
             color: var(--color-primary);
+        }
+
+        /* Dropdown Styles */
+        .nav__dropdown {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(16px);
+            border: 1px solid #2A2A2A;
+            border-radius: 16px;
+            padding: 24px;
+            min-width: 650px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(-50%) translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+            margin-top: 12px;
+        }
+
+        .nav__item:hover .nav__dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .nav__dropdown-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .nav__dropdown-card {
+            background: var(--color-bg-secondary);
+            border: 1px solid #2A2A2A;
+            border-radius: 12px;
+            padding: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .nav__dropdown-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 81, 0, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .nav__dropdown-card:hover::before {
+            left: 100%;
+        }
+
+        .nav__dropdown-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--color-primary);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav__dropdown-card-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--color-text-primary);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .nav__dropdown-card-description {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .nav__dropdown-card-icon {
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            width: 24px;
+            height: 24px;
+            background: var(--color-primary);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s ease;
+        }
+
+        .nav__dropdown-card:hover .nav__dropdown-card-icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .nav__dropdown-icon {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin-left: 6px;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 4px solid var(--color-text-secondary);
+            transition: all 0.3s ease;
+            transform-origin: center center;
+            vertical-align: middle;
+        }
+
+        .nav__item:hover .nav__dropdown-icon {
+            transform: rotate(180deg);
+            border-top-color: var(--color-text-primary);
         }
 
         .nav__button {
@@ -308,17 +464,64 @@
             gap: 24px;
         }
 
+        .mobile-nav__item {
+            position: relative;
+        }
+
         .mobile-nav__link {
             color: var(--color-text-secondary);
             text-decoration: none;
             font-weight: 500;
             font-size: 16px;
             transition: color 0.15s ease;
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .mobile-nav__link:hover {
             color: var(--color-text-primary);
+        }
+
+        .mobile-nav__dropdown {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(30, 30, 30, 0.5);
+            border-radius: 8px;
+            margin-top: 8px;
+        }
+
+        .mobile-nav__dropdown.open {
+            max-height: 200px;
+            padding: 12px 0;
+        }
+
+        .mobile-nav__dropdown-item {
+            display: block;
+            padding: 8px 16px;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .mobile-nav__dropdown-item:hover {
+            color: var(--color-text-primary);
+            background: rgba(255, 81, 0, 0.1);
+        }
+
+        .mobile-nav__toggle {
+            background: none;
+            border: none;
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-nav__toggle.open {
+            transform: rotate(180deg);
         }
 
         /* Desktop Navigation */
@@ -367,8 +570,8 @@
             }
         }
 
-        /* Active mobile menu state */
-        .header[data-state="active"] .mobile-menu {
+        /* Active mobile menu state - only when manually triggered */
+        .header[data-state="active"] .mobile-menu.manual-open {
             display: block;
         }
 
@@ -381,6 +584,30 @@
         .header[data-state="active"] .close-icon {
             transform: translate(-50%, -50%) rotate(0deg) scale(1);
             opacity: 1;
+        }
+
+        /* Responsive adjustments for dropdown */
+        @media (max-width: 1024px) {
+            .nav__dropdown {
+                min-width: 550px;
+                left: -150px;
+                transform: translateX(0) translateY(-10px);
+            }
+            
+            .nav__item:hover .nav__dropdown {
+                transform: translateX(0) translateY(0);
+            }
+            
+            .nav__dropdown-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav__dropdown {
+                display: none;
+            }
         }
 
         /* Responsive Design for Header */
@@ -399,25 +626,8 @@
             padding: 180px 0 120px;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, #121212 0%, #1E1E1E 100%);
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                repeating-linear-gradient(
-                    45deg,
-                    transparent,
-                    transparent 16px,
-                    rgba(255, 81, 0, 0.12) 16px,
-                    rgba(255, 81, 0, 0.12) 17px
-                );
-            pointer-events: none;
+            background: transparent;
+            text-align: center;
         }
 
         .hero__content {
@@ -455,6 +665,7 @@
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
+            transform: translateY(0);
         }
 
         .hero__cta:hover {
@@ -480,26 +691,8 @@
         /* Team Section */
         .team-section {
             padding: 120px 0;
-            background: var(--color-bg-primary);
+            background: transparent;
             position: relative;
-        }
-
-        .team-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                repeating-linear-gradient(
-                    -45deg,
-                    transparent,
-                    transparent 16px,
-                    rgba(255, 81, 0, 0.08) 16px,
-                    rgba(255, 81, 0, 0.08) 17px
-                );
-            pointer-events: none;
         }
 
         .team__header {
@@ -578,26 +771,8 @@
 
         /* Mission Section */
         .mission-section {
-            background: var(--color-bg-primary);
+            background: transparent;
             position: relative;
-        }
-
-        .mission-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: 
-                repeating-linear-gradient(
-                    135deg,
-                    transparent,
-                    transparent 24px,
-                    rgba(255, 81, 0, 0.04) 24px,
-                    rgba(255, 81, 0, 0.04) 25px
-                );
-            pointer-events: none;
         }
 
         .mission__content {
@@ -651,11 +826,21 @@
         /* Footer */
         .footer {
             padding: 80px 0 40px;
-            background: var(--color-bg-primary);
-            border-top: 1px solid #1E1E1E;
+            background: transparent;
+        }
+
+        .footer__container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
 
         .footer__content {
+            background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid #1E1E1E;
+            border-radius: 16px;
+            padding: 40px;
             display: flex;
             flex-direction: column;
             gap: 32px;
@@ -675,8 +860,9 @@
             gap: 8px;
         }
 
-        .footer__brand .logo__text {
-            font-size: 1.25rem;
+        .footer__brand .footer-logo__image {
+            height: 28px;
+            width: auto;
         }
 
         .footer__tagline {
@@ -814,6 +1000,12 @@
                 text-align: center;
             }
 
+            .footer__content {
+                flex-direction: column;
+                gap: 24px;
+                text-align: center;
+            }
+
             .footer__top {
                 flex-direction: column;
                 text-align: center;
@@ -860,8 +1052,7 @@
                 <div class="header__content">
                     <div class="header__brand">
                         <a href="index.html" class="logo">
-                            <span class="logo__text">UNLEASH</span>
-                            <div class="logo__pattern"></div>
+                            <img src="bilder/logos/unleash.svg" alt="UNLEASH" class="logo__image">
                         </a>
 
                         <button class="mobile-menu-toggle" aria-label="Menu">
@@ -872,18 +1063,60 @@
 
                     <div class="header__center">
                         <ul class="nav__list">
-                            <li><a href="team.html" class="nav__link nav__link--active">Unser Team</a></li>
-                            <li><a href="services.html" class="nav__link">Leistungen</a></li>
-                            <li><a href="projekte.html" class="nav__link">Projekte</a></li>
+                            <li class="nav__item"><a href="team.html" class="nav__link nav__link--active">Unser Team</a></li>
+                            <li class="nav__item">
+                                <a href="services.html" class="nav__link">
+                                    Leistungen 
+                                    <span class="nav__dropdown-icon"></span>
+                                </a>
+                                <div class="nav__dropdown">
+                                    <div class="nav__dropdown-grid">
+                                        <a href="design.html" class="nav__dropdown-card">
+                                            <div>
+                                                <h3 class="nav__dropdown-card-title">Branding & Design</h3>
+                                                <p class="nav__dropdown-card-description">Starke Markenidentitäten und kreative Designlösungen</p>
+                                            </div>
+                                            <div class="nav__dropdown-card-icon">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                                                </svg>
+                                            </div>
+                                        </a>
+                                        <a href="webdesign.html" class="nav__dropdown-card">
+                                            <div>
+                                                <h3 class="nav__dropdown-card-title">Webdesign</h3>
+                                                <p class="nav__dropdown-card-description">Moderne Websites die konvertieren und begeistern</p>
+                                            </div>
+                                            <div class="nav__dropdown-card-icon">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                                                </svg>
+                                            </div>
+                                        </a>
+                                        <a href="marketing.html" class="nav__dropdown-card">
+                                            <div>
+                                                <h3 class="nav__dropdown-card-title">Marketing</h3>
+                                                <p class="nav__dropdown-card-description">Strategisches Marketing für messbare Ergebnisse</p>
+                                            </div>
+                                            <div class="nav__dropdown-card-icon">
+                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                                                </svg>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav__item"><a href="#projekte" class="nav__link">Projekte</a></li>
                         </ul>
                     </div>
 
                     <div class="header__actions">
                         <div class="nav__desktop-buttons">
-                            <a href="#kontakt" class="nav__button nav__button--primary">Projekt anfragen</a>
+                            <a href="kontakt.html" class="nav__button nav__button--primary">Projekt anfragen</a>
                         </div>
                         <div class="nav__scrolled-button">
-                            <a href="#kontakt" class="nav__button nav__button--primary">Projekt anfragen</a>
+                            <a href="kontakt.html" class="nav__button nav__button--primary">Projekt anfragen</a>
                         </div>
                     </div>
                 </div>
@@ -892,9 +1125,19 @@
                 <div class="mobile-menu">
                     <div class="mobile-menu__content">
                         <ul class="mobile-nav__list">
-                            <li><a href="team.html" class="mobile-nav__link">Unser Team</a></li>
-                            <li><a href="services.html" class="mobile-nav__link">Leistungen</a></li>
-                            <li><a href="#projekte" class="mobile-nav__link">Projekte</a></li>
+                            <li class="mobile-nav__item"><a href="team.html" class="mobile-nav__link">Unser Team</a></li>
+                            <li class="mobile-nav__item">
+                                <button class="mobile-nav__link" onclick="toggleMobileDropdown(this)">
+                                    Leistungen 
+                                    <span class="mobile-nav__toggle">+</span>
+                                </button>
+                                <div class="mobile-nav__dropdown">
+                                    <a href="design.html" class="mobile-nav__dropdown-item">Branding & Design</a>
+                                    <a href="webdesign.html" class="mobile-nav__dropdown-item">Webdesign</a>
+                                    <a href="marketing.html" class="mobile-nav__dropdown-item">Marketing</a>
+                                </div>
+                            </li>
+                            <li class="mobile-nav__item"><a href="#projekte" class="mobile-nav__link">Projekte</a></li>
                         </ul>
                         <div class="mobile-nav__buttons">
                             <a href="kontakt.html" class="nav__button nav__button--primary">Projekt anfragen</a>
@@ -1040,13 +1283,12 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
+        <div class="footer__container">
             <div class="footer__content">
                 <div class="footer__top">
                     <div class="footer__brand">
                         <div class="logo">
-                            <span class="logo__text">UNLEASH</span>
-                            <div class="logo__pattern"></div>
+                            <img src="bilder/logos/unleash.svg" alt="UNLEASH" class="footer-logo__image">
                         </div>
                         <p class="footer__tagline">Kreativer Problemlöser</p>
                     </div>
@@ -1069,18 +1311,18 @@
                 </div>
                 <div class="footer__bottom">
                     <div class="footer__links">
-                        <a href="#team">Unser Team</a>
-                        <a href="/">Leistungen</a>
-                        <a href="#bereiche">Bereiche</a>
+                        <a href="team.html">Unser Team</a>
+                        <a href="services.html">Leistungen</a>
                         <a href="#projekte">Projekte</a>
                     </div>
                     <div class="footer__legal">
-                        <a href="#datenschutz">Datenschutz</a>
-                        <a href="#impressum">Impressum</a>
-                        <a href="#kontakt">Kontakt</a>
+                        <a href="datenschutz.html">Datenschutz</a>
+                        <a href="impressum.html">Impressum</a>
+                        <a href="agb.html">AGB</a>
+                        <a href="kontakt.html">Kontakt</a>
                     </div>
                     <div class="footer__copyright">
-                        <div>© 2024 UNLEASH</div>
+                        <div>© 2025 UNLEASH</div>
                         <div>Alle Rechte vorbehalten</div>
                     </div>
                 </div>
@@ -1089,7 +1331,22 @@
     </footer>
 
     <script>
-        // Header scroll effect - same as index.html
+        // Mobile dropdown toggle function
+        function toggleMobileDropdown(button) {
+            const dropdown = button.nextElementSibling;
+            const icon = button.querySelector('.mobile-nav__toggle');
+            
+            dropdown.classList.toggle('open');
+            icon.classList.toggle('open');
+            
+            if (dropdown.classList.contains('open')) {
+                icon.textContent = '×';
+            } else {
+                icon.textContent = '+';
+            }
+        }
+
+        // Header scroll effect
         let isScrolled = false;
         let menuState = false;
 
@@ -1097,10 +1354,18 @@
             const header = document.querySelector('.header');
             isScrolled = window.scrollY > 50;
             
-            if (isScrolled) {
-                header.setAttribute('data-state', 'active');
+            // Only apply scrolled state on desktop
+            if (window.innerWidth >= 769) {
+                if (isScrolled) {
+                    header.setAttribute('data-state', 'active');
+                } else {
+                    header.setAttribute('data-state', 'inactive');
+                }
             } else {
-                header.setAttribute('data-state', 'inactive');
+                // On mobile, always keep inactive state unless menu is open
+                if (!menuState) {
+                    header.setAttribute('data-state', 'inactive');
+                }
             }
         }
 
@@ -1111,12 +1376,20 @@
         const header = document.querySelector('.header');
 
         function toggleMobileMenu() {
+            const mobileMenu = document.querySelector('.mobile-menu');
             menuState = !menuState;
             
-            if (menuState && !isScrolled) {
+            if (menuState) {
                 header.setAttribute('data-state', 'active');
-            } else if (!menuState && !isScrolled) {
-                header.setAttribute('data-state', 'inactive');
+                mobileMenu.classList.add('manual-open');
+            } else {
+                // On mobile, always return to inactive when closing menu
+                if (window.innerWidth < 769) {
+                    header.setAttribute('data-state', 'inactive');
+                } else {
+                    header.setAttribute('data-state', isScrolled ? 'active' : 'inactive');
+                }
+                mobileMenu.classList.remove('manual-open');
             }
         }
 
@@ -1125,29 +1398,21 @@
         // Close mobile menu when clicking nav links
         document.querySelectorAll('.mobile-nav__link').forEach(link => {
             link.addEventListener('click', () => {
+                const mobileMenu = document.querySelector('.mobile-menu');
                 menuState = false;
-                if (!isScrolled) {
+                
+                // On mobile, always return to inactive when closing menu
+                if (window.innerWidth < 769) {
                     header.setAttribute('data-state', 'inactive');
+                } else {
+                    header.setAttribute('data-state', isScrolled ? 'active' : 'inactive');
                 }
+                mobileMenu.classList.remove('manual-open');
             });
         });
 
         // Initialize header state
         updateHeaderState();
-
-        // Logo pattern hover effect
-        const logo = document.querySelector('.logo');
-        const logoPattern = document.querySelector('.logo__pattern');
-
-        logo.addEventListener('mouseenter', () => {
-            logoPattern.style.transform = 'skewX(0deg) scaleY(1.2)';
-            logoPattern.style.background = 'linear-gradient(45deg, #FF5100, #FF7A40)';
-        });
-
-        logo.addEventListener('mouseleave', () => {
-            logoPattern.style.transform = 'skewX(-45deg)';
-            logoPattern.style.background = '#FF5100';
-        });
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
