@@ -627,7 +627,6 @@
             position: relative;
             overflow: hidden;
             background: transparent;
-            text-align: center;
         }
 
         .hero__content {
@@ -637,6 +636,10 @@
             align-items: center;
             position: relative;
             z-index: 2;
+        }
+
+        .hero__text {
+            text-align: left; /* Linksbündig */
         }
 
         .hero__text h1 {
@@ -773,13 +776,12 @@
         .mission-section {
             background: transparent;
             position: relative;
+            padding: 120px 0 0;
         }
 
         .mission__content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 120px;
-            align-items: end;
+            text-align: left;
+            margin-bottom: 80px;
             position: relative;
             z-index: 2;
         }
@@ -797,16 +799,26 @@
             color: var(--color-text-secondary);
             line-height: 1.7;
             margin-bottom: 32px;
+            max-width: 800px;
         }
 
         .mission__stats {
-            display: flex;
-            flex-direction: column;
-            gap: 48px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            margin-top: 80px;
         }
 
         .stat-item {
-            text-align: left;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .stat-item.animate {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .stat-item__number {
@@ -977,6 +989,10 @@
                 text-align: center;
             }
 
+            .hero__text {
+                text-align: center; /* Zentriert auf Mobile */
+            }
+
             .hero__image {
                 order: -1;
                 height: 300px;
@@ -997,6 +1013,8 @@
             }
 
             .mission__stats {
+                grid-template-columns: 1fr;
+                gap: 40px;
                 text-align: center;
             }
 
@@ -1039,6 +1057,7 @@
             }
 
             .mission__stats {
+                grid-template-columns: 1fr;
                 gap: 32px;
             }
         }
@@ -1153,7 +1172,7 @@
         <div class="container">
             <div class="hero__content">
                 <div class="hero__text">
-                    <h1>Weil wir mehr als nur eine Marketingfirma sind – wir sind deine Problemlöser. </h1>
+                    <h1>Weil wir mehr als nur eine Marketingfirma sind – wir sind deine Problemlöser.</h1>
                     <p class="hero__description">
                         Mit unserer Expertise und kreativen Ansätzen gehen wir weit über traditionelle Marketinglösungen hinaus. Wir analysieren deine Herausforderungen und entwickeln individuelle Strategien, die gezielt auf deine Bedürfnisse abgestimmt sind. 
                     </p>
@@ -1199,7 +1218,7 @@
                         <img src="bilder/team/alex_result.jpg" alt="Dr. Alex Emmerich">
                     </div>
                     <h3 class="team-member__name">Dr. Alex Emmerich</h3>
-                    <div class="team-member__role">Co-FOunder | Fotograf | Videograf</div>
+                    <div class="team-member__role">Co-Founder | Fotograf | Videograf</div>
                 </div>
 
                 <!-- Row 2 -->
@@ -1230,7 +1249,7 @@
                 <!-- Row 3 -->
                 <div class="team-member">
                     <div class="team-member__image">
-                        <img src="bilder/team/bes_result.jpg" alt="Bes ">
+                        <img src="bilder/team/bes_result.jpg" alt="Bes">
                     </div>
                     <h3 class="team-member__name">Bes</h3>
                     <div class="team-member__role">Account Manager</div>
@@ -1254,27 +1273,30 @@
                 <div class="mission__text">
                     <h2>Unsere Mission</h2>
                     <p class="mission__description">
-                        Wir glauben daran, dass großartiges Design und erstklassige Technologie Hand in Hand gehen müssen, um außergewöhnliche digitale Erlebnisse zu schaffen. Unser Ziel ist es, Unternehmen dabei zu helfen, ihr volles Potenzial im digitalen Raum zu entfalten.
+                        Wir verstehen uns als digitale Wegbegleiter für Unternehmen jeder Größe. Unser Ziel ist es, maßgeschneiderte Lösungen zu entwickeln, die genau auf die individuellen Bedürfnisse und Herausforderungen unserer Kunden abgestimmt sind.
                     </p>
                     <p class="mission__description">
-                        Durch unsere ganzheitliche Herangehensweise verbinden wir strategisches Denken mit kreativer Umsetzung. Wir entwickeln nicht nur visuell ansprechende Lösungen, sondern schaffen nachhaltige digitale Systeme, die mit unserem Kunden mitwachsen und sich an ihre sich ändernden Bedürfnisse anpassen.
+                        Von der strategischen Beratung über kreatives Design bis hin zur technischen Umsetzung – wir bieten das komplette Spektrum digitaler Dienstleistungen aus einer Hand. Dabei setzen wir auf innovative Ansätze, die nachhaltige Ergebnisse liefern und unserem Kunden dabei helfen, in der digitalen Welt erfolgreich zu sein.
+                    </p>
+                    <p class="mission__description">
+                        Unser interdisziplinäres Team kombiniert jahrelange Erfahrung mit frischen Ideen und modernsten Technologien. So entstehen Lösungen, die nicht nur heute funktionieren, sondern auch zukunftssicher sind und mit den sich wandelnden Anforderungen des Marktes mitwachsen.
                     </p>
                 </div>
 
                 <div class="mission__stats">
-                    <div class="stat-item">
-                        <div class="stat-item__number">44 Millionen</div>
-                        <div class="stat-item__label">Transaktionen alle 24 Stunden</div>
+                    <div class="stat-item" data-target="5">
+                        <div class="stat-item__number">0</div>
+                        <div class="stat-item__label">Jahre Erfahrung</div>
                     </div>
 
-                    <div class="stat-item">
-                        <div class="stat-item__number">€119 Billionen</div>
-                        <div class="stat-item__label">Verwaltetes Vermögen</div>
+                    <div class="stat-item" data-target="80">
+                        <div class="stat-item__number">0</div>
+                        <div class="stat-item__label">Erfolgreich abgeschlossene Projekte</div>
                     </div>
 
-                    <div class="stat-item">
-                        <div class="stat-item__number">46.000</div>
-                        <div class="stat-item__label">Neue Benutzer jährlich</div>
+                    <div class="stat-item" data-target="50">
+                        <div class="stat-item__number">0</div>
+                        <div class="stat-item__label">Zufriedene Kunden</div>
                     </div>
                 </div>
             </div>
@@ -1440,6 +1462,52 @@
             member.addEventListener('mouseleave', function() {
                 this.style.transform = 'translateY(0)';
             });
+        });
+
+        // Counter Animation for Stats
+        function animateCounter(element, target, duration = 2000) {
+            const start = 0;
+            const increment = target / (duration / 16); // 60fps
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current);
+            }, 16);
+        }
+
+        // Intersection Observer for Stats Animation
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statItem = entry.target;
+                    const numberElement = statItem.querySelector('.stat-item__number');
+                    const target = parseInt(statItem.dataset.target);
+                    
+                    // Add animation class
+                    statItem.classList.add('animate');
+                    
+                    // Start counter animation
+                    setTimeout(() => {
+                        animateCounter(numberElement, target);
+                    }, 200);
+                    
+                    // Unobserve after animation starts
+                    statsObserver.unobserve(statItem);
+                }
+            });
+        }, {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        // Observe all stat items
+        document.querySelectorAll('.stat-item').forEach(item => {
+            statsObserver.observe(item);
         });
     </script>
 </body>
