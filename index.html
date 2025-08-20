@@ -245,14 +245,26 @@
             padding: 0 48px;
         }
 
-        /* Scrolled state */
-        .header[data-state="active"] .header__container {
-            max-width: 1024px;
-            background: rgba(18, 18, 18, 0.8);
-            backdrop-filter: blur(16px);
-            border: 1px solid #1E1E1E;
-            border-radius: 16px;
-            padding: 0 20px;
+        /* Scrolled state - only for desktop */
+        @media (min-width: 769px) {
+            .header[data-state="active"] .header__container {
+                max-width: 1024px;
+                background: rgba(18, 18, 18, 0.8);
+                backdrop-filter: blur(16px);
+                border: 1px solid #1E1E1E;
+                border-radius: 16px;
+                padding: 0 20px;
+            }
+        }
+
+        /* Mobile always has glass effect */
+        @media (max-width: 768px) {
+            .header__container {
+                background: rgba(18, 18, 18, 0.8) !important;
+                backdrop-filter: blur(16px) !important;
+                border: 1px solid #1E1E1E !important;
+                border-radius: 16px !important;
+            }
         }
 
         .header__content {
@@ -717,8 +729,8 @@
             }
         }
 
-        /* Active mobile menu state */
-        .header[data-state="active"] .mobile-menu {
+        /* Active mobile menu state - only when manually triggered */
+        .header[data-state="active"] .mobile-menu.manual-open {
             display: block;
         }
 
@@ -1006,7 +1018,7 @@
 
         .service-slide {
             min-height: 80vh;
-            padding: 80px 60px 40px 60px;
+            padding: 0px 60px 40px 60px;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -1015,6 +1027,10 @@
             opacity: 0;
             transform: translateY(50px);
             transition: all 0.6s ease;
+        }
+
+        .service-slide:first-child {
+            padding-top: 120px;
         }
 
         .service-slide.active {
@@ -1488,6 +1504,7 @@
         .faq__header {
             position: sticky;
             top: 120px;
+            align-self: flex-start;
         }
 
         .faq__title {
@@ -1601,7 +1618,7 @@
 
         /* CTA Section */
         .cta-section {
-            padding: 120px 0;
+            padding: 50px 0 30px;
             background: transparent;
             position: relative;
             overflow: hidden;
@@ -2393,60 +2410,60 @@
                             <!-- Position 1 -->
                             <div class="logo-slot">
                                 <div class="client-logo active" data-set="1">
-                                    <img src="bilder/logos/cyclers.png" alt="Cyclers" style="max-height: 75px; max-width: 75px;" />
+                                    <img src="bilder/logos/cyclers.png" alt="Cyclers" style="max-height: 120px; max-width: 160px;" />
                                 </div>
                                 <div class="client-logo" data-set="2">
-                                    <img src="bilder/logos/charibee.png" alt="Charibee" style="max-height: 75px; max-width: 75px;" />
+                                    <img src="bilder/logos/charibee.png" alt="Charibee" style="max-height: 120px; max-width: 160px;" />
                                 </div>
                             </div>
                             
                             <!-- Position 2 -->
                             <div class="logo-slot">
                                 <div class="client-logo active" data-set="1">
-                                    <img src="bilder/logos/allianz.png" alt="Allianz" style="max-height: 75px; max-width: 75px;" />
+                                    <img src="bilder/logos/allianz.png" alt="Allianz" style="max-height: 120px; max-width: 160px;" />
                                 </div>
                                 <div class="client-logo" data-set="2">
-                                    <img src="bilder/logos/akad.png" alt="Akad" style="max-height: 75px; max-width: 75px;" />
+                                    <img src="bilder/logos/akad.png" alt="Akad" style="max-height: 120px; max-width: 160px;" />
                                 </div>
                             </div>
                             
                             <!-- Position 3 -->
                             <div class="logo-slot">
                                 <div class="client-logo active" data-set="1">
-                                    <img src="bilder/logos/obama.png" alt="Microsoft" style="max-height: 75px; max-width: 75px;" />
+                                    <img src="bilder/logos/obama.png" alt="Microsoft" style="max-height: 120px; max-width: 160px;" />
                                 </div>
                                 <div class="client-logo" data-set="2">
-                                    <img src="bilder/logos/nobu.png" alt="Nobuhiko Asaeda" style="max-height: 75px; max-width: 75px;" />
+                                    <img src="bilder/logos/nobu.png" alt="Nobuhiko Asaeda" style="max-height: 120px; max-width: 160px;" />
                                 </div>
                             </div>
                             
                             <!-- Position 4 -->
                             <div class="logo-slot">
                                 <div class="client-logo active" data-set="1">
-                                    <img src="bilder/logos/cuvee.svg" alt="La Cuveé" style="max-height: 75px; max-width: 75px;" />
+                                    <img src="bilder/logos/cuvee.svg" alt="La Cuveé" style="max-height: 120px; max-width: 160px;" />
                                 </div>
                                 <div class="client-logo" data-set="2">
-                                    <img src="bilder/logos/asano.png" alt="Asano" style="max-height: 75px; max-width: 75px;" />
+                                    <img src="bilder/logos/asano.png" alt="Asano" style="max-height: 120px; max-width: 160px;" />
                                 </div>
                             </div>
                             
                             <!-- Position 5 -->
                             <div class="logo-slot">
                                 <div class="client-logo active" data-set="1">
-                                    <img src="bilder/logos/hsf.png" alt="Health Staff Finders" style="max-height: 75px; max-width: 75px;" />
+                                    <img src="bilder/logos/hsf.png" alt="Health Staff Finders" style="max-height: 120px; max-width: 160px;" />
                                 </div>
                                 <div class="client-logo" data-set="2">
-                                    <img src="bilder/logos/joscot.png" alt="Joscot" style="max-height: 75px; max-width: 75px;" />
+                                    <img src="bilder/logos/joscot.png" alt="Joscot" style="max-height: 120px; max-width: 160px;" />
                                 </div>
                             </div>
                             
                             <!-- Position 6 -->
                             <div class="logo-slot">
                                 <div class="client-logo active" data-set="1">
-                                    <img src="bilder/logos/gagos.png" alt="Gagos" style="max-height: 75px; max-width: 75px;" />
+                                    <img src="bilder/logos/gagos.png" alt="Gagos" style="max-height: 120px; max-width: 160px;" />
                                 </div>
                                 <div class="client-logo" data-set="2">
-                                    <img src="bilder/logos/saarland.png" alt="Saarland University" style="max-height: 75px; max-width: 75px;" />
+                                    <img src="bilder/logos/saarland.png" alt="Saarland University" style="max-height: 120px; max-width: 160px;" />
                                 </div>
                             </div>
                         </div>
@@ -2810,10 +2827,18 @@ Unsere Vielseitigkeit ist unsere Stärke. Ob Design, Strategie oder Content – 
            const header = document.querySelector('.header');
            isScrolled = window.scrollY > 50;
            
-           if (isScrolled) {
-               header.setAttribute('data-state', 'active');
+           // Only apply scrolled state on desktop
+           if (window.innerWidth >= 769) {
+               if (isScrolled) {
+                   header.setAttribute('data-state', 'active');
+               } else {
+                   header.setAttribute('data-state', 'inactive');
+               }
            } else {
-               header.setAttribute('data-state', 'inactive');
+               // On mobile, always keep inactive state unless menu is open
+               if (!menuState) {
+                   header.setAttribute('data-state', 'inactive');
+               }
            }
         }
 
@@ -2824,12 +2849,20 @@ Unsere Vielseitigkeit ist unsere Stärke. Ob Design, Strategie oder Content – 
         const header = document.querySelector('.header');
 
         function toggleMobileMenu() {
+           const mobileMenu = document.querySelector('.mobile-menu');
            menuState = !menuState;
            
-           if (menuState && !isScrolled) {
+           if (menuState) {
                header.setAttribute('data-state', 'active');
-           } else if (!menuState && !isScrolled) {
-               header.setAttribute('data-state', 'inactive');
+               mobileMenu.classList.add('manual-open');
+           } else {
+               // On mobile, always return to inactive when closing menu
+               if (window.innerWidth < 769) {
+                   header.setAttribute('data-state', 'inactive');
+               } else {
+                   header.setAttribute('data-state', isScrolled ? 'active' : 'inactive');
+               }
+               mobileMenu.classList.remove('manual-open');
            }
         }
 
@@ -2838,10 +2871,16 @@ Unsere Vielseitigkeit ist unsere Stärke. Ob Design, Strategie oder Content – 
         // Close mobile menu when clicking nav links
         document.querySelectorAll('.mobile-nav__link').forEach(link => {
            link.addEventListener('click', () => {
+               const mobileMenu = document.querySelector('.mobile-menu');
                menuState = false;
-               if (!isScrolled) {
+               
+               // On mobile, always return to inactive when closing menu
+               if (window.innerWidth < 769) {
                    header.setAttribute('data-state', 'inactive');
+               } else {
+                   header.setAttribute('data-state', isScrolled ? 'active' : 'inactive');
                }
+               mobileMenu.classList.remove('manual-open');
            });
         });
 
@@ -2920,15 +2959,15 @@ Unsere Vielseitigkeit ist unsere Stärke. Ob Design, Strategie oder Content – 
            const observer = new IntersectionObserver((entries) => {
                entries.forEach(entry => {
                    if (entry.isIntersecting) {
-                       // Add active to current slide and keep it
+                       // Add active to current slide
                        entry.target.classList.add('active');
                        // Stop observing this element so it stays visible
                        observer.unobserve(entry.target);
                    }
                });
            }, {
-               threshold: 0.3,
-               rootMargin: '-10% 0px -10% 0px'
+               threshold: 0.5,
+               rootMargin: '-20% 0px -20% 0px'
            });
            
            // Start observing all slides except the first one (which starts active)
