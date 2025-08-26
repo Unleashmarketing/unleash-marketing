@@ -1956,31 +1956,23 @@
 
 /* Responsive Design für Desktop */
 @media (min-width: 768px) {
-    .footer__content {
-        flex-direction: column;
-        gap: 24px;
-        text-align: center;
-    }
-
-    .footer__top {
-        flex-direction: column;
-        text-align: center;
-    }
-
     .footer__bottom {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        text-align: center;
+        grid-template-columns: 2fr 2fr 1fr;
+        align-items: start;
     }
 
     .footer__links {
-        justify-content: center;
-        gap: 16px;
+        justify-content: flex-start;
     }
 
     .footer__legal {
-        justify-content: center;
-        gap: 16px;
+        justify-content: flex-end;
+    }
+
+    .footer__copyright {
+        text-align: left;
+        grid-column: 1;
+        grid-row: 1;
     }
 }
 
