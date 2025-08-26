@@ -991,88 +991,297 @@
            }
        }
 
-       /* Responsive Design */
-       @media (max-width: 768px) {
-           .hero {
-               padding: 140px 0 80px;
-           }
+       /* ================================
+          RESPONSIVE BREAKPOINTS
+          ================================ */
 
+       /* Desktop Large - 1200px und größer */
+       @media (min-width: 1200px) {
+           .container {
+               padding: 0 80px;
+           }
+           
+           .hero__content {
+               gap: 100px;
+           }
+           
+           .team__grid {
+               gap: 60px;
+           }
+           
+           .mission__stats {
+               gap: 80px;
+           }
+           
+           .nav__dropdown {
+               min-width: 900px;
+           }
+       }
+
+       /* Tablet - 768px bis 1199px */
+       @media (max-width: 1199px) and (min-width: 769px) {
+           .container {
+               padding: 0 40px;
+           }
+           
+           .hero {
+               padding: 160px 0 100px;
+           }
+           
+           .hero__content {
+               gap: 60px;
+           }
+           
+           .team__header {
+               margin-bottom: 60px;
+           }
+           
+           .team__grid {
+               gap: 30px;
+           }
+           
+           .team-member__image {
+               height: 400px;
+           }
+           
+           .mission-section {
+               padding: 100px 0 0;
+           }
+           
+           .mission__stats {
+               gap: 50px;
+               margin-top: 60px;
+           }
+           
+           .nav__dropdown {
+               min-width: 700px;
+               left: -100px;
+           }
+           
+           .nav__dropdown-grid {
+               grid-template-columns: repeat(2, 1fr);
+           }
+       }
+
+       /* Mobile - 768px und kleiner */
+       @media (max-width: 768px) {
+           .container {
+               padding: 0 20px;
+           }
+           
+           /* Header Mobile */
+           .header__container {
+               background: rgba(18, 18, 18, 0.8) !important;
+               backdrop-filter: blur(16px) !important;
+               border: 1px solid #1E1E1E !important;
+               border-radius: 16px !important;
+               padding: 0 20px !important;
+               max-width: calc(100% - 16px) !important;
+           }
+           
+           .header__center {
+               display: none !important;
+           }
+           
+           .mobile-menu-toggle {
+               display: block !important;
+           }
+           
+           .mobile-menu {
+               margin-top: 16px;
+               padding: 20px;
+           }
+           
+           /* Hero Mobile */
+           .hero {
+              padding: 140px 0 80px;
+               text-align: center;
+           }
+           
            .hero__content {
                grid-template-columns: 1fr;
                gap: 40px;
-               text-align: center;
            }
-
+           
            .hero__text {
                text-align: center; /* Zentriert auf Mobile */
            }
-
+           
+           .hero__text h1 {
+               font-size: clamp(2rem, 8vw, 3rem);
+               margin-bottom: 20px;
+               line-height: 1.2;
+           }
+           
+           .hero__description {
+               font-size: 16px;
+               margin-bottom: 32px;
+           }
+           
+           .hero__cta {
+               padding: 14px 28px;
+               font-size: 16px;
+           }
+           
            .hero__image {
                order: -1;
                height: 300px;
            }
-
+           
+           /* Team Section Mobile */
+           .team-section {
+               padding: 80px 0;
+           }
+           
+           .team__header {
+               margin-bottom: 60px;
+               text-align: center;
+           }
+           
+           .team__title {
+               font-size: clamp(1.8rem, 6vw, 2.5rem);
+               margin-bottom: 20px;
+           }
+           
+           .team__description {
+               max-width: 100%;
+           }
+           
            .team__grid {
                grid-template-columns: repeat(2, 1fr);
                gap: 24px;
            }
-
+           
            .team-member__image {
                height: 300px;
            }
-
-           .mission__content {
-               grid-template-columns: 1fr;
-               gap: 60px;
+           
+           .team-member__name {
+               font-size: 16px;
            }
-
+           
+           .team-member__role {
+               font-size: 13px;
+           }
+           
+           /* Mission Section Mobile */
+           .mission-section {
+               padding: 80px 0 0;
+           }
+           
+           .mission__content {
+               margin-bottom: 60px;
+               text-align: center;
+           }
+           
+           .mission__text h2 {
+               font-size: clamp(1.8rem, 6vw, 2.5rem);
+               margin-bottom: 24px;
+           }
+           
+           .mission__description {
+               font-size: 16px;
+               margin-bottom: 24px;
+               max-width: 100%;
+           }
+           
            .mission__stats {
                grid-template-columns: 1fr;
                gap: 40px;
-               text-align: center;
+               margin-top: 60px;
            }
-
+           
+           .stat-item__number {
+               font-size: clamp(2rem, 8vw, 2.8rem);
+           }
+           
+           .stat-item__label {
+               font-size: 14px;
+           }
+           
+           /* Footer Mobile */
+           .footer {
+               padding: 60px 0 30px;
+           }
+           
+           .footer__container {
+               padding: 0 20px;
+           }
+           
            .footer__content {
-               flex-direction: column;
-               gap: 24px;
+               padding: 30px 20px;
                text-align: center;
            }
-
+           
            .footer__top {
                flex-direction: column;
-               text-align: center;
+               gap: 20px;
            }
-
+           
            .footer__bottom {
                grid-template-columns: 1fr;
                gap: 20px;
                text-align: center;
            }
-
-           .footer__links {
-               justify-content: center;
-               gap: 16px;
-           }
-
+           
+           .footer__links,
            .footer__legal {
                justify-content: center;
                gap: 16px;
            }
+           
+           .footer__links a,
+           .footer__legal a {
+               font-size: 14px;
+           }
        }
 
+       /* Extra Small Mobile - 480px und kleiner */
        @media (max-width: 480px) {
            .container {
                padding: 0 16px;
            }
-
+           
+           .header__container {
+               padding: 0 16px !important;
+           }
+           
+           .hero__text h1 {
+               font-size: clamp(1.8rem, 8vw, 2.5rem);
+           }
+           
+           .hero__description {
+               font-size: 15px;
+           }
+           
            .team__grid {
                grid-template-columns: 1fr;
                gap: 32px;
            }
-
+           
+           .team-member__image {
+               height: 350px;
+           }
+           
+           .team__title,
+           .mission__text h2 {
+               font-size: clamp(1.6rem, 8vw, 2rem);
+           }
+           
            .mission__stats {
-               grid-template-columns: 1fr;
                gap: 32px;
+           }
+           
+           .stat-item__number {
+               font-size: clamp(1.8rem, 10vw, 2.3rem);
+           }
+           
+           .footer__container {
+               padding: 0 16px;
+           }
+           
+           .footer__content {
+               padding: 25px 16px;
            }
        }
    </style>
@@ -1092,7 +1301,7 @@
                            <span class="menu-icon"></span>
                            <span class="close-icon">×</span>
                        </button>
-                    </div>
+                   </div>
 
                    <div class="header__center">
                        <ul class="nav__list">
