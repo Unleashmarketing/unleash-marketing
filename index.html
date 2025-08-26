@@ -1751,18 +1751,21 @@
 @media (min-width: 768px) {
     .footer__bottom {
         grid-template-columns: 1fr 1fr;
-        align-items: start;
+        align-items: end;
         justify-items: start;
+        min-height: 60px;
     }
 
     .footer__legal {
         justify-content: flex-end;
         justify-self: end;
+        align-self: end;
     }
 
     .footer__copyright {
         text-align: left;
         justify-self: start;
+        align-self: end;
     }
 }
 
