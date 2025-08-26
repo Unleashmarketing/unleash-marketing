@@ -1644,8 +1644,6 @@
             opacity: 0.6;
         }
 
-/* Footer - Ersetze den bestehenden Footer-CSS in index.html mit diesem Code */
-
 .footer {
     padding: 80px 0 40px;
     background: transparent;
@@ -1752,8 +1750,9 @@
 /* Responsive Design für Desktop */
 @media (min-width: 768px) {
     .footer__bottom {
-        grid-template-columns: 2fr 2fr 1fr;
+        grid-template-columns: 1fr 1fr;
         align-items: start;
+        justify-items: start;
     }
 
     .footer__links {
@@ -1762,12 +1761,12 @@
 
     .footer__legal {
         justify-content: flex-end;
+        justify-self: end;
     }
 
     .footer__copyright {
         text-align: left;
-        grid-column: 1;
-        grid-row: 1;
+        justify-self: start;
     }
 }
 
