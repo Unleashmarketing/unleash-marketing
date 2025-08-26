@@ -462,11 +462,12 @@
         }
 
 .nav__dropdown-icon {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     margin-left: 6px;
     transition: all 0.3s ease;
     transform-origin: center center;
-    vertical-align: middle;
     width: 12px;
     height: 12px;
 }
@@ -478,7 +479,7 @@
 .nav__dropdown-icon svg {
     width: 100%;
     height: 100%;
-    fill: #FFFFFF;
+    fill: var(--color-text-secondary);
     transition: fill 0.3s ease;
 }
 
@@ -2103,7 +2104,7 @@
                                         Leistungen 
                                         <span class="nav__dropdown-icon">
     <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2 4L6 8L10 4" stroke="#FFFFFF" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
 </span>
                                     </a>
