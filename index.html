@@ -646,6 +646,7 @@
             justify-content: space-between;
             background: transparent;
             border: none; 
+            gap: 10px;
         }
 
         .mobile-nav__link:hover {
@@ -681,12 +682,15 @@
         }
 
         .mobile-nav__toggle {
-            background: none;
-            border: none;
-            color: var(--color-text-secondary);
-            cursor: pointer;
-            font-size: 18px;
-            transition: transform 0.3s ease;
+    background: none;
+    border: none;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    font-size: 18px;
+    transition: transform 0.3s ease;
+    display: flex; /* Für SVG-Zentrierung */
+    align-items: center;
+    justify-content: center;
         }
 
         .mobile-nav__toggle.open {
@@ -2606,12 +2610,6 @@ Unsere Vielseitigkeit ist unsere Stärke. Ob Design, Strategie oder Content – 
             
             dropdown.classList.toggle('open');
             icon.classList.toggle('open');
-            
-            if (dropdown.classList.contains('open')) {
-                icon.textContent = '×';
-            } else {
-                icon.textContent = '+';
-            }
         }
 
         // Loader functionality
@@ -2684,20 +2682,20 @@ Unsere Vielseitigkeit ist unsere Stärke. Ob Design, Strategie oder Content – 
         mobileMenuToggle.addEventListener('click', toggleMobileMenu);
 
         // Close mobile menu when clicking nav links
-        document.querySelectorAll('.mobile-nav__link').forEach(link => {
-           link.addEventListener('click', () => {
-               const mobileMenu = document.querySelector('.mobile-menu');
-               menuState = false;
-               
-               // On mobile, always return to inactive when closing menu
-               if (window.innerWidth < 769) {
-                   header.setAttribute('data-state', 'inactive');
-               } else {
-                   header.setAttribute('data-state', isScrolled ? 'active' : 'inactive');
-               }
-               mobileMenu.classList.remove('manual-open');
-           });
-        });
+document.querySelectorAll('.mobile-nav__link:not(button)').forEach(link => {
+    link.addEventListener('click', () => {
+        const mobileMenu = document.querySelector('.mobile-menu');
+        menuState = false;
+        
+        // On mobile, always return to inactive when closing menu
+        if (window.innerWidth < 769) {
+            header.setAttribute('data-state', 'inactive');
+        } else {
+            header.setAttribute('data-state', isScrolled ? 'active' : 'inactive');
+        }
+        mobileMenu.classList.remove('manual-open');
+    });
+});
 
         // Initialize header state
         updateHeaderState();
