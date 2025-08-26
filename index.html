@@ -956,33 +956,40 @@
 
         /* Services Section */
         .services {
-            padding: 0;
+            padding: 120px 0;
             background: transparent;
             position: relative;
             min-height: 100vh;
+        }
+
+        .services__container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 60px;
         }
 
         .services__content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            min-height: 100vh;
+            grid-template-columns: 400px 1fr;
+            gap: 80px;
+            min-height: 80vh;
             position: relative;
-            z-index: 2;
         }
 
+        /* Linke Seite - Sticky Content */
         .services__left {
+            position: sticky;
+            top: 120px;
+            height: fit-content;
             background: transparent;
-            padding: 0px 60px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            position: sticky;
-            top: 0;
-            height: 100vh;
+            justify-content: flex-start;
         }
 
-        .services__left-content {
-           transform: translateY(-60px); 
+        /* Titel Container - immer sichtbar */
+        .services__title-container {
+            margin-bottom: 40px;
         }
 
         .services__badge {
@@ -994,49 +1001,45 @@
             font-size: 12px;
             font-weight: 600;
             letter-spacing: 0.5px;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
             text-transform: uppercase;
-            width: fit-content;
         }
 
-        .services__title {
+        .services__main-title {
             font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 700;
             color: var(--color-text-primary);
             line-height: 1.2;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
             letter-spacing: -0.02em;
         }
 
-        .services__description {
+        .services__main-description {
             font-size: var(--font-size-body-large);
             color: var(--color-text-secondary);
             line-height: 1.7;
-            max-width: 400px;
         }
 
+        /* Rechte Seite - Scrollbare Services */
         .services__right {
             position: relative;
             background: transparent;
         }
 
-        .service-slide {
-            min-height: 80vh;
-            padding: 120px 60px 40px 60px;
+        .service-item {
+            min-height: 50vh;
+            padding: 0 0 20px 0;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: center;
             background: transparent;
-            opacity: 0;
-            transform: translateY(50px);
+            opacity: 0.3;
+            transform: translateY(20px);
             transition: all 0.6s ease;
+            margin-bottom: 20px;
         }
 
-        .service-slide:first-child {
-            padding-top: 120px;
-        }
-
-        .service-slide.active {
+        .service-item.active {
             opacity: 1;
             transform: translateY(0);
         }
@@ -1082,7 +1085,7 @@
         }
 
         .service-card__text {
-            font-size: var(--font-size-body);
+            font-size: 16px;
             color: var(--color-text-secondary);
             line-height: 1.7;
             margin-bottom: 24px;
@@ -1095,7 +1098,6 @@
             color: var(--color-primary);
             text-decoration: none;
             font-weight: 500;
-            margin-bottom: 32px;
             transition: all 0.3s ease;
         }
 
@@ -1111,12 +1113,18 @@
             transform: translateX(4px);
         }
 
-        .service-card__visual {
-            background: var(--color-bg-primary);
-            border-radius: 12px;
-            padding: 24px;
-            border: 1px solid #2A2A2A;
-            margin-top: 24px;
+        /* Responsive */
+        @media (max-width: 768px) {
+            .services__content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .services__left {
+                position: relative;
+                top: 0;
+                order: -1;
+            }
         }
 
         /* Code Block Styling */
@@ -2319,24 +2327,25 @@ Unsere Vielseitigkeit ist unsere Stärke. Ob Design, Strategie oder Content – 
 
         <!-- Services Section -->
         <section class="services" id="leistungen">
-            <div class="container">
+            <div class="services__container">
                 <div class="services__content">
+                    <!-- Linke Seite - Sticky Titel -->
                     <div class="services__left">
-                        <div class="services__left-content">
-                        <div class="services__badge">
-                            <span>UNSERE EXPERTISE</span>
+                        <!-- Titel - immer sichtbar -->
+                        <div class="services__title-container">
+                            <div class="services__badge">
+                                <span>UNSERE EXPERTISE</span>
+                            </div>
+                            <h2 class="services__main-title">Unsere Leistungen</h2>
+                            <p class="services__main-description">
+                                UNLEASH bietet eine Vielzahl von Leistungen für Unternehmen, die nach sicheren und profitablen kreativen Lösungen suchen.
+                            </p>
                         </div>
-                        
-                        <h2 class="services__title">Unsere Leistungen</h2>
-                        
-                        <p class="services__description">
-                            UNLEASH bietet eine Vielzahl von Leistungen für Unternehmen, die nach sicheren und profitablen kreativen Lösungen suchen.
-                        </p>
-                    </div>
                     </div>
                     
+                    <!-- Rechte Seite - Service Cards -->
                     <div class="services__right">
-                        <div class="service-slide active" data-service="branding">
+                        <div class="service-item" data-service="branding">
                             <div class="service-card">
                                 <h3 class="service-card__title">Branding & Design</h3>
                                 <p class="service-card__text">
@@ -2348,7 +2357,7 @@ Unsere Vielseitigkeit ist unsere Stärke. Ob Design, Strategie oder Content – 
                             </div>
                         </div>
 
-                        <div class="service-slide" data-service="webdesign">
+                        <div class="service-item" data-service="webdesign">
                             <div class="service-card">
                                 <h3 class="service-card__title">Webdesign</h3>
                                 <p class="service-card__text">
@@ -2360,7 +2369,7 @@ Unsere Vielseitigkeit ist unsere Stärke. Ob Design, Strategie oder Content – 
                             </div>
                         </div>
                         
-                        <div class="service-slide" data-service="marketing">
+                        <div class="service-item" data-service="marketing">
                             <div class="service-card">
                                 <h3 class="service-card__title">Marketing</h3>
                                 <p class="service-card__text">
@@ -2371,6 +2380,9 @@ Unsere Vielseitigkeit ist unsere Stärke. Ob Design, Strategie oder Content – 
                                 </a>
                             </div>
                         </div>
+
+                        <!-- Spacer für besseres Scrollverhalten am Ende -->
+                        <div style="height: 40vh;"></div>
                     </div>
                 </div>
             </div>
@@ -2739,33 +2751,52 @@ Unsere Vielseitigkeit ist unsere Stärke. Ob Design, Strategie oder Content – 
            }, 900);
         }
 
-        // Services scroll animation - once visible, stay visible
-        function initServicesScroll() {
-           const serviceSlides = document.querySelectorAll('.service-slide');
-           const servicesSection = document.querySelector('.services');
-           
-           if (!servicesSection) return;
-           
-           const observer = new IntersectionObserver((entries) => {
-               entries.forEach(entry => {
-                   if (entry.isIntersecting) {
-                       // Add active to current slide
-                       entry.target.classList.add('active');
-                       // Stop observing this element so it stays visible
-                       observer.unobserve(entry.target);
-                   }
-               });
-           }, {
-               threshold: 0.5,
-               rootMargin: '-20% 0px -20% 0px'
-           });
-           
-           // Start observing all slides except the first one (which starts active)
-           serviceSlides.forEach((slide, index) => {
-               if (index > 0) { // Don't observe the first slide as it's already active
-                   observer.observe(slide);
-               }
-           });
+        // Sticky Scroll Animation für Services
+        function initStickyScroll() {
+            const serviceItems = document.querySelectorAll('.service-item');
+            
+            let activeIndex = 0;
+        
+            function updateActiveService() {
+                const scrollTop = window.pageYOffset;
+                const windowHeight = window.innerHeight;
+                
+                let newActiveIndex = 0;
+                
+                serviceItems.forEach((item, index) => {
+                    const rect = item.getBoundingClientRect();
+                    const itemTop = rect.top + scrollTop;
+                    const itemBottom = itemTop + rect.height;
+                    
+                    if (scrollTop + windowHeight/2 >= itemTop && scrollTop + windowHeight/2 < itemBottom) {
+                        newActiveIndex = index;
+                    }
+                });
+                
+                if (newActiveIndex !== activeIndex) {
+                    activeIndex = newActiveIndex;
+                    
+                    serviceItems.forEach((item, index) => {
+                        item.classList.toggle('active', index === activeIndex);
+                    });
+                }
+            }
+        
+            serviceItems[0].classList.add('active');
+            
+            let ticking = false;
+            
+            function scrollHandler() {
+                if (!ticking) {
+                    requestAnimationFrame(() => {
+                        updateActiveService();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }
+            
+            window.addEventListener('scroll', scrollHandler);
         }
 
         // FAQ functionality
@@ -2800,7 +2831,7 @@ Unsere Vielseitigkeit ist unsere Stärke. Ob Design, Strategie oder Content – 
         // Initialize all components when DOM is ready
         document.addEventListener('DOMContentLoaded', () => {
            initFAQ();
-           initServicesScroll();
+           initStickyScroll();
         });
 
         // Smooth scrolling for navigation links
