@@ -264,6 +264,8 @@
                 backdrop-filter: blur(16px) !important;
                 border: 1px solid #1E1E1E !important;
                 border-radius: 16px !important;
+                padding: 0 24px !important; 
+                max-width: 1440px !important;
             }
         }
 
@@ -642,6 +644,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            background: transparent;
+            border: none; 
         }
 
         .mobile-nav__link:hover {
@@ -2161,11 +2165,15 @@
                     <div class="mobile-menu">
                         <div class="mobile-menu__content">
                             <ul class="mobile-nav__list">
-                                <li class="mobile-nav__item"><a href="#team" class="mobile-nav__link">Unser Team</a></li>
+                                <li class="mobile-nav__item"><a href="team.html" class="mobile-nav__link">Unser Team</a></li>
                                 <li class="mobile-nav__item">
                                     <button class="mobile-nav__link" onclick="toggleMobileDropdown(this)">
                                         Leistungen 
-                                        <span class="mobile-nav__toggle">+</span>
+                                        <span class="mobile-nav__toggle">
+                                            <svg width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </span>
                                     </button>
                                     <div class="mobile-nav__dropdown">
                                         <a href="design.html" class="mobile-nav__dropdown-item">Branding & Design</a>
