@@ -1057,7 +1057,7 @@
             transform: translateY(0);
         }
 
-        .service-card {
+.service-card {
             background: var(--color-bg-secondary);
             border: 1px solid #2A2A2A;
             border-radius: 16px;
@@ -1241,40 +1241,54 @@
 
         /* Use Cases Visualization */
         .use-cases__container {
-            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
             width: 100%;
             height: 100%;
         }
 
         .use-case {
-            position: absolute;
             background: var(--color-bg-secondary);
             border: 1px solid #2A2A2A;
             border-radius: 20px;
-            padding: 20px 32px;
-            width: 360px;
-            height: 140px;
+            padding: 24px;
             transition: all 0.3s ease;
             z-index: 2;
             animation: floatGentle 6s ease-in-out infinite;
+            height: auto;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .use-case--1 {
-            top: 60px;
-            right: 0;
             animation-delay: 0s;
         }
 
         .use-case--2 {
-            top: 240px;
-            left: 0;
-            animation-delay: 2s;
+            animation-delay: 1.5s;
         }
 
         .use-case--3 {
-            bottom: 60px;
-            right: 40px;
-            animation-delay: 4s;
+            animation-delay: 3s;
+        }
+
+        .use-case--4 {
+            animation-delay: 4.5s;
+        }
+
+        .use-case__icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: var(--color-primary);
+            border-radius: 12px;
+            color: white;
+            flex-shrink: 0;
         }
 
         .use-case__title {
@@ -1980,9 +1994,13 @@
         order: -1;
     }
     
+    .use-cases__container {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
     .use-case {
-        width: 280px;
-        height: 120px;
+        min-height: 120px;
         padding: 16px 20px;
     }
     
@@ -2183,7 +2201,7 @@
     .footer__container {
         padding: 0 16px;
     }
-    
+
     .about__title,
     .services__main-title {
         font-size: clamp(1.6rem, 8vw, 2rem);
@@ -2198,8 +2216,7 @@
     }
     
     .use-case {
-        width: 250px;
-        height: 110px;
+        min-height: 110px;
         padding: 14px 18px;
     }
     
@@ -2468,23 +2485,59 @@ Unsere Vielseitigkeit ist unsere Stärke. Ob Design, Strategie oder Content – 
                         <div class="about__visual">
                             <div class="use-cases__container">
                                 <div class="use-case use-case--1">
-                                    <h3 class="use-case__title">Schneller von der Idee zum Ergebnis</h3>
+                                    <div class="use-case__icon">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M12 2L22 22H2L12 2Z"/>
+                                            <path d="M12 8V16"/>
+                                            <circle cx="12" cy="20" r="1"/>
+                                        </svg>
+                                    </div>
+                                    <h3 class="use-case__title">Creative Excellence</h3>
                                     <p class="use-case__text">
-                                        Klare Prozesse und ein eingespieltes Team sorgen für ein reibungsloses Projekt
+                                        We combine imagination with expertise to craft bold and innovative ideas that elevate your brand's identity.
                                     </p>
                                 </div>
                                 
                                 <div class="use-case use-case--2">
-                                    <h3 class="use-case__title">Mehr Sichtbarkeit, mehr Wirkung</h3>
+                                    <div class="use-case__icon">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="9" cy="12" r="1"/>
+                                            <circle cx="9" cy="5" r="1"/>
+                                            <circle cx="15" cy="12" r="1"/>
+                                            <circle cx="15" cy="19" r="1"/>
+                                        </svg>
+                                    </div>
+                                    <h3 class="use-case__title">Professional Team</h3>
                                     <p class="use-case__text">
-                                        Mit gezielten Strategien steigern wir Reichweite und Relevanz deines Unternehmens
+                                        Our dedicated team of designers, developers, and strategists bring years of experience and passion for excellence.
                                     </p>
                                 </div>
                                 
                                 <div class="use-case use-case--3">
-                                    <h3 class="use-case__title">Mehr Zeit fürs Kerngeschäft</h3>
+                                    <div class="use-case__icon">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M21 15V6"/>
+                                            <path d="M3 15V6"/>
+                                            <path d="M8 15V9"/>
+                                            <path d="M16 15V9"/>
+                                        </svg>
+                                    </div>
+                                    <h3 class="use-case__title">Collaborative Approach</h3>
                                     <p class="use-case__text">
-                                        Von der ersten Idee bis zur finalen Umsetzung können wir uns um jedes Detail kümmern
+                                        Your input is invaluable. We work closely with you, maintaining open communication throughout the project.
+                                    </p>
+                                </div>
+                                
+                                <div class="use-case use-case--4">
+                                    <div class="use-case__icon">
+                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="12" cy="12" r="10"/>
+                                            <polyline points="12,6 12,12 16,14"/>
+                                        </svg>
+                                    </div>
+                                    <h3 class="use-case__title">On-Time Delivery</h3>
+                                    <p class="use-case__text">
+                                        We respect your deadlines and commit to delivering high-quality work on schedule without compromise.
                                     </p>
                                 </div>
                             </div>
@@ -2676,7 +2729,6 @@ Unsere Vielseitigkeit ist unsere Stärke. Ob Design, Strategie oder Content – 
     </div>
 </a>
                             </div>
-                            
                             <div style="color: var(--color-text-secondary); font-size: 16px; line-height: 1.6;">
                                 <p><strong style="color: var(--color-text-primary);">Bürozeiten:</strong><br>
                                 Montag - Freitag: 10:00 - 18:00 Uhr</p>
