@@ -1279,17 +1279,21 @@
             animation-delay: 4.5s;
         }
 
-        .use-case__icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 48px;
-            height: 48px;
-            background: var(--color-primary);
-            border-radius: 12px;
-            color: white;
-            flex-shrink: 0;
-        }
+.use-case__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: var(--color-primary);
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+.use-case__icon img {
+    filter: brightness(0) invert(1); /* Macht die Icons weiß */
+    transition: filter 0.3s ease;
+}
 
         .use-case__title {
             font-size: 18px;
@@ -2483,64 +2487,47 @@ Unsere Vielseitigkeit ist unsere Stärke. Ob Design, Strategie oder Content – 
                     
                     <div class="about__right">
                         <div class="about__visual">
-                            <div class="use-cases__container">
-                                <div class="use-case use-case--1">
-                                    <div class="use-case__icon">
-                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M12 2L22 22H2L12 2Z"/>
-                                            <path d="M12 8V16"/>
-                                            <circle cx="12" cy="20" r="1"/>
-                                        </svg>
-                                    </div>
-                                    <h3 class="use-case__title">Creative Excellence</h3>
-                                    <p class="use-case__text">
-                                        We combine imagination with expertise to craft bold and innovative ideas that elevate your brand's identity.
-                                    </p>
-                                </div>
-                                
-                                <div class="use-case use-case--2">
-                                    <div class="use-case__icon">
-                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <circle cx="9" cy="12" r="1"/>
-                                            <circle cx="9" cy="5" r="1"/>
-                                            <circle cx="15" cy="12" r="1"/>
-                                            <circle cx="15" cy="19" r="1"/>
-                                        </svg>
-                                    </div>
-                                    <h3 class="use-case__title">Professional Team</h3>
-                                    <p class="use-case__text">
-                                        Our dedicated team of designers, developers, and strategists bring years of experience and passion for excellence.
-                                    </p>
-                                </div>
-                                
-                                <div class="use-case use-case--3">
-                                    <div class="use-case__icon">
-                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M21 15V6"/>
-                                            <path d="M3 15V6"/>
-                                            <path d="M8 15V9"/>
-                                            <path d="M16 15V9"/>
-                                        </svg>
-                                    </div>
-                                    <h3 class="use-case__title">Collaborative Approach</h3>
-                                    <p class="use-case__text">
-                                        Your input is invaluable. We work closely with you, maintaining open communication throughout the project.
-                                    </p>
-                                </div>
-                                
-                                <div class="use-case use-case--4">
-                                    <div class="use-case__icon">
-                                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <circle cx="12" cy="12" r="10"/>
-                                            <polyline points="12,6 12,12 16,14"/>
-                                        </svg>
-                                    </div>
-                                    <h3 class="use-case__title">On-Time Delivery</h3>
-                                    <p class="use-case__text">
-                                        We respect your deadlines and commit to delivering high-quality work on schedule without compromise.
-                                    </p>
-                                </div>
-                            </div>
+<div class="use-cases__container">
+    <div class="use-case use-case--1">
+        <div class="use-case__icon">
+            <img src="bilder/icons/creative-excellence.png" alt="Creative Excellence Icon" width="32" height="32">
+        </div>
+        <h3 class="use-case__title">Kreative Exzellenz</h3>
+        <p class="use-case__text">
+            Wir verbinden Vorstellungskraft mit Expertise, um mutige und innovative Ideen zu entwickeln, die deine Markenidentität stärken.
+        </p>
+    </div>
+    
+    <div class="use-case use-case--2">
+        <div class="use-case__icon">
+            <img src="bilder/icons/professional-team.png" alt="Professional Team Icon" width="32" height="32">
+        </div>
+        <h3 class="use-case__title">Professionelles Team</h3>
+        <p class="use-case__text">
+            Unser engagiertes Team aus Designern, Entwicklern und Strategen bringt jahrelange Erfahrung und Leidenschaft für Exzellenz mit.
+        </p>
+    </div>
+    
+    <div class="use-case use-case--3">
+        <div class="use-case__icon">
+            <img src="bilder/icons/collaborative-approach.png" alt="Collaborative Approach Icon" width="32" height="32">
+        </div>
+        <h3 class="use-case__title">Kollaborativer Ansatz</h3>
+        <p class="use-case__text">
+            Dein Input ist wertvoll. Wir arbeiten eng mit dir zusammen und halten während des gesamten Projekts eine offene Kommunikation aufrecht.
+        </p>
+    </div>
+    
+    <div class="use-case use-case--4">
+        <div class="use-case__icon">
+            <img src="bilder/icons/on-time-delivery.png" alt="On-Time Delivery Icon" width="32" height="32">
+        </div>
+        <h3 class="use-case__title">Pünktliche Lieferung</h3>
+        <p class="use-case__text">
+            Wir respektieren deine Deadlines und verpflichten uns, hochwertige Arbeit termingerecht und ohne Kompromisse zu liefern.
+        </p>
+    </div>
+</div>
                         </div>
                     </div>
                 </div>
