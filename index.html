@@ -1142,32 +1142,16 @@
 
         /* About Section */
         .about-section {
-            padding: 0px 0;
+            padding: 80px 0;
             background: transparent;
             position: relative;
             overflow: hidden;
         }
 
         .about__content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: start;
+            text-align: center;
             position: relative;
             z-index: 2;
-        }
-
-        .about__badge {
-            display: inline-block;
-            background: var(--color-primary);
-            color: var(--color-text-primary);
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-bottom: 32px;
-            text-transform: uppercase;
         }
 
         .about__title {
@@ -1189,17 +1173,16 @@
         }
 
         .about__description {
-            margin-bottom: 40px;
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .about__description p {
             font-size: var(--font-size-body-large);
             color: var(--color-text-secondary);
             line-height: 1.7;
-            margin-bottom: 24px;
-        }
-
-        .about__description p:last-child {
             margin-bottom: 0;
         }
 
@@ -1214,6 +1197,7 @@
             border-bottom: 2px solid var(--color-primary);
             padding-bottom: 4px;
             transition: all 0.3s ease;
+            margin-bottom: 60px;
         }
 
         .about__cta:hover {
@@ -1228,24 +1212,13 @@
             transform: translateX(4px);
         }
 
-        .about__right {
-            position: relative;
-            height: 600px;
-        }
-
-        .about__visual {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
         /* Use Cases Visualization */
         .use-cases__container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(4, 1fr);
             gap: 24px;
-            width: 100%;
-            height: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .use-case {
@@ -1261,6 +1234,13 @@
             display: flex;
             flex-direction: column;
             gap: 16px;
+            text-align: center;
+        }
+
+        .use-case:hover {
+            transform: translateY(-8px);
+            border-color: var(--color-primary);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
         }
 
         .use-case--1 {
@@ -1279,21 +1259,22 @@
             animation-delay: 4.5s;
         }
 
-.use-case__icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    background: var(--color-primary);
-    border-radius: 12px;
-    flex-shrink: 0;
-}
+        .use-case__icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: var(--color-primary);
+            border-radius: 12px;
+            flex-shrink: 0;
+            margin: 0 auto;
+        }
 
-.use-case__icon img {
-    filter: brightness(0) invert(1); /* Macht die Icons weiß */
-    transition: filter 0.3s ease;
-}
+        .use-case__icon img {
+            filter: brightness(0) invert(1);
+            transition: filter 0.3s ease;
+        }
 
         .use-case__title {
             font-size: 18px;
@@ -1787,22 +1768,6 @@
     }
 }
 
-            /* Loader responsive */
-            .loader-logo-text {
-                font-size: 2rem;
-            }
-
-            .loader-logo-pattern {
-                width: 6px;
-                height: 36px;
-                margin-left: 16px;
-            }
-
-            .loader-progress {
-                width: 150px;
-            }
-        }
-
 /* ================================
    RESPONSIVE BREAKPOINTS
    ================================ */
@@ -1825,10 +1790,6 @@
     
     .services__content {
         grid-template-columns: 450px 1fr;
-        gap: 100px;
-    }
-    
-    .about__content {
         gap: 100px;
     }
     
@@ -1870,10 +1831,6 @@
         top: 100px;
     }
     
-    .about__content {
-        gap: 60px;
-    }
-    
     .faq__content {
         gap: 60px;
     }
@@ -1898,6 +1855,11 @@
     
     .nav__dropdown-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .use-cases__container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
 }
 
@@ -1974,11 +1936,6 @@
         padding: 80px 0;
     }
     
-    .about__content {
-        grid-template-columns: 1fr;
-        gap: 50px;
-    }
-    
     .about__title {
         font-size: clamp(1.8rem, 6vw, 2.5rem);
         text-align: center;
@@ -1991,11 +1948,6 @@
     .about__cta {
         justify-content: center;
         font-size: 16px;
-    }
-    
-    .about__right {
-        height: 400px;
-        order: -1;
     }
     
     .use-cases__container {
@@ -2138,7 +2090,7 @@
     .form-input,
     .form-textarea {
         padding: 14px 16px;
-        font-size: 16px; /* Verhindert Zoom auf iOS */
+        font-size: 16px;
     }
     
     .form-submit {
@@ -2205,7 +2157,7 @@
     .footer__container {
         padding: 0 16px;
     }
-
+    
     .about__title,
     .services__main-title {
         font-size: clamp(1.6rem, 8vw, 2rem);
@@ -2235,7 +2187,8 @@
     .footer__content {
         padding: 25px 16px;
     }
-}
+
+        }
     </style>
 </head>
 <body>
@@ -2466,68 +2419,58 @@
         <section class="about-section">
             <div class="container">
                 <div class="about__content">
-                    <div class="about__left">
-                        <h2 class="about__title">
-                            Wer ist <span class="about__title-highlight">UNLEASH</span>?
-                        </h2>
-                        
-                        <div class="about__description">
-                            <p>
+                    <h2 class="about__title">
+                        Wer ist <span class="about__title-highlight">UNLEASH</span>?
+                    </h2>
+                    
+                    <div class="about__description">
+                        <p>
 UNLEASH ist eine Kreativagentur mit einem klaren Ziel: Unternehmen wachsen zu lassen und ihre Herausforderungen zu lösen – vor allem im digitalen Raum. Wir denken Ideen ganzheitlich, gestalten Projekte interdisziplinär und finden Lösungen, die Wirkung zeigen.</p>
-                            
-                            <p>
-Unsere Vielseitigkeit ist unsere Stärke. Ob Design, Strategie oder Content – wir verbinden unterschiedliche Disziplinen zu einem stimmigen Gesamtbild. Dabei profitieren unsere Kund:innen von einem eingespielten Team, das flexibel auf Anforderungen reagiert und kreative Konzepte nahtlos umsetzt. </p>
-
-                        </div>
-                        
-                        <a href="team.html" class="about__cta">
-                            Lerne uns kennen <span class="arrow">→</span>
-                        </a>
                     </div>
                     
-                    <div class="about__right">
-                        <div class="about__visual">
-<div class="use-cases__container">
-    <div class="use-case use-case--1">
-        <div class="use-case__icon">
-            <img src="bilder/icons/creative-excellence.png" alt="Creative Excellence Icon" width="32" height="32">
-        </div>
-        <h3 class="use-case__title">Kreative Exzellenz</h3>
-        <p class="use-case__text">
-            Wir verbinden Vorstellungskraft mit Expertise, um mutige und innovative Ideen zu entwickeln, die deine Markenidentität stärken.
-        </p>
-    </div>
-    
-    <div class="use-case use-case--2">
-        <div class="use-case__icon">
-            <img src="bilder/icons/professional-team.png" alt="Professional Team Icon" width="32" height="32">
-        </div>
-        <h3 class="use-case__title">Professionelles Team</h3>
-        <p class="use-case__text">
-            Unser engagiertes Team aus Designern, Entwicklern und Strategen bringt jahrelange Erfahrung und Leidenschaft für Exzellenz mit.
-        </p>
-    </div>
-    
-    <div class="use-case use-case--3">
-        <div class="use-case__icon">
-            <img src="bilder/icons/collaborative-approach.png" alt="Collaborative Approach Icon" width="32" height="32">
-        </div>
-        <h3 class="use-case__title">Kollaborativer Ansatz</h3>
-        <p class="use-case__text">
-            Dein Input ist wertvoll. Wir arbeiten eng mit dir zusammen und halten während des gesamten Projekts eine offene Kommunikation aufrecht.
-        </p>
-    </div>
-    
-    <div class="use-case use-case--4">
-        <div class="use-case__icon">
-            <img src="bilder/icons/on-time-delivery.png" alt="On-Time Delivery Icon" width="32" height="32">
-        </div>
-        <h3 class="use-case__title">Pünktliche Lieferung</h3>
-        <p class="use-case__text">
-            Wir respektieren deine Deadlines und verpflichten uns, hochwertige Arbeit termingerecht und ohne Kompromisse zu liefern.
-        </p>
-    </div>
-</div>
+                    <a href="team.html" class="about__cta">
+                        Lerne uns kennen <span class="arrow">→</span>
+                    </a>
+                    
+                    <div class="use-cases__container">
+                        <div class="use-case use-case--1">
+                            <div class="use-case__icon">
+                                <img src="bilder/icons/creative-excellence.png" alt="Creative Excellence Icon" width="32" height="32">
+                            </div>
+                            <h3 class="use-case__title">Kreative Exzellenz</h3>
+                            <p class="use-case__text">
+                                Wir verbinden Vorstellungskraft mit Expertise, um mutige und innovative Ideen zu entwickeln, die deine Markenidentität stärken.
+                            </p>
+                        </div>
+                        
+                        <div class="use-case use-case--2">
+                            <div class="use-case__icon">
+                                <img src="bilder/icons/professional-team.png" alt="Professional Team Icon" width="32" height="32">
+                            </div>
+                            <h3 class="use-case__title">Professionelles Team</h3>
+                            <p class="use-case__text">
+                                Unser engagiertes Team aus Designern, Entwicklern und Strategen bringt jahrelange Erfahrung und Leidenschaft für Exzellenz mit.
+                            </p>
+                        </div>
+                        
+                        <div class="use-case use-case--3">
+                            <div class="use-case__icon">
+                                <img src="bilder/icons/collaborative-approach.png" alt="Collaborative Approach Icon" width="32" height="32">
+                            </div>
+                            <h3 class="use-case__title">Kollaborativer Ansatz</h3>
+                            <p class="use-case__text">
+                                Dein Input ist wertvoll. Wir arbeiten eng mit dir zusammen und halten während des gesamten Projekts eine offene Kommunikation aufrecht.
+                            </p>
+                        </div>
+                        
+                        <div class="use-case use-case--4">
+                            <div class="use-case__icon">
+                                <img src="bilder/icons/on-time-delivery.png" alt="On-Time Delivery Icon" width="32" height="32">
+                            </div>
+                            <h3 class="use-case__title">Pünktliche Lieferung</h3>
+                            <p class="use-case__text">
+                                Wir respektieren deine Deadlines und verpflichten uns, hochwertige Arbeit termingerecht und ohne Kompromisse zu liefern.
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -2716,6 +2659,7 @@ Unsere Vielseitigkeit ist unsere Stärke. Ob Design, Strategie oder Content – 
     </div>
 </a>
                             </div>
+                            
                             <div style="color: var(--color-text-secondary); font-size: 16px; line-height: 1.6;">
                                 <p><strong style="color: var(--color-text-primary);">Bürozeiten:</strong><br>
                                 Montag - Freitag: 10:00 - 18:00 Uhr</p>
@@ -2760,7 +2704,7 @@ Unsere Vielseitigkeit ist unsere Stärke. Ob Design, Strategie oder Content – 
                         <div class="footer__brand">
                             <div class="logo">
                                 <img src="bilder/logos/unleash.svg" alt="UNLEASH" class="footer-logo__image">
-                            </div>
+                                </div>
                             <p class="footer__tagline">Kreativer Problemlöser</p>
                         </div>
                         <div class="footer__social">
@@ -2877,20 +2821,20 @@ Unsere Vielseitigkeit ist unsere Stärke. Ob Design, Strategie oder Content – 
         mobileMenuToggle.addEventListener('click', toggleMobileMenu);
 
         // Close mobile menu when clicking nav links
-document.querySelectorAll('.mobile-nav__link:not(button)').forEach(link => {
-    link.addEventListener('click', () => {
-        const mobileMenu = document.querySelector('.mobile-menu');
-        menuState = false;
-        
-        // On mobile, always return to inactive when closing menu
-        if (window.innerWidth < 769) {
-            header.setAttribute('data-state', 'inactive');
-        } else {
-            header.setAttribute('data-state', isScrolled ? 'active' : 'inactive');
-        }
-        mobileMenu.classList.remove('manual-open');
-    });
-});
+        document.querySelectorAll('.mobile-nav__link:not(button)').forEach(link => {
+            link.addEventListener('click', () => {
+                const mobileMenu = document.querySelector('.mobile-menu');
+                menuState = false;
+                
+                // On mobile, always return to inactive when closing menu
+                if (window.innerWidth < 769) {
+                    header.setAttribute('data-state', 'inactive');
+                } else {
+                    header.setAttribute('data-state', isScrolled ? 'active' : 'inactive');
+                }
+                mobileMenu.classList.remove('manual-open');
+            });
+        });
 
         // Initialize header state
         updateHeaderState();
