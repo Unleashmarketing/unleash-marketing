@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impressum - UNLEASH</title>
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'FK Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #FFFFFF;
+            background-color: #121212;
+            font-variant-numeric: tabular-nums;
+            position: relative;
+        }
+
+        /* Global Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #121212 0%, #1E1E1E 50%, #121212 100%);
+            background-image: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 16px,
+                    rgba(255, 81, 0, 0.12) 16px,
+                    rgba(255, 81, 0, 0.12) 17px
+                );
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        /* Container & Grid System */
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 60px;
+        }
+
+        /* Grid Variables */
+        :root {
+            --grid-columns: 12;
+            --column-width: 72px;
+            --gutter: 24px;
+            --baseline: 8px;
+            
+            /* Colors */
+            --color-primary: #FF5100;
+            --color-bg-primary: #121212;
+            --color-bg-secondary: #1E1E1E;
+            --color-text-primary: #FFFFFF;
+            --color-text-secondary: #8E8E8E;
+            --color-text-invert: #F4F4F4;
+            
+            /* Typography */
+            --font-size-h1: clamp(2.5rem, 5vw, 4.5rem);
+            --font-size-h2: clamp(2rem, 4vw, 3rem);
+            --font-size-h3: clamp(1.25rem, 2.5vw, 1.5rem);
+            --font-size-body: 1rem;
+            --font-size-body-large: 1.125rem;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            width: 100%;
+            padding: 0 8px;
+        }
+
+        .header__nav {
+            transition: all 0.3s ease;
+        }
+
+        .header__container {
+            max-width: 1440px;
+            margin: 0 auto;
+            margin-top: 8px;
+            padding: 0 24px;
+            transition: all 0.3s ease;
+            background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid #1E1E1E;
+            border-radius: 16px;
+        }
+
+        .header__content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 24px;
+            padding: 12px 0;
+            position: relative;
+        }
+
+        .header__brand {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .header__center {
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            width: fit-content;
+            height: fit-content;
+            display: none;
+        }
+
+        .header__actions {
+            display: none;
+            align-items: center;
+            width: 100%;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 24px;
+            background: var(--color-bg-primary);
+            border: 1px solid #1E1E1E;
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            position: relative;
+            text-decoration: none;
+        }
+
+        .logo__image,
+        .footer-logo__image {
+            height: 32px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover .logo__image,
+        .logo:hover .footer-logo__image {
+            transform: scale(1.05);
+        }
+
+        .nav__list {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+
+        .nav__item {
+            position: relative;
+        }
+
+        .nav__link {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.15s ease;
+        }
+
+        .nav__link:hover {
+            color: var(--color-text-primary);
+        }
+
+        .nav__button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            height: 36px;
+            padding: 0 12px;
+        }
+
+        .nav__button--primary {
+            background: var(--color-primary);
+            color: var(--color-text-primary);
+            border: 1px solid transparent;
+        }
+
+        .nav__button--primary:hover {
+            background: #E64600;
+            transform: translateY(-1px);
+        }
+
+        .nav__desktop-buttons {
+            display: flex;
+            gap: 12px;
+            width: 100%;
+            flex-direction: column;
+        }
+
+        .mobile-menu-toggle {
+            position: relative;
+            z-index: 20;
+            margin: -10px -16px -10px -10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            display: block;
+        }
+
+        .menu-icon {
+            display: block;
+            width: 24px;
+            height: 24px;
+            position: relative;
+        }
+
+        .menu-icon::before,
+        .menu-icon::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 24px;
+            height: 2px;
+            background: var(--color-text-primary);
+            transition: all 0.2s ease;
+        }
+
+        .menu-icon::before {
+            top: 7px;
+        }
+
+        .menu-icon::after {
+            top: 15px;
+        }
+
+        .close-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-180deg) scale(0);
+            font-size: 24px;
+            color: var(--color-text-primary);
+            transition: all 0.2s ease;
+            opacity: 0;
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            display: none;
+            width: 100%;
+            background: var(--color-bg-primary);
+            border: 1px solid #1E1E1E;
+            border-radius: 24px;
+            padding: 24px;
+            margin-top: 24px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .mobile-menu__content {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .mobile-nav__list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .mobile-nav__item {
+            position: relative;
+        }
+
+        .mobile-nav__link {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.15s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: transparent;
+            border: none; 
+            gap: 10px;
+        }
+
+        .mobile-nav__link:hover {
+            color: var(--color-text-primary);
+        }
+
+        /* Desktop Navigation */
+        @media (min-width: 768px) {
+            .header__brand {
+                width: auto;
+            }
+            
+            .header__center {
+                display: block;
+            }
+            
+            .header__actions {
+                display: flex;
+                width: fit-content;
+                gap: 24px;
+                margin: 0;
+                background: transparent;
+                border: none;
+                border-radius: 0;
+                padding: 0;
+                box-shadow: none;
+                flex-direction: row;
+            }
+            
+            .nav__desktop-buttons {
+                flex-direction: row;
+                width: auto;
+            }
+            
+            .mobile-menu-toggle {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: none !important;
+            }
+        }
+
+        /* Main Content */
+        .main-content {
+            padding-top: 120px;
+            min-height: 100vh;
+        }
+
+        /* Back Button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border: 1px solid #2A2A2A;
+            border-radius: 8px;
+            background: var(--color-bg-secondary);
+            transition: all 0.3s ease;
+            margin-bottom: 24px;
+        }
+
+        .back-button:hover {
+            color: var(--color-text-primary);
+            border-color: var(--color-primary);
+            background: rgba(255, 81, 0, 0.1);
+            transform: translateX(-2px);
+        }
+
+        .back-button svg {
+            transition: transform 0.3s ease;
+        }
+
+        .back-button:hover svg {
+            transform: translateX(-2px);
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 80px 0 60px;
+            text-align: center;
+            background: transparent;
+        }
+
+        .page-header__title {
+            font-size: var(--font-size-h1);
+            font-weight: 700;
+            color: var(--color-text-primary);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .page-header__subtitle {
+            font-size: var(--font-size-body-large);
+            color: var(--color-text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 40px 0 80px;
+            background: transparent;
+        }
+
+        .content__container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--color-bg-secondary);
+            border: 1px solid #2A2A2A;
+            border-radius: 20px;
+            padding: 60px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .content__section {
+            margin-bottom: 48px;
+        }
+
+        .content__section:last-child {
+            margin-bottom: 0;
+        }
+
+        .content__section h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 600;
+            color: var(--color-text-primary);
+            margin-bottom: 24px;
+            line-height: 1.3;
+        }
+
+        .content__section h3 {
+            font-size: var(--font-size-h3);
+            font-weight: 600;
+            color: var(--color-text-primary);
+            margin-top: 32px;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .content__section h3:first-of-type {
+            margin-top: 0;
+        }
+
+        .content__section p {
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            margin-bottom: 16px;
+        }
+
+        .content__section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .content__section ul {
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            margin-left: 20px;
+            margin-bottom: 16px;
+        }
+
+        .content__section li {
+            margin-bottom: 8px;
+        }
+
+        .contact-info {
+            background: var(--color-bg-primary);
+            border: 1px solid #2A2A2A;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .contact-info h4 {
+            color: var(--color-text-primary);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .contact-info p {
+            margin-bottom: 8px;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 80px 0 40px;
+            background: transparent;
+        }
+
+        .footer__container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .footer__content {
+            background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid #1E1E1E;
+            border-radius: 16px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .footer__top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer__brand {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer__brand .footer-logo__image {
+            height: 28px;
+            width: auto;
+        }
+
+        .footer__tagline {
+            color: var(--color-text-secondary);
+            margin: 0;
+        }
+
+        .footer__social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer__social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--color-bg-secondary);
+            border: 1px solid #2A2A2A;
+            border-radius: 50%;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer__social-link:hover {
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+            color: var(--color-text-primary);
+            transform: translateY(-2px);
+        }
+
+        .footer__bottom {
+            border-top: 1px solid #2A2A2A;
+            padding-top: 32px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .footer__legal {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer__legal a {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer__legal a:hover {
+            color: var(--color-primary);
+        }
+
+        .footer__copyright {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Responsive Design für Desktop */
+        @media (min-width: 768px) {
+            .footer__bottom {
+                grid-template-columns: 1fr 1fr;
+                align-items: end;
+                justify-items: start;
+                min-height: 60px;
+            }
+
+            .footer__legal {
+                justify-content: flex-end;
+                justify-self: end;
+                align-self: end;
+            }
+
+            .footer__copyright {
+                text-align: left;
+                justify-self: start;
+                align-self: end;
+            }
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .header__container {
+                padding: 0 20px;
+                max-width: calc(100% - 16px);
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .page-header {
+                padding: 60px 0 40px;
+            }
+            
+            .page-header__title {
+                font-size: clamp(2rem, 8vw, 3rem);
+            }
+            
+            .content__container {
+                padding: 40px 24px;
+                margin: 0 20px;
+            }
+            
+            .footer__container {
+                padding: 0 20px;
+            }
+            
+            .footer__content {
+                padding: 30px 20px;
+                text-align: center;
+            }
+            
+            .footer__top {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .footer__bottom {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .footer__legal {
+                justify-content: center;
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .content__container {
+                padding: 30px 20px;
+                margin: 0 10px;
+            }
+            
+            .header__container {
+                padding: 0 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <!-- Header -->
+        <header class="header">
+            <nav class="header__nav">
+                <div class="header__container">
+                    <div class="header__content">
+                        <div class="header__brand">
+                            <a href="index.html" class="logo">
+                                <img src="bilder/logos/unleash.svg" alt="UNLEASH" class="logo__image">
+                            </a>
+
+                            <button class="mobile-menu-toggle" aria-label="Menu">
+                                <span class="menu-icon"></span>
+                                <span class="close-icon">×</span>
+                            </button>
+                        </div>
+
+                        <div class="header__center">
+                            <ul class="nav__list">
+                                <li class="nav__item"><a href="team.html" class="nav__link">Unser Team</a></li>
+                                <li class="nav__item"><a href="services.html" class="nav__link">Leistungen</a></li>
+                                <li class="nav__item"><a href="projekte.html" class="nav__link">Projekte</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="header__actions">
+                            <div class="nav__desktop-buttons">
+                                <a href="kontakt.html" class="nav__button nav__button--primary">Projekt anfragen</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Menu -->
+                    <div class="mobile-menu">
+                        <div class="mobile-menu__content">
+                            <ul class="mobile-nav__list">
+                                <li class="mobile-nav__item"><a href="team.html" class="mobile-nav__link">Unser Team</a></li>
+                                <li class="mobile-nav__item"><a href="services.html" class="mobile-nav__link">Leistungen</a></li>
+                                <li class="mobile-nav__item"><a href="projekte.html" class="mobile-nav__link">Projekte</a></li>
+                            </ul>
+                            <div class="mobile-nav__buttons">
+                                <a href="kontakt.html" class="nav__button nav__button--primary">Projekt anfragen</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-header__title">Impressum</h1>
+                <p class="page-header__subtitle">
+                    Gesetzlich vorgeschriebene Angaben zu unserem Unternehmen gemäß § 5 TMG und § 55 RStV.
+                </p>
+            </div>
+        </section>
+
+        <!-- Content Section -->
+        <section class="content-section">
+            <div class="container">
+                <div class="content__container">
+                    <a href="index.html" class="back-button">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m12 19-7-7 7-7"/>
+                            <path d="M19 12H5"/>
+                        </svg>
+                        Zurück zur Startseite
+                    </a>
+                    
+                    <div class="content__section">
+                        <h2>1. Angaben gemäß § 5 TMG</h2>
+                        
+                        <p><strong>UNLEASH</strong><br>
+                        [Inhaber: Vorname Nachname]<br>
+                        Kerschensteinerstr. 36<br>
+                        67071 Ludwigshafen am Rhein<br>
+                        Deutschland</p>
+                        
+                        <h3>Kontakt</h3>
+                        <p>Telefon: +49 (0) 172 750 4734<br>
+                        E-Mail: info@unleash-marketing.de<br>
+                        Website: www.unleash-marketing.de</p>
+                    </div>
+
+                    <div class="content__section">
+                        <h2>2. Umsatzsteuer-Identifikationsnummer</h2>
+                        <p>Gemäß § 27 a Umsatzsteuergesetz:<br>
+                        [Umsatzsteuer-ID: DE123456789] <em>(falls vorhanden)</em></p>
+                    </div>
+
+                    <div class="content__section">
+                        <h2>3. Wirtschafts-Identifikationsnummer</h2>
+                        <p>Gemäß § 139c Abgabenordnung:<br>
+                        [Wirtschafts-ID: 12345678901] <em>(falls vorhanden)</em></p>
+                    </div>
+
+                    <div class="content__section">
+                        <h2>4. Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+                        <p>Dung Nguyen<br>
+                        Kerschensteinerstr. 36<br>
+                        67071 Ludwigshafen am Rhein</p>
+                    </div>
+
+                    <div class="content__section">
+                        <h2>5. Streitschlichtung</h2>
+                        <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" style="color: var(--color-primary); text-decoration: none;">https://ec.europa.eu/consumers/odr/</a></p>
+                        
+                        <p>Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
+                        
+                        <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+                    </div>
+
+                    <div class="content__section">
+                        <h2>6. Haftung für Inhalte</h2>
+                        <p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht unter der Verpflichtung, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+                        
+                        <p>Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
+                    </div>
+
+                    <div class="content__section">
+                        <h2>7. Haftung für Links</h2>
+                        <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.</p>
+                        
+                        <p>Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.</p>
+                    </div>
+
+                    <div class="content__section">
+                        <h2>8. Urheberrecht</h2>
+                        <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.</p>
+                        
+                        <p>Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.</p>
+                    </div>
+
+                    <div class="content__section">
+                        <h2>9. Berufsrechtliche Angaben</h2>
+                        <p>UNLEASH ist eine Marketing-Agentur und unterliegt keinen besonderen berufsrechtlichen Regelungen.</p>
+                        
+                        <h3>Tätigkeitsbereich</h3>
+                        <p>Marketing-Beratung, Webdesign, Grafikdesign, Social Media Marketing, Content-Erstellung und verwandte Dienstleistungen im Bereich Marketing und Kommunikation.</p>
+                    </div>
+
+                    <div class="content__section">
+                        <h2>10. Kontakt bei rechtlichen Fragen</h2>
+                        <div class="contact-info">
+                            <h4>Rechtliche Anfragen</h4>
+                            <p>Für Anfragen zu Urheberrecht, Haftung oder anderen rechtlichen Themen wenden Sie sich bitte an:</p>
+                            <p><strong>UNLEASH</strong><br>
+                            Kerschensteinerstr. 36<br>
+                            67071 Ludwigshafen am Rhein<br>
+                            E-Mail: info@unleash-marketing.de<br>
+                            Telefon: +49 172 750 4734</p>
+                        </div>
+                    </div>
+
+                    <div class="content__section">
+                        <h2>11. Hinweise</h2>
+                        <p>Dieses Impressum ist gültig für folgende Online-Präsenzen:</p>
+                        <ul>
+                            <li>www.unleash-marketing.de</li>
+                            <li>Social Media Profile von UNLEASH (Instagram, LinkedIn)</li>
+                            <li>Alle Subdomains der genannten Website</li>
+                        </ul>
+                        
+                        <p><strong>Stand:</strong> 09.09.2025</p>
+                        
+                        <p><em>Hinweis: Bitte ergänzen Sie die in eckigen Klammern stehenden Platzhalter mit den entsprechenden Daten des Unternehmens/Inhabers.</em></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer__container">
+                <div class="footer__content">
+                    <div class="footer__top">
+                        <div class="footer__brand">
+                            <a href="index.html" class="logo">
+                                <img src="bilder/logos/unleash.svg" alt="UNLEASH" class="footer-logo__image">
+                            </a>
+                            <p class="footer__tagline">Kreativer Problemlöser</p>
+                        </div>
+                        <div class="footer__social">
+                            <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="footer__social-link">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                                    <path d="m15.5 6.5-1.1 1.1"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="footer__social-link">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                    <rect width="4" height="12" x="2" y="9"/>
+                                    <circle cx="4" cy="4" r="2"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="footer__bottom">
+                        <div class="footer__copyright">
+                            <div>© 2025 UNLEASH</div>
+                            <div>Alle Rechte vorbehalten</div>
+                        </div>
+                        <div class="footer__legal">
+                            <a href="datenschutz.html">Datenschutz</a>
+                            <a href="impressum.html">Impressum</a>
+                            <a href="agb.html">AGB</a>
+                            <a href="kontakt.html">Kontakt</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const header = document.querySelector('.header');
+        let menuState = false;
+
+        function toggleMobileMenu() {
+            menuState = !menuState;
+            
+            if (menuState) {
+                mobileMenu.style.display = 'block';
+                mobileMenuToggle.querySelector('.menu-icon').style.opacity = '0';
+                mobileMenuToggle.querySelector('.close-icon').style.opacity = '1';
+                mobileMenuToggle.querySelector('.close-icon').style.transform = 'translate(-50%, -50%) rotate(0deg) scale(1)';
+            } else {
+                mobileMenu.style.display = 'none';
+                mobileMenuToggle.querySelector('.menu-icon').style.opacity = '1';
+                mobileMenuToggle.querySelector('.close-icon').style.opacity = '0';
+                mobileMenuToggle.querySelector('.close-icon').style.transform = 'translate(-50%, -50%) rotate(-180deg) scale(0)';
+            }
+        }
+
+        mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+
+        // Close mobile menu when clicking nav links
+        document.querySelectorAll('.mobile-nav__link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (menuState) {
+                    toggleMobileMenu();
+                }
+            });
+        });
+
+        // Logo hover effect
+        const logoImages = document.querySelectorAll('.logo__image, .footer-logo__image');
+
+        logoImages.forEach(logoImg => {
+            const logo = logoImg.parentElement;
+            
+            logo.addEventListener('mouseenter', () => {
+                logoImg.style.transform = 'scale(1.05)';
+            });
+            
+            logo.addEventListener('mouseleave', () => {
+                logoImg.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
