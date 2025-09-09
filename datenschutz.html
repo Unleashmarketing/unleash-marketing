@@ -365,6 +365,38 @@
             min-height: 100vh;
         }
 
+        /* Back Button */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 8px 16px;
+            border: 1px solid #2A2A2A;
+            border-radius: 8px;
+            background: var(--color-bg-secondary);
+            transition: all 0.3s ease;
+            margin-bottom: 40px;
+        }
+
+        .back-button:hover {
+            color: var(--color-text-primary);
+            border-color: var(--color-primary);
+            background: rgba(255, 81, 0, 0.1);
+            transform: translateX(-2px);
+        }
+
+        .back-button svg {
+            transition: transform 0.3s ease;
+        }
+
+        .back-button:hover svg {
+            transform: translateX(-2px);
+        }
+
         /* Page Header */
         .page-header {
             padding: 80px 0 60px;
@@ -713,6 +745,13 @@
         <!-- Page Header -->
         <section class="page-header">
             <div class="container">
+                <a href="index.html" class="back-button">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m12 19-7-7 7-7"/>
+                        <path d="M19 12H5"/>
+                    </svg>
+                    Zurück zur Startseite
+                </a>
                 <h1 class="page-header__title">Datenschutz</h1>
                 <p class="page-header__subtitle">
                     Transparenz und Schutz Ihrer persönlichen Daten sind für uns von höchster Priorität.
@@ -726,7 +765,22 @@
                 <div class="content__container">
                     <div class="content__section">
                         <h2>1. Datenschutz auf einem Blick</h2>
-                        <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie unsere Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.</p>
+                        
+                        <h3>Allgemeine Hinweise</h3>
+                        <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie unsere Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche Informationen zum Thema Datenschutz entnehmen Sie unserer unter diesem Text aufgeführten Datenschutzerklärung.</p>
+                        
+                        <h3>Datenerfassung auf unserer Website</h3>
+                        <p><strong>Wer ist verantwortlich für die Datenerfassung auf dieser Website?</strong><br>
+                        Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.</p>
+                        
+                        <p><strong>Wie erfassen wir Ihre Daten?</strong><br>
+                        Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z.B. um Daten handeln, die Sie in ein Kontaktformular eingeben. Andere Daten werden automatisch beim Besuch der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z.B. Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs).</p>
+                        
+                        <p><strong>Wofür nutzen wir Ihre Daten?</strong><br>
+                        Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten. Andere Daten können zur Analyse Ihres Nutzerverhaltens verwendet werden.</p>
+                        
+                        <p><strong>Welche Rechte haben Sie bezüglich Ihrer Daten?</strong><br>
+                        Sie haben jederzeit das Recht unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung oder Löschung dieser Daten zu verlangen. Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden.</p>
                     </div>
 
                     <div class="content__section">
@@ -744,140 +798,271 @@
                         <h2>3. Erhebung und Speicherung personenbezogener Daten sowie Art und Zweck der Verwendung</h2>
                         
                         <h3>Beim Besuch der Website</h3>
-                        <p>Beim Aufrufen unserer Website werden durch den Browser auf Ihrem Endgerät automatisch Informationen an den Server unserer Website gesendet. Diese Informationen werden temporär in einem sog. Logfile gespeichert. Die IP-Adresse wird anonymisiert.</p>
+                        <p>Beim Aufrufen unserer Website werden durch den Browser auf Ihrem Endgerät automatisch Informationen an den Server unserer Website gesendet. Diese Informationen werden temporär in einem sog. Logfile gespeichert. Folgende Informationen werden dabei ohne Ihr Zutun erfasst und bis zur automatisierten Löschung gespeichert:</p>
+                        
+                        <ul>
+                            <li>IP-Adresse des anfragenden Rechners (anonymisiert)</li>
+                            <li>Datum und Uhrzeit des Zugriffs</li>
+                            <li>Name und URL der abgerufenen Datei</li>
+                            <li>Website, von der aus der Zugriff erfolgt (Referrer-URL)</li>
+                            <li>Verwendeter Browser und ggf. das Betriebssystem Ihres Rechners sowie der Name Ihres Access-Providers</li>
+                        </ul>
+                        
+                        <p>Die genannten Daten werden durch uns zu folgenden Zwecken verarbeitet:</p>
+                        <ul>
+                            <li>Gewährleistung eines reibungslosen Verbindungsaufbaus der Website</li>
+                            <li>Gewährleistung einer komfortablen Nutzung unserer Website</li>
+                            <li>Auswertung der Systemsicherheit und -stabilität</li>
+                        </ul>
+                        
+                        <p>Die Rechtsgrundlage für die Datenverarbeitung ist Art. 6 Abs. 1 S. 1 lit. f DSGVO. Unser berechtigtes Interesse folgt aus oben aufgelisteten Zwecken zur Datenerhebung. In keinem Fall verwenden wir die erhobenen Daten zu dem Zweck, Rückschlüsse auf Ihre Person zu ziehen.</p>
                         
                         <h3>Bei Nutzung unseres Kontaktformulars</h3>
-                        <p>Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert.</p>
-                    </div>
-
-                    <div class="content__section">
-                        <h2>4. Weitergabe von Daten</h2>
-                        <p>Eine Übermittlung Ihrer persönlichen Daten an Dritte zu anderen als den im Folgenden aufgeführten Zwecken findet nicht statt. Wir geben Ihre persönlichen Daten nur an Dritte weiter, wenn:</p>
+                        <p>Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+                        
+                        <p>Die Verarbeitung der in das Kontaktformular eingegebenen Daten erfolgt somit ausschließlich auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Sie können diese Einwilligung jederzeit widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitungsvorgänge bleibt vom Widerruf unberührt.</p>
+                        
+                        <p>Die von Ihnen im Kontaktformular eingegebenen Daten verbleiben bei uns, bis Sie uns zur Löschung auffordern, Ihre Einwilligung zur Speicherung widerrufen oder der Zweck für die Datenspeicherung entfällt (z.B. nach abgeschlossener Bearbeitung Ihrer Anfrage). Zwingende gesetzliche Bestimmungen – insbesondere Aufbewahrungsfristen – bleiben unberührt.</p>
+                        
+                        <h3>SSL- bzw. TLS-Verschlüsselung</h3>
+                        <p>Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte, wie zum Beispiel Bestellungen oder Anfragen, die Sie an uns als Seitenbetreiber senden, eine SSL-bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von "http://" auf "https://" wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.</p>
+                        
+                        <p>Wenn die SSL- bzw. TLS-Verschlüsselung aktiviert ist, können die Daten, die Sie an uns übermitteln, nicht von Dritten mitgelesen werden.</p>
+                        
+                        <h3>Server-Log-Dateien</h3>
+                        <p>Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt. Dies sind:</p>
                         
                         <ul>
-                            <li>Sie Ihre ausdrückliche Einwilligung dazu erteilt haben.</li>
-                            <li>Die Verarbeitung zur Abwicklung eines Vertrags mit Ihnen erforderlich.ist-</li>
-                            <li>Die Verarbeitung zur Erfüllung einer rechtlichen Verpflichtung erforderlich ist.</li>
-                        </ul>
-                    </div>
+                            <li>Browsertyp und Browserversion</li>
+                            <li>Verwendetes Betriebssystem</li>
+                            <li>Referrer URL</li>
+                            <li>Hostname des zugreifenden Rechners</li>
+                            <li>Uhrzeit der Serveranfrage</li>
+                            <li>IP-Adresse (anonymisiert)</li>
+                       </ul>
+                       
+                       <p>Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen. Die Erfassung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Der Websitebetreiber hat ein berechtigtes Interesse an der technisch fehlerfreien Darstellung und der Optimierung seiner Website – hierzu müssen die Server-Log-Files erfasst werden.</p>
+                   </div>
 
-                    <div class="content__section">
-                        <h2>5. Ihre Rechte</h2>
-                        <p>Sie haben das Recht:</p>
-                        
-                        <ul>
-                            <li>Auskunft über Ihre von uns verarbeiteten personenbezogenen Daten zu verlangen</li>
-                            <li>Die Berichtigung unrichtiger oder Vervollständigung Ihrer bei uns gespeicherten personenbezogenen Daten zu verlangen</li>
-                            <li>Die Löschung Ihrer bei uns gespeicherten personenbezogenen Daten zu verlangen</li>
-                        </ul>
-                    </div>
+                   <div class="content__section">
+                       <h2>4. Weitergabe von Daten</h2>
+                       <p>Eine Übermittlung Ihrer persönlichen Daten an Dritte zu anderen als den im Folgenden aufgeführten Zwecken findet nicht statt. Wir geben Ihre persönlichen Daten nur an Dritte weiter, wenn:</p>
+                       
+                       <ul>
+                           <li>Sie haben Ihre ausdrückliche Einwilligung dazu erteilt (Art. 6 Abs. 1 lit. a DSGVO),</li>
+                           <li>die Verarbeitung ist zur Abwicklung eines Vertrags mit Ihnen erforderlich (Art. 6 Abs. 1 lit. b DSGVO),</li>
+                           <li>die Verarbeitung ist zur Erfüllung einer rechtlichen Verpflichtung erforderlich (Art. 6 Abs. 1 lit. c DSGVO),</li>
+                           <li>die Weitergabe ist zur Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen erforderlich und es besteht kein Grund zur Annahme, dass Sie ein überwiegendes schutzwürdiges Interesse an der Nichtweitergabe Ihrer Daten haben.</li>
+                       </ul>
+                   </div>
 
-                    <div class="content__section">
-                        <h2>6. Datensicherheit</h2>
-                        <p>Wir verwenden innerhalb des Website-Besuchs das verbreitete SSL-Verfahren (Secure Socket Layer) in Verbindung mit der jeweils höchsten Verschlüsselungsstufe, die von Ihrem Browser unterstützt wird.</p>
-                    </div>
+                   <div class="content__section">
+                       <h2>5. Cookies</h2>
+                       <p>Die Internetseiten verwenden teilweise so genannte Cookies. Cookies richten auf Ihrem Rechner keinen Schaden an und enthalten keine Viren. Cookies dienen dazu, unser Angebot nutzerfreundlicher, effektiver und sicherer zu machen. Cookies sind kleine Textdateien, die auf Ihrem Rechner abgelegt werden und die Ihr Browser speichert.</p>
+                       
+                       <p>Die meisten der von uns verwendeten Cookies sind so genannte "Session-Cookies". Sie werden nach Ende Ihres Besuchs automatisch gelöscht. Andere Cookies bleiben auf Ihrem Endgerät gespeichert bis Sie diese löschen. Diese Cookies ermöglichen es uns, Ihren Browser beim nächsten Besuch wiederzuerkennen.</p>
+                       
+                       <p>Sie können Ihren Browser so einstellen, dass Sie über das Setzen von Cookies informiert werden und Cookies nur im Einzelfall erlauben, die Annahme von Cookies für bestimmte Fälle oder generell ausschließen sowie das automatische Löschen der Cookies beim Schließen des Browsers aktivieren. Bei der Deaktivierung von Cookies kann die Funktionalität dieser Website eingeschränkt sein.</p>
+                       
+                       <p>Cookies, die zur Durchführung des elektronischen Kommunikationsvorgangs oder zur Bereitstellung bestimmter, von Ihnen erwünschter Funktionen (z.B. Warenkorbfunktion) erforderlich sind, werden auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO gespeichert. Der Websitebetreiber hat ein berechtigtes Interesse an der Speicherung von Cookies zur technisch fehlerfreien und optimierten Bereitstellung seiner Dienste.</p>
+                   </div>
 
-                    <div class="content__section">
-                        <h2>7. Aktualität und Änderung dieser Datenschutzerklärung</h2>
-                        <p>Diese Datenschutzerklärung ist aktuell gültig und hat den Stand 30.08.2024. Durch die Weiterentwicklung unserer Website und Angebote darüber oder aufgrund geänderter gesetzlicher oder behördlicher Vorgaben kann es notwendig werden, diese Datenschutzerklärung zu ändern.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+                   <div class="content__section">
+                       <h2>6. Ihre Rechte</h2>
+                       <p>Sie haben folgende Rechte bezüglich Ihrer personenbezogenen Daten:</p>
+                       
+                       <h3>Recht auf Auskunft</h3>
+                       <p>Sie haben das Recht, von uns eine Bestätigung darüber zu verlangen, ob Sie betreffende personenbezogene Daten verarbeitet werden. Ist dies der Fall, so haben Sie ein Recht auf Auskunft über diese personenbezogenen Daten und auf weitere Informationen gemäß Art. 15 DSGVO.</p>
+                       
+                       <h3>Recht auf Berichtigung</h3>
+                       <p>Sie haben ein Recht auf unverzügliche Berichtigung Sie betreffender unrichtiger personenbezogener Daten und ggf. ein Recht auf Vervollständigung unvollständiger personenbezogener Daten (Art. 16 DSGVO).</p>
+                       
+                       <h3>Recht auf Löschung</h3>
+                       <p>Sie haben das Recht, von uns zu verlangen, dass Sie betreffende personenbezogene Daten unverzüglich gelöscht werden, sofern einer der Gründe des Art. 17 DSGVO zutrifft, z.B. wenn die Daten für die ursprünglich Zwecke nicht mehr benötigt werden.</p>
+                       
+                       <h3>Recht auf Einschränkung der Verarbeitung</h3>
+                       <p>Sie haben das Recht, von uns die Einschränkung der Verarbeitung zu verlangen, wenn eine der Voraussetzungen des Art. 18 DSGVO gegeben ist, z.B. wenn Sie Widerspruch gegen die Verarbeitung eingelegt haben, für die Dauer der Prüfung durch den Verantwortlichen.</p>
+                       
+                       <h3>Recht auf Datenübertragbarkeit</h3>
+                       <p>Sie haben das Recht, die Sie betreffenden personenbezogenen Daten in einem strukturierten, gängigen und maschinenlesbaren Format zu erhalten und diese Daten einem anderen Verantwortlichen ohne Behinderung durch uns zu übermitteln, sofern die Verarbeitung auf einer Einwilligung oder auf einem Vertrag beruht (Art. 20 DSGVO).</p>
+                       
+                       <h3>Widerspruchsrecht</h3>
+                       <p>Sie haben das Recht, aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit gegen die Verarbeitung Sie betreffender personenbezogener Daten, die aufgrund von Art. 6 Abs. 1 lit. e oder f DSGVO erfolgt, Widerspruch einzulegen (Art. 21 DSGVO).</p>
+                       
+                       <h3>Recht auf Widerruf</h3>
+                       <p>Sie haben das Recht, erteilte Einwilligungen jederzeit zu widerrufen. Durch den Widerruf der Einwilligung wird die Rechtmäßigkeit der bis zum Widerruf erfolgten Verarbeitung nicht berührt.</p>
+                       
+                       <h3>Beschwerderecht</h3>
+                       <p>Sie haben das Recht, bei einer Datenschutz-Aufsichtsbehörde über unsere Verarbeitung personenbezogener Daten Beschwerde einzulegen.</p>
+                       
+                       <div class="contact-info">
+                           <h4>Kontakt für Datenschutzanfragen</h4>
+                           <p>Für die Ausübung Ihrer Rechte sowie für weitere Fragen zum Thema Datenschutz können Sie sich jederzeit an uns wenden:</p>
+                           <p><strong>UNLEASH</strong><br>
+                           Kerschensteinerstr. 36<br>
+                           67071 Ludwigshafen<br>
+                           E-Mail: datenschutz@unleash-marketing.de</p>
+                       </div>
+                   </div>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer__container">
-                <div class="footer__content">
-                    <div class="footer__top">
-                        <div class="footer__brand">
-                            <a href="index.html" class="logo">
-                                <img src="bilder/logos/unleash.svg" alt="UNLEASH" class="footer-logo__image">
-                            </a>
-                            <p class="footer__tagline">Kreativer Problemlöser</p>
-                        </div>
-                        <div class="footer__social">
-                            <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="footer__social-link">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
-                                    <path d="m15.5 6.5-1.1 1.1"/>
-                                    <circle cx="12" cy="12" r="3"/>
-                                </svg>
-                            </a>
-                            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="footer__social-link">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                                    <rect width="4" height="12" x="2" y="9"/>
-                                    <circle cx="4" cy="4" r="2"/>
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="footer__bottom">
-                        <div class="footer__copyright">
-                            <div>© 2025 UNLEASH</div>
-                            <div>Alle Rechte vorbehalten</div>
-                        </div>
-                        <div class="footer__legal">
-                            <a href="datenschutz.html">Datenschutz</a>
-                            <a href="impressum.html">Impressum</a>
-                            <a href="agb.html">AGB</a>
-                            <a href="kontakt.html">Kontakt</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
+                   <div class="content__section">
+                       <h2>7. Speicherdauer</h2>
+                       <p>Soweit nicht anders angegeben, speichern wir personenbezogene Daten nur so lange, wie dies zur Erfüllung der verfolgten Zwecke notwendig ist.</p>
+                       
+                       <p>In einigen Fällen sieht der Gesetzgeber die Aufbewahrung von personenbezogenen Daten vor, etwa im Steuerrecht oder Strafrecht. In diesen Fällen werden die Daten von uns nur für diese Zwecke weiterverarbeitet und dann gelöscht oder anonymisiert.</p>
+                       
+                       <ul>
+                           <li><strong>Kontaktanfragen:</strong> Bis zur vollständigen Bearbeitung und darüber hinaus für weitere 3 Jahre zur Nachweispflicht</li>
+                           <li><strong>Server-Log-Dateien:</strong> Automatische Löschung nach 30 Tagen</li>
+                           <li><strong>Session-Cookies:</strong> Automatische Löschung nach Ende der Browser-Sitzung</li>
+                           <li><strong>Dauerhafte Cookies:</strong> Je nach Zweck maximal 2 Jahre</li>
+                       </ul>
+                   </div>
 
-    <script>
-        // Mobile menu toggle
-        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const header = document.querySelector('.header');
-        let menuState = false;
+                   <div class="content__section">
+                       <h2>8. Externe Dienste und Drittanbieter</h2>
+                       
+                       <h3>Hosting</h3>
+                       <p>Diese Website wird bei einem externen Dienstleister gehostet (Hoster). Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert. Hierbei kann es sich v. a. um IP-Adressen, Kontaktanfragen, Meta- und Kommunikationsdaten, Vertragsdaten, Kontaktdaten, Namen, Websitezugriffe und sonstige Daten, die über eine Website generiert werden, handeln.</p>
+                       
+                       <p>Der Einsatz des Hosters erfolgt zum Zwecke der Vertragserfüllung gegenüber unseren potenziellen und bestehenden Kunden (Art. 6 Abs. 1 lit. b DSGVO) und im Interesse einer sicheren, schnellen und effizienten Bereitstellung unseres Online-Angebots durch einen professionellen Anbieter (Art. 6 Abs. 1 lit. f DSGVO).</p>
+                       
+                       <p>Unser Hoster wird Ihre Daten nur insoweit verarbeiten, wie dies zur Erfüllung seiner Leistungspflichten erforderlich ist und unsere Weisungen in Bezug auf diese Daten befolgen.</p>
+                       
+                       <h3>Content Delivery Network (CDN)</h3>
+                       <p>Wir setzen ein Content Delivery Network (CDN) ein. Ein CDN ist ein Netz regional verteilter Server, mit dem Inhalte eines Online-Angebots, insbesondere große Mediendateien wie Grafiken oder Programm-Skripte, mit Hilfe regional oder international verteilter Server schneller ausgeliefert werden können.</p>
+                       
+                       <p>Die Verarbeitung erfolgt zur Wahrung unserer im Rahmen einer Interessensabwägung überwiegenden berechtigten Interessen an einer sicheren und effizienten Bereitstellung, Analyse sowie Optimierung unseres Onlineangebotes gemäß Art. 6 Abs. 1 lit. f DSGVO.</p>
+                   </div>
 
-        function toggleMobileMenu() {
-            menuState = !menuState;
-            
-            if (menuState) {
-                mobileMenu.style.display = 'block';
-                mobileMenuToggle.querySelector('.menu-icon').style.opacity = '0';
-                mobileMenuToggle.querySelector('.close-icon').style.opacity = '1';
-                mobileMenuToggle.querySelector('.close-icon').style.transform = 'translate(-50%, -50%) rotate(0deg) scale(1)';
-            } else {
-                mobileMenu.style.display = 'none';
-                mobileMenuToggle.querySelector('.menu-icon').style.opacity = '1';
-                mobileMenuToggle.querySelector('.close-icon').style.opacity = '0';
-                mobileMenuToggle.querySelector('.close-icon').style.transform = 'translate(-50%, -50%) rotate(-180deg) scale(0)';
-            }
-        }
+                   <div class="content__section">
+                       <h2>9. Datensicherheit</h2>
+                       <p>Wir verwenden innerhalb des Website-Besuchs das verbreitete SSL-Verfahren (Secure Socket Layer) in Verbindung mit der jeweils höchsten Verschlüsselungsstufe, die von Ihrem Browser unterstützt wird. In der Regel handelt es sich dabei um eine 256 Bit Verschlüsselung. Falls Ihr Browser keine 256-Bit Verschlüsselung unterstützt, greifen wir stattdessen auf 128-Bit v3 Technologie zurück.</p>
+                       
+                       <p>Wir haben technische und organisatorische Sicherheitsmaßnahmen getroffen, um Ihre personenbezogenen Daten vor Verlust, Zerstörung, Manipulation und unberechtigtem Zugriff zu schützen. Alle unsere Mitarbeiter und alle an der Datenverarbeitung beteiligten Dritten sind auf das Datengeheimnis verpflichtet und halten die Bestimmungen des Bundesdatenschutzgesetzes ein.</p>
+                       
+                       <p>Unsere Sicherheitsmaßnahmen werden entsprechend der technologischen Entwicklung fortlaufend verbessert. Dazu gehören unter anderem:</p>
+                       
+                       <ul>
+                           <li>Verschlüsselung der Datenübertragung (SSL/TLS)</li>
+                           <li>Regelmäßige Sicherheitsupdates und Patches</li>
+                           <li>Zugriffskontrolle und Berechtigungsmanagement</li>
+                           <li>Regelmäßige Datensicherungen</li>
+                           <li>Firewall- und Antivirus-Systeme</li>
+                           <li>Monitoring und Logging der Systemzugriffe</li>
+                       </ul>
+                   </div>
 
-        mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+                   <div class="content__section">
+                       <h2>10. Automatisierte Entscheidungsfindung</h2>
+                       <p>Wir verzichten auf eine automatische Entscheidungsfindung oder ein Profiling nach Art. 22 DSGVO.</p>
+                   </div>
 
-        // Close mobile menu when clicking nav links
-        document.querySelectorAll('.mobile-nav__link').forEach(link => {
-            link.addEventListener('click', () => {
-                if (menuState) {
-                    toggleMobileMenu();
-                }
-            });
-        });
+                   <div class="content__section">
+                       <h2>11. Aktualität und Änderung dieser Datenschutzerklärung</h2>
+                       <p>Diese Datenschutzerklärung ist aktuell gültig und hat den Stand 09.09.2025. Durch die Weiterentwicklung unserer Website und Angebote darüber oder aufgrund geänderter gesetzlicher oder behördlicher Vorgaben kann es notwendig werden, diese Datenschutzerklärung zu ändern.</p>
+                       
+                       <p>Die jeweils aktuelle Datenschutzerklärung kann jederzeit auf der Website unter "Datenschutz" von Ihnen abgerufen und ausgedruckt werden. Wir empfehlen Ihnen, sich regelmäßig über Änderungen zu informieren.</p>
+                       
+                       <p>Bei wesentlichen Änderungen werden wir Sie durch eine entsprechende Mitteilung auf unserer Website informieren.</p>
+                   </div>
+               </div>
+           </div>
+       </section>
 
-        // Logo hover effect
-        const logoImages = document.querySelectorAll('.logo__image, .footer-logo__image');
+       <!-- Footer -->
+       <footer class="footer">
+           <div class="footer__container">
+               <div class="footer__content">
+                   <div class="footer__top">
+                       <div class="footer__brand">
+                           <a href="index.html" class="logo">
+                               <img src="bilder/logos/unleash.svg" alt="UNLEASH" class="footer-logo__image">
+                           </a>
+                           <p class="footer__tagline">Kreativer Problemlöser</p>
+                       </div>
+                       <div class="footer__social">
+                           <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="footer__social-link">
+                               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                   <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                                   <path d="m15.5 6.5-1.1 1.1"/>
+                                   <circle cx="12" cy="12" r="3"/>
+                               </svg>
+                           </a>
+                           <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="footer__social-link">
+                               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                   <rect width="4" height="12" x="2" y="9"/>
+                                   <circle cx="4" cy="4" r="2"/>
+                               </svg>
+                           </a>
+                       </div>
+                   </div>
+                   <div class="footer__bottom">
+                       <div class="footer__copyright">
+                           <div>© 2025 UNLEASH</div>
+                           <div>Alle Rechte vorbehalten</div>
+                       </div>
+                       <div class="footer__legal">
+                           <a href="datenschutz.html">Datenschutz</a>
+                           <a href="impressum.html">Impressum</a>
+                           <a href="agb.html">AGB</a>
+                           <a href="kontakt.html">Kontakt</a>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </footer>
+   </div>
 
-        logoImages.forEach(logoImg => {
-            const logo = logoImg.parentElement;
-            
-            logo.addEventListener('mouseenter', () => {
-                logoImg.style.transform = 'scale(1.05)';
-            });
-            
-            logo.addEventListener('mouseleave', () => {
-                logoImg.style.transform = 'scale(1)';
-            });
-        });
-    </script>
+   <script>
+       // Mobile menu toggle
+       const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+       const mobileMenu = document.querySelector('.mobile-menu');
+       const header = document.querySelector('.header');
+       let menuState = false;
+
+       function toggleMobileMenu() {
+           menuState = !menuState;
+           
+           if (menuState) {
+               mobileMenu.style.display = 'block';
+               mobileMenuToggle.querySelector('.menu-icon').style.opacity = '0';
+               mobileMenuToggle.querySelector('.close-icon').style.opacity = '1';
+               mobileMenuToggle.querySelector('.close-icon').style.transform = 'translate(-50%, -50%) rotate(0deg) scale(1)';
+           } else {
+               mobileMenu.style.display = 'none';
+               mobileMenuToggle.querySelector('.menu-icon').style.opacity = '1';
+               mobileMenuToggle.querySelector('.close-icon').style.opacity = '0';
+               mobileMenuToggle.querySelector('.close-icon').style.transform = 'translate(-50%, -50%) rotate(-180deg) scale(0)';
+           }
+       }
+
+       mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+
+       // Close mobile menu when clicking nav links
+       document.querySelectorAll('.mobile-nav__link').forEach(link => {
+           link.addEventListener('click', () => {
+               if (menuState) {
+                   toggleMobileMenu();
+               }
+           });
+       });
+
+       // Logo hover effect
+       const logoImages = document.querySelectorAll('.logo__image, .footer-logo__image');
+
+       logoImages.forEach(logoImg => {
+           const logo = logoImg.parentElement;
+           
+           logo.addEventListener('mouseenter', () => {
+               logoImg.style.transform = 'scale(1.05)';
+           });
+           
+           logo.addEventListener('mouseleave', () => {
+               logoImg.style.transform = 'scale(1)';
+           });
+       });
+   </script>
 </body>
 </html>
