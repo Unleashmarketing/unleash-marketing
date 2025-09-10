@@ -637,12 +637,19 @@
             transform: translateY(-4px);
         }
 
-        .reference-logo {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--color-text-primary);
-            text-align: center;
-        }
+.reference-logo {
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(100%) brightness(0) invert(1);
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+.reference-item:hover .reference-logo {
+    filter: none;
+    opacity: 1;
+}
 
         /* CTA Cards Section */
         .cta-cards-section {
@@ -1180,80 +1187,80 @@
         </div>
     </section>
 
-    <!-- References Section -->
-    <section class="references-section">
-        <div class="container">
-            <div class="references__header">
-                <div class="references__badge">REFERENZEN</div>
-                <h2 class="references__title">Gemeinsam erfolgreich</h2>
-                <p class="references__description">
-                    Seit unserer Gründung im Jahr 2020 haben wir uns, national und international, einen beachtlichen Stamm von über 50 Kund*innen aufgebaut und betreuen viele dieser Kund*innen bereits seit mehreren Jahren! Von Einzelunternehmen und KMU, bis hin zu dezentralisierten internationalen Unternehmen. Aktuell betreuen wir im Schnitt monatlich über 50 Kund*innen. Hier finden Sie einen Auszug unserer Referenzen.
-                </p>
+<!-- References Section -->
+<section class="references-section">
+    <div class="container">
+        <div class="references__header">
+            <div class="references__badge">REFERENZEN</div>
+            <h2 class="references__title">Gemeinsam erfolgreich</h2>
+            <p class="references__description">
+                Seit unserer Gründung im Jahr 2020 haben wir uns, national und international, einen beachtlichen Stamm von über 50 Kund*innen aufgebaut und betreuen viele dieser Kund*innen bereits seit mehreren Jahren! Von Einzelunternehmen und KMU, bis hin zu dezentralisierten internationalen Unternehmen. Aktuell betreuen wir im Schnitt monatlich über 50 Kund*innen. Hier finden Sie einen Auszug unserer Referenzen.
+            </p>
+        </div>
+
+        <div class="references__grid">
+            <!-- Row 1 -->
+            <div class="reference-item">
+                <img src="bilder/referenzen/mcshark.png" alt="McSHARK" class="reference-logo" style="max-width: 120px; max-height: 60px;">
+            </div>
+            <div class="reference-item">
+                <img src="bilder/referenzen/bluecode.png" alt="Bluecode" class="reference-logo" style="max-width: 100px; max-height: 50px;">
+            </div>
+            <div class="reference-item">
+                <img src="bilder/referenzen/rhi-magnesita.png" alt="RHI Magnesita" class="reference-logo" style="max-width: 140px; max-height: 55px;">
+            </div>
+            <div class="reference-item">
+                <img src="bilder/referenzen/lasselsberger.png" alt="Lasselsberger" class="reference-logo" style="max-width: 130px; max-height: 50px;">
+            </div>
+            <div class="reference-item">
+                <img src="bilder/referenzen/vienna-business-school.png" alt="Vienna Business School" class="reference-logo" style="max-width: 110px; max-height: 65px;">
+            </div>
+            <div class="reference-item">
+                <img src="bilder/referenzen/horvaths.png" alt="Horvath's" class="reference-logo" style="max-width: 90px; max-height: 45px;">
             </div>
 
-            <div class="references__grid">
-                <!-- Row 1 -->
-                <div class="reference-item">
-                    <div class="reference-logo">McSHARK</div>
-                </div>
-                <div class="reference-item">
-                    <div class="reference-logo">Bluecode</div>
-                </div>
-                <div class="reference-item">
-                    <div class="reference-logo">RHI Magnesita</div>
-                </div>
-                <div class="reference-item">
-                    <div class="reference-logo">Lasselsberger</div>
-                </div>
-                <div class="reference-item">
-                    <div class="reference-logo">Vienna Business School</div>
-                </div>
-                <div class="reference-item">
-                    <div class="reference-logo">Horvath's</div>
-                </div>
+            <!-- Row 2 -->
+            <div class="reference-item">
+                <img src="bilder/referenzen/haai.png" alt="HAAI" class="reference-logo" style="max-width: 80px; max-height: 40px;">
+            </div>
+            <div class="reference-item">
+                <img src="bilder/referenzen/bmf.png" alt="BMF" class="reference-logo" style="max-width: 85px; max-height: 50px;">
+            </div>
+            <div class="reference-item">
+                <img src="bilder/referenzen/crrc.png" alt="CRRC" class="reference-logo" style="max-width: 95px; max-height: 45px;">
+            </div>
+            <div class="reference-item">
+                <img src="bilder/referenzen/fonds.png" alt="FONDS" class="reference-logo" style="max-width: 100px; max-height: 55px;">
+            </div>
+            <div class="reference-item">
+                <img src="bilder/referenzen/xiaomi.png" alt="Xiaomi" class="reference-logo" style="max-width: 110px; max-height: 40px;">
+            </div>
+            <div class="reference-item">
+                <img src="bilder/referenzen/ecoprojekt.png" alt="EcoProjekt" class="reference-logo" style="max-width: 120px; max-height: 50px;">
+            </div>
 
-                <!-- Row 2 -->
-                <div class="reference-item">
-                    <div class="reference-logo">HAAI</div>
-                </div>
-                <div class="reference-item">
-                    <div class="reference-logo">BMF</div>
-                </div>
-                <div class="reference-item">
-                    <div class="reference-logo">CRRC</div>
-                </div>
-                <div class="reference-item">
-                    <div class="reference-logo">FONDS</div>
-                </div>
-                <div class="reference-item">
-                    <div class="reference-logo">Xiaomi</div>
-                </div>
-                <div class="reference-item">
-                    <div class="reference-logo">EcoProjekt</div>
-                </div>
-
-                <!-- Row 3 -->
-                <div class="reference-item">
-                    <div class="reference-logo">WU</div>
-                </div>
-                <div class="reference-item">
-                    <div class="reference-logo">SHH</div>
-                </div>
-                <div class="reference-item">
-                    <div class="reference-logo">ÖBB</div>
-                </div>
-                <div class="reference-item">
-                    <div class="reference-logo">Gebrüder Haider</div>
-                </div>
-                <div class="reference-item">
-                    <div class="reference-logo">Kinderhospiz Netz</div>
-                </div>
-                <div class="reference-item">
-                    <div class="reference-logo">Echte Freude</div>
-                </div>
+            <!-- Row 3 -->
+            <div class="reference-item">
+                <img src="bilder/referenzen/wu.png" alt="WU" class="reference-logo" style="max-width: 70px; max-height: 35px;">
+            </div>
+            <div class="reference-item">
+                <img src="bilder/referenzen/shh.png" alt="SHH" class="reference-logo" style="max-width: 75px; max-height: 40px;">
+            </div>
+            <div class="reference-item">
+                <img src="bilder/referenzen/oebb.png" alt="ÖBB" class="reference-logo" style="max-width: 90px; max-height: 45px;">
+            </div>
+            <div class="reference-item">
+                <img src="bilder/referenzen/gebrueder-haider.png" alt="Gebrüder Haider" class="reference-logo" style="max-width: 135px; max-height: 55px;">
+            </div>
+            <div class="reference-item">
+                <img src="bilder/referenzen/kinderhospiz-netz.png" alt="Kinderhospiz Netz" class="reference-logo" style="max-width: 125px; max-height: 60px;">
+            </div>
+            <div class="reference-item">
+                <img src="bilder/referenzen/echte-freude.png" alt="Echte Freude" class="reference-logo" style="max-width: 115px; max-height: 50px;">
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- CTA Cards Section -->
     <section class="cta-cards-section">
