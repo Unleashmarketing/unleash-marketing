@@ -99,10 +99,36 @@
             margin-top: 8px;
             padding: 0 24px;
             transition: all 0.3s ease;
-            background: rgba(18, 18, 18, 0.8);
-            backdrop-filter: blur(16px);
-            border: 1px solid #1E1E1E;
-            border-radius: 16px;
+        }
+
+        /* Default state */
+        .header[data-state="inactive"] .header__container {
+            max-width: 1536px;
+            padding: 0 48px;
+        }
+
+        /* Scrolled state - only for desktop */
+        @media (min-width: 769px) {
+            .header[data-state="active"] .header__container {
+                max-width: 1024px;
+                background: rgba(18, 18, 18, 0.8);
+                backdrop-filter: blur(16px);
+                border: 1px solid #1E1E1E;
+                border-radius: 16px;
+                padding: 0 20px;
+            }
+        }
+
+        /* Mobile always has glass effect */
+        @media (max-width: 768px) {
+            .header__container {
+                background: rgba(18, 18, 18, 0.8) !important;
+                backdrop-filter: blur(16px) !important;
+                border: 1px solid #1E1E1E !important;
+                border-radius: 16px !important;
+                padding: 0 24px !important; 
+                max-width: 1440px !important;
+            }
         }
 
         .header__content {
@@ -223,6 +249,10 @@
             gap: 12px;
             width: 100%;
             flex-direction: column;
+        }
+
+        .nav__scrolled-button {
+            display: none;
         }
 
         .mobile-menu-toggle {
@@ -357,11 +387,36 @@
             .mobile-menu {
                 display: none !important;
             }
+            
+            /* Scrolled state for desktop */
+            .header[data-state="active"] .nav__desktop-buttons {
+                display: none;
+            }
+            
+            .header[data-state="active"] .nav__scrolled-button {
+                display: block;
+            }
+        }
+
+        /* Active mobile menu state - only when manually triggered */
+        .header[data-state="active"] .mobile-menu.manual-open {
+            display: block;
+        }
+
+        .header[data-state="active"] .menu-icon::before,
+        .header[data-state="active"] .menu-icon::after {
+            opacity: 0;
+            transform: rotate(180deg) scale(0);
+        }
+
+        .header[data-state="active"] .close-icon {
+            transform: translate(-50%, -50%) rotate(0deg) scale(1);
+            opacity: 1;
         }
 
         /* Main Content */
         .main-content {
-            padding-top: 120px;
+            padding-top: 80px;
             min-height: 100vh;
         }
 
@@ -700,7 +755,7 @@
 <body>
     <div class="main-content">
         <!-- Header -->
-        <header class="header">
+        <header class="header" data-state="inactive">
             <nav class="header__nav">
                 <div class="header__container">
                     <div class="header__content">
@@ -725,6 +780,9 @@
 
                         <div class="header__actions">
                             <div class="nav__desktop-buttons">
+                                <a href="kontakt.html" class="nav__button nav__button--primary">Projekt anfragen</a>
+                            </div>
+                            <div class="nav__scrolled-button">
                                 <a href="kontakt.html" class="nav__button nav__button--primary">Projekt anfragen</a>
                             </div>
                         </div>
@@ -882,7 +940,7 @@
     </div>
 
     <script>
-        // Header scroll effect
+        // Header scroll effect (same as index.html)
         let isScrolled = false;
         let menuState = false;
 
@@ -907,25 +965,35 @@
 
         window.addEventListener('scroll', updateHeaderState);
 
-        // Mobile menu toggle
+        // Mobile menu toggle (same as index.html)
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-        const mobileMenu = document.querySelector('.mobile-menu');
         const header = document.querySelector('.header');
 
         function toggleMobileMenu() {
+            const mobileMenu = document.querySelector('.mobile-menu');
             menuState = !menuState;
             
             if (menuState) {
-                mobileMenu.style.display = 'block';
-                mobileMenuToggle.querySelector('.menu-icon').style.opacity = '0';
-                mobileMenuToggle.querySelector('.close-icon').style.opacity = '1';
-                mobileMenuToggle.querySelector('.close-icon').style.transform = 'translate(-50%, -50%) rotate(0deg) scale(1)';
                 header.setAttribute('data-state', 'active');
+                mobileMenu.classList.add('manual-open');
             } else {
-                mobileMenu.style.display = 'none';
-                mobileMenuToggle.querySelector('.menu-icon').style.opacity = '1';
-                mobileMenuToggle.querySelector('.close-icon').style.opacity = '0';
-                mobileMenuToggle.querySelector('.close-icon').style.transform = 'translate(-50%, -50%) rotate(-180deg) scale(0)';
+                // On mobile, always return to inactive when closing menu
+                if (window.innerWidth < 769) {
+                    header.setAttribute('data-state', 'inactive');
+                } else {
+                    header.setAttribute('data-state', isScrolled ? 'active' : 'inactive');
+                }
+                mobileMenu.classList.remove('manual-open');
+            }
+        }
+
+        mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+
+        // Close mobile menu when clicking nav links
+        document.querySelectorAll('.mobile-nav__link:not(button)').forEach(link => {
+            link.addEventListener('click', () => {
+                const mobileMenu = document.querySelector('.mobile-menu');
+                menuState = false;
                 
                 // On mobile, always return to inactive when closing menu
                 if (window.innerWidth < 769) {
@@ -933,64 +1001,12 @@
                 } else {
                     header.setAttribute('data-state', isScrolled ? 'active' : 'inactive');
                 }
-            }
-        }
-
-        mobileMenuToggle.addEventListener('click', toggleMobileMenu);
-
-        // Close mobile menu when clicking nav links
-        document.querySelectorAll('.mobile-nav__link').forEach(link => {
-            link.addEventListener('click', () => {
-                if (menuState) {
-                    menuState = false;
-                    mobileMenu.style.display = 'none';
-                    mobileMenuToggle.querySelector('.menu-icon').style.opacity = '1';
-                    mobileMenuToggle.querySelector('.close-icon').style.opacity = '0';
-                    mobileMenuToggle.querySelector('.close-icon').style.transform = 'translate(-50%, -50%) rotate(-180deg) scale(0)';
-                    
-                    // On mobile, always return to inactive when closing menu
-                    if (window.innerWidth < 769) {
-                        header.setAttribute('data-state', 'inactive');
-                    } else {
-                        header.setAttribute('data-state', isScrolled ? 'active' : 'inactive');
-                    }
-                }
+                mobileMenu.classList.remove('manual-open');
             });
         });
 
         // Initialize header state
         updateHeaderState();
-
-        // Header scroll behavior
-        let lastScrollTop = 0;
-        let ticking = false;
-
-        function updateHeader() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const headerContainer = document.querySelector('.header__container');
-            
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
-                // Scrolling down & past threshold
-                headerContainer.style.transform = 'translateY(-100%)';
-                headerContainer.style.opacity = '0';
-            } else {
-                // Scrolling up or at top
-                headerContainer.style.transform = 'translateY(0)';
-                headerContainer.style.opacity = '1';
-            }
-            
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-            ticking = false;
-        }
-
-        function requestTick() {
-            if (!ticking) {
-                requestAnimationFrame(updateHeader);
-                ticking = true;
-            }
-        }
-
-        window.addEventListener('scroll', requestTick);
 
         // Logo hover effect
         const logoImages = document.querySelectorAll('.logo__image, .footer-logo__image');
