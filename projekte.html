@@ -27,6 +27,7 @@
             position: relative;
         }
 
+        /* Global Background Pattern */
         body::before {
             content: '';
             position: fixed;
@@ -44,7 +45,7 @@
                     rgba(255, 81, 0, 0.12) 17px
                 );
             pointer-events: none;
-            z-index: -1;
+            z-index: -2;
         }
 
         /* Container & Grid System */
@@ -106,48 +107,87 @@
             padding: 0 48px;
         }
 
-        /* Scrolled state */
-        .header[data-state="active"] .header__container {
-            max-width: 1024px;
-            background: rgba(18, 18, 18, 0.8);
-            backdrop-filter: blur(16px);
-            border: 1px solid #1E1E1E;
-            border-radius: 16px;
-            padding: 0 20px;
+        /* Scrolled state - only for desktop */
+        @media (min-width: 769px) {
+            .header[data-state="active"] .header__container {
+                max-width: 1024px;
+                background: rgba(18, 18, 18, 0.8);
+                backdrop-filter: blur(16px);
+                border: 1px solid #1E1E1E;
+                border-radius: 16px;
+                padding: 0 20px;
+            }
+        }
+
+        /* Mobile always has glass effect */
+        @media (max-width: 768px) {
+            .header__container {
+                background: rgba(18, 18, 18, 0.8) !important;
+                backdrop-filter: blur(16px) !important;
+                border: 1px solid #1E1E1E !important;
+                border-radius: 16px !important;
+                padding: 0 24px !important; 
+                max-width: 1440px !important;
+            }
         }
 
         .header__content {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap;
             gap: 24px;
             padding: 12px 0;
+            position: relative;
+        }
+
+        .header__brand {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .header__center {
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            width: fit-content;
+            height: fit-content;
+            display: none;
+        }
+
+        .header__actions {
+            display: none;
+            align-items: center;
+            width: 100%;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 24px;
+            background: var(--color-bg-primary);
+            border: 1px solid #1E1E1E;
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
         }
 
         .logo {
             display: flex;
             align-items: center;
+            position: relative;
             text-decoration: none;
         }
 
-        .logo__text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--color-text-primary);
-            letter-spacing: -0.02em;
+        .logo__image,
+        .footer-logo__image {
+            height: 32px;
+            width: auto;
+            transition: transform 0.3s ease;
         }
 
-        .logo__pattern {
-            width: 4px;
-            height: 24px;
-            background: var(--color-primary);
-            margin-left: 12px;
-            transform: skewX(-45deg);
-            transition: transform 0.4s ease-out;
-        }
-
-        .logo:hover .logo__pattern {
-            transform: skewX(0deg) scaleY(1.2);
+        .logo:hover .logo__image,
+        .logo:hover .footer-logo__image {
+            transform: scale(1.05);
         }
 
         .nav__list {
@@ -159,11 +199,20 @@
             font-size: 14px;
         }
 
+        .nav__item {
+            position: relative;
+        }
+
         .nav__link {
             color: var(--color-text-secondary);
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.15s ease;
         }
 
         .nav__link:hover,
@@ -172,19 +221,198 @@
         }
 
         .nav__button {
-            background: var(--color-primary);
-            color: var(--color-text-primary);
-            padding: 8px 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
             border-radius: 6px;
-            text-decoration: none;
-            font-weight: 500;
             font-size: 14px;
+            font-weight: 500;
             transition: all 0.3s ease;
+            text-decoration: none;
+            height: 36px;
+            padding: 0 12px;
         }
 
-        .nav__button:hover {
+        .nav__button--primary {
+            background: var(--color-primary);
+            color: var(--color-text-primary);
+            border: 1px solid transparent;
+        }
+
+        .nav__button--primary:hover {
             background: #E64600;
             transform: translateY(-1px);
+        }
+
+        .nav__desktop-buttons {
+            display: flex;
+            gap: 12px;
+            width: 100%;
+            flex-direction: column;
+        }
+
+        .nav__scrolled-button {
+            display: none;
+        }
+
+        .mobile-menu-toggle {
+            position: relative;
+            z-index: 20;
+            margin: -10px -16px -10px -10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            display: block;
+        }
+
+        .menu-icon {
+            display: block;
+            width: 24px;
+            height: 24px;
+            position: relative;
+        }
+
+        .menu-icon::before,
+        .menu-icon::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 24px;
+            height: 2px;
+            background: var(--color-text-primary);
+            transition: all 0.2s ease;
+        }
+
+        .menu-icon::before {
+            top: 7px;
+        }
+
+        .menu-icon::after {
+            top: 15px;
+        }
+
+        .close-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-180deg) scale(0);
+            font-size: 24px;
+            color: var(--color-text-primary);
+            transition: all 0.2s ease;
+            opacity: 0;
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            display: none;
+            width: 100%;
+            background: var(--color-bg-primary);
+            border: 1px solid #1E1E1E;
+            border-radius: 24px;
+            padding: 24px;
+            margin-top: 24px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .mobile-menu__content {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .mobile-nav__list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .mobile-nav__item {
+            position: relative;
+        }
+
+        .mobile-nav__link {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.15s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: transparent;
+            border: none; 
+            gap: 10px;
+        }
+
+        .mobile-nav__link:hover {
+            color: var(--color-text-primary);
+        }
+
+        /* Desktop Navigation */
+        @media (min-width: 768px) {
+            .header__brand {
+                width: auto;
+            }
+            
+            .header__center {
+                display: block;
+            }
+            
+            .header__actions {
+                display: flex;
+                width: fit-content;
+                gap: 24px;
+                margin: 0;
+                background: transparent;
+                border: none;
+                border-radius: 0;
+                padding: 0;
+                box-shadow: none;
+                flex-direction: row;
+            }
+            
+            .nav__desktop-buttons {
+                flex-direction: row;
+                width: auto;
+            }
+            
+            .mobile-menu-toggle {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: none !important;
+            }
+            
+            /* Scrolled state for desktop */
+            .header[data-state="active"] .nav__desktop-buttons {
+                display: none;
+            }
+            
+            .header[data-state="active"] .nav__scrolled-button {
+                display: block;
+            }
+        }
+
+        /* Active mobile menu state - only when manually triggered */
+        .header[data-state="active"] .mobile-menu.manual-open {
+            display: block;
+        }
+
+        .header[data-state="active"] .menu-icon::before,
+        .header[data-state="active"] .menu-icon::after {
+            opacity: 0;
+            transform: rotate(180deg) scale(0);
+        }
+
+        .header[data-state="active"] .close-icon {
+            transform: translate(-50%, -50%) rotate(0deg) scale(1);
+            opacity: 1;
         }
 
         /* Hero Section */
@@ -242,29 +470,6 @@
             line-height: 1.7;
             margin-bottom: 0;
             max-width: none;
-        }
-
-        .hero__stats {
-            display: flex;
-            gap: 32px;
-        }
-
-        .stat-item {
-            text-align: left;
-        }
-
-        .stat-item__number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--color-text-primary);
-            line-height: 1;
-            margin-bottom: 4px;
-        }
-
-        .stat-item__label {
-            font-size: 14px;
-            color: var(--color-text-secondary);
-            font-weight: 500;
         }
 
         /* Projects Grid Section */
@@ -540,11 +745,21 @@
         /* Footer */
         .footer {
             padding: 80px 0 40px;
-            background: var(--color-bg-primary);
-            border-top: 1px solid #1E1E1E;
+            background: transparent;
+        }
+
+        .footer__container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
 
         .footer__content {
+            background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid #1E1E1E;
+            border-radius: 16px;
+            padding: 40px;
             display: flex;
             flex-direction: column;
             gap: 32px;
@@ -564,8 +779,9 @@
             gap: 8px;
         }
 
-        .footer__brand .logo__text {
-            font-size: 1.25rem;
+        .footer__brand .footer-logo__image {
+            height: 28px;
+            width: auto;
         }
 
         .footer__tagline {
@@ -607,23 +823,6 @@
             gap: 24px;
         }
 
-        .footer__links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 24px;
-        }
-
-        .footer__links a {
-            color: var(--color-text-primary);
-            text-decoration: none;
-            font-size: 14px;
-            transition: color 0.3s ease;
-        }
-
-        .footer__links a:hover {
-            color: var(--color-primary);
-        }
-
         .footer__legal {
             display: flex;
             flex-wrap: wrap;
@@ -647,35 +846,41 @@
             line-height: 1.5;
         }
 
+        /* Responsive Design für Desktop */
         @media (min-width: 768px) {
             .footer__bottom {
-                grid-template-columns: 2fr 2fr 1fr;
-                align-items: start;
-            }
-
-            .footer__links {
-                justify-content: flex-start;
+                grid-template-columns: 1fr 1fr;
+                align-items: end;
+                justify-items: start;
+                min-height: 60px;
             }
 
             .footer__legal {
                 justify-content: flex-end;
+                justify-self: end;
+                align-self: end;
             }
 
             .footer__copyright {
                 text-align: left;
-                grid-column: 1;
-                grid-row: 1;
+                justify-self: start;
+                align-self: end;
             }
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .header__content {
-                flex-wrap: wrap;
+            .container {
+                padding: 0 20px;
             }
-
-            .nav__list {
-                display: none;
+            
+            .header__container {
+                padding: 0 20px;
+                max-width: calc(100% - 16px);
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
             }
 
             .hero {
@@ -714,23 +919,27 @@
             .cta-card {
                 padding: 40px;
             }
-
-            .footer__top {
-                flex-direction: column;
+            
+            .footer__container {
+                padding: 0 20px;
+            }
+            
+            .footer__content {
+                padding: 30px 20px;
                 text-align: center;
             }
-
+            
+            .footer__top {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
             .footer__bottom {
                 grid-template-columns: 1fr;
                 gap: 20px;
                 text-align: center;
             }
-
-            .footer__links {
-                justify-content: center;
-                gap: 16px;
-            }
-
+            
             .footer__legal {
                 justify-content: center;
                 gap: 16px;
@@ -759,16 +968,6 @@
                 padding: 32px;
             }
         }
-
-/* Dropdown-Menü bei Leistungen ausblenden */
-.nav__item:nth-child(2) .nav__dropdown {
-    display: none !important;
-}
-
-/* Pfeil-Icon bei Leistungen ausblenden */
-.nav__item:nth-child(2) .nav__dropdown-icon {
-    display: none !important;
-}
     </style>
 </head>
 <body>
@@ -777,18 +976,47 @@
         <nav class="header__nav">
             <div class="header__container">
                 <div class="header__content">
-                    <a href="index.html" class="logo">
-                        <span class="logo__text">UNLEASH</span>
-                        <div class="logo__pattern"></div>
-                    </a>
+                    <div class="header__brand">
+                        <a href="index.html" class="logo">
+                            <img src="bilder/logos/unleash.svg" alt="UNLEASH" class="logo__image">
+                        </a>
 
-                    <ul class="nav__list">
-                        <li><a href="team.html" class="nav__link">Unser Team</a></li>
-                        <li><a href="services.html" class="nav__link">Leistungen</a></li>
-                        <li><a href="/" class="nav__link nav__link--active">Projekte</a></li>
-                    </ul>
+                        <button class="mobile-menu-toggle" aria-label="Menu">
+                            <span class="menu-icon"></span>
+                            <span class="close-icon">×</span>
+                        </button>
+                    </div>
 
-                    <a href="#kontakt" class="nav__button">Projekt anfragen</a>
+                    <div class="header__center">
+                        <ul class="nav__list">
+                            <li class="nav__item"><a href="team.html" class="nav__link">Unser Team</a></li>
+                            <li class="nav__item"><a href="services.html" class="nav__link">Leistungen</a></li>
+                            <li class="nav__item"><a href="projekte.html" class="nav__link nav__link--active">Projekte</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="header__actions">
+                        <div class="nav__desktop-buttons">
+                            <a href="kontakt.html" class="nav__button nav__button--primary">Projekt anfragen</a>
+                        </div>
+                        <div class="nav__scrolled-button">
+                            <a href="kontakt.html" class="nav__button nav__button--primary">Projekt anfragen</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu -->
+                <div class="mobile-menu">
+                    <div class="mobile-menu__content">
+                        <ul class="mobile-nav__list">
+                            <li class="mobile-nav__item"><a href="team.html" class="mobile-nav__link">Unser Team</a></li>
+                            <li class="mobile-nav__item"><a href="services.html" class="mobile-nav__link">Leistungen</a></li>
+                            <li class="mobile-nav__item"><a href="projekte.html" class="mobile-nav__link">Projekte</a></li>
+                        </ul>
+                        <div class="mobile-nav__buttons">
+                            <a href="kontakt.html" class="nav__button nav__button--primary">Projekt anfragen</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -816,7 +1044,7 @@
         <div class="container">
             <div class="projects__grid">
                 <!-- Project 1 -->
-                <div class="project-card">
+<div class="project-card">
                     <div class="project-card__image">
                         <div class="project-logo">McSHARK</div>
                     </div>
@@ -1023,46 +1251,6 @@
                 <div class="reference-item">
                     <div class="reference-logo">Echte Freude</div>
                 </div>
-
-                <!-- Row 4 -->
-                <div class="reference-item">
-                    <div class="reference-logo">FUSEON</div>
-                </div>
-                <div class="reference-item">
-                    <div class="reference-logo">IKP</div>
-                </div>
-                <div class="reference-item">
-                    <div class="reference-logo">Silbermayr</div>
-                </div>
-                <div class="reference-item">
-                    <div class="reference-logo">Dunkin'</div>
-                </div>
-                <div class="reference-item">
-                    <div class="reference-logo">Climastore</div>
-                </div>
-                <div class="reference-item">
-                    <div class="reference-logo">Austrian Institute</div>
-                </div>
-
-                <!-- Row 5 -->
-                <div class="reference-item">
-                    <div class="reference-logo">PUHM</div>
-                </div>
-                <div class="reference-item">
-                    <div class="reference-logo">Nostalgie</div>
-                </div>
-                <div class="reference-item">
-                    <div class="reference-logo">Jäger</div>
-                </div>
-                <div class="reference-item">
-                    <div class="reference-logo">Alkemy</div>
-                </div>
-                <div class="reference-item">
-                    <div class="reference-logo">Tesla</div>
-                </div>
-                <div class="reference-item">
-                    <div class="reference-logo">+20 weitere</div>
-                </div>
             </div>
         </div>
     </section>
@@ -1088,7 +1276,7 @@
                     <div class="cta-card__content">
                         <p class="cta-card__text">Kontaktieren Sie uns!</p>
                         <h3 class="cta-card__title">Start a project</h3>
-                        <a href="#kontakt" class="cta-card__button">
+                        <a href="kontakt.html" class="cta-card__button">
                             Kontakt
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M7 17L17 7M17 7H7M17 7V17"/>
@@ -1102,14 +1290,13 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
+        <div class="footer__container">
             <div class="footer__content">
                 <div class="footer__top">
                     <div class="footer__brand">
-                        <div class="logo">
-                            <span class="logo__text">UNLEASH</span>
-                            <div class="logo__pattern"></div>
-                        </div>
+                        <a href="index.html" class="logo">
+                            <img src="bilder/logos/unleash.svg" alt="UNLEASH" class="footer-logo__image">
+                        </a>
                         <p class="footer__tagline">Kreativer Problemlöser</p>
                     </div>
                     <div class="footer__social">
@@ -1130,20 +1317,15 @@
                     </div>
                 </div>
                 <div class="footer__bottom">
-                    <div class="footer__links">
-                        <a href="team.html">Unser Team</a>
-                        <a href="services.html">Leistungen</a>
-                        <a href="#bereiche">Bereiche</a>
-                        <a href="/">Projekte</a>
+                    <div class="footer__copyright">
+                        <div>© 2025 UNLEASH</div>
+                        <div>Alle Rechte vorbehalten</div>
                     </div>
                     <div class="footer__legal">
-                        <a href="#datenschutz">Datenschutz</a>
-                        <a href="#impressum">Impressum</a>
-                        <a href="#kontakt">Kontakt</a>
-                    </div>
-                    <div class="footer__copyright">
-                        <div>© 2024 UNLEASH</div>
-                        <div>Alle Rechte vorbehalten</div>
+                        <a href="datenschutz.html">Datenschutz</a>
+                        <a href="impressum.html">Impressum</a>
+                        <a href="agb.html">AGB</a>
+                        <a href="kontakt.html">Kontakt</a>
                     </div>
                 </div>
             </div>
@@ -1151,37 +1333,87 @@
     </footer>
 
     <script>
-        // Header scroll effect
+        // Header scroll effect (same as index.html)
         let isScrolled = false;
+        let menuState = false;
 
         function updateHeaderState() {
             const header = document.querySelector('.header');
             isScrolled = window.scrollY > 50;
             
-            if (isScrolled) {
-                header.setAttribute('data-state', 'active');
+            // Only apply scrolled state on desktop
+            if (window.innerWidth >= 769) {
+                if (isScrolled) {
+                    header.setAttribute('data-state', 'active');
+                } else {
+                    header.setAttribute('data-state', 'inactive');
+                }
             } else {
-                header.setAttribute('data-state', 'inactive');
+                // On mobile, always keep inactive state unless menu is open
+                if (!menuState) {
+                    header.setAttribute('data-state', 'inactive');
+                }
             }
         }
 
         window.addEventListener('scroll', updateHeaderState);
 
+        // Mobile menu toggle (same as index.html)
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const header = document.querySelector('.header');
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            menuState = !menuState;
+            
+            if (menuState) {
+                header.setAttribute('data-state', 'active');
+                mobileMenu.classList.add('manual-open');
+            } else {
+                // On mobile, always return to inactive when closing menu
+                if (window.innerWidth < 769) {
+                    header.setAttribute('data-state', 'inactive');
+                } else {
+                    header.setAttribute('data-state', isScrolled ? 'active' : 'inactive');
+                }
+                mobileMenu.classList.remove('manual-open');
+            }
+        }
+
+        mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+
+        // Close mobile menu when clicking nav links
+        document.querySelectorAll('.mobile-nav__link:not(button)').forEach(link => {
+            link.addEventListener('click', () => {
+                const mobileMenu = document.querySelector('.mobile-menu');
+                menuState = false;
+                
+                // On mobile, always return to inactive when closing menu
+                if (window.innerWidth < 769) {
+                    header.setAttribute('data-state', 'inactive');
+                } else {
+                    header.setAttribute('data-state', isScrolled ? 'active' : 'inactive');
+                }
+                mobileMenu.classList.remove('manual-open');
+            });
+        });
+
         // Initialize header state
         updateHeaderState();
 
-        // Logo pattern hover effect
-        const logo = document.querySelector('.logo');
-        const logoPattern = document.querySelector('.logo__pattern');
+        // Logo hover effect
+        const logoImages = document.querySelectorAll('.logo__image, .footer-logo__image');
 
-        logo.addEventListener('mouseenter', () => {
-            logoPattern.style.transform = 'skewX(0deg) scaleY(1.2)';
-            logoPattern.style.background = 'linear-gradient(45deg, #FF5100, #FF7A40)';
-        });
-
-        logo.addEventListener('mouseleave', () => {
-            logoPattern.style.transform = 'skewX(-45deg)';
-            logoPattern.style.background = '#FF5100';
+        logoImages.forEach(logoImg => {
+            const logo = logoImg.parentElement;
+            
+            logo.addEventListener('mouseenter', () => {
+                logoImg.style.transform = 'scale(1.05)';
+            });
+            
+            logo.addEventListener('mouseleave', () => {
+                logoImg.style.transform = 'scale(1)';
+            });
         });
 
         // Smooth scrolling for navigation links
