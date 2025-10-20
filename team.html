@@ -787,10 +787,10 @@
        }
 
        .mission__stats {
-           display: flex;
-           flex-direction: column;
-           gap: 50px;
-           min-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    min-width: 100%;
        }
 
        .stat-item {
@@ -803,13 +803,7 @@
        }
 
        .stat-item:not(:last-child)::after {
-           content: '';
-           position: absolute;
-           bottom: -25px;
-           left: 0;
-           width: 100%;
-           height: 1px;
-           background: #2A2A2A;
+           display:none;
        }
 
        .stat-item.animate {
