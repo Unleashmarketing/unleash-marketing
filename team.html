@@ -759,8 +759,8 @@
 
        .mission__content {
            display: grid;
-           grid-template-columns: 1fr auto;
-           gap: 80px;
+           grid-template-columns: 0.6fr 0.4fr;
+           gap: 100px;
            align-items: start;
            position: relative;
            z-index: 2;
@@ -789,8 +789,8 @@
        .mission__stats {
            display: flex;
            flex-direction: column;
-           gap: 60px;
-           min-width: 280px;
+           gap: 50px;
+           min-width: 100%;
        }
 
        .stat-item {
@@ -805,7 +805,7 @@
        .stat-item:not(:last-child)::after {
            content: '';
            position: absolute;
-           bottom: -30px;
+           bottom: -25px;
            left: 0;
            width: 100%;
            height: 1px;
@@ -1093,8 +1093,9 @@
            /* Team Section Mobile */
            .team-section {
                padding: 80px 0;
-           }
-          .team__header {
+              }
+           
+           .team__header {
                margin-bottom: 60px;
                text-align: center;
            }
@@ -1505,6 +1506,11 @@
                    <div class="stat-item" data-target="50">
                        <div class="stat-item__number">0</div>
                        <div class="stat-item__label">Zufriedene Kunden</div>
+                   </div>
+
+                   <div class="stat-item" data-target="98">
+                       <div class="stat-item__number">0</div>
+                       <div class="stat-item__label">Kundenzufriedenheit</div>
                    </div>
                </div>
            </div>
