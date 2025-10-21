@@ -1662,51 +1662,56 @@
            });
        });
 
-       // Counter Animation for Stats
-       function animateCounter(element, target, duration = 2000) {
-           const start = 0;
-           const increment = target / (duration / 16); // 60fps
-           let current = start;
-           
-           const timer = setInterval(() => {
-               current += increment;
-               if (current >= target) {
-                   current = target;
-                   clearInterval(timer);
-               }
-               element.textContent = Math.floor(current);
-           }, 16);
-       }
+// Counter Animation for Stats
+function animateCounter(element, targetString, duration = 2000) {
+    // Extract number and suffix (+ or %)
+    const numberMatch = targetString.match(/\d+/);
+    const target = numberMatch ? parseInt(numberMatch[0]) : 0;
+    const suffix = targetString.replace(/\d+/, '').trim();
+    
+    const start = 0;
+    const increment = target / (duration / 16); // 60fps
+    let current = start;
+    
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
+        }
+        element.textContent = Math.floor(current) + suffix;
+    }, 16);
+}
 
-       // Intersection Observer for Stats Animation
-       const statsObserver = new IntersectionObserver((entries) => {
-           entries.forEach(entry => {
-               if (entry.isIntersecting) {
-                   const statItem = entry.target;
-                   const numberElement = statItem.querySelector('.stat-item__number');
-                   const target = parseInt(statItem.dataset.target);
-                   
-                   // Add animation class
-                   statItem.classList.add('animate');
-                   
-                   // Start counter animation
-                   setTimeout(() => {
-                       animateCounter(numberElement, target);
-                   }, 200);
-                   
-                   // Unobserve after animation starts
-                   statsObserver.unobserve(statItem);
-               }
-           });
-       }, {
-           threshold: 0.3,
-           rootMargin: '0px 0px -100px 0px'
-       });
+// Intersection Observer for Stats Animation
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const statItem = entry.target;
+            const numberElement = statItem.querySelector('.stat-item__number');
+            const target = statItem.dataset.target;
+            
+            // Add animation class
+            statItem.classList.add('animate');
+            
+            // Start counter animation
+            setTimeout(() => {
+                animateCounter(numberElement, target);
+            }, 200);
+            
+            // Unobserve after animation starts
+            statsObserver.unobserve(statItem);
+        }
+    });
+}, {
+    threshold: 0.3,
+    rootMargin: '0px 0px -100px 0px'
+});
 
-       // Observe all stat items
-       document.querySelectorAll('.stat-item').forEach(item => {
-           statsObserver.observe(item);
-       });
+// Observe all stat items
+document.querySelectorAll('.stat-item').forEach(item => {
+    statsObserver.observe(item);
+});
    </script>
 </body>
 </html>
