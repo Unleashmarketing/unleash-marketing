@@ -1244,20 +1244,23 @@
         }
 
         .use-case__icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 48px;
-            height: 48px;
-            background: var(--color-primary);
-            border-radius: 12px;
-            flex-shrink: 0;
-            margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 81, 0, 0.1);
+    border: 2px solid rgba(255, 81, 0, 0.2);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin: 0 auto;
         }
 
         .use-case__icon img {
-            filter: brightness(0) invert(1);
-            transition: filter 0.3s ease;
+    filter: brightness(0) saturate(100%) invert(37%) sepia(99%) saturate(2664%) hue-rotate(4deg) brightness(101%) contrast(104%);
+    transition: filter 0.3s ease;
+    width: 24px;
+    height: 24px;
         }
 
         .use-case__title {
