@@ -1123,7 +1123,6 @@
             }
         }
 
-        /* About Section */
  /* About Section */
 .about-section {
     padding: 80px 0;
@@ -1281,6 +1280,133 @@
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-8px); }
         }
+
+/* Process Section */
+.process-section {
+    padding: 120px 0;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.process__header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.process__badge {
+    display: inline-block;
+    background: rgba(0, 255, 136, 0.2);
+    color: #00FF88;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    margin-bottom: 24px;
+}
+
+.process__title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0;
+}
+
+.process__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.process-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid #2A2A2A;
+    border-radius: 24px;
+    padding: 40px 32px;
+    position: relative;
+    transition: all 0.3s ease;
+    text-align: left;
+}
+
+.process-card:hover {
+    transform: translateY(-8px);
+    border-color: #00FF88;
+    box-shadow: 0 20px 50px rgba(0, 255, 136, 0.15);
+}
+
+.process-card--active {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.15) 0%, rgba(0, 255, 136, 0.05) 100%);
+    border-color: #00FF88;
+}
+
+.process-card__number {
+    font-size: 48px;
+    font-weight: 700;
+    color: #00FF88;
+    line-height: 1;
+    margin-bottom: 24px;
+}
+
+.process-card__title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 16px;
+    line-height: 1.3;
+}
+
+.process-card__description {
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.process-card__icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    margin-bottom: 24px;
+}
+
+.process-card__icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--color-text-primary);
+}
+
+.process-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #00FF88;
+    color: #121212;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    margin-top: auto;
+}
+
+.process-card__cta:hover {
+    background: #00E67A;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 255, 136, 0.3);
+}
 
         /* FAQ Section */
         .faq-section {
@@ -1738,6 +1864,10 @@
     .nav__dropdown {
         min-width: 900px;
     }
+    .process__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
 }
 
 /* Tablet - 768px bis 1199px */
@@ -1767,6 +1897,28 @@
     
     .services__left {
         top: 100px;
+    }
+
+        .process-section {
+        padding: 80px 0;
+    }
+    
+    .process__header {
+        margin-bottom: 40px;
+    }
+    
+    .process__grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .process-card {
+        padding: 32px 24px;
+    }
+    
+    .process-card__number {
+        font-size: 36px;
+        margin-bottom: 16px;
     }
     
     .faq__content {
@@ -2440,7 +2592,85 @@ UNLEASH ist eine Webdesign-Agentur mit einem klaren Ziel: Unternehmen durch star
                 </div>
             </div>
         </section>
+<!-- Process Section -->
+<section class="process-section">
+    <div class="container">
+        <div class="process__header">
+            <div class="process__badge">DIE UNLEASH EXPERIENCE</div>
+            <h2 class="process__title">
+                In 4 einfachen Schritten<br>
+                zu Ihrem neuen Online Auftritt
+            </h2>
+        </div>
+        
+        <div class="process__grid">
+            <!-- Step 1 -->
+            <div class="process-card">
+                <div class="process-card__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 11l3 3L22 4"/>
+                        <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+                    </svg>
+                </div>
+                <div class="process-card__number">01</div>
+                <h3 class="process-card__title">Sie haben Ihre Lage erkannt</h3>
+                <p class="process-card__description">
+                    Der Sachverhalt ist klar: Eine neue Webseite muss her! Der erste Schritt ist abgehakt.
+                </p>
+            </div>
 
+            <!-- Step 2 - Active -->
+            <div class="process-card process-card--active">
+                <div class="process-card__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                        <polyline points="10 9 9 9 8 9"/>
+                    </svg>
+                </div>
+                <div class="process-card__number">02</div>
+                <h3 class="process-card__title">Füllen Sie unser Formular aus</h3>
+                <p class="process-card__description">
+                    Damit wir wissen, wer Sie sind und was Sie vorhaben, haben wir einige Fragen vorbereitet.
+                </p>
+                <a href="kontakt.html" class="process-card__cta">
+                    Jetzt anfragen
+                </a>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="process-card">
+                <div class="process-card__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+                    </svg>
+                </div>
+                <div class="process-card__number">03</div>
+                <h3 class="process-card__title">Hören Sie sich unsere Ideen an</h3>
+                <p class="process-card__description">
+                    In einem ersten Telefonat besprechen wir erste Details und den weiteren Ablauf.
+                </p>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="process-card">
+                <div class="process-card__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                    </svg>
+                </div>
+                <div class="process-card__number">04</div>
+                <h3 class="process-card__title">Lehnen Sie sich entspannt zurück</h3>
+                <p class="process-card__description">
+                    Profitieren Sie mit dem Start der Zusammenarbeit von der UNLEASH Experience.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+        
  <!-- FAQ Section -->
 <section class="faq-section">
     <div class="container">
