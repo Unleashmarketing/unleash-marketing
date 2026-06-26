@@ -2054,23 +2054,24 @@
                         <h3 class="cta__form-title">Projekt anfragen</h3>
                         <p class="cta__form-subtitle">Erzähle uns von deinem Projekt und wir melden uns schnellstmöglich bei dir.</p>
                         
-                        <form>
+                        <form id="servicesForm">
                             <div class="form-group">
                                 <label class="form-label">Name *</label>
-                                <input type="text" class="form-input" placeholder="Max Mustermann" required>
+                                <input type="text" name="name" class="form-input" placeholder="Max Mustermann" required>
                             </div>
                             
                             <div class="form-group">
                                 <label class="form-label">E-Mail Adresse *</label>
-                                <input type="email" class="form-input" placeholder="max@beispiel.de" required>
+                                <input type="email" name="email" class="form-input" placeholder="max@beispiel.de" required>
                             </div>
                             
                             <div class="form-group">
                                 <label class="form-label">Projektbeschreibung *</label>
-                                <textarea class="form-textarea" placeholder="Beschreibe dein Projekt, deine Ziele und was du dir vorstellst..." required></textarea>
+                                <textarea name="nachricht" class="form-textarea" placeholder="Beschreibe dein Projekt, deine Ziele und was du dir vorstellst..." required></textarea>
                             </div>
                             
-                            <button type="submit" class="form-submit">Anfrage senden</button>
+                            <button type="submit" class="form-submit" id="servicesSubmitBtn">Anfrage senden</button>
+                            <div id="servicesFormStatus" style="margin-top:14px;font-size:13px;padding:10px 14px;border-radius:8px;display:none;"></div>
                         </form>
                     </div>
                 </div>
@@ -2289,6 +2290,35 @@
            logo.addEventListener('mouseleave', () => {
                logoImg.style.transform = 'scale(1)';
            });
+        });
+        // ── Formspree ──────────────────────────────────────────
+        document.getElementById('servicesForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn    = document.getElementById('servicesSubmitBtn');
+            const status = document.getElementById('servicesFormStatus');
+            btn.disabled = true;
+            btn.textContent = 'Wird gesendet…';
+
+            try {
+                const res = await fetch('https://formspree.io/f/xeebgkbk', {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' },
+                    body: new FormData(this)
+                });
+                if (res.ok) {
+                    status.style.cssText = 'display:block;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);color:#22c55e';
+                    status.textContent = 'Anfrage gesendet – wir melden uns innerhalb von 24 Stunden.';
+                    this.reset();
+                } else {
+                    status.style.cssText = 'display:block;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);color:#ef4444';
+                    status.textContent = 'Etwas hat nicht geklappt. Versuch es nochmal.';
+                }
+            } catch {
+                status.style.cssText = 'display:block;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);color:#ef4444';
+                status.textContent = 'Keine Verbindung. Bitte prüf deine Internetverbindung.';
+            }
+            btn.disabled = false;
+            btn.textContent = 'Anfrage senden';
         });
     </script>
 </body>
