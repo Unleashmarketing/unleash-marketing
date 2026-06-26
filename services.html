@@ -631,7 +631,7 @@
             position: relative;
             overflow: hidden;
             background: transparent;
-            text-align: center;
+            text-align: left;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -644,32 +644,28 @@
             z-index: 2;
         }
 
-        .hero__badge {
-            display: inline-flex;
+        .hero__eyebrow {
+            display: flex;
             align-items: center;
-            gap: 8px;
-            background: rgba(255, 81, 0, 0.1);
-            border: 1px solid rgba(255, 81, 0, 0.3);
-            color: var(--color-primary);
-            padding: 12px 20px;
-            border-radius: 50px;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .hero__eyebrow::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--color-primary);
+            flex-shrink: 0;
+        }
+
+        .hero__eyebrow span {
             font-size: 12px;
             font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-bottom: 32px;
+            color: var(--color-text-secondary);
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            backdrop-filter: blur(10px);
-        }
-
-        .hero__badge::before {
-            content: '●';
-            color: var(--color-primary);
-            animation: blink 2s ease-in-out infinite;
-        }
-
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0.3; }
         }
 
         .hero__title {
@@ -694,15 +690,15 @@
             margin-bottom: 60px;
             line-height: 1.8;
             max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-left: 0;
+            margin-right: 0;
         }
 
         /* Scroll indicator */
         .hero__scroll-indicator {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
             gap: 12px;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -1117,7 +1113,7 @@
 
         /* CTA Section */
         .cta-section {
-            padding: 50px 0 30px;
+            padding: 120px 0;
             background: transparent;
             position: relative;
             overflow: hidden;
@@ -1712,17 +1708,15 @@
     <section class="hero">
         <div class="container">
             <div class="hero__content">
-                <div class="hero__badge">
-                    <span>UNSERE EXPERTISE</span>
+                <div class="hero__eyebrow">
+                    <span>Leistungen</span>
                 </div>
                 
                 <h1 class="hero__title">
-                    Leistungen, die dein <br>
-                    Unternehmen <span class="hero__title-highlight">voranbringen</span>
+                    Drei Disziplinen. Ein Ziel:<br><span class="hero__title-highlight">Dein Wachstum.</span>
                 </h1>
-                
                 <p class="hero__description">
-                    Von strategischem Branding über modernes Webdesign bis hin zu datengetriebenen Marketing-Kampagnen – wir bieten ganzheitliche Lösungen für den digitalen Erfolg deines Unternehmens.
+                    Branding schafft Wiedererkennbarkeit. Webdesign schafft Vertrauen. Marketing schafft Reichweite. Wir vereinen alle drei – weil keines davon allein ausreicht.
                 </p>
                 
                 <!-- Scroll indicator at bottom -->
@@ -1749,7 +1743,7 @@
                     <div class="service-content">
                         <h2>BRANDING</h2>
                         <p class="service-description">
-                            Mit einem klaren Blick für Design entwickeln wir Branding-Konzepte, die deine Marke unverwechselbar machen. Von Logodesign über Farb- und Schriftkonzepte bis hin zu Werbematerialien sorgen wir für ein konsistentes Erscheinungsbild.
+                            Deine Marke ist mehr als ein Logo – sie ist das erste und letzte Bild, das Kunden von dir haben. Wir entwickeln Markenidentitäten, die funktionieren: erkennbar, konsistent und auf deine Zielgruppe zugeschnitten. Von der Grundlage bis zum fertigen Corporate Design.
                         </p>
                         <div class="service-tags">
                             <span class="service-tag">LOGO DESIGN</span>
@@ -1761,77 +1755,55 @@
                     </div>
                     <div class="service-visual">
                         <div class="visual-content">
-                            <!-- Brand Guideline Visual -->
-                            <div style="background: linear-gradient(135deg, #1E1E1E 0%, #2A2A2A 100%); border: 2px solid #333; border-radius: 16px; padding: 32px; display: flex; flex-direction: column; gap: 24px; height: 100%; width: 100%;">
-                                <!-- Guideline Header -->
-                                <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 16px; border-bottom: 1px solid #333;">
-                                    <h3 style="font-size: 14px; font-weight: 600; color: #8E8E8E; letter-spacing: 0.05em;">BRAND GUIDELINES</h3>
-                                    <div style="font-size: 12px; color: #666;">v2.0</div>
-                                </div>
-                                
-                                <!-- Colors and Typography Side by Side -->
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; flex: 1;">
-                                    <!-- Color Palette -->
-                                    <div style="display: flex; flex-direction: column;">
-                                        <div style="font-size: 11px; font-weight: 600; color: #666; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Colors</div>
-                                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; flex: 1;">
-                                            <div>
-                                                <div style="width: 100%; height: 100%; background: #FF5100; border-radius: 8px; margin-bottom: 8px; box-shadow: 0 4px 12px rgba(255, 81, 0, 0.3); min-height: 120px;"></div>
-                                                <div style="font-size: 11px; color: #8E8E8E; font-weight: 500;">#FF5100</div>
-                                                <div style="font-size: 10px; color: #666;">Primary</div>
-                                            </div>
-                                            <div>
-                                                <div style="width: 100%; height: 100%; background: #FFFFFF; border-radius: 8px; margin-bottom: 8px; border: 1px solid #333; min-height: 120px;"></div>
-                                                <div style="font-size: 11px; color: #8E8E8E; font-weight: 500;">#FFFFFF</div>
-                                                <div style="font-size: 10px; color: #666;">Text</div>
-                                            </div>
-                                            <div>
-                                                <div style="width: 100%; height: 100%; background: #121212; border-radius: 8px; margin-bottom: 8px; border: 1px solid #333; min-height: 120px;"></div>
-                                                <div style="font-size: 11px; color: #8E8E8E; font-weight: 500;">#121212</div>
-                                                <div style="font-size: 10px; color: #666;">Background</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Typography -->
-                                    <div style="display: flex; flex-direction: column;">
-                                        <div style="font-size: 11px; font-weight: 600; color: #666; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Typography</div>
-                                        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid #333; border-radius: 12px; padding: 32px; flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
-                                            <!-- Font Display -->
-                                            <div>
-                                                <div style="font-size: 56px; font-weight: 900; color: #FFFFFF; margin-bottom: 12px; line-height: 1; letter-spacing: -0.02em;">Aa Bb Cc</div>
-                                                <div style="font-size: 15px; color: #8E8E8E; margin-bottom: 6px; font-weight: 500;">FK Grotesk</div>
-                                                <div style="font-size: 12px; color: #666;">Primary Font Family</div>
-                                            </div>
-                                            
-                                            <!-- Font Weights -->
-                                            <div style="padding-top: 24px; border-top: 1px solid #333;">
-                                                <div style="font-size: 11px; color: #666; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.05em;">Font Weights</div>
-                                                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
-                                                    <div>
-                                                        <div style="background: rgba(255, 81, 0, 0.1); border: 1px solid rgba(255, 81, 0, 0.3); padding: 16px; border-radius: 8px; text-align: center;">
-                                                            <div style="font-size: 24px; font-weight: 400; color: #FFFFFF; margin-bottom: 8px;">Aa</div>
-                                                            <div style="font-size: 10px; color: #8E8E8E;">Regular</div>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <div style="background: rgba(255, 81, 0, 0.1); border: 1px solid rgba(255, 81, 0, 0.3); padding: 16px; border-radius: 8px; text-align: center;">
-                                                            <div style="font-size: 24px; font-weight: 600; color: #FFFFFF; margin-bottom: 8px;">Aa</div>
-                                                            <div style="font-size: 10px; color: #8E8E8E;">SemiBold</div>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <div style="background: rgba(255, 81, 0, 0.1); border: 1px solid rgba(255, 81, 0, 0.3); padding: 16px; border-radius: 8px; text-align: center;">
-                                                            <div style="font-size: 24px; font-weight: 900; color: #FFFFFF; margin-bottom: 8px;">Aa</div>
-                                                            <div style="font-size: 10px; color: #8E8E8E;">Black</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                <rect x="0" y="0" width="360" height="300" rx="16" fill="#111"/>
+
+                                <!-- Logo row -->
+                                <rect x="24" y="24" width="44" height="44" rx="10" fill="#FF5100"/>
+                                <text x="46" y="54" font-family="sans-serif" font-size="18" font-weight="900" fill="white" text-anchor="middle">U</text>
+                                <text x="80" y="42" font-family="sans-serif" font-size="15" font-weight="800" fill="white" letter-spacing="-0.3">UNLEASH</text>
+                                <!-- Tagline bars -->
+                                <rect x="80" y="52" width="44" height="4" rx="2" fill="#2A2A2A"/>
+                                <rect x="80" y="59" width="30" height="4" rx="2" fill="#2A2A2A"/>
+
+                                <!-- Divider -->
+                                <line x1="24" y1="84" x2="336" y2="84" stroke="#1E1E1E" stroke-width="1"/>
+
+                                <!-- Section label bars -->
+                                <rect x="24" y="96" width="32" height="5" rx="2" fill="#2A2A2A"/>
+
+                                <!-- Color swatches – equal size 2×2 grid -->
+                                <rect x="24" y="110" width="72" height="60" rx="8" fill="#FF5100"/>
+                                <rect x="106" y="110" width="72" height="60" rx="8" fill="#FFFFFF"/>
+                                <rect x="188" y="110" width="72" height="60" rx="8" fill="#121212" stroke="#2A2A2A" stroke-width="1"/>
+                                <rect x="270" y="110" width="66" height="60" rx="8" fill="#2A2A2A"/>
+
+                                <!-- Hex label bars under swatches -->
+                                <rect x="24" y="178" width="40" height="4" rx="2" fill="#2A2A2A"/>
+                                <rect x="24" y="185" width="26" height="3" rx="1.5" fill="#1E1E1E"/>
+                                <rect x="106" y="178" width="40" height="4" rx="2" fill="#2A2A2A"/>
+                                <rect x="106" y="185" width="26" height="3" rx="1.5" fill="#1E1E1E"/>
+                                <rect x="188" y="178" width="40" height="4" rx="2" fill="#2A2A2A"/>
+                                <rect x="188" y="185" width="26" height="3" rx="1.5" fill="#1E1E1E"/>
+                                <rect x="270" y="178" width="36" height="4" rx="2" fill="#2A2A2A"/>
+                                <rect x="270" y="185" width="24" height="3" rx="1.5" fill="#1E1E1E"/>
+
+                                <!-- Divider -->
+                                <line x1="24" y1="200" x2="336" y2="200" stroke="#1E1E1E" stroke-width="1"/>
+
+                                <!-- Typography section label bar -->
+                                <rect x="24" y="212" width="28" height="5" rx="2" fill="#2A2A2A"/>
+
+                                <!-- Aa display -->
+                                <text x="100" y="274" font-family="sans-serif" font-size="68" font-weight="900" fill="white" opacity="0.9">Aa</text>
+
+                                <!-- Weight bars right side -->
+                                <rect x="248" y="226" width="50" height="6" rx="3" fill="#2A2A2A"/>
+                                <rect x="248" y="238" width="38" height="5" rx="2.5" fill="#2A2A2A"/>
+                                <rect x="248" y="249" width="58" height="6" rx="3" fill="#FF5100" opacity="0.6"/>
+                                <rect x="248" y="261" width="42" height="5" rx="2.5" fill="#2A2A2A"/>
+                                <rect x="248" y="272" width="62" height="6" rx="3" fill="#2A2A2A"/>
+                            </svg>
                         </div>
                     </div>
                 </div>
@@ -1841,7 +1813,7 @@
                     <div class="service-content">
                         <h2>WEBDESIGN</h2>
                         <p class="service-description">
-                           Wir entwickeln moderne und benutzerfreundliche Websites, die visuell überzeugen und technisch zuverlässig sind. Mit einem klaren Fokus auf Design, Usability und Conversion-Optimierung schaffen wir Vertrauen und sprechen deine Zielgruppe direkt an.
+                           Eine Website, die nur schön aussieht, ist eine halbe Website. Wir designen und entwickeln Seiten, die deine Besucher führen, überzeugen und zum Handeln bringen – auf jedem Gerät, mit Performance, die man fühlt.
                         </p>
                         <div class="service-tags">
                             <span class="service-tag">RESPONSIVE DESIGN</span>
@@ -1852,82 +1824,71 @@
                     </div>
                     <div class="service-visual">
                         <div class="visual-content">
-                            <!-- Website Mockup -->
-                            <div style="background: #1E1E1E; border: 2px solid #333; border-radius: 16px; padding: 0; overflow: hidden; height: 100%; width: 100%; display: flex; flex-direction: column;">
-                                <!-- Browser Bar -->
-                                <div style="background: #2A2A2A; border-bottom: 1px solid #333; padding: 12px 16px; display: flex; align-items: center; gap: 8px;">
-                                    <div style="display: flex; gap: 6px;">
-                                        <div style="width: 12px; height: 12px; background: #FF5F57; border-radius: 50%;"></div>
-                                        <div style="width: 12px; height: 12px; background: #FFBD2E; border-radius: 50%;"></div>
-                                        <div style="width: 12px; height: 12px; background: #28CA42; border-radius: 50%;"></div>
-                                    </div>
-                                    <div style="flex: 1; background: #1E1E1E; border: 1px solid #333; border-radius: 6px; padding: 6px 12px; font-size: 11px; color: #666; display: flex; align-items: center; gap: 8px;">
-                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2">
-                                            <circle cx="11" cy="11" r="8"/>
-                                            <path d="m21 21-4.35-4.35"/>
-                                        </svg>
-                                        yourwebsite.com
-                                    </div>
-                                </div>
-                                
-                                <!-- Website Content -->
-                                <div style="flex: 1; padding: 24px; overflow: auto;">
-                                    <!-- Navigation -->
-                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid #333;">
-                                        <div style="display: flex; gap: 24px; align-items: center;">
-                                            <div style="width: 32px; height: 32px; background: linear-gradient(135deg, #FF5100, #FF8C42); border-radius: 8px;"></div>
-                                            <div style="display: flex; gap: 16px; font-size: 11px; color: #8E8E8E;">
-                                                <div>Home</div>
-                                                <div>About</div>
-                                                <div>Services</div>
-                                                <div>Contact</div>
-                                            </div>
-                                        </div>
-                                        <div style="background: #FF5100; padding: 6px 14px; border-radius: 6px; font-size: 10px; color: white; font-weight: 600;">Get Started</div>
-                                    </div>
-                                    
-                                    <!-- Hero Section -->
-                                    <div style="background: linear-gradient(135deg, rgba(255, 81, 0, 0.1), rgba(255, 140, 66, 0.05)); border: 1px solid rgba(255, 81, 0, 0.2); border-radius: 12px; padding: 32px; margin-bottom: 20px;">
-                                        <div style="width: 100px; height: 6px; background: #FF5100; border-radius: 3px; margin-bottom: 16px;"></div>
-                                        <div style="width: 70%; height: 16px; background: rgba(255, 255, 255, 0.8); border-radius: 4px; margin-bottom: 10px;"></div>
-                                        <div style="width: 55%; height: 16px; background: rgba(255, 255, 255, 0.8); border-radius: 4px; margin-bottom: 16px;"></div>
-                                        <div style="width: 65%; height: 8px; background: rgba(255, 255, 255, 0.5); border-radius: 4px; margin-bottom: 6px;"></div>
-                                        <div style="width: 60%; height: 8px; background: rgba(255, 255, 255, 0.5); border-radius: 4px; margin-bottom: 20px;"></div>
-                                        <div style="display: flex; gap: 12px;">
-                                            <div style="background: #FF5100; padding: 10px 20px; border-radius: 8px; font-size: 11px; color: white; font-weight: 600;">Learn More</div>
-                                            <div style="background: transparent; border: 1px solid #FF5100; padding: 10px 20px; border-radius: 8px; font-size: 11px; color: #FF5100; font-weight: 600;">Contact Us</div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Feature Cards -->
-                                    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
-                                        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid #333; border-radius: 10px; padding: 20px;">
-                                            <div style="width: 40px; height: 40px; background: rgba(255, 81, 0, 0.2); border-radius: 8px; margin-bottom: 12px;"></div>
-                                            <div style="width: 80%; height: 8px; background: rgba(255, 255, 255, 0.6); border-radius: 4px; margin-bottom: 8px;"></div>
-                                            <div style="width: 100%; height: 5px; background: rgba(255, 255, 255, 0.3); border-radius: 2px; margin-bottom: 4px;"></div>
-                                            <div style="width: 90%; height: 5px; background: rgba(255, 255, 255, 0.3); border-radius: 2px;"></div>
-                                        </div>
-                                        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid #333; border-radius: 10px; padding: 20px;">
-                                            <div style="width: 40px; height: 40px; background: rgba(255, 81, 0, 0.2); border-radius: 8px; margin-bottom: 12px;"></div>
-                                            <div style="width: 80%; height: 8px; background: rgba(255, 255, 255, 0.6); border-radius: 4px; margin-bottom: 8px;"></div>
-                                            <div style="width: 100%; height: 5px; background: rgba(255, 255, 255, 0.3); border-radius: 2px; margin-bottom: 4px;"></div>
-                                            <div style="width: 90%; height: 5px; background: rgba(255, 255, 255, 0.3); border-radius: 2px;"></div>
-                                        </div>
-                                        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid #333; border-radius: 10px; padding: 20px;">
-                                            <div style="width: 40px; height: 40px; background: rgba(255, 81, 0, 0.2); border-radius: 8px; margin-bottom: 12px;"></div>
-                                            <div style="width: 80%; height: 8px; background: rgba(255, 255, 255, 0.6); border-radius: 4px; margin-bottom: 8px;"></div>
-                                            <div style="width: 100%; height: 5px; background: rgba(255, 255, 255, 0.3); border-radius: 2px; margin-bottom: 4px;"></div>
-                                            <div style="width: 90%; height: 5px; background: rgba(255, 255, 255, 0.3); border-radius: 2px;"></div>
-                                        </div>
-                                        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid #333; border-radius: 10px; padding: 20px;">
-                                            <div style="width: 40px; height: 40px; background: rgba(255, 81, 0, 0.2); border-radius: 8px; margin-bottom: 12px;"></div>
-                                            <div style="width: 80%; height: 8px; background: rgba(255, 255, 255, 0.6); border-radius: 4px; margin-bottom: 8px;"></div>
-                                            <div style="width: 100%; height: 5px; background: rgba(255, 255, 255, 0.3); border-radius: 2px; margin-bottom: 4px;"></div>
-                                            <div style="width: 90%; height: 5px; background: rgba(255, 255, 255, 0.3); border-radius: 2px;"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                <rect x="0" y="0" width="360" height="300" rx="16" fill="#111"/>
+
+                                <!-- Browser chrome -->
+                                <rect x="0" y="0" width="360" height="36" rx="16" fill="#1A1A1A"/>
+                                <rect x="0" y="20" width="360" height="16" fill="#1A1A1A"/>
+                                <!-- Traffic lights -->
+                                <circle cx="20" cy="18" r="5" fill="#FF5F57"/>
+                                <circle cx="36" cy="18" r="5" fill="#FFBD2E"/>
+                                <circle cx="52" cy="18" r="5" fill="#28CA42"/>
+                                <!-- URL bar -->
+                                <rect x="68" y="10" width="224" height="16" rx="4" fill="#222"/>
+                                <!-- Lock icon bars -->
+                                <rect x="80" y="16" width="6" height="4" rx="1" fill="#444"/>
+                                <rect x="90" y="15" width="60" height="5" rx="2" fill="#333"/>
+
+                                <!-- Nav -->
+                                <rect x="12" y="46" width="336" height="26" rx="6" fill="#161616"/>
+                                <rect x="22" y="55" width="16" height="10" rx="3" fill="#FF5100"/>
+                                <rect x="46" y="59" width="20" height="4" rx="2" fill="#2A2A2A"/>
+                                <rect x="72" y="59" width="20" height="4" rx="2" fill="#2A2A2A"/>
+                                <rect x="98" y="59" width="20" height="4" rx="2" fill="#2A2A2A"/>
+                                <rect x="300" y="55" width="36" height="12" rx="4" fill="#FF5100"/>
+
+                                <!-- Hero block -->
+                                <rect x="12" y="82" width="336" height="96" rx="8" fill="#161616"/>
+                                <!-- Accent stripe -->
+                                <rect x="24" y="94" width="32" height="3" rx="1.5" fill="#FF5100"/>
+                                <!-- Headline bars -->
+                                <rect x="24" y="104" width="170" height="11" rx="3" fill="#2E2E2E"/>
+                                <rect x="24" y="120" width="120" height="11" rx="3" fill="#2E2E2E"/>
+                                <!-- Body bars -->
+                                <rect x="24" y="138" width="190" height="5" rx="2" fill="#222"/>
+                                <rect x="24" y="147" width="160" height="5" rx="2" fill="#222"/>
+                                <!-- Buttons -->
+                                <rect x="24" y="160" width="58" height="12" rx="4" fill="#FF5100"/>
+                                <rect x="90" y="160" width="50" height="12" rx="4" fill="none" stroke="#FF5100" stroke-width="1"/>
+
+                                <!-- 3 feature cards -->
+                                <rect x="12" y="188" width="106" height="68" rx="8" fill="#161616"/>
+                                <rect x="22" y="198" width="18" height="18" rx="5" fill="rgba(255,81,0,0.18)"/>
+                                <rect x="22" y="222" width="56" height="5" rx="2" fill="#2A2A2A"/>
+                                <rect x="22" y="231" width="76" height="4" rx="2" fill="#1E1E1E"/>
+                                <rect x="22" y="239" width="64" height="4" rx="2" fill="#1E1E1E"/>
+                                <rect x="22" y="247" width="70" height="4" rx="2" fill="#1E1E1E"/>
+
+                                <rect x="127" y="188" width="106" height="68" rx="8" fill="#161616"/>
+                                <rect x="137" y="198" width="18" height="18" rx="5" fill="rgba(255,81,0,0.18)"/>
+                                <rect x="137" y="222" width="48" height="5" rx="2" fill="#2A2A2A"/>
+                                <rect x="137" y="231" width="72" height="4" rx="2" fill="#1E1E1E"/>
+                                <rect x="137" y="239" width="60" height="4" rx="2" fill="#1E1E1E"/>
+                                <rect x="137" y="247" width="68" height="4" rx="2" fill="#1E1E1E"/>
+
+                                <rect x="242" y="188" width="106" height="68" rx="8" fill="rgba(255,81,0,0.07)" stroke="rgba(255,81,0,0.2)" stroke-width="1"/>
+                                <rect x="252" y="198" width="18" height="18" rx="5" fill="rgba(255,81,0,0.25)"/>
+                                <rect x="252" y="222" width="60" height="5" rx="2" fill="rgba(255,81,0,0.3)"/>
+                                <rect x="252" y="231" width="78" height="4" rx="2" fill="rgba(255,81,0,0.12)"/>
+                                <rect x="252" y="239" width="52" height="4" rx="2" fill="rgba(255,81,0,0.12)"/>
+                                <rect x="252" y="247" width="66" height="4" rx="2" fill="rgba(255,81,0,0.12)"/>
+
+                                <!-- Mobile hint - small phone outline bottom right -->
+                                <rect x="314" y="266" width="32" height="22" rx="4" fill="none" stroke="#2A2A2A" stroke-width="1"/>
+                                <rect x="319" y="270" width="22" height="12" rx="2" fill="#1A1A1A"/>
+                                <circle cx="330" cy="285" r="2" fill="#333"/>
+                            </svg>
                         </div>
                     </div>
                 </div>
@@ -1937,7 +1898,7 @@
                     <div class="service-content">
                         <h2>MARKETING</h2>
                         <p class="service-description">
-                            Von Social Media über Paid Ads bis hin zu kreativen Kampagnen bringen wir deine Marke genau dorthin, wo deine Zielgruppe ist. Auf diese Weise sorgen wir für mehr Sichtbarkeit, größere Reichweite und eine starke Positionierung deiner Marke.
+                            Sichtbarkeit entsteht nicht zufällig. Wir entwickeln Marketingstrategien, die auf deine Ziele einzahlen – egal ob organisch über Social Media, bezahlt über Ads oder langfristig über Content. Das Ziel ist immer dasselbe: deine Zielgruppe erreichen, bevor es die Konkurrenz tut.
                         </p>
                         <div class="service-tags">
                             <span class="service-tag">SOCIAL MEDIA</span>
@@ -1949,128 +1910,78 @@
                     </div>
                     <div class="service-visual">
                         <div class="visual-content">
-                            <!-- Instagram Grid -->
-                            <div style="background: #1E1E1E; border: 2px solid #333; border-radius: 16px; padding: 24px; height: 100%; width: 100%; display: flex; flex-direction: column;">
-                                <!-- Instagram Header -->
-                                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1px solid #333;">
-                                    <div style="display: flex; align-items: center; gap: 12px;">
-                                        <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #FF5100, #FF8C42); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #333;">
-                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
-                                                <circle cx="12" cy="12" r="3"/>
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <div style="font-size: 13px; font-weight: 600; color: #FFFFFF; margin-bottom: 2px;">@yourbrand</div>
-                                            <div style="font-size: 11px; color: #8E8E8E;">Social Media Marketing</div>
-                                        </div>
-                                    </div>
-                                    <div style="display: flex; gap: 20px; font-size: 11px; color: #8E8E8E;">
-                                        <div><span style="color: #FFF; font-weight: 600;">248</span> Posts</div>
-                                        <div><span style="color: #FFF; font-weight: 600;">24.8K</span> Followers</div>
-                                        <div><span style="color: #FFF; font-weight: 600;">1.2K</span> Following</div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Instagram Grid -->
-                                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; flex: 1;">
-                                    <!-- Post 1 -->
-                                    <div style="aspect-ratio: 1; background: linear-gradient(135deg, #FF5100, #FF8C42); border-radius: 10px; position: relative; overflow: hidden;">
-                                        <div style="position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); padding: 4px 8px; border-radius: 6px; font-size: 10px; color: white; font-weight: 600;">Reels</div>
-                                        <div style="position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); padding: 4px 8px; border-radius: 6px; font-size: 10px; color: white; font-weight: 600; display: flex; align-items: center; gap: 4px;">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
-                                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                                            </svg>
-                                            3.2K
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Post 2 -->
-                                    <div style="aspect-ratio: 1; background: linear-gradient(45deg, #2A2A2A, #1E1E1E); border: 1px solid #333; border-radius: 10px; display: flex; align-items: center; justify-content: center; position: relative;">
-                                        <div style="width: 50%; height: 50%; background: rgba(255, 81, 0, 0.2); border: 2px solid rgba(255, 81, 0, 0.4); border-radius: 12px;"></div>
-                                        <div style="position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); padding: 4px 8px; border-radius: 6px; font-size: 10px; color: white; font-weight: 600; display: flex; align-items: center; gap: 4px;">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
-                                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                                            </svg>
-                                            2.1K
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Post 3 -->
-                                    <div style="aspect-ratio: 1; background: linear-gradient(225deg, #FF8C42, #FF5100); border-radius: 10px; display: flex; align-items: center; justify-content: center; position: relative;">
-                                        <div style="font-size: 32px; font-weight: 900; color: white; letter-spacing: -0.05em;">Aa</div>
-                                        <div style="position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); padding: 4px 8px; border-radius: 6px; font-size: 10px; color: white; font-weight: 600; display: flex; align-items: center; gap: 4px;">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
-                                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                                            </svg>
-                                            4.8K
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Post 4 -->
-                                    <div style="aspect-ratio: 1; background: #2A2A2A; border: 1px solid #333; border-radius: 10px; padding: 16px; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative;">
-                                        <div style="font-size: 28px; font-weight: 900; color: #FF5100; margin-bottom: 6px; line-height: 1;">+94%</div>
-                                        <div style="font-size: 10px; color: #8E8E8E; text-align: center;">Engagement</div>
-                                        <div style="position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); padding: 4px 8px; border-radius: 6px; font-size: 10px; color: white; font-weight: 600; display: flex; align-items: center; gap: 4px;">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
-                                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                                            </svg>
-                                            2.9K
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Post 5 -->
-                                    <div style="aspect-ratio: 1; background: linear-gradient(135deg, #1E1E1E, #2A2A2A); border: 1px solid #FF5100; border-radius: 10px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
-                                        <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #FF5100, #FF8C42); border-radius: 16px; transform: rotate(45deg);"></div>
-                                        <div style="position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); padding: 4px 8px; border-radius: 6px; font-size: 10px; color: white; font-weight: 600; display: flex; align-items: center; gap: 4px;">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
-                                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                                            </svg>
-                                            2.5K
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Post 6 -->
-                                    <div style="aspect-ratio: 1; background: linear-gradient(180deg, #FF5100, #E64600); border-radius: 10px; padding: 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
-                                        <div style="font-size: 24px; font-weight: 900; color: white; margin-bottom: 6px; letter-spacing: -0.02em;">NEW</div>
-                                        <div style="font-size: 10px; color: rgba(255,255,255,0.9); text-align: center; font-weight: 600;">Collection</div>
-                                        <div style="position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); padding: 4px 8px; border-radius: 6px; font-size: 10px; color: white; font-weight: 600; display: flex; align-items: center; gap: 4px;">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
-                                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                                            </svg>
-                                            5.4K
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Post 7 -->
-                                    <div style="aspect-ratio: 1; background: #2A2A2A; border: 1px solid #333; border-radius: 10px; display: flex; align-items: center; justify-content: center; position: relative;">
-                                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#FF5100" stroke-width="2">
-                                            <circle cx="12" cy="12" r="10"/>
-                                            <path d="M12 6v6l4 2"/>
-                                        </svg>
-                                        <div style="position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); padding: 4px 8px; border-radius: 6px; font-size: 10px; color: white; font-weight: 600; display: flex; align-items: center; gap: 4px;">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
-                                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                                            </svg>
-                                            1.9K
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Post 8 -->
-                                    <div style="aspect-ratio: 1; background: linear-gradient(90deg, #FF5100, #FF8C42); border-radius: 10px; display: flex; align-items: center; justify-content: center; position: relative;">
-                                        <div style="text-align: center; color: white;">
-                                            <div style="font-size: 28px; font-weight: 900; line-height: 1;">24K</div>
-                                            <div style="font-size: 10px; opacity: 0.9; font-weight: 600;">Followers</div>
-                                        </div>
-                                        <div style="position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); padding: 4px 8px; border-radius: 6px; font-size: 10px; color: white; font-weight: 600; display: flex; align-items: center; gap: 4px;">
-                                            <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
-                                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-                                            </svg>
-                                            3.7K
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                                <rect x="0" y="0" width="360" height="300" rx="16" fill="#111"/>
+
+                                <!-- Header bar row -->
+                                <rect x="20" y="22" width="80" height="6" rx="3" fill="#2A2A2A"/>
+                                <!-- Live dot -->
+                                <circle cx="326" cy="25" r="5" fill="#FF5100" opacity="0.9"/>
+                                <circle cx="326" cy="25" r="9" fill="#FF5100" opacity="0.15"/>
+
+                                <!-- KPI cards -->
+                                <rect x="20" y="42" width="96" height="58" rx="8" fill="#161616"/>
+                                <rect x="30" y="54" width="48" height="4" rx="2" fill="#2A2A2A"/>
+                                <rect x="30" y="64" width="64" height="14" rx="3" fill="#2E2E2E"/>
+                                <rect x="30" y="84" width="36" height="5" rx="2" fill="#22c55e" opacity="0.6"/>
+
+                                <rect x="126" y="42" width="96" height="58" rx="8" fill="rgba(255,81,0,0.08)" stroke="rgba(255,81,0,0.25)" stroke-width="1"/>
+                                <rect x="136" y="54" width="44" height="4" rx="2" fill="rgba(255,81,0,0.3)"/>
+                                <rect x="136" y="64" width="56" height="14" rx="3" fill="rgba(255,81,0,0.4)"/>
+                                <rect x="136" y="84" width="36" height="5" rx="2" fill="#22c55e" opacity="0.6"/>
+
+                                <rect x="232" y="42" width="108" height="58" rx="8" fill="#161616"/>
+                                <rect x="242" y="54" width="36" height="4" rx="2" fill="#2A2A2A"/>
+                                <rect x="242" y="64" width="52" height="14" rx="3" fill="#2E2E2E"/>
+                                <rect x="242" y="84" width="36" height="5" rx="2" fill="#22c55e" opacity="0.6"/>
+
+                                <!-- Chart area -->
+                                <rect x="20" y="112" width="320" height="112" rx="8" fill="#161616"/>
+
+                                <!-- Section label bar -->
+                                <rect x="32" y="124" width="60" height="5" rx="2" fill="#2A2A2A"/>
+
+                                <!-- Bars - anchored to bottom baseline y=212 -->
+                                <rect x="44"  y="178" width="26" height="34" rx="3" fill="#2A2A2A"/>
+                                <rect x="78"  y="166" width="26" height="46" rx="3" fill="#2A2A2A"/>
+                                <rect x="112" y="183" width="26" height="29" rx="3" fill="#2A2A2A"/>
+                                <rect x="146" y="158" width="26" height="54" rx="3" fill="rgba(255,81,0,0.35)"/>
+                                <rect x="180" y="149" width="26" height="63" rx="3" fill="rgba(255,81,0,0.55)"/>
+                                <rect x="214" y="140" width="26" height="72" rx="3" fill="#FF5100"/>
+                                <rect x="248" y="152" width="26" height="60" rx="3" fill="rgba(255,81,0,0.45)"/>
+
+                                <!-- Baseline -->
+                                <line x1="32" y1="213" x2="328" y2="213" stroke="#222" stroke-width="1"/>
+
+                                <!-- Day dots -->
+                                <circle cx="57"  cy="220" r="2" fill="#2A2A2A"/>
+                                <circle cx="91"  cy="220" r="2" fill="#2A2A2A"/>
+                                <circle cx="125" cy="220" r="2" fill="#2A2A2A"/>
+                                <circle cx="159" cy="220" r="2" fill="#333"/>
+                                <circle cx="193" cy="220" r="2" fill="#444"/>
+                                <circle cx="227" cy="220" r="3" fill="#FF5100"/>
+                                <circle cx="261" cy="220" r="2" fill="#444"/>
+
+                                <!-- Channel pills - icon-only style (colored dots) -->
+                                <circle cx="32"  cy="244" r="5" fill="#FF5100"/>
+                                <rect x="42"  y="240" width="32" height="8" rx="4" fill="#1E1E1E"/>
+
+                                <circle cx="86"  cy="244" r="5" fill="#4285F4"/>
+                                <rect x="96"  y="240" width="32" height="8" rx="4" fill="#1E1E1E"/>
+
+                                <circle cx="140" cy="244" r="5" fill="#0A66C2"/>
+                                <rect x="150" y="240" width="32" height="8" rx="4" fill="#1E1E1E"/>
+
+                                <circle cx="194" cy="244" r="5" fill="#888"/>
+                                <rect x="204" y="240" width="32" height="8" rx="4" fill="#1E1E1E"/>
+
+                                <circle cx="248" cy="244" r="5" fill="#22c55e"/>
+                                <rect x="258" y="240" width="32" height="8" rx="4" fill="#1E1E1E"/>
+
+                                <!-- Bottom faint bar -->
+                                <rect x="20" y="264" width="180" height="4" rx="2" fill="#1A1A1A"/>
+                                <rect x="20" y="272" width="120" height="4" rx="2" fill="#1A1A1A"/>
+                            </svg>
                         </div>
                     </div>
                 </div>
@@ -2084,8 +1995,8 @@
         <div class="container">
             <div class="cta__content">
                 <div class="cta__header">
-                    <h2 class="cta__title">Bereit für dein nächstes Projekt?</h2>
-                    <p class="cta__subtitle">Lass uns gemeinsam herausfinden, wie wir deine Ziele erreichen können. Kontaktiere uns über deine bevorzugte Methode.</p>
+                    <h2 class="cta__title">Lass uns herausfinden, wo wir ansetzen.</h2>
+                    <p class="cta__subtitle">Kein Pitch, kein Druck. Wir hören zu, stellen die richtigen Fragen und zeigen dir ehrlich, wo Branding, Web oder Marketing für dich den größten Unterschied machen.</p>
                 </div>
                 
                 <div class="cta__grid">
@@ -2198,7 +2109,7 @@
                 </div>
                 <div class="footer__bottom">
                     <div class="footer__copyright">
-                        <div>© 2025 UNLEASH</div>
+                        <div>© 2025 UNLEASH GbR</div>
                         <div>Alle Rechte vorbehalten</div>
                     </div>
                     <div class="footer__legal">
