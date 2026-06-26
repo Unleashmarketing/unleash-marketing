@@ -417,7 +417,7 @@
 
         /* Hero Section */
         .hero {
-            padding: 120px 0;
+            padding: 160px 0 120px;
             position: relative;
         }
 
@@ -441,18 +441,28 @@
             justify-content: center;
         }
 
-        .hero__badge {
-            display: inline-block;
+        .hero__eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .hero__eyebrow::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
             background: var(--color-primary);
-            color: var(--color-text-primary);
-            padding: 8px 16px;
-            border-radius: 6px;
+            flex-shrink: 0;
+        }
+
+        .hero__eyebrow span {
             font-size: 12px;
             font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-bottom: 32px;
+            color: var(--color-text-secondary);
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            width: 100px;
         }
 
         .hero__title {
@@ -474,7 +484,7 @@
 
         /* Projects Grid Section */
         .projects-section {
-            padding: 30px 0;
+            padding: 80px 0;
             background: transparent;
             position: relative;
         }
@@ -649,7 +659,7 @@
 
         /* CTA Cards Section */
         .cta-cards-section {
-            padding: 30px 0;
+            padding: 120px 0;
             background: transparent;
         }
 
@@ -1030,12 +1040,14 @@
         <div class="container">
             <div class="hero__content">
                 <div class="hero__left">
-                    <div class="hero__badge">PROJEKTE</div>
-                    <h1 class="hero__title">Referenzen und aktuelle Projekte</h1>
+                    <div class="hero__eyebrow">
+                        <span>Projekte</span>
+                    </div>
+                    <h1 class="hero__title">Projekte, auf die wir stolz sind</h1>
                 </div>
                 <div class="hero__right">
                     <p class="hero__description">
-                        Wir können mittlerweile eine beachtliche Menge an abgeschlossenen Projekten vorweisen, auf die wir sehr stolz sind. Da wir Sie nicht nur mit schönen Worten von unserem Know-how überzeugen wollen, finden Sie hier einige unserer aktuellen Projekte für Kunden aus den unterschiedlichsten Branchen.
+                        Hier siehst du, was Branding, Web und Marketing in der Praxis bedeuten – echte Projekte, echte Kunden, echte Ergebnisse.
                     </p>
                 </div>
             </div>
@@ -1118,65 +1130,6 @@
                     </div>
                 </div>
 
-                <!-- Project 6 -->
-                <div class="project-card">
-                    <div class="project-card__image">
-                        <img src="bilder/projekte/allianz.jpg" alt="Allianz Creative" style="object-position: center top;"></img>
-                    </div>
-                    <div class="project-card__content">
-                        <h3 class="project-card__title">FinanceHub</h3>
-                        <div class="project-card__tags">
-                            <span class="project-tag">App Design</span>
-                            <span class="project-tag">UX/UI</span>
-                            <span class="project-tag">Development</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 7 -->
-                <div class="project-card">
-                    <div class="project-card__image">
-                        <img src="bilder/projekte/allianz.jpg" alt="Allianz Creative" style="object-position: center top;"></img>
-                    </div>
-                    <div class="project-card__content">
-                        <h3 class="project-card__title">Health Staff Finders</h3>
-                        <div class="project-card__tags">
-                            <span class="project-tag">Print</span>
-                            <span class="project-tag">Branding</span>
-                            <span class="project-tag">Logo Design</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 8 -->
-                <div class="project-card">
-                    <div class="project-card__image">
-                        <img src="bilder/projekte/allianz.jpg" alt="Allianz Creative" style="object-position: center top;"></img>
-                    </div>
-                    <div class="project-card__content">
-                        <h3 class="project-card__title">FoodMart Express</h3>
-                        <div class="project-card__tags">
-                            <span class="project-tag">E-Commerce</span>
-                            <span class="project-tag">Mobile App</span>
-                            <span class="project-tag">Branding</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 9 -->
-                <div class="project-card">
-                    <div class="project-card__image">
-                        <img src="bilder/projekte/allianz.jpg" alt="Allianz Creative" style="object-position: center top;"></img>
-                    </div>
-                    <div class="project-card__content">
-                        <h3 class="project-card__title">HealthCare Plus</h3>
-                        <div class="project-card__tags">
-                            <span class="project-tag">Digital Health</span>
-                            <span class="project-tag">UI/UX</span>
-                            <span class="project-tag">Consulting</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1186,9 +1139,9 @@
     <div class="container">
         <div class="references__header">
             <div class="references__badge">REFERENZEN</div>
-            <h2 class="references__title">Gemeinsam erfolgreich</h2>
+            <h2 class="references__title">Unternehmen, die uns vertrauen</h2>
             <p class="references__description">
-                Seit unserer Gründung im Jahr 2020 haben wir uns, national und international, einen beachtlichen Stamm von über 50 Kund*innen aufgebaut und betreuen viele dieser Kund*innen bereits seit mehreren Jahren! Von Einzelunternehmen und KMU, bis hin zu dezentralisierten internationalen Unternehmen. Aktuell betreuen wir im Schnitt monatlich über 50 Kund*innen. Hier finden Sie einen Auszug unserer Referenzen.
+                Seit 2020 arbeiten wir für Unternehmen aus verschiedensten Branchen – von lokalen Mittelständlern bis zu internationalen Marken. Was sie eint: der Wunsch, digital stärker aufzutreten. Was uns eint: das Interesse, das wirklich umzusetzen.
             </p>
         </div>
 
@@ -1262,10 +1215,10 @@
             <div class="cta-cards__grid">
                 <!-- Services Card -->
                 <div class="cta-card cta-card--services">
-                    <h3 class="cta-card__title">Als Full-Service Kreativagentur bieten wir ein breites Spektrum an Leistungen in verschiedenen Bereichen an. Von Grafikdesign und Webdesign bis hin zu IT-Services und Webhosting.</h3>
-                    <p class="cta-card__text">Entdecken Sie unser komplettes Leistungsportfolio und finden Sie die perfekte Lösung für Ihr Unternehmen.</p>
+                    <h3 class="cta-card__title">Branding, Webdesign und Marketing aus einer Hand – damit alles zusammenwirkt, statt nebeneinander herzulaufen.</h3>
+                    <p class="cta-card__text">Schau dir an, womit wir Unternehmen digital nach vorne bringen.</p>
                     <a href="services.html" class="cta-card__button">
-                        Services 
+                        Leistungen entdecken 
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M7 17L17 7M17 7H7M17 7V17"/>
                         </svg>
@@ -1275,8 +1228,8 @@
                 <!-- Contact Card -->
                 <div class="cta-card cta-card--contact">
                     <div class="cta-card__content">
-                        <p class="cta-card__text">Kontaktieren Sie uns!</p>
-                        <h3 class="cta-card__title">Start a project</h3>
+                        <p class="cta-card__text">Ruf einfach an oder schreib uns.</p>
+                        <h3 class="cta-card__title">Projekt starten</h3>
                         <a href="kontakt.html" class="cta-card__button">
                             Kontakt
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1319,7 +1272,7 @@
                 </div>
                 <div class="footer__bottom">
                     <div class="footer__copyright">
-                        <div>© 2025 UNLEASH</div>
+                        <div>© 2025 UNLEASH GbR</div>
                         <div>Alle Rechte vorbehalten</div>
                     </div>
                     <div class="footer__legal">
