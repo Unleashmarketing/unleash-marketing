@@ -636,10 +636,34 @@
 
        /* Hero Section */
        .hero {
-           padding: 180px 0 120px;
+           padding: 160px 0 120px;
            position: relative;
            overflow: hidden;
            background: transparent;
+       }
+
+       .hero__eyebrow {
+           display: flex;
+           align-items: center;
+           gap: 16px;
+           margin-bottom: 32px;
+       }
+
+       .hero__eyebrow::before {
+           content: '';
+           display: block;
+           width: 40px;
+           height: 2px;
+           background: #FF5100;
+           flex-shrink: 0;
+       }
+
+       .hero__eyebrow span {
+           font-size: 12px;
+           font-weight: 600;
+           color: var(--color-text-secondary);
+           letter-spacing: 0.12em;
+           text-transform: uppercase;
        }
 
        .hero__content {
@@ -671,7 +695,7 @@
 
        /* Team Section */
        .team-section {
-           padding: 0;
+           padding: 80px 0 0;
            background: transparent;
            position: relative;
        }
@@ -742,7 +766,91 @@
            font-size: 14px;
            color: var(--color-primary);
            font-weight: 500;
-           margin-bottom: 4px;
+           margin-bottom: 10px;
+       }
+
+       .team-member__tags {
+           display: flex;
+           flex-wrap: wrap;
+           gap: 6px;
+           margin-top: 8px;
+       }
+
+       .team-member__tag {
+           font-size: 11px;
+           font-weight: 600;
+           color: var(--color-text-secondary);
+           background: rgba(255,255,255,0.05);
+           border: 1px solid #2A2A2A;
+           border-radius: 4px;
+           padding: 3px 8px;
+           letter-spacing: 0.04em;
+           text-transform: uppercase;
+       }
+
+       .team-member__fact {
+           font-size: 13px;
+           color: rgba(255,255,255,0.35);
+           line-height: 1.5;
+           margin-top: 10px;
+           font-style: italic;
+       }
+
+       /* Values Strip */
+       .team-values {
+           margin-top: 80px;
+           border-top: 1px solid #2A2A2A;
+           padding-top: 48px;
+           display: grid;
+           grid-template-columns: repeat(4, 1fr);
+           gap: 0;
+       }
+
+       .team-value {
+           padding: 0 32px 0 0;
+           border-right: 1px solid #2A2A2A;
+       }
+
+       .team-value:last-child {
+           border-right: none;
+           padding-right: 0;
+           padding-left: 32px;
+       }
+
+       .team-value:not(:first-child):not(:last-child) {
+           padding-left: 32px;
+       }
+
+       .team-value__number {
+           font-size: clamp(2rem, 4vw, 3rem);
+           font-weight: 700;
+           color: var(--color-primary);
+           line-height: 1;
+           margin-bottom: 8px;
+       }
+
+       .team-value__label {
+           font-size: 14px;
+           color: var(--color-text-secondary);
+           line-height: 1.5;
+       }
+
+       @media (max-width: 768px) {
+           .team-values {
+               grid-template-columns: repeat(2, 1fr);
+               gap: 32px;
+           }
+           .team-value {
+               border-right: none;
+               padding: 0;
+           }
+           .team-value:last-child {
+               padding: 0;
+           }
+           .team-value:not(:first-child):not(:last-child) {
+               padding: 0;
+           }
+           .team-member__tags { display: none; }
        }
 
        .team-member__location {
@@ -754,7 +862,7 @@
        .mission-section {
            background: transparent;
            position: relative;
-           padding: 120px 0 0;
+           padding: 120px 0 120px;
        }
 
        .mission__content {
@@ -1383,9 +1491,12 @@
        <div class="container">
            <div class="hero__content">
                <div class="hero__text">
-                   <h1>Weil wir mehr als nur eine Marketingfirma sind – wir sind deine Problemlöser.</h1>
+                   <div class="hero__eyebrow">
+                       <span>Team</span>
+                   </div>
+                   <h1>Hinter UNLEASH stecken Menschen, die unternehmerisch denken.</h1>
                    <p class="hero__description">
-                       Mit unserer Expertise und kreativen Ansätzen gehen wir weit über traditionelle Marketinglösungen hinaus. Wir analysieren deine Herausforderungen und entwickeln individuelle Strategien, die gezielt auf deine Bedürfnisse abgestimmt sind. 
+                       Wir kennen beide Seiten: die kreative und die geschäftliche. Deshalb entwickeln wir keine Lösungen, die nur gut aussehen – sondern welche, die wachsen lassen.
                    </p>
                </div>
            </div>
@@ -1396,9 +1507,9 @@
    <section class="team-section" id="team">
        <div class="container">
            <div class="team__header">
-               <h2 class="team__title">Unser Team</h2>
+               <h2 class="team__title">Die Menschen hinter UNLEASH</h2>
                <p class="team__description">
-                   Wir sind eine dynamische Gruppe von Persönlichkeiten, die leidenschaftlich für das brennen, was wir tun, und sich der Erzielung der besten Ergebnisse für unsere Kunden verschrieben haben.
+                   Strategen, Designer, Entwickler und Kreative – vereint durch einen gemeinsamen Anspruch: dass das, was wir abliefern, wirklich etwas verändert.
                </p>
            </div>
 
@@ -1409,7 +1520,13 @@
                        <img src="bilder/team/jonas_result.jpg" alt="Jonas Hanauer" style="object-position: center 50%;">
                    </div>
                    <h3 class="team-member__name">Jonas Hanauer</h3>
-                   <div class="team-member__role">Geschäftsführer | Strategy Manager</div>
+                   <div class="team-member__role">Geschäftsführer · Strategy Manager</div>
+                   <div class="team-member__tags">
+                       <span class="team-member__tag">Strategie</span>
+                       <span class="team-member__tag">Akquise</span>
+                       <span class="team-member__tag">Projektleitung</span>
+                   </div>
+                   <p class="team-member__fact">Denkt in Systemen. Plant in Szenarien. Handelt direkt.</p>
                </div>
 
                <div class="team-member">
@@ -1417,7 +1534,13 @@
                        <img src="bilder/team/dungi_result.jpg" alt="Dung Nguyen" style="object-position: center 50%;">
                    </div>
                    <h3 class="team-member__name">Dung Nguyen</h3>
-                   <div class="team-member__role">Geschäftsführer | Web Developer | Fotograf</div>
+                   <div class="team-member__role">Geschäftsführer · Web Developer · Fotograf</div>
+                   <div class="team-member__tags">
+                       <span class="team-member__tag">Frontend</span>
+                       <span class="team-member__tag">Fotografie</span>
+                       <span class="team-member__tag">Conversion</span>
+                   </div>
+                   <p class="team-member__fact">Baut Websites, die funktionieren. Fotografiert, was andere übersehen.</p>
                </div>
 
                <div class="team-member">
@@ -1425,7 +1548,13 @@
                        <img src="bilder/team/alex_result.jpg" alt="Dr. Alex Emmerich" style="object-position: center top;">
                    </div>
                    <h3 class="team-member__name">Dr. Alexander Emmerich</h3>
-                   <div class="team-member__role">Co-Founder | Fotograf | Videograf</div>
+                   <div class="team-member__role">Co-Founder · Fotograf · Videograf</div>
+                   <div class="team-member__tags">
+                       <span class="team-member__tag">Fotografie</span>
+                       <span class="team-member__tag">Video</span>
+                       <span class="team-member__tag">Storytelling</span>
+                   </div>
+                   <p class="team-member__fact">Promoviert. Und trotzdem der Entspannteste im Raum.</p>
                </div>
 
                <!-- Row 2 -->
@@ -1435,6 +1564,12 @@
                    </div>
                    <h3 class="team-member__name">Til Otterbein</h3>
                    <div class="team-member__role">Social Media Manager</div>
+                   <div class="team-member__tags">
+                       <span class="team-member__tag">Content</span>
+                       <span class="team-member__tag">Community</span>
+                       <span class="team-member__tag">Trends</span>
+                   </div>
+                   <p class="team-member__fact">Weiß, was morgen viral geht. Heute noch.</p>
                </div>
 
                <div class="team-member">
@@ -1443,6 +1578,12 @@
                    </div>
                    <h3 class="team-member__name">Maggy Ewig</h3>
                    <div class="team-member__role">Grafik-Designerin</div>
+                   <div class="team-member__tags">
+                       <span class="team-member__tag">Branding</span>
+                       <span class="team-member__tag">Print</span>
+                       <span class="team-member__tag">UI Design</span>
+                   </div>
+                   <p class="team-member__fact">Hat einen Blick für Details, den andere erst entwickeln müssen.</p>
                </div>
 
                <div class="team-member">
@@ -1451,6 +1592,11 @@
                    </div>
                    <h3 class="team-member__name">Peter Mrowiec</h3>
                    <div class="team-member__role">Grafik-Designer</div>
+                   <div class="team-member__tags">
+                       <span class="team-member__tag">Corporate Design</span>
+                       <span class="team-member__tag">Illustration</span>
+                   </div>
+                   <p class="team-member__fact">Macht aus Ideen Bilder – und aus Bildern Marken.</p>
                </div>
 
                <!-- Row 3 -->
@@ -1460,6 +1606,11 @@
                    </div>
                    <h3 class="team-member__name">Besart Latifi</h3>
                    <div class="team-member__role">Account Manager</div>
+                   <div class="team-member__tags">
+                       <span class="team-member__tag">Kundenbetreuung</span>
+                       <span class="team-member__tag">Koordination</span>
+                   </div>
+                   <p class="team-member__fact">Hält alle Fäden zusammen. Und verliert dabei nie den Überblick.</p>
                </div>
 
                <div class="team-member">
@@ -1468,6 +1619,31 @@
                    </div>
                    <h3 class="team-member__name">Whiskey</h3>
                    <div class="team-member__role">Cuddle Manager</div>
+                   <div class="team-member__tags">
+                       <span class="team-member__tag">Moral Support</span>
+                       <span class="team-member__tag">Büroklima</span>
+                   </div>
+                   <p class="team-member__fact">100% Anwesenheitsquote. Null Beschwerden.</p>
+               </div>
+           </div>
+
+           <!-- Values Strip -->
+           <div class="team-values">
+               <div class="team-value">
+                   <div class="team-value__number">8</div>
+                   <div class="team-value__label">Menschen im Team – jede Disziplin abgedeckt</div>
+               </div>
+               <div class="team-value">
+                   <div class="team-value__number">5+</div>
+                   <div class="team-value__label">Jahre gemeinsame Erfahrung</div>
+               </div>
+               <div class="team-value">
+                   <div class="team-value__number">80+</div>
+                   <div class="team-value__label">Projekte abgeschlossen</div>
+               </div>
+               <div class="team-value">
+                   <div class="team-value__number">1</div>
+                   <div class="team-value__label">Ansprechpartner für alles</div>
                </div>
            </div>
        </div>
@@ -1478,12 +1654,12 @@
        <div class="container">
            <div class="mission__content">
                <div class="mission__text">
-                   <h2>Unsere Mission</h2>
+                   <h2>Warum wir tun, was wir tun</h2>
                    <p class="mission__description">
-                       Wir verstehen uns als digitale Wegbegleiter für Unternehmen jeder Größe. Unser Ziel ist es, maßgeschneiderte Lösungen zu entwickeln, die genau auf die individuellen Bedürfnisse und Herausforderungen unserer Kunden abgestimmt sind.
+                       Wir haben UNLEASH gegründet, weil wir gesehen haben, wie viele Unternehmen mit digitalem Potenzial an der falschen Stelle stecken – einer schwachen Marke, einer schlechten Website, Marketing ohne Strategie. Das wollen wir ändern.
                    </p>
                    <p class="mission__description">
-                       Von der strategischen Beratung über kreatives Design bis hin zur technischen Umsetzung – wir bieten das komplette Spektrum digitaler Dienstleistungen aus einer Hand. Dabei setzen wir auf innovative Ansätze, die nachhaltige Ergebnisse liefern und unserem Kunden dabei helfen, in der digitalen Welt erfolgreich zu sein.
+                       Branding, Webdesign und Marketing unter einem Dach – das ist kein Zufall, sondern Absicht. Diese drei Dinge greifen ineinander. Wenn sie aus einer Hand kommen, stimmt das Ergebnis.
                    </p>
                </div>
 
@@ -1542,7 +1718,7 @@
                </div>
                <div class="footer__bottom">
                    <div class="footer__copyright">
-                       <div>© 2025 UNLEASH</div>
+                       <div>© 2025 UNLEASH GbR</div>
                        <div>Alle Rechte vorbehalten</div>
                    </div>
                    <div class="footer__legal">
