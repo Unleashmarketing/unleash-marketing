@@ -1591,6 +1591,9 @@
     display: none !important;
 }
     </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
@@ -1612,53 +1615,7 @@
                     <div class="header__center">
                         <ul class="nav__list">
                             <li class="nav__item"><a href="team.html" class="nav__link">Unser Team</a></li>
-                            <li class="nav__item">
-                                <a href="services.html" class="nav__link nav__link--active">
-                                    Leistungen 
-                                    <span class="nav__dropdown-icon">
-                                        <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </span>
-                                </a>
-                                <div class="nav__dropdown">
-                                    <div class="nav__dropdown-grid">
-                                        <a href="design.html" class="nav__dropdown-card">
-                                            <div>
-                                                <h3 class="nav__dropdown-card-title">Branding & Design</h3>
-                                                <p class="nav__dropdown-card-description">Starke Markenidentitäten und kreative Designlösungen</p>
-                                            </div>
-                                            <div class="nav__dropdown-card-icon">
-                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2">
-                                                    <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                                                </svg>
-                                            </div>
-                                        </a>
-                                        <a href="webdesign.html" class="nav__dropdown-card">
-                                            <div>
-                                                <h3 class="nav__dropdown-card-title">Webdesign</h3>
-                                                <p class="nav__dropdown-card-description">Moderne Websites die konvertieren und begeistern</p>
-                                            </div>
-                                            <div class="nav__dropdown-card-icon">
-                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2">
-                                                    <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                                                </svg>
-                                            </div>
-                                        </a>
-                                        <a href="marketing.html" class="nav__dropdown-card">
-                                            <div>
-                                                <h3 class="nav__dropdown-card-title">Marketing</h3>
-                                                <p class="nav__dropdown-card-description">Strategisches Marketing für messbare Ergebnisse</p>
-                                            </div>
-                                            <div class="nav__dropdown-card-icon">
-                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2">
-                                                    <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                                                </svg>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
+                            <li class="nav__item"><a href="services.html" class="nav__link nav__link--active">Leistungen</a></li>
                             <li class="nav__item"><a href="projekte.html" class="nav__link">Projekte</a></li>
                         </ul>
                     </div>
@@ -1678,21 +1635,7 @@
                     <div class="mobile-menu__content">
                         <ul class="mobile-nav__list">
                             <li class="mobile-nav__item"><a href="team.html" class="mobile-nav__link">Unser Team</a></li>
-                            <li class="mobile-nav__item">
-                                <button class="mobile-nav__link" onclick="toggleMobileDropdown(this)">
-                                    Leistungen 
-                                    <span class="mobile-nav__toggle">
-                                        <svg width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </span>
-                                </button>
-                                <div class="mobile-nav__dropdown">
-                                    <a href="design.html" class="mobile-nav__dropdown-item">Branding & Design</a>
-                                    <a href="webdesign.html" class="mobile-nav__dropdown-item">Webdesign</a>
-                                    <a href="marketing.html" class="mobile-nav__dropdown-item">Marketing</a>
-                                </div>
-                            </li>
+                            <li class="mobile-nav__item"><a href="services.html" class="mobile-nav__link">Leistungen</a></li>
                             <li class="mobile-nav__item"><a href="projekte.html" class="mobile-nav__link">Projekte</a></li>
                         </ul>
                         <div class="mobile-nav__buttons">
@@ -2086,7 +2029,7 @@
             <div class="footer__content">
                 <div class="footer__top">
                     <div class="footer__brand">
-                        <div class="logo">
+                        <a href="index.html" class="logo">
                             <img src="bilder/logos/unleash.svg" alt="UNLEASH" class="footer-logo__image">
                         </div>
                         <p class="footer__tagline">Kreativer Problemlöser</p>
