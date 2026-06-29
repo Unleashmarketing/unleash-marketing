@@ -5,18 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kontakt – UNLEASH</title>
     <style>
+        /* ── Reset & Tokens ─────────────────────────────────── */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        html {
-            font-size: 16px;
-            scroll-behavior: smooth;
+        :root {
+            --color-primary:        #FF5100;
+            --color-bg:             #121212;
+            --color-surface:        #1E1E1E;
+            --color-border:         #2A2A2A;
+            --color-border-subtle:  #1E1E1E;
+            --color-text-primary:   #FFFFFF;
+            --color-text-secondary: #8E8E8E;
+            --font: 'FK Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --radius:               12px;
+            --container-max:        1440px;
+            --container-pad:        60px;
         }
+
+        html { font-size: 16px; scroll-behavior: smooth; }
 
         body {
             background: #121212;
             background-color: #121212;
-            color: #FFFFFF;
-            font-family: 'FK Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--color-text-primary);
+            font-family: var(--font);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
@@ -39,704 +51,82 @@
 
         a { color: inherit; text-decoration: none; }
 
+        /* ── Container ──────────────────────────────────────── */
         .container {
-            max-width: 1440px;
+            max-width: var(--container-max);
             margin: 0 auto;
-            padding: 0 60px;
+            padding: 0 var(--container-pad);
         }
 
-        /* Grid Variables */
-        :root {
-            --grid-columns: 12;
-            --column-width: 72px;
-            --gutter: 24px;
-            --baseline: 8px;
-            
-            /* Colors */
-            --color-primary: #FF5100;
-            --color-bg-primary: #121212;
-            --color-bg-secondary: #1E1E1E;
-            --color-text-primary: #FFFFFF;
-            --color-text-secondary: #8E8E8E;
-            --color-text-invert: #F4F4F4;
-            
-            /* Typography */
-            --font-size-h1: clamp(2.5rem, 5vw, 4.5rem);
-            --font-size-h2: clamp(2rem, 4vw, 3rem);
-            --font-size-h3: clamp(1.25rem, 2.5vw, 1.5rem);
-            --font-size-body: 1rem;
-            --font-size-body-large: 1.125rem;
-        }
-
-        /* Header */
+        /* ── Header (shared) ────────────────────────────────── */
         .header {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             z-index: 1000;
-            width: 100%;
-            padding: 0 8px;
+            padding: 24px 0;
+            transition: background 0.3s, padding 0.3s, border-color 0.3s;
+            border-bottom: 1px solid transparent;
         }
-
-        .header__nav {
-            transition: all 0.3s ease;
+        .header[data-state="active"] {
+            background: rgba(14,14,14,0.92);
+            backdrop-filter: blur(16px);
+            padding: 14px 0;
+            border-bottom-color: var(--color-border);
         }
+        .header__container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-pad); }
+        .header__content   { display: flex; align-items: center; justify-content: space-between; }
+        .header__brand     { display: flex; align-items: center; gap: 16px; }
+        .logo__image       { height: 28px; width: auto; display: block; }
+        .footer-logo__image { height: 28px; width: auto; display: block; }
 
-        .header__container {
-            max-width: 1440px;
-            margin: 0 auto;
-            margin-top: 8px;
-            padding: 0 24px;
-            transition: all 0.3s ease;
-        }
+        .nav__list  { list-style: none; display: flex; gap: 32px; align-items: center; }
+        .nav__link  { font-size: 14px; font-weight: 500; color: var(--color-text-secondary); transition: color 0.2s; }
+        .nav__link:hover { color: var(--color-text-primary); }
+        .nav__dropdown-icon { display: inline-flex; margin-left: 4px; vertical-align: middle; }
+        .nav__dropdown-icon svg { width: 10px; height: 10px; }
 
-        /* Default state */
-        .header[data-state="inactive"] .header__container {
-            max-width: 1536px;
-            padding: 0 48px;
-        }
-
-        /* Scrolled state - only for desktop */
-        @media (min-width: 769px) {
-            .header[data-state="active"] .header__container {
-                max-width: 1024px;
-                background: rgba(18, 18, 18, 0.8);
-                backdrop-filter: blur(16px);
-                border: 1px solid #1E1E1E;
-                border-radius: 16px;
-                padding: 0 20px;
-            }
-        }
-
-        /* Mobile always has glass effect */
-        @media (max-width: 768px) {
-            .header__container {
-                background: rgba(18, 18, 18, 0.8) !important;
-                backdrop-filter: blur(16px) !important;
-                border: 1px solid #1E1E1E !important;
-                border-radius: 16px !important;
-                padding: 0 24px !important; 
-                max-width: 1440px !important;
-            }
-        }
-
-        .header__content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 24px;
-            padding: 12px 0;
-            position: relative;
-        }
-
-        .header__brand {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-        }
-
-        .header__center {
-            position: absolute;
-            inset: 0;
-            margin: auto;
-            width: fit-content;
-            height: fit-content;
-            display: none;
-        }
-
-        .header__actions {
-            display: none;
-            align-items: center;
-            width: 100%;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 24px;
-            background: var(--color-bg-primary);
-            border: 1px solid #1E1E1E;
-            border-radius: 24px;
-            padding: 24px;
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            position: relative;
-            text-decoration: none;
-        }
-
-        .logo__image,
-        .footer-logo__image {
-            height: 32px;
-            width: auto;
-            transition: transform 0.3s ease;
-        }
-
-        .logo:hover .logo__image,
-        .logo:hover .footer-logo__image {
-            transform: scale(1.05);
-        }
-
-        .nav__list {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            font-size: 14px;
-        }
-
-        .nav__item {
-            position: relative;
-        }
-
-        .nav__link {
-            color: var(--color-text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: all 0.15s ease;
-        }
-
-        .nav__link:hover {
-            color: var(--color-text-primary);
-        }
-
-        /* Dropdown Styles */
+        /* Dropdown */
+        .nav__item { position: relative; }
         .nav__dropdown {
+            display: none;
             position: absolute;
-            top: 100%;
+            top: calc(100% + 12px);
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(18, 18, 18, 0.95);
-            backdrop-filter: blur(16px);
-            border: 1px solid #2A2A2A;
-            border-radius: 16px;
-            padding: 24px;
-            min-width: 850px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateX(-50%) translateY(-10px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-            z-index: 1001;
-            margin-top: 12px;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            padding: 12px;
+            min-width: 280px;
+            z-index: 100;
         }
-
-        .nav__item:hover .nav__dropdown {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(0);
-        }
-
-        .nav__dropdown-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
-
+        .nav__item:hover .nav__dropdown { display: block; }
+        .nav__dropdown-grid { display: flex; flex-direction: column; gap: 4px; }
         .nav__dropdown-card {
-            background: var(--color-bg-secondary);
-            border: 1px solid #2A2A2A;
-            border-radius: 12px;
-            padding: 20px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            min-height: 120px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-width: 250px; 
-            padding: 15px; 
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 12px 14px; border-radius: 8px; transition: background 0.2s;
         }
-
-        .nav__dropdown-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 81, 0, 0.1), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .nav__dropdown-card:hover::before {
-            left: 100%;
-        }
-
-        .nav__dropdown-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--color-primary); 
-            box-shadow: 0 8px 25px rgba(255, 81, 0, 0.3);
-        }
-
-        .nav__dropdown-card-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--color-text-primary);
-            margin-bottom: 8px;
-            line-height: 1.3;
-        }
-
-        .nav__dropdown-card-description {
-            font-size: 14px;
-            color: var(--color-text-secondary);
-            line-height: 1.5;
-            margin: 0;
-        }
-
-        .nav__dropdown-card-icon {
-            position: absolute;
-            bottom: 16px;
-            right: 16px;
-            width: 24px;
-            height: 24px;
-            background: var(--color-primary);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 1;
-            transform: scale(1);
-            transition: all 0.3s ease;
-        }
-
-.nav__dropdown-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 6px;
-    transition: all 0.3s ease;
-    transform-origin: center center;
-    width: 12px;
-    height: 12px;
-}
-
-.nav__item:hover .nav__dropdown-icon {
-    transform: rotate(180deg);
-}
-
-.nav__dropdown-icon svg {
-    width: 100%;
-    height: 100%;
-    fill: var(--color-text-secondary);
-    transition: fill 0.3s ease;
-}
-
-.nav__item:hover .nav__dropdown-icon svg {
-    fill: var(--color-text-primary);
-}
-        
-        @media (max-width: 1024px) {
-            .nav__dropdown {
-                min-width: 650px;
-                left: -150px;
-                transform: translateX(0) translateY(-10px);
-            }
-            
-            .nav__item:hover .nav__dropdown {
-                transform: translateX(0) translateY(0);
-            }
-            
-            .nav__dropdown-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav__dropdown {
-                display: none;
-            }
-        }
+        .nav__dropdown-card:hover { background: var(--color-border); }
+        .nav__dropdown-card-title { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+        .nav__dropdown-card-description { font-size: 11px; color: var(--color-text-secondary); }
+        .nav__dropdown-card-icon { flex-shrink: 0; margin-left: 12px; opacity: 0.5; }
 
         .nav__button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            white-space: nowrap;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            height: 36px;
-            padding: 0 12px;
+            display: inline-flex; align-items: center;
+            padding: 10px 20px; border-radius: 8px;
+            font-size: 13px; font-weight: 600;
+            transition: all 0.2s;
         }
-
-        .nav__button--outline {
-            border: 1px solid #2A2A2A;
-            background: var(--color-bg-primary);
-            color: var(--color-text-primary);
-        }
-
-        .nav__button--outline:hover {
-            background: var(--color-bg-secondary);
-            color: var(--color-text-primary);
-        }
-
         .nav__button--primary {
             background: var(--color-primary);
-            color: var(--color-text-primary);
-            border: 1px solid transparent;
+            color: #fff;
         }
+        .nav__button--primary:hover { background: #e04800; }
 
-        .nav__button--primary:hover {
-            background: #E64600;
-            transform: translateY(-1px);
-        }
+        .mobile-menu-toggle { display: none; }
+        .mobile-menu        { display: none; }
 
-        .nav__desktop-buttons {
-            display: flex;
-            gap: 12px;
-            width: 100%;
-            flex-direction: column;
-        }
-
-        .nav__scrolled-button {
-            display: none;
-        }
-
-        .mobile-menu-toggle {
-            position: relative;
-            z-index: 20;
-            margin: -10px -16px -10px -10px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 10px;
-            display: block;
-        }
-
-        .menu-icon {
-            display: block;
-            width: 24px;
-            height: 24px;
-            position: relative;
-        }
-
-        .menu-icon::before,
-        .menu-icon::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            width: 24px;
-            height: 2px;
-            background: var(--color-text-primary);
-            transition: all 0.2s ease;
-        }
-
-        .menu-icon::before {
-            top: 7px;
-        }
-
-        .menu-icon::after {
-            top: 15px;
-        }
-
-        .close-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-180deg) scale(0);
-            font-size: 24px;
-            color: var(--color-text-primary);
-            transition: all 0.2s ease;
-            opacity: 0;
-        }
-
-        /* Mobile menu */
-        .mobile-menu {
-            display: none;
-            width: 100%;
-            background: var(--color-bg-primary);
-            border: 1px solid #1E1E1E;
-            border-radius: 24px;
-            padding: 24px;
-            margin-top: 24px;
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .mobile-menu__content {
-            display: flex;
-            flex-direction: column;
-            gap: 32px;
-        }
-
-        .mobile-nav__list {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        .mobile-nav__item {
-            position: relative;
-        }
-
-        .mobile-nav__link {
-            color: var(--color-text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 16px;
-            transition: color 0.15s ease;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: transparent;
-            border: none; 
-            gap: 10px;
-        }
-
-        .mobile-nav__link:hover {
-            color: var(--color-text-primary);
-        }
-
-        .mobile-nav__dropdown {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            background: rgba(30, 30, 30, 0.5);
-            border-radius: 8px;
-            margin-top: 8px;
-        }
-
-        .mobile-nav__dropdown.open {
-            max-height: 200px;
-            padding: 12px 0;
-        }
-
-        .mobile-nav__dropdown-item {
-            display: block;
-            padding: 8px 16px;
-            color: var(--color-text-secondary);
-            text-decoration: none;
-            font-size: 14px;
-            transition: all 0.2s ease;
-        }
-
-        .mobile-nav__dropdown-item:hover {
-            color: var(--color-text-primary);
-            background: rgba(255, 81, 0, 0.1);
-        }
-
-        .mobile-nav__toggle {
-    background: none;
-    border: none;
-    color: var(--color-text-secondary);
-    cursor: pointer;
-    font-size: 18px;
-    transition: transform 0.3s ease;
-    display: flex; /* Für SVG-Zentrierung */
-    align-items: center;
-    justify-content: center;
-        }
-
-        .mobile-nav__toggle.open {
-            transform: rotate(180deg);
-        }
-
-        /* Desktop Navigation */
-        @media (min-width: 768px) {
-            .header__brand {
-                width: auto;
-            }
-            
-            .header__center {
-                display: block;
-            }
-            
-            .header__actions {
-                display: flex;
-                width: fit-content;
-                gap: 24px;
-                margin: 0;
-                background: transparent;
-                border: none;
-                border-radius: 0;
-                padding: 0;
-                box-shadow: none;
-                flex-direction: row;
-            }
-            
-            .nav__desktop-buttons {
-                flex-direction: row;
-                width: auto;
-            }
-            
-            .mobile-menu-toggle {
-                display: none;
-            }
-            
-            .mobile-menu {
-                display: none !important;
-            }
-            
-            /* Scrolled state for desktop */
-            .header[data-state="active"] .nav__desktop-buttons {
-                display: none;
-            }
-            
-            .header[data-state="active"] .nav__scrolled-button {
-                display: block;
-            }
-        }
-
-        /* Active mobile menu state - only when manually triggered */
-        .header[data-state="active"] .mobile-menu.manual-open {
-            display: block;
-        }
-
-        .header[data-state="active"] .menu-icon::before,
-        .header[data-state="active"] .menu-icon::after {
-            opacity: 0;
-            transform: rotate(180deg) scale(0);
-        }
-
-        .header[data-state="active"] .close-icon {
-            transform: translate(-50%, -50%) rotate(0deg) scale(1);
-            opacity: 1;
-        }
-
-        .footer {
-    padding: 80px 0 40px;
-    background: transparent;
-}
-
-.footer__container {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 24px;
-}
-
-.footer__content {
-    background: rgba(18, 18, 18, 0.8);
-    backdrop-filter: blur(16px);
-    border: 1px solid #1E1E1E;
-    border-radius: 16px;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-}
-
-.footer__top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 24px;
-}
-
-.footer__brand {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.footer__brand .footer-logo__image {
-    height: 28px;
-    width: auto;
-}
-
-.footer__tagline {
-    color: var(--color-text-secondary);
-    margin: 0;
-}
-
-.footer__social {
-    display: flex;
-    gap: 12px;
-}
-
-.footer__social-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background: var(--color-bg-secondary);
-    border: 1px solid #2A2A2A;
-    border-radius: 50%;
-    color: var(--color-text-secondary);
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.footer__social-link:hover {
-    background: var(--color-primary);
-    border-color: var(--color-primary);
-    color: var(--color-text-primary);
-    transform: translateY(-2px);
-}
-
-.footer__bottom {
-    border-top: 1px solid #2A2A2A;
-    padding-top: 32px;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
-}
-
-.footer__legal {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-}
-
-.footer__legal a {
-    color: var(--color-text-secondary);
-    text-decoration: none;
-    font-size: 14px;
-    transition: color 0.3s ease;
-}
-
-.footer__legal a:hover {
-    color: var(--color-primary);
-}
-
-.footer__copyright {
-    font-size: 14px;
-    color: var(--color-text-secondary);
-    line-height: 1.5;
-}
-
-/* Responsive Design für Desktop */
-@media (min-width: 768px) {
-    .footer__bottom {
-        grid-template-columns: 1fr 1fr;
-        align-items: end;
-        justify-items: start;
-        min-height: 60px;
-    }
-
-    .footer__legal {
-        justify-content: flex-end;
-        justify-self: end;
-        align-self: end;
-    }
-
-    .footer__copyright {
-        text-align: left;
-        justify-self: start;
-        align-self: end;
-    }
-}
-
-        /* ── Hero ────────────────────────────────────────────── */
+        /* ── Hero ───────────────────────────────────────────── */
         .hero {
             padding: 160px 0 80px;
         }
@@ -762,7 +152,7 @@
         }
 
         .hero__title {
-            font-size: var(--font-size-h1);
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
             font-weight: 800;
             line-height: 1.1;
             letter-spacing: -0.03em;
@@ -771,7 +161,7 @@
         .hero__title span { color: var(--color-primary); }
 
         .hero__description {
-            font-size: var(--font-size-body-large);
+            font-size: 1.125rem;
             color: var(--color-text-secondary);
             max-width: 520px;
             line-height: 1.8;
@@ -1299,128 +689,69 @@
             .footer__top,
             .footer__bottom { flex-direction: column; gap: 20px; align-items: flex-start; }
         }
-
-        /* ── Responsive ─────────────────────────────────────── */
-        @media (max-width: 768px) {
-            .calendar-layout,
-            .form-layout { grid-template-columns: 1fr; gap: 32px; }
-            .form-row { grid-template-columns: 1fr; }
-            .tabs__nav { overflow-x: auto; }
-            .termin-info__details { gap: 12px; flex-direction: column; }
-        }
     </style>
 </head>
 <body>
 
+<!-- ── Header ──────────────────────────────────────────────── -->
 <header class="header" data-state="inactive">
-            <nav class="header__nav">
-                <div class="header__container">
-                    <div class="header__content">
-                        <div class="header__brand">
-                            <div class="logo">
-                                <img src="bilder/logos/unleash.svg" alt="UNLEASH" class="logo__image">
-                            </div>
-
-                            <button class="mobile-menu-toggle" aria-label="Menu">
-                                <span class="menu-icon"></span>
-                                <span class="close-icon">×</span>
-                            </button>
-                        </div>
-
-                        <div class="header__center">
-                            <ul class="nav__list">
-                                <li class="nav__item"><a href="team.html" class="nav__link">Unser Team</a></li>
-                                <li class="nav__item">
-                                    <a href="services.html" class="nav__link">
-                                        Leistungen 
-                                        <span class="nav__dropdown-icon">
-    <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-</span>
-                                    </a>
-                                    <div class="nav__dropdown">
-                                        <div class="nav__dropdown-grid">
-                                            <a href="design.html" class="nav__dropdown-card">
-                                                <div>
-                                                    <h3 class="nav__dropdown-card-title">Branding & Design</h3>
-                                                    <p class="nav__dropdown-card-description">Starke Markenidentitäten und kreative Designlösungen</p>
-                                                </div>
-                                                <div class="nav__dropdown-card-icon">
-                                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2">
-                                                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                                                    </svg>
-                                                </div>
-                                            </a>
-                                            <a href="webdesign.html" class="nav__dropdown-card">
-                                                <div>
-                                                    <h3 class="nav__dropdown-card-title">Webdesign</h3>
-                                                    <p class="nav__dropdown-card-description">Moderne Websites die konvertieren und begeistern</p>
-                                                </div>
-                                                <div class="nav__dropdown-card-icon">
-                                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2">
-                                                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                                                    </svg>
-                                                </div>
-                                            </a>
-                                            <a href="marketing.html" class="nav__dropdown-card">
-                                                <div>
-                                                    <h3 class="nav__dropdown-card-title">Marketing</h3>
-                                                    <p class="nav__dropdown-card-description">Strategisches Marketing für messbare Ergebnisse</p>
-                                                </div>
-                                                <div class="nav__dropdown-card-icon">
-                                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2">
-                                                        <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                                                    </svg>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="nav__item"><a href="projekte.html" class="nav__link">Projekte</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="header__actions">
-                            <div class="nav__desktop-buttons">
-                                <a href="kontakt.html" class="nav__button nav__button--primary">Projekt anfragen</a>
-                            </div>
-                            <div class="nav__scrolled-button">
-                                <a href="kontakt.html" class="nav__button nav__button--primary">Projekt anfragen</a>
-                            </div>
-                        </div>
+    <nav class="header__nav">
+        <div class="header__container">
+            <div class="header__content">
+                <div class="header__brand">
+                    <div class="logo">
+                        <img src="bilder/logos/unleash.svg" alt="UNLEASH" class="logo__image">
                     </div>
-
-                    <!-- Mobile Menu -->
-                    <div class="mobile-menu">
-                        <div class="mobile-menu__content">
-                            <ul class="mobile-nav__list">
-                                <li class="mobile-nav__item"><a href="team.html" class="mobile-nav__link">Unser Team</a></li>
-                                <li class="mobile-nav__item">
-                                    <button class="mobile-nav__link" onclick="toggleMobileDropdown(this)">
-                                        Leistungen 
-                                        <span class="mobile-nav__toggle">
-                                            <svg width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </svg>
-                                        </span>
-                                    </button>
-                                    <div class="mobile-nav__dropdown">
-                                        <a href="design.html" class="mobile-nav__dropdown-item">Branding & Design</a>
-                                        <a href="webdesign.html" class="mobile-nav__dropdown-item">Webdesign</a>
-                                        <a href="marketing.html" class="mobile-nav__dropdown-item">Marketing</a>
-                                    </div>
-                                </li>
-                                <li class="mobile-nav__item"><a href="projekte.html" class="mobile-nav__link">Projekte</a></li>
-                            </ul>
-                            <div class="mobile-nav__buttons">
-                                <a href="kontakt.html" class="nav__button nav__button--primary">Projekt anfragen</a>
+                    <button class="mobile-menu-toggle" aria-label="Menu">☰</button>
+                </div>
+                <div class="header__center">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="team.html" class="nav__link">Unser Team</a></li>
+                        <li class="nav__item">
+                            <a href="services.html" class="nav__link">
+                                Leistungen
+                                <span class="nav__dropdown-icon">
+                                    <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                            </a>
+                            <div class="nav__dropdown">
+                                <div class="nav__dropdown-grid">
+                                    <a href="services.html" class="nav__dropdown-card">
+                                        <div>
+                                            <h3 class="nav__dropdown-card-title">Branding & Design</h3>
+                                            <p class="nav__dropdown-card-description">Starke Markenidentitäten und kreative Designlösungen</p>
+                                        </div>
+                                        <div class="nav__dropdown-card-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></div>
+                                    </a>
+                                    <a href="services.html" class="nav__dropdown-card">
+                                        <div>
+                                            <h3 class="nav__dropdown-card-title">Webdesign</h3>
+                                            <p class="nav__dropdown-card-description">Moderne Websites die konvertieren und begeistern</p>
+                                        </div>
+                                        <div class="nav__dropdown-card-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></div>
+                                    </a>
+                                    <a href="services.html" class="nav__dropdown-card">
+                                        <div>
+                                            <h3 class="nav__dropdown-card-title">Marketing</h3>
+                                            <p class="nav__dropdown-card-description">Strategisches Marketing für messbare Ergebnisse</p>
+                                        </div>
+                                        <div class="nav__dropdown-card-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></div>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
+                        </li>
+                        <li class="nav__item"><a href="projekte.html" class="nav__link">Projekte</a></li>
+                    </ul>
+                </div>
+                <div class="header__actions">
+                    <div class="nav__desktop-buttons">
+                        <a href="kontakt.html" class="nav__button nav__button--primary">Projekt anfragen</a>
                     </div>
                 </div>
-            </nav>
-        </header>
+            </div>
+        </div>
+    </nav>
+</header>
 
 <!-- ── Hero ────────────────────────────────────────────────── -->
 <section class="hero">
@@ -1601,7 +932,7 @@
                 <!-- Info-Spalte -->
                 <div class="form-info">
                     <p class="form-info__eyebrow">Direkt schreiben</p>
-                    <h2 class="form-info__title">Kein passendes Zeitfenster? Kein Problem.</h2>
+                    <h2 class="form-info__title">Schreib uns direkt –<br>wir antworten persönlich.</h2>
                     <p class="form-info__text">
                         Schreib uns, was dich beschäftigt. Wir antworten dir persönlich – kein automatischer Reply, keine Warteschleife.
                     </p>
@@ -1675,176 +1006,42 @@
 </section>
 
 <!-- ── Footer ───────────────────────────────────────────────── -->
-
 <footer class="footer">
-            <div class="footer__container">
-                <div class="footer__content">
-                    <div class="footer__top">
-                        <div class="footer__brand">
-                            <div class="logo">
-                                <img src="bilder/logos/unleash.svg" alt="UNLEASH" class="footer-logo__image">
-                                </div>
-                            <p class="footer__tagline">Kreativer Problemlöser</p>
-                        </div>
-                        <div class="footer__social">
-                            <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="footer__social-link">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
-                                    <path d="m15.5 6.5-1.1 1.1"/>
-                                    <circle cx="12" cy="12" r="3"/>
-                                </svg>
-                            </a>
-                            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="footer__social-link">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                                    <rect width="4" height="12" x="2" y="9"/>
-                                    <circle cx="4" cy="4" r="2"/>
-                                </svg>
-                            </a>
-                        </div>
+    <div class="footer__container">
+        <div class="footer__content">
+            <div class="footer__top">
+                <div class="footer__brand">
+                    <div class="logo">
+                        <img src="bilder/logos/unleash.svg" alt="UNLEASH" class="footer-logo__image">
                     </div>
-                    <div class="footer__bottom">
-                        <div class="footer__copyright">
-                            <div>© 2025 UNLEASH GbR</div>
-                            <div>Alle Rechte vorbehalten</div>
-                        </div>
-                        <div class="footer__legal">
-                            <a href="datenschutz.html">Datenschutz</a>
-                            <a href="impressum.html">Impressum</a>
-                            <a href="agb.html">AGB</a>
-                            <a href="kontakt.html">Kontakt</a>
-                        </div>
-                    </div>
+                    <p class="footer__tagline">Kreativer Problemlöser</p>
+                </div>
+                <div class="footer__social">
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="footer__social-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="m15.5 6.5-1.1 1.1"/><circle cx="12" cy="12" r="3"/></svg>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="footer__social-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                    </a>
                 </div>
             </div>
-        </footer>
+            <div class="footer__bottom">
+                <div class="footer__copyright">
+                    <div>© 2025 UNLEASH GbR</div>
+                    <div>Alle Rechte vorbehalten</div>
+                </div>
+                <div class="footer__legal">
+                    <a href="datenschutz.html">Datenschutz</a>
+                    <a href="impressum.html">Impressum</a>
+                    <a href="agb.html">AGB</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 
 <script>
-        // Mobile dropdown toggle function
-        function toggleMobileDropdown(button) {
-            const dropdown = button.nextElementSibling;
-            const icon = button.querySelector('.mobile-nav__toggle');
-            
-            dropdown.classList.toggle('open');
-            icon.classList.toggle('open');
-        }
-
-        // Loader functionality
-        window.addEventListener('load', function() {
-           const loader = document.getElementById('loader');
-           const mainContent = document.getElementById('mainContent');
-           
-           // Minimum loading time for better UX
-           setTimeout(() => {
-               loader.classList.add('fade-out');
-               
-               // Show main content after loader fades out
-               setTimeout(() => {
-                   mainContent.classList.add('visible');
-                   // Start hero animations after content is visible
-                   setTimeout(() => {
-                       initHeroAnimations();
-                   }, 300);
-               }, 500);
-           }, 2400); // Total loader duration: ~4 seconds
-        });
-
-        // Header scroll effect
-        let isScrolled = false;
-        let menuState = false;
-
-        function updateHeaderState() {
-           const header = document.querySelector('.header');
-           isScrolled = window.scrollY > 50;
-           
-           // Only apply scrolled state on desktop
-           if (window.innerWidth >= 769) {
-               if (isScrolled) {
-                   header.setAttribute('data-state', 'active');
-               } else {
-                   header.setAttribute('data-state', 'inactive');
-               }
-           } else {
-               // On mobile, always keep inactive state unless menu is open
-               if (!menuState) {
-                   header.setAttribute('data-state', 'inactive');
-               }
-           }
-        }
-
-        window.addEventListener('scroll', updateHeaderState);
-
-        // Mobile menu toggle
-        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-        const header = document.querySelector('.header');
-
-        function toggleMobileMenu() {
-           const mobileMenu = document.querySelector('.mobile-menu');
-           menuState = !menuState;
-           
-           if (menuState) {
-               header.setAttribute('data-state', 'active');
-               mobileMenu.classList.add('manual-open');
-           } else {
-               // On mobile, always return to inactive when closing menu
-               if (window.innerWidth < 769) {
-                   header.setAttribute('data-state', 'inactive');
-               } else {
-                   header.setAttribute('data-state', isScrolled ? 'active' : 'inactive');
-               }
-               mobileMenu.classList.remove('manual-open');
-           }
-        }
-
-        mobileMenuToggle.addEventListener('click', toggleMobileMenu);
-
-        // Close mobile menu when clicking nav links
-        document.querySelectorAll('.mobile-nav__link:not(button)').forEach(link => {
-            link.addEventListener('click', () => {
-                const mobileMenu = document.querySelector('.mobile-menu');
-                menuState = false;
-                
-                // On mobile, always return to inactive when closing menu
-                if (window.innerWidth < 769) {
-                    header.setAttribute('data-state', 'inactive');
-                } else {
-                    header.setAttribute('data-state', isScrolled ? 'active' : 'inactive');
-                }
-                mobileMenu.classList.remove('manual-open');
-            });
-        });
-
-        // Initialize header state
-        updateHeaderState();
-
-        // Client logo rotation
-        let currentLogoSet = 1;
-        const totalLogoSets = 2;
-
-        function rotateClientLogos() {
-           const allLogos = document.querySelectorAll('.client-logo');
-           const currentLogos = document.querySelectorAll(`.client-logo[data-set="${currentLogoSet}"]`);
-           
-           // Hide current logos
-           currentLogos.forEach(logo => {
-               logo.classList.remove('active');
-           });
-           
-           // Move to next set
-           currentLogoSet = currentLogoSet === totalLogoSets ? 1 : currentLogoSet + 1;
-           
-           // Show new logos after a short delay
-           setTimeout(() => {
-               const newLogos = document.querySelectorAll(`.client-logo[data-set="${currentLogoSet}"]`);
-               newLogos.forEach((logo, index) => {
-                   setTimeout(() => {
-                       logo.classList.add('active');
-                   }, index * 100); // Staggered animation
-               });
-           }, 300);
-        }
-
-        // ── Tab-Switching ────────────────────────────────────────────
+// ── Tab-Switching ────────────────────────────────────────────
 document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
