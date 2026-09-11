@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontakt & Erstgespräch – UNLEASH Agentur Mannheim</title>
-    <meta name="description" content="Nimm Kontakt zu UNLEASH auf oder buche direkt ein kostenloses 30-minütiges Erstgespräch. Wir melden uns innerhalb von 24 Stunden.">
-    <meta name="robots" content="index, follow">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt – Werbeagentur Mannheim für Design, Webdesign & Marketing | UNLEASH</title>
+    <meta name="description" content="Kontakt zur UNLEASH Werbeagentur in Mannheim – Anfragen zu Logo Design, Branding, Webdesign, SEO, Google Ads und Social Media Marketing. Kostenloses Erstgespräch buchen.">
+    <meta name="keywords" content="Kontakt Werbeagentur Mannheim, Anfrage Logo Design, Anfrage Webdesign, Erstgespräch Marketing Agentur, Marketing Beratung Mannheim">    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.unleash-marketing.de/kontakt.html">
 
     <!-- Open Graph -->
@@ -45,154 +45,1404 @@
     }
   }
   </script>
-    <title>Kontakt & Erstgespräch – UNLEASH Agentur Mannheim</title>
-    <meta name="description" content="Nimm Kontakt zu UNLEASH auf oder buche direkt ein kostenloses 30-minütiges Erstgespräch. Wir melden uns innerhalb von 24 Stunden.">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://www.unleash-marketing.de/kontakt.html">
+   <style>
+       /* Reset & Base Styles */
+       * {
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+       }
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Kontakt – UNLEASH">
-    <meta property="og:description" content="Kostenloses Erstgespräch buchen oder direkt schreiben. Wir melden uns innerhalb von 24 Stunden persönlich.">
-    <meta property="og:url" content="https://www.unleash-marketing.de/kontakt.html">
-    <meta property="og:image" content="https://www.unleash-marketing.de/bilder/logos/og-image.jpg">
-    <meta property="og:locale" content="de_DE">
-    <meta property="og:site_name" content="UNLEASH">
+       html {
+           font-size: 16px;
+           scroll-behavior: smooth;
+       }
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Kontakt – UNLEASH">
-    <meta name="twitter:description" content="Kostenloses Erstgespräch buchen oder direkt schreiben. Wir melden uns innerhalb von 24 Stunden persönlich.">
-    <meta name="twitter:image" content="https://www.unleash-marketing.de/bilder/logos/og-image.jpg">
+       body {
+           font-family: 'FK Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+           font-weight: 400;
+           line-height: 1.6;
+           color: #FFFFFF;
+           background-color: #121212;
+           font-variant-numeric: tabular-nums;
+           position: relative;
+       }
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ContactPage",
-    "name": "Kontakt – UNLEASH",
-    "url": "https://www.unleash-marketing.de/kontakt.html",
-    "description": "Kontaktseite der UNLEASH GbR – kostenloses Erstgespräch buchen oder direkt anfragen.",
-    "mainEntity": {
-      "@type": "LocalBusiness",
-      "name": "UNLEASH GbR",
-      "email": "info@unleash-marketing.de",
-      "telephone": "+4916261 51832",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Kerschensteinerstr. 36",
-        "addressLocality": "Ludwigshafen",
-        "postalCode": "67071",
-        "addressCountry": "DE"
-      }
-    }
-  }
-  </script>
-    <style>
-        /* ── Reset & Tokens ─────────────────────────────────── */
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+       /* Global Background Pattern */
+       body::before {
+           content: '';
+           position: fixed;
+           top: 0;
+           left: 0;
+           right: 0;
+           bottom: 0;
+           background: linear-gradient(135deg, #121212 0%, #1E1E1E 50%, #121212 100%);
+           background-image: 
+               repeating-linear-gradient(
+                   45deg,
+                   transparent,
+                   transparent 16px,
+                   rgba(255, 81, 0, 0.12) 16px,
+                   rgba(255, 81, 0, 0.12) 17px
+               );
+           pointer-events: none;
+           z-index: -2;
+       }
 
-        :root {
-            --color-primary:        #FF5100;
-            --color-bg:             #0E0E0E;
-            --color-surface:        #161616;
-            --color-border:         #1E1E1E;
-            --color-border-subtle:  #2A2A2A;
-            --color-text-primary:   #FFFFFF;
-            --color-text-secondary: #8E8E8E;
-            --font: 'FK Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            --radius:               12px;
-            --container-max:        1200px;
-            --container-pad:        60px;
-        }
+       /* Container & Grid System */
+       .container {
+           max-width: 1440px;
+           margin: 0 auto;
+           padding: 0 60px;
+       }
 
-        html { font-size: 16px; scroll-behavior: smooth; }
+       /* Grid Variables */
+       :root {
+           --grid-columns: 12;
+           --column-width: 72px;
+           --gutter: 24px;
+           --baseline: 8px;
+           
+           /* Colors */
+           --color-primary: #FF5100;
+           --color-bg-primary: #121212;
+           --color-bg-secondary: #1E1E1E;
+           --color-text-primary: #FFFFFF;
+           --color-text-secondary: #8E8E8E;
+           --color-text-invert: #F4F4F4;
+           
+           /* Typography */
+           --font-size-h1: clamp(2.5rem, 5vw, 4.5rem);
+           --font-size-h2: clamp(2rem, 4vw, 3rem);
+           --font-size-h3: clamp(1.25rem, 2.5vw, 1.5rem);
+           --font-size-body: 1rem;
+           --font-size-body-large: 1.125rem;
+       }
 
-        body {
-            background: var(--color-bg);
-            color: var(--color-text-primary);
-            font-family: var(--font);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
+       /* Header */
+       .header {
+           position: fixed;
+           top: 0;
+           left: 0;
+           right: 0;
+           z-index: 1000;
+           width: 100%;
+           padding: 0 8px;
+       }
 
-        a { color: inherit; text-decoration: none; }
+       .header__nav {
+           transition: all 0.3s ease;
+       }
 
-        /* ── Container ──────────────────────────────────────── */
-        .container {
-            max-width: var(--container-max);
-            margin: 0 auto;
-            padding: 0 var(--container-pad);
-        }
+       .header__container {
+           max-width: 1440px;
+           margin: 0 auto;
+           margin-top: 8px;
+           padding: 0 24px;
+           transition: all 0.3s ease;
+       }
 
-        /* ── Header (shared) ────────────────────────────────── */
-        .header {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 1000;
-            padding: 24px 0;
-            transition: background 0.3s, padding 0.3s, border-color 0.3s;
-            border-bottom: 1px solid transparent;
-        }
-        .header[data-state="active"] {
-            background: rgba(14,14,14,0.92);
-            backdrop-filter: blur(16px);
-            padding: 14px 0;
-            border-bottom-color: var(--color-border);
-        }
-        .header__container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-pad); }
-        .header__content   { display: flex; align-items: center; justify-content: space-between; }
-        .header__brand     { display: flex; align-items: center; gap: 16px; }
-        .logo__image       { height: 28px; width: auto; display: block; }
-        .footer-logo__image { height: 28px; width: auto; display: block; }
+       /* Default state */
+       .header[data-state="inactive"] .header__container {
+           max-width: 1536px;
+           padding: 0 48px;
+       }
 
-        .nav__list  { list-style: none; display: flex; gap: 32px; align-items: center; }
-        .nav__link  { font-size: 14px; font-weight: 500; color: var(--color-text-secondary); transition: color 0.2s; }
-        .nav__link:hover { color: var(--color-text-primary); }
-        .nav__dropdown-icon { display: inline-flex; margin-left: 4px; vertical-align: middle; }
-        .nav__dropdown-icon svg { width: 10px; height: 10px; }
+       /* Scrolled state - only for desktop */
+       @media (min-width: 769px) {
+           .header[data-state="active"] .header__container {
+               max-width: 1024px;
+               background: rgba(18, 18, 18, 0.8);
+               backdrop-filter: blur(16px);
+               border: 1px solid #1E1E1E;
+               border-radius: 16px;
+               padding: 0 20px;
+           }
+       }
 
-        /* Dropdown */
-        .nav__item { position: relative; }
-        .nav__dropdown {
-            display: none;
-            position: absolute;
-            top: calc(100% + 12px);
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius);
-            padding: 12px;
-            min-width: 280px;
-            z-index: 100;
-        }
-        .nav__item:hover .nav__dropdown { display: block; }
-        .nav__dropdown-grid { display: flex; flex-direction: column; gap: 4px; }
-        .nav__dropdown-card {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 12px 14px; border-radius: 8px; transition: background 0.2s;
-        }
-        .nav__dropdown-card:hover { background: var(--color-border); }
-        .nav__dropdown-card-title { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
-        .nav__dropdown-card-description { font-size: 11px; color: var(--color-text-secondary); }
-        .nav__dropdown-card-icon { flex-shrink: 0; margin-left: 12px; opacity: 0.5; }
+       /* Mobile always has glass effect */
+       @media (max-width: 768px) {
+           .header__container {
+               background: rgba(18, 18, 18, 0.8) !important;
+               backdrop-filter: blur(16px) !important;
+               border: 1px solid #1E1E1E !important;
+               border-radius: 16px !important;
+               padding: 0 24px !important; 
+               max-width: calc(100% - 16px) !important;
+           }
+       }
 
-        .nav__button {
-            display: inline-flex; align-items: center;
-            padding: 10px 20px; border-radius: 8px;
-            font-size: 13px; font-weight: 600;
-            transition: all 0.2s;
-        }
-        .nav__button--primary {
-            background: var(--color-primary);
-            color: #fff;
-        }
-        .nav__button--primary:hover { background: #e04800; }
+       .header__content {
+           display: flex;
+           align-items: center;
+           justify-content: space-between;
+           flex-wrap: wrap;
+           gap: 24px;
+           padding: 12px 0;
+           position: relative;
+       }
 
-        .mobile-menu-toggle { display: none; }
-        .mobile-menu        { display: none; }
+       .header__brand {
+           display: flex;
+           align-items: center;
+           justify-content: space-between;
+           width: 100%;
+       }
 
-        /* ── Hero ───────────────────────────────────────────── */
+       .header__center {
+           position: absolute;
+           inset: 0;
+           margin: auto;
+           width: fit-content;
+           height: fit-content;
+           display: none;
+       }
+
+       .header__actions {
+           display: none;
+           align-items: center;
+           width: 100%;
+           flex-wrap: wrap;
+           gap: 12px;
+           margin-bottom: 24px;
+           background: var(--color-bg-primary);
+           border: 1px solid #1E1E1E;
+           border-radius: 24px;
+           padding: 24px;
+           box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+       }
+
+       .logo {
+           display: flex;
+           align-items: center;
+           position: relative;
+           text-decoration: none;
+       }
+
+       .logo__image,
+       .footer-logo__image {
+           height: 32px;
+           width: auto;
+           transition: transform 0.3s ease;
+       }
+
+       .logo:hover .logo__image,
+       .logo:hover .footer-logo__image {
+           transform: scale(1.05);
+       }
+
+       .nav__list {
+           display: flex;
+           gap: 32px;
+           list-style: none;
+           margin: 0;
+           padding: 0;
+           font-size: 14px;
+       }
+
+       .nav__item {
+           position: relative;
+       }
+
+       .nav__link {
+           color: var(--color-text-secondary);
+           text-decoration: none;
+           font-weight: 500;
+           transition: color 0.3s ease;
+           position: relative;
+           display: flex;
+           align-items: center;
+           gap: 6px;
+           transition: all 0.15s ease;
+       }
+
+       .nav__link:hover,
+       .nav__link--active {
+           color: var(--color-primary);
+       }
+
+       /* Dropdown Styles */
+       .nav__dropdown {
+           position: absolute;
+           top: 100%;
+           left: 50%;
+           transform: translateX(-50%);
+           background: rgba(18, 18, 18, 0.95);
+           backdrop-filter: blur(16px);
+           border: 1px solid #2A2A2A;
+           border-radius: 16px;
+           padding: 24px;
+           min-width: 850px;
+           opacity: 0;
+           visibility: hidden;
+           transform: translateX(-50%) translateY(-10px);
+           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+           box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+           z-index: 1001;
+           margin-top: 12px;
+       }
+
+       .nav__item:hover .nav__dropdown {
+           opacity: 1;
+           visibility: visible;
+           transform: translateX(-50%) translateY(0);
+       }
+
+       .nav__dropdown-grid {
+           display: grid;
+           grid-template-columns: repeat(3, 1fr);
+           gap: 16px;
+       }
+
+       .nav__dropdown-card {
+           background: var(--color-bg-secondary);
+           border: 1px solid #2A2A2A;
+           border-radius: 12px;
+           padding: 20px;
+           text-decoration: none;
+           transition: all 0.3s ease;
+           position: relative;
+           overflow: hidden;
+           cursor: pointer;
+           min-height: 120px;
+           display: flex;
+           flex-direction: column;
+           justify-content: space-between;
+           min-width: 250px; 
+           padding: 15px; 
+       }
+
+       .nav__dropdown-card::before {
+           content: '';
+           position: absolute;
+           top: 0;
+           left: -100%;
+           width: 100%;
+           height: 100%;
+           background: linear-gradient(90deg, transparent, rgba(255, 81, 0, 0.1), transparent);
+           transition: left 0.5s ease;
+       }
+
+       .nav__dropdown-card:hover::before {
+           left: 100%;
+       }
+
+       .nav__dropdown-card:hover {
+           transform: translateY(-4px);
+           border-color: var(--color-primary); 
+           box-shadow: 0 8px 25px rgba(255, 81, 0, 0.3);
+       }
+
+       .nav__dropdown-card-title {
+           font-size: 16px;
+           font-weight: 600;
+           color: var(--color-text-primary);
+           margin-bottom: 8px;
+           line-height: 1.3;
+       }
+
+       .nav__dropdown-card-description {
+           font-size: 14px;
+           color: var(--color-text-secondary);
+           line-height: 1.5;
+           margin: 0;
+       }
+
+       .nav__dropdown-card-icon {
+           position: absolute;
+           bottom: 16px;
+           right: 16px;
+           width: 24px;
+           height: 24px;
+           background: var(--color-primary);
+           border-radius: 6px;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           opacity: 1;
+           transform: scale(1);
+           transition: all 0.3s ease;
+       }
+
+       .nav__dropdown-icon {
+           display: inline-flex;
+           align-items: center;
+           justify-content: center;
+           margin-left: 6px;
+           transition: all 0.3s ease;
+           transform-origin: center center;
+           width: 12px;
+           height: 12px;
+       }
+
+       .nav__item:hover .nav__dropdown-icon {
+           transform: rotate(180deg);
+       }
+
+       .nav__dropdown-icon svg {
+           width: 100%;
+           height: 100%;
+           fill: var(--color-text-secondary);
+           transition: fill 0.3s ease;
+       }
+
+       .nav__item:hover .nav__dropdown-icon svg {
+           fill: var(--color-text-primary);
+       }
+
+       .nav__button {
+           display: inline-flex;
+           align-items: center;
+           justify-content: center;
+           white-space: nowrap;
+           border-radius: 6px;
+           font-size: 14px;
+           font-weight: 500;
+           transition: all 0.3s ease;
+           text-decoration: none;
+           height: 36px;
+           padding: 0 12px;
+       }
+
+       .nav__button--outline {
+           border: 1px solid #2A2A2A;
+           background: var(--color-bg-primary);
+           color: var(--color-text-primary);
+       }
+
+       .nav__button--outline:hover {
+           background: var(--color-bg-secondary);
+           color: var(--color-text-primary);
+       }
+
+       .nav__button--primary {
+           background: var(--color-primary);
+           color: var(--color-text-primary);
+           border: 1px solid transparent;
+       }
+
+       .nav__button--primary:hover {
+           background: #E64600;
+           transform: translateY(-1px);
+       }
+
+       .nav__desktop-buttons {
+           display: flex;
+           gap: 12px;
+           width: 100%;
+           flex-direction: column;
+       }
+
+       .nav__scrolled-button {
+           display: none;
+       }
+
+       .mobile-menu-toggle {
+           position: relative;
+           z-index: 20;
+           margin: -10px -16px -10px -10px;
+           background: none;
+           border: none;
+           cursor: pointer;
+           padding: 10px;
+           display: block;
+       }
+
+       .menu-icon {
+           display: block;
+           width: 24px;
+           height: 24px;
+           position: relative;
+       }
+
+       .menu-icon::before,
+       .menu-icon::after {
+           content: '';
+           position: absolute;
+           left: 0;
+           width: 24px;
+           height: 2px;
+           background: var(--color-text-primary);
+           transition: all 0.2s ease;
+       }
+
+       .menu-icon::before {
+           top: 7px;
+       }
+
+       .menu-icon::after {
+           top: 15px;
+       }
+
+       .close-icon {
+           position: absolute;
+           top: 50%;
+           left: 50%;
+           transform: translate(-50%, -50%) rotate(-180deg) scale(0);
+           font-size: 24px;
+           color: var(--color-text-primary);
+           transition: all 0.2s ease;
+           opacity: 0;
+       }
+
+       /* Mobile menu */
+       .mobile-menu {
+           display: none;
+           width: 100%;
+           background: var(--color-bg-primary);
+           border: 1px solid #1E1E1E;
+           border-radius: 24px;
+           padding: 24px;
+           margin-top: 24px;
+           box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+       }
+
+       .mobile-menu__content {
+           display: flex;
+           flex-direction: column;
+           gap: 32px;
+       }
+
+       .mobile-nav__list {
+           list-style: none;
+           margin: 0;
+           padding: 0;
+           display: flex;
+           flex-direction: column;
+           gap: 24px;
+       }
+
+       .mobile-nav__item {
+           position: relative;
+       }
+
+       .mobile-nav__link {
+           color: var(--color-text-secondary);
+           text-decoration: none;
+           font-weight: 500;
+           font-size: 16px;
+           transition: color 0.15s ease;
+           display: flex;
+           align-items: center;
+           justify-content: space-between;
+           background: transparent;
+           border: none; 
+           gap: 10px;
+       }
+
+       .mobile-nav__link:hover {
+           color: var(--color-text-primary);
+       }
+
+       .mobile-nav__dropdown {
+           max-height: 0;
+           overflow: hidden;
+           transition: max-height 0.3s ease;
+           background: rgba(30, 30, 30, 0.5);
+           border-radius: 8px;
+           margin-top: 8px;
+       }
+
+       .mobile-nav__dropdown.open {
+           max-height: 200px;
+           padding: 12px 0;
+       }
+
+       .mobile-nav__dropdown-item {
+           display: block;
+           padding: 8px 16px;
+           color: var(--color-text-secondary);
+           text-decoration: none;
+           font-size: 14px;
+           transition: all 0.2s ease;
+       }
+
+       .mobile-nav__dropdown-item:hover {
+           color: var(--color-text-primary);
+           background: rgba(255, 81, 0, 0.1);
+       }
+
+       .mobile-nav__toggle {
+           background: none;
+           border: none;
+           color: var(--color-text-secondary);
+           cursor: pointer;
+           font-size: 18px;
+           transition: transform 0.3s ease;
+           display: flex; /* Für SVG-Zentrierung */
+           align-items: center;
+           justify-content: center;
+       }
+
+       .mobile-nav__toggle.open {
+           transform: rotate(180deg);
+       }
+
+       /* Desktop Navigation */
+       @media (min-width: 768px) {
+           .header__brand {
+               width: auto;
+           }
+           
+           .header__center {
+               display: block;
+           }
+           
+           .header__actions {
+               display: flex;
+               width: fit-content;
+               gap: 24px;
+               margin: 0;
+               background: transparent;
+               border: none;
+               border-radius: 0;
+               padding: 0;
+               box-shadow: none;
+               flex-direction: row;
+           }
+           
+           .nav__desktop-buttons {
+               flex-direction: row;
+               width: auto;
+           }
+           
+           .mobile-menu-toggle {
+               display: none;
+           }
+           
+           .mobile-menu {
+               display: none !important;
+           }
+           
+           /* Scrolled state for desktop */
+           .header[data-state="active"] .nav__desktop-buttons {
+               display: none;
+           }
+           
+           .header[data-state="active"] .nav__scrolled-button {
+               display: block;
+           }
+       }
+
+       /* Active mobile menu state - only when manually triggered */
+       .header[data-state="active"] .mobile-menu.manual-open {
+           display: block;
+       }
+
+       .header[data-state="active"] .menu-icon::before,
+       .header[data-state="active"] .menu-icon::after {
+           opacity: 0;
+           transform: rotate(180deg) scale(0);
+       }
+
+       .header[data-state="active"] .close-icon {
+           transform: translate(-50%, -50%) rotate(0deg) scale(1);
+           opacity: 1;
+       }
+
+       /* Responsive adjustments for dropdown */
+       @media (max-width: 1024px) {
+           .nav__dropdown {
+               min-width: 650px;
+               left: -150px;
+               transform: translateX(0) translateY(-10px);
+           }
+           
+           .nav__item:hover .nav__dropdown {
+               transform: translateX(0) translateY(0);
+           }
+           
+           .nav__dropdown-grid {
+               grid-template-columns: repeat(2, 1fr);
+               gap: 12px;
+           }
+       }
+
+       @media (max-width: 768px) {
+           .nav__dropdown {
+               display: none;
+           }
+       }
+
+       /* Responsive Design for Header */
+       @media (max-width: 767px) {
+           .header__center {
+               display: none !important;
+           }
+           
+           .mobile-menu-toggle {
+               display: block !important;
+           }
+       }
+
+       /* Hero Section */
+       .hero {
+           padding: 160px 0 120px;
+           position: relative;
+           overflow: hidden;
+           background: transparent;
+       }
+
+       .hero__eyebrow {
+           display: flex;
+           align-items: center;
+           gap: 16px;
+           margin-bottom: 32px;
+       }
+
+       .hero__eyebrow::before {
+           content: '';
+           display: block;
+           width: 40px;
+           height: 2px;
+           background: #FF5100;
+           flex-shrink: 0;
+       }
+
+       .hero__eyebrow span {
+           font-size: 12px;
+           font-weight: 600;
+           color: var(--color-text-secondary);
+           letter-spacing: 0.12em;
+           text-transform: uppercase;
+       }
+
+       .hero__content {
+           display: block;
+           position: relative;
+           z-index: 2;
+       }
+
+       .hero__text {
+           text-align: left;
+           max-width: 800px;
+       }
+
+       .hero__text h1 {
+           font-size: var(--font-size-h1);
+           font-weight: 700;
+           color: var(--color-text-primary);
+           line-height: 1.1;
+           margin-bottom: 24px;
+           letter-spacing: -0.02em;
+       }
+
+       .hero__description {
+           font-size: var(--font-size-body-large);
+           color: var(--color-text-secondary);
+           line-height: 1.7;
+           margin-bottom: 40px;
+       }
+
+       /* Team Section */
+       .team-section {
+           padding: 80px 0 0;
+           background: transparent;
+           position: relative;
+       }
+
+       .team__header {
+           text-align: left;
+           margin-bottom: 80px;
+           position: relative;
+           z-index: 2;
+       }
+
+       .team__title {
+           font-size: var(--font-size-h2);
+           font-weight: 700;
+           color: var(--color-text-primary);
+           margin-bottom: 24px;
+           letter-spacing: -0.02em;
+       }
+
+       .team__description {
+           font-size: var(--font-size-body-large);
+           color: var(--color-text-secondary);
+           max-width: 600px;
+           line-height: 1.7;
+       }
+
+       .team__grid {
+           display: grid;
+           grid-template-columns: repeat(3, 1fr);
+           gap: 40px;
+           position: relative;
+           z-index: 2;
+       }
+
+       .team-member {
+           text-align: left;
+           transition: transform 0.3s ease;
+       }
+
+       .team-member:hover {
+           transform: translateY(-8px);
+       }
+
+       .team-member__image {
+           width: 100%;
+           height: 500px;
+           border-radius: 16px;
+           overflow: hidden;
+           margin-bottom: 20px;
+           background: var(--color-bg-secondary);
+       }
+
+       .team-member__image img {
+           width: 100%;
+           height: 100%;
+           object-fit: cover;
+           object-position: top;
+       }
+
+       .team-member__name {
+           font-size: 18px;
+           font-weight: 600;
+           color: var(--color-text-primary);
+           margin-bottom: 4px;
+       }
+
+       .team-member__role {
+           font-size: 14px;
+           color: var(--color-primary);
+           font-weight: 500;
+           margin-bottom: 10px;
+       }
+
+       .team-member__tags {
+           display: flex;
+           flex-wrap: wrap;
+           gap: 6px;
+           margin-top: 8px;
+       }
+
+       .team-member__tag {
+           font-size: 11px;
+           font-weight: 600;
+           color: var(--color-text-secondary);
+           background: rgba(255,255,255,0.05);
+           border: 1px solid #2A2A2A;
+           border-radius: 4px;
+           padding: 3px 8px;
+           letter-spacing: 0.04em;
+           text-transform: uppercase;
+       }
+
+       .team-member__fact {
+           font-size: 13px;
+           color: rgba(255,255,255,0.35);
+           line-height: 1.5;
+           margin-top: 10px;
+           font-style: italic;
+       }
+
+       /* Values Strip */
+       .team-values {
+           margin-top: 80px;
+           border-top: 1px solid #2A2A2A;
+           padding-top: 48px;
+           display: grid;
+           grid-template-columns: repeat(4, 1fr);
+           gap: 0;
+       }
+
+       .team-value {
+           padding: 0 32px 0 0;
+           border-right: 1px solid #2A2A2A;
+       }
+
+       .team-value:last-child {
+           border-right: none;
+           padding-right: 0;
+           padding-left: 32px;
+       }
+
+       .team-value:not(:first-child):not(:last-child) {
+           padding-left: 32px;
+       }
+
+       .team-value__number {
+           font-size: clamp(2rem, 4vw, 3rem);
+           font-weight: 700;
+           color: var(--color-primary);
+           line-height: 1;
+           margin-bottom: 8px;
+       }
+
+       .team-value__label {
+           font-size: 14px;
+           color: var(--color-text-secondary);
+           line-height: 1.5;
+       }
+
+       @media (max-width: 768px) {
+           .team-values {
+               grid-template-columns: repeat(2, 1fr);
+               gap: 32px;
+           }
+           .team-value {
+               border-right: none;
+               padding: 0;
+           }
+           .team-value:last-child {
+               padding: 0;
+           }
+           .team-value:not(:first-child):not(:last-child) {
+               padding: 0;
+           }
+           .team-member__tags { display: none; }
+       }
+
+       .team-member__location {
+           font-size: 14px;
+           color: var(--color-text-secondary);
+       }
+
+       /* Mission Section */
+       .mission-section {
+           background: transparent;
+           position: relative;
+           padding: 120px 0 120px;
+       }
+
+       .mission__content {
+           display: grid;
+           grid-template-columns: 0.6fr 0.4fr;
+           gap: 100px;
+           align-items: start;
+           position: relative;
+           z-index: 2;
+       }
+
+       .mission__text h2 {
+           font-size: var(--font-size-h2);
+           font-weight: 700;
+           color: var(--color-text-primary);
+           margin-bottom: 32px;
+           letter-spacing: -0.02em;
+       }
+
+       .mission__description {
+           font-size: var(--font-size-body-large);
+           color: var(--color-text-secondary);
+           line-height: 1.7;
+           margin-bottom: 32px;
+           max-width: 800px;
+       }
+
+       .mission__description:last-child {
+           margin-bottom: 0;
+       }
+
+       .mission__stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    min-width: 100%;
+         margin-top: 85px;
+       }
+
+       .stat-item {
+           text-align: left;
+           opacity: 0;
+           transform: translateY(20px);
+           transition: all 0.6s ease;
+           padding: 20px 0;
+           position: relative;
+       }
+
+       .stat-item:not(:last-child)::after {
+           display:none;
+       }
+
+       .stat-item.animate {
+           opacity: 1;
+           transform: translateY(0);
+       }
+
+       .stat-item__number {
+           font-size: clamp(2.5rem, 5vw, 3.5rem);
+           font-weight: 700;
+           color: var(--color-primary);
+           line-height: 1;
+           margin-bottom: 8px;
+       }
+
+       .stat-item__label {
+           font-size: 16px;
+           color: var(--color-text-secondary);
+           font-weight: 500;
+       }
+
+       /* Footer */
+       .footer {
+           padding: 80px 0 40px;
+           background: transparent;
+       }
+
+       .footer__container {
+           max-width: 1440px;
+           margin: 0 auto;
+           padding: 0 24px;
+       }
+
+       .footer__content {
+           background: rgba(18, 18, 18, 0.8);
+           backdrop-filter: blur(16px);
+           border: 1px solid #1E1E1E;
+           border-radius: 16px;
+           padding: 40px;
+           display: flex;
+           flex-direction: column;
+           gap: 32px;
+       }
+
+       .footer__top {
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+           flex-wrap: wrap;
+           gap: 24px;
+       }
+
+       .footer__brand {
+           display: flex;
+           flex-direction: column;
+           gap: 8px;
+       }
+
+       .footer__brand .footer-logo__image {
+           height: 28px;
+           width: auto;
+       }
+
+       .footer__tagline {
+           color: var(--color-text-secondary);
+           margin: 0;
+       }
+
+       .footer__social {
+           display: flex;
+           gap: 12px;
+       }
+
+       .footer__social-link {
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           width: 40px;
+           height: 40px;
+           background: var(--color-bg-secondary);
+           border: 1px solid #2A2A2A;
+           border-radius: 50%;
+           color: var(--color-text-secondary);
+           text-decoration: none;
+           transition: all 0.3s ease;
+       }
+
+       .footer__social-link:hover {
+           background: var(--color-primary);
+           border-color: var(--color-primary);
+           color: var(--color-text-primary);
+           transform: translateY(-2px);
+       }
+
+       .footer__bottom {
+           border-top: 1px solid #2A2A2A;
+           padding-top: 32px;
+           display: grid;
+           grid-template-columns: 1fr;
+           gap: 24px;
+       }
+
+       .footer__links {
+           display: flex;
+           flex-wrap: wrap;
+           gap: 24px;
+       }
+
+       .footer__links a {
+           color: var(--color-text-primary);
+           text-decoration: none;
+           font-size: 14px;
+           transition: color 0.3s ease;
+       }
+
+       .footer__links a:hover {
+           color: var(--color-primary);
+       }
+
+       .footer__legal {
+           display: flex;
+           flex-wrap: wrap;
+           gap: 24px;
+       }
+
+       .footer__legal a {
+           color: var(--color-text-secondary);
+           text-decoration: none;
+           font-size: 14px;
+           transition: color 0.3s ease;
+       }
+
+       .footer__legal a:hover {
+           color: var(--color-primary);
+       }
+
+       .footer__copyright {
+           font-size: 14px;
+           color: var(--color-text-secondary);
+           line-height: 1.5;
+       }
+
+       /* Responsive Design für Desktop */
+       @media (min-width: 768px) {
+           .footer__bottom {
+               grid-template-columns: 1fr 1fr;
+               align-items: end;
+               justify-items: start;
+               min-height: 60px;
+           }
+
+           .footer__legal {
+               justify-content: flex-end;
+               justify-self: end;
+               align-self: end;
+           }
+
+           .footer__copyright {
+               text-align: left;
+               justify-self: start;
+               align-self: end;
+           }
+       }
+
+       /* ================================
+          RESPONSIVE BREAKPOINTS
+          ================================ */
+
+       /* Desktop Large - 1200px und größer */
+       @media (min-width: 1200px) {
+           .container {
+               padding: 0 80px;
+           }
+           
+           .team__grid {
+               gap: 60px;
+           }
+           
+           .nav__dropdown {
+               min-width: 900px;
+           }
+       }
+
+       /* Tablet - 768px bis 1199px */
+       @media (max-width: 1199px) and (min-width: 769px) {
+           .container {
+               padding: 0 40px;
+           }
+           
+           .hero {
+               padding: 160px 0 100px;
+           }
+           
+           .hero__text {
+               margin-left: 100px;
+               max-width: 700px;
+           }
+           
+           .team__header {
+               margin-bottom: 60px;
+           }
+           
+           .team__grid {
+               gap: 30px;
+           }
+           
+           .team-member__image {
+               height: 400px;
+           }
+           
+           .mission-section {
+               padding: 100px 0 0;
+           }
+           
+           .mission__content {
+               gap: 60px;
+           }
+           
+           .nav__dropdown {
+               min-width: 700px;
+               left: -100px;
+           }
+           
+           .nav__dropdown-grid {
+               grid-template-columns: repeat(2, 1fr);
+           }
+       }
+
+       /* Mobile - 768px und kleiner */
+       @media (max-width: 768px) {
+           .container {
+               padding: 0 20px;
+           }
+           
+           /* Header Mobile */
+           .header__container {
+               background: rgba(18, 18, 18, 0.8) !important;
+               backdrop-filter: blur(16px) !important;
+               border: 1px solid #1E1E1E !important;
+               border-radius: 16px !important;
+               padding: 0 20px !important;
+               max-width: calc(100% - 16px) !important;
+           }
+           
+           .header__center {
+               display: none !important;
+           }
+           
+           .mobile-menu-toggle {
+               display: block !important;
+           }
+           
+           .mobile-menu {
+               margin-top: 16px;
+               padding: 20px;
+           }
+           
+           /* Hero Mobile */
+           .hero {
+              padding: 140px 0 80px;
+               text-align: center;
+           }
+           
+           .hero__text {
+               text-align: center;
+               margin-left: 0;
+               max-width: 100%;
+           }
+           
+           .hero__text h1 {
+               font-size: clamp(2rem, 8vw, 3rem);
+               margin-bottom: 20px;
+               line-height: 1.2;
+           }
+           
+           .hero__description {
+               font-size: 16px;
+               margin-bottom: 32px;
+           }
+           
+           /* Team Section Mobile */
+           .team-section {
+               padding: 80px 0;
+              }
+           
+           .team__header {
+               margin-bottom: 60px;
+               text-align: center;
+           }
+           
+           .team__title {
+               font-size: clamp(1.8rem, 6vw, 2.5rem);
+               margin-bottom: 20px;
+           }
+           
+           .team__description {
+               max-width: 100%;
+           }
+           
+           .team__grid {
+               grid-template-columns: repeat(2, 1fr);
+               gap: 24px;
+           }
+           
+           .team-member__image {
+               height: 300px;
+           }
+           
+           .team-member__name {
+               font-size: 16px;
+           }
+           
+           .team-member__role {
+               font-size: 13px;
+           }
+           
+           /* Mission Section Mobile */
+           .mission-section {
+               padding: 80px 0 0;
+           }
+           
+           .mission__content {
+               grid-template-columns: 1fr;
+               gap: 60px;
+               text-align: center;
+           }
+           
+           .mission__text h2 {
+               font-size: clamp(1.8rem, 6vw, 2.5rem);
+               margin-bottom: 24px;
+           }
+           
+           .mission__description {
+               font-size: 16px;
+               margin-bottom: 24px;
+               max-width: 100%;
+           }
+           
+           .mission__stats {
+               gap: 40px;
+               min-width: auto;
+           }
+           
+           .stat-item {
+               padding: 15px 0;
+               text-align: center;
+           }
+           
+           .stat-item:not(:last-child)::after {
+               bottom: -20px;
+           }
+           
+           .stat-item__number {
+               font-size: clamp(2rem, 8vw, 2.8rem);
+           }
+           
+           .stat-item__label {
+               font-size: 14px;
+           }
+           
+           /* Footer Mobile */
+           .footer {
+               padding: 60px 0 30px;
+           }
+           
+           .footer__container {
+               padding: 0 20px;
+           }
+           
+           .footer__content {
+               padding: 30px 20px;
+               text-align: center;
+           }
+           
+           .footer__top {
+               flex-direction: column;
+               gap: 20px;
+           }
+           
+           .footer__bottom {
+               grid-template-columns: 1fr;
+               gap: 20px;
+               text-align: center;
+           }
+           
+           .footer__links,
+           .footer__legal {
+               justify-content: center;
+               gap: 16px;
+           }
+           
+           .footer__links a,
+           .footer__legal a {
+               font-size: 14px;
+           }
+       }
+
+       /* Extra Small Mobile - 480px und kleiner */
+       @media (max-width: 480px) {
+           .container {
+               padding: 0 20px;
+           }
+           
+           .header__container {
+               padding: 0 16px !important;
+           }
+           
+           .hero__text h1 {
+               font-size: clamp(1.8rem, 8vw, 2.5rem);
+           }
+           
+           .hero__description {
+               font-size: 15px;
+           }
+           
+           .team__grid {
+               grid-template-columns: 1fr;
+               gap: 32px;
+           }
+           
+           .team-member__image {
+               height: 350px;
+           }
+           
+           .team__title,
+           .mission__text h2 {
+               font-size: clamp(1.6rem, 8vw, 2rem);
+           }
+           
+           .mission__stats {
+               gap: 30px;
+           }
+           
+           .stat-item:not(:last-child)::after {
+               bottom: -15px;
+           }
+           
+           .stat-item__number {
+               font-size: clamp(1.8rem, 10vw, 2.3rem);
+           }
+           
+           .footer__container {
+               padding: 0 16px;
+           }
+           
+           .footer__content {
+               padding: 25px 16px;
+           }
+       }
+
+       /* Dropdown-Menü bei Leistungen ausblenden */
+       .nav__item:nth-child(2) .nav__dropdown {
+           display: none !important;
+       }
+
+       /* Pfeil-Icon bei Leistungen ausblenden */
+       .nav__item:nth-child(2) .nav__dropdown-icon {
+           display: none !important;
+       }
+
+       /* CTA Cards Section (Team → Leistungen / Kontakt) */
+       .cta-cards-section { padding: 120px 0; background: transparent; }
+       .cta-cards__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+       .cta-card { padding: 60px; border-radius: 24px; position: relative; overflow: hidden; transition: all 0.3s ease; }
+       .cta-card--services { background: var(--color-bg-secondary); border: 1px solid #2A2A2A; }
+       .cta-card--contact { background: var(--color-primary); }
+       .cta-card:hover { transform: translateY(-8px); }
+       .cta-card__title { font-size: 1.5rem; font-weight: 600; margin-bottom: 16px; line-height: 1.3; }
+       .cta-card--services .cta-card__title { color: var(--color-text-primary); }
+       .cta-card--contact .cta-card__title { color: white; font-size: 2.5rem; font-weight: 700; line-height: 1.1; }
+       .cta-card__text { margin-bottom: 32px; line-height: 1.6; }
+       .cta-card--services .cta-card__text { color: var(--color-text-secondary); }
+       .cta-card--contact .cta-card__text { color: rgba(255, 255, 255, 0.9); }
+       .cta-card__button { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: 500; transition: all 0.3s ease; }
+       .cta-card--services .cta-card__button { background: transparent; border: 1px solid var(--color-text-secondary); color: var(--color-text-primary); }
+       .cta-card--services .cta-card__button:hover { border-color: var(--color-primary); color: var(--color-primary); transform: translateY(-2px); }
+       .cta-card--contact .cta-card__button { background: white; color: var(--color-primary); border: 1px solid transparent; }
+       .cta-card--contact .cta-card__button:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); }
+       @media (max-width: 768px) {
+           .cta-cards-section { padding: 80px 0; }
+           .cta-cards__grid { grid-template-columns: 1fr; gap: 24px; }
+           .cta-card { padding: 40px; }
+           .cta-card--contact .cta-card__title { font-size: 2rem; }
+       }
+       @media (max-width: 480px) { .cta-card { padding: 32px; } }
+   
+
+       /* ============ Kontakt page-specific styles ============ */
+/* ── Hero ───────────────────────────────────────────── */
         .hero {
             padding: 160px 0 80px;
         }
@@ -755,69 +2005,121 @@
             .footer__top,
             .footer__bottom { flex-direction: column; gap: 20px; align-items: flex-start; }
         }
-    </style>
+    
+
+   </style>
 </head>
 <body>
+   <!-- Header -->
+   <header class="header" data-state="inactive">
+       <nav class="header__nav">
+           <div class="header__container">
+               <div class="header__content">
+                   <div class="header__brand">
+                       <a href="index.html" class="logo">
+                           <img src="bilder/logos/Unleash_Logo_Orange.svg" alt="UNLEASH" class="logo__image">
+                       </a>
 
-<!-- ── Header ──────────────────────────────────────────────── -->
-<header class="header" data-state="inactive">
-    <nav class="header__nav">
-        <div class="header__container">
-            <div class="header__content">
-                <div class="header__brand">
-                    <div class="logo">
-                        <img src="bilder/logos/Unleash_Logo_Orange.svg" alt="UNLEASH" class="logo__image">
-                    </div>
-                    <button class="mobile-menu-toggle" aria-label="Menu">☰</button>
-                </div>
-                <div class="header__center">
-                    <ul class="nav__list">
-                        <li class="nav__item"><a href="team.html" class="nav__link">Unser Team</a></li>
-                        <li class="nav__item">
-                            <a href="services.html" class="nav__link">
-                                Leistungen
-                                <span class="nav__dropdown-icon">
-                                    <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                </span>
-                            </a>
-                            <div class="nav__dropdown">
-                                <div class="nav__dropdown-grid">
-                                    <a href="services.html" class="nav__dropdown-card">
-                                        <div>
-                                            <h3 class="nav__dropdown-card-title">Branding & Design</h3>
-                                            <p class="nav__dropdown-card-description">Starke Markenidentitäten und kreative Designlösungen</p>
-                                        </div>
-                                        <div class="nav__dropdown-card-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></div>
-                                    </a>
-                                    <a href="services.html" class="nav__dropdown-card">
-                                        <div>
-                                            <h3 class="nav__dropdown-card-title">Webdesign</h3>
-                                            <p class="nav__dropdown-card-description">Moderne Websites die konvertieren und begeistern</p>
-                                        </div>
-                                        <div class="nav__dropdown-card-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></div>
-                                    </a>
-                                    <a href="services.html" class="nav__dropdown-card">
-                                        <div>
-                                            <h3 class="nav__dropdown-card-title">Marketing</h3>
-                                            <p class="nav__dropdown-card-description">Strategisches Marketing für messbare Ergebnisse</p>
-                                        </div>
-                                        <div class="nav__dropdown-card-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></div>
-                                    </a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav__item"><a href="projekte.html" class="nav__link">Projekte</a></li>
-                    </ul>
-                </div>
-                <div class="header__actions">
-                    <div class="nav__desktop-buttons">
-                        <a href="kontakt.html" class="nav__button nav__button--primary">Projekt anfragen</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-</header>
+                       <button class="mobile-menu-toggle" aria-label="Menu">
+                           <span class="menu-icon"></span>
+                           <span class="close-icon">×</span>
+                       </button>
+                   </div>
+
+                   <div class="header__center">
+                       <ul class="nav__list">
+                           <li class="nav__item"><a href="team.html" class="nav__link">Unser Team</a></li>
+                           <li class="nav__item">
+                               <a href="services.html" class="nav__link">
+                                   Leistungen 
+                                   <span class="nav__dropdown-icon">
+                                       <svg viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+                                           <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                       </svg>
+                                   </span>
+                               </a>
+                               <div class="nav__dropdown">
+                                   <div class="nav__dropdown-grid">
+                                       <a href="design.html" class="nav__dropdown-card">
+                                           <div>
+                                               <h3 class="nav__dropdown-card-title">Branding & Design</h3>
+                                               <p class="nav__dropdown-card-description">Starke Markenidentitäten und kreative Designlösungen</p>
+                                           </div>
+                                           <div class="nav__dropdown-card-icon">
+                                               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2">
+                                                   <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                                               </svg>
+                                           </div>
+                                       </a>
+                                       <a href="webdesign.html" class="nav__dropdown-card">
+                                           <div>
+                                               <h3 class="nav__dropdown-card-title">Webdesign</h3>
+                                               <p class="nav__dropdown-card-description">Moderne Websites die konvertieren und begeistern</p>
+                                           </div>
+                                           <div class="nav__dropdown-card-icon">
+                                               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2">
+                                                   <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                                               </svg>
+                                           </div>
+                                       </a>
+                                       <a href="marketing.html" class="nav__dropdown-card">
+                                           <div>
+                                               <h3 class="nav__dropdown-card-title">Marketing</h3>
+                                               <p class="nav__dropdown-card-description">Strategisches Marketing für messbare Ergebnisse</p>
+                                           </div>
+                                           <div class="nav__dropdown-card-icon">
+                                               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2">
+                                                   <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                                               </svg>
+                                           </div>
+                                       </a>
+                                   </div>
+                               </div>
+                           </li>
+                           <li class="nav__item"><a href="projekte.html" class="nav__link">Projekte</a></li>
+                       </ul>
+                   </div>
+
+                   <div class="header__actions">
+                       <div class="nav__desktop-buttons">
+                           <a href="kontakt.html" class="nav__button nav__button--primary">Projekt anfragen</a>
+                       </div>
+                       <div class="nav__scrolled-button">
+                           <a href="kontakt.html" class="nav__button nav__button--primary">Projekt anfragen</a>
+                       </div>
+                   </div>
+               </div>
+
+               <!-- Mobile Menu -->
+               <div class="mobile-menu">
+                   <div class="mobile-menu__content">
+                       <ul class="mobile-nav__list">
+                           <li class="mobile-nav__item"><a href="team.html" class="mobile-nav__link">Unser Team</a></li>
+                           <li class="mobile-nav__item">
+                               <button class="mobile-nav__link" onclick="toggleMobileDropdown(this)">
+                                   Leistungen 
+                                   <span class="mobile-nav__toggle">
+                                       <svg width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg">
+                                           <path d="M2 4L6 8L10 4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                       </svg>
+                                   </span>
+                               </button>
+                               <div class="mobile-nav__dropdown">
+                                   <a href="design.html" class="mobile-nav__dropdown-item">Branding & Design</a>
+                                   <a href="webdesign.html" class="mobile-nav__dropdown-item">Webdesign</a>
+                                   <a href="marketing.html" class="mobile-nav__dropdown-item">Marketing</a>
+                               </div>
+                           </li>
+                           <li class="mobile-nav__item"><a href="projekte.html" class="mobile-nav__link">Projekte</a></li>
+                       </ul>
+                       <div class="mobile-nav__buttons">
+                           <a href="kontakt.html" class="nav__button nav__button--primary">Projekt anfragen</a>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </nav>
+   </header>
 
     <main id="main-content">
 <!-- ── Hero ────────────────────────────────────────────────── -->
@@ -1075,374 +2377,205 @@
 <!-- ── Footer ───────────────────────────────────────────────── -->
     </main>
 
-<footer class="footer">
-    <div class="footer__container">
-        <div class="footer__content">
-            <div class="footer__top">
-                <div class="footer__brand">
-                    <div class="logo">
-                        <img src="bilder/logos/Unleash_Logo_Orange.svg" alt="UNLEASH" class="footer-logo__image">
-                    </div>
-                    <p class="footer__tagline">Kreativer Problemlöser</p>
-                </div>
-                <div class="footer__social">
-                    <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="footer__social-link">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="m15.5 6.5-1.1 1.1"/><circle cx="12" cy="12" r="3"/></svg>
-                    </a>
-                    <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="footer__social-link">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-                    </a>
-                </div>
-            </div>
-            <div class="footer__bottom">
-                <div class="footer__copyright">
-                    <div>© 2026 UNLEASH GbR</div>
-                    <div>Alle Rechte vorbehalten</div>
-                </div>
-                <div class="footer__legal">
-                    <a href="datenschutz.html">Datenschutz</a>
-                    <a href="impressum.html">Impressum</a>
-                    <a href="agb.html">AGB</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+   <footer class="footer">
+       <div class="footer__container">
+           <div class="footer__content">
+               <div class="footer__top">
+                   <div class="footer__brand">
+                       <div class="logo">
+                           <img src="bilder/logos/Unleash_Logo_Orange.svg" alt="UNLEASH" class="footer-logo__image">
+                       </div>
+                       <p class="footer__tagline">Kreativer Problemlöser</p>
+                   </div>
+                   <div class="footer__social">
+                       <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="footer__social-link">
+                           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                               <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                               <path d="m15.5 6.5-1.1 1.1"/>
+                               <circle cx="12" cy="12" r="3"/>
+                           </svg>
+                       </a>
+                       <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="footer__social-link">
+                           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                               <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                               <rect width="4" height="12" x="2" y="9"/>
+                               <circle cx="4" cy="4" r="2"/>
+                           </svg>
+                       </a>
+                   </div>
+               </div>
+               <div class="footer__bottom">
+                   <div class="footer__copyright">
+                       <div>© 2026 UNLEASH GbR</div>
+                       <div>Alle Rechte vorbehalten</div>
+                   </div>
+                   <div class="footer__legal">
+                       <a href="datenschutz.html">Datenschutz</a>
+                       <a href="impressum.html">Impressum</a>
+                       <a href="agb.html">AGB</a>
+                       <a href="kontakt.html">Kontakt</a>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </footer>
 
-<script>
-// ── Tab-Switching ────────────────────────────────────────────
-document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-        btn.classList.add('active');
-        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
-    });
-});
+   <script>
+       // Mobile dropdown toggle function
+       function toggleMobileDropdown(button) {
+           const dropdown = button.nextElementSibling;
+           const icon = button.querySelector('.mobile-nav__toggle');
+           
+           dropdown.classList.toggle('open');
+           icon.classList.toggle('open');
+       }
 
-// ── Header scroll ────────────────────────────────────────────
-window.addEventListener('scroll', () => {
-    document.querySelector('.header').setAttribute(
-        'data-state', window.scrollY > 50 ? 'active' : 'inactive'
-    );
-});
+       // Header scroll effect
+       let isScrolled = false;
+       let menuState = false;
 
-// ── Shared state ─────────────────────────────────────────────
-const SLOTS     = ['09:00','09:30','10:00','10:30','11:00','11:30','14:00','14:30','15:00','15:30','16:00','16:30','17:00'];
-const WORK_DAYS = [1,2,3,4,5];
-const MONTHS    = ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
-const DAYS_DE   = ['Sonntag','Montag','Dienstag','Mittwoch','Donnerstag','Freitag','Samstag'];
+       function updateHeaderState() {
+           const header = document.querySelector('.header');
+           isScrolled = window.scrollY > 50;
+           
+           // Only apply scrolled state on desktop
+           if (window.innerWidth >= 769) {
+               if (isScrolled) {
+                   header.setAttribute('data-state', 'active');
+               } else {
+                   header.setAttribute('data-state', 'inactive');
+               }
+           } else {
+               // On mobile, always keep inactive state unless menu is open
+               if (!menuState) {
+                   header.setAttribute('data-state', 'inactive');
+               }
+           }
+       }
 
-// ── Weekly rotating fake blockers ────────────────────────────
-// Pattern A = current week (Screenshot 1), Pattern B = next week (Screenshot 2)
-// Key = weekday index (1=Mo … 5=Fr), value = array of blocked slot start times
-const BLOCK_PATTERN_A = {
-    1: ['10:30','11:00','13:00','14:00','15:00'], // Mo
-    2: [],                                         // Di
-    3: ['11:00','13:00','13:30','16:00'],          // Mi
-    4: [],                                         // Do
-    5: ['10:00','13:30'],                          // Fr
-};
-const BLOCK_PATTERN_B = {
-    1: ['11:00','14:00'],                          // Mo
-    2: [],
-    3: ['13:00','13:30'],                          // Mi
-    4: [],
-    5: ['13:30'],                                  // Fr
-};
+       window.addEventListener('scroll', updateHeaderState);
 
-function getBlockedSlots(date) {
-    // Get Monday of the current week
-    const now = new Date();
-    const dayOfWeek = now.getDay() === 0 ? 6 : now.getDay() - 1; // 0=Mo
-    const monday = new Date(now);
-    monday.setHours(0,0,0,0);
-    monday.setDate(now.getDate() - dayOfWeek);
+       // Mobile menu toggle
+       const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+       const header = document.querySelector('.header');
 
-    const nextMonday = new Date(monday);
-    nextMonday.setDate(monday.getDate() + 7);
+       function toggleMobileMenu() {
+           const mobileMenu = document.querySelector('.mobile-menu');
+           menuState = !menuState;
+           
+           if (menuState) {
+               header.setAttribute('data-state', 'active');
+               mobileMenu.classList.add('manual-open');
+           } else {
+               // On mobile, always return to inactive when closing menu
+               if (window.innerWidth < 769) {
+                   header.setAttribute('data-state', 'inactive');
+               } else {
+                   header.setAttribute('data-state', isScrolled ? 'active' : 'inactive');
+               }
+               mobileMenu.classList.remove('manual-open');
+           }
+       }
 
-    const d = new Date(date);
-    d.setHours(0,0,0,0);
+       mobileMenuToggle.addEventListener('click', toggleMobileMenu);
 
-    const weekday = date.getDay(); // 0=Sun,1=Mo…
+       // Close mobile menu when clicking nav links
+       document.querySelectorAll('.mobile-nav__link:not(button)').forEach(link => {
+           link.addEventListener('click', () => {
+               const mobileMenu = document.querySelector('.mobile-menu');
+               menuState = false;
+               
+               // On mobile, always return to inactive when closing menu
+               if (window.innerWidth < 769) {
+                   header.setAttribute('data-state', 'inactive');
+               } else {
+                   header.setAttribute('data-state', isScrolled ? 'active' : 'inactive');
+               }
+               mobileMenu.classList.remove('manual-open');
+           });
+       });
 
-    if (d >= monday && d < nextMonday) {
-        return BLOCK_PATTERN_A[weekday] || [];
-    } else if (d >= nextMonday && d < new Date(nextMonday.getTime() + 7*24*60*60*1000)) {
-        return BLOCK_PATTERN_B[weekday] || [];
-    }
-    return [];
-}
-const today     = new Date();
+       // Initialize header state
+       updateHeaderState();
 
-function addMinutes(time, mins) {
-    const [h, m] = time.split(':').map(Number);
-    const t = h * 60 + m + mins;
-    return `${String(Math.floor(t/60)).padStart(2,'0')}:${String(t%60).padStart(2,'0')}`;
-}
+       // Smooth scrolling for navigation links
+       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+           anchor.addEventListener('click', function (e) {
+               e.preventDefault();
+               const target = document.querySelector(this.getAttribute('href'));
+               if (target) {
+                   const headerHeight = document.querySelector('.header').offsetHeight;
+                   const targetPosition = target.offsetTop - headerHeight - 20;
+                   
+                   window.scrollTo({
+                       top: targetPosition,
+                       behavior: 'smooth'
+                   });
+               }
+           });
+       });
 
-function buildCalendar(year, month, selDate, gridId, labelId) {
-    document.getElementById(labelId).textContent = `${MONTHS[month]} ${year}`;
-    const grid = document.getElementById(gridId);
-    grid.innerHTML = '';
-    const firstDay    = new Date(year, month, 1).getDay();
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    const offset      = firstDay === 0 ? 6 : firstDay - 1;
-    for (let i = 0; i < offset; i++) {
-        const el = document.createElement('div'); el.className = 'cal-day empty'; grid.appendChild(el);
-    }
-    for (let d = 1; d <= daysInMonth; d++) {
-        const date    = new Date(year, month, d);
-        const isPast  = date < new Date(today.getFullYear(), today.getMonth(), today.getDate());
-        const isWeek  = !WORK_DAYS.includes(date.getDay());
-        const isToday = date.toDateString() === today.toDateString();
-        const isSel   = selDate && date.toDateString() === selDate.toDateString();
-        const el = document.createElement('div');
-        el.className = 'cal-day' +
-            (isPast || isWeek ? ' disabled' : '') +
-            (isToday ? ' today' : '') +
-            (isSel ? ' selected' : '');
-        el.textContent = d;
-        if (!isPast && !isWeek) el.dataset.date = date.toISOString();
-        grid.appendChild(el);
-    }
-}
+       // Team member hover effects
+       document.querySelectorAll('.team-member').forEach(member => {
+           member.addEventListener('mouseenter', function() {
+               this.style.transform = 'translateY(-8px)';
+           });
+           
+           member.addEventListener('mouseleave', function() {
+               this.style.transform = 'translateY(0)';
+           });
+       });
 
-function buildSlots(gridId, date, onSelect) {
-    const grid    = document.getElementById(gridId);
-    const blocked = getBlockedSlots(date);
-    grid.innerHTML = '';
-    SLOTS.forEach(time => {
-        const btn = document.createElement('button');
-        const isBlocked = blocked.includes(time);
-        btn.className = 'slot-btn' + (isBlocked ? ' booked' : '');
-        btn.textContent = isBlocked ? time + ' Uhr' : time + ' Uhr';
-        btn.disabled = isBlocked;
-        if (!isBlocked) {
-            btn.addEventListener('click', () => {
-                grid.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                onSelect(time);
-            });
+// Counter Animation for Stats
+function animateCounter(element, targetString, duration = 2000) {
+    // Extract number and suffix (+ or %)
+    const numberMatch = targetString.match(/\d+/);
+    const target = numberMatch ? parseInt(numberMatch[0]) : 0;
+    const suffix = targetString.replace(/\d+/, '').trim();
+    
+    const start = 0;
+    const increment = target / (duration / 16); // 60fps
+    let current = start;
+    
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            current = target;
+            clearInterval(timer);
         }
-        grid.appendChild(btn);
-    });
+        element.textContent = Math.floor(current) + suffix;
+    }, 16);
 }
 
-function formatDate(date) {
-    return `${DAYS_DE[date.getDay()]}, ${date.getDate()}. ${MONTHS[date.getMonth()]} ${date.getFullYear()}`;
-}
-
-// ── DESKTOP ───────────────────────────────────────────────────
-let dYear = today.getFullYear(), dMonth = today.getMonth();
-let dSelDate = null, dSelSlot = null;
-
-function dRender() { buildCalendar(dYear, dMonth, dSelDate, 'calDays', 'calMonthLabel'); }
-
-document.getElementById('calDays').addEventListener('click', e => {
-    const day = e.target.closest('.cal-day');
-    if (!day || day.classList.contains('disabled') || day.classList.contains('empty') || !day.dataset.date) return;
-    dSelDate = new Date(day.dataset.date);
-    dSelSlot = null;
-    dRender();
-    // Show slots
-    document.getElementById('calPlaceholder').style.display = 'none';
-    const panel = document.getElementById('slotsPanel');
-    panel.style.display = 'block';
-    document.getElementById('slotsDayLabel').textContent = formatDate(dSelDate);
-    buildSlots('slotsGrid', dSelDate, time => {
-        dSelSlot = time;
-        const end = addMinutes(time, 30);
-        const bp = document.getElementById('bookingPanel');
-        document.getElementById('bookingSummary').innerHTML =
-            `Erstgespräch · <strong>${formatDate(dSelDate)}</strong> · <strong>${time} – ${end} Uhr</strong>`;
-        bp.style.display = 'block';
-        bp.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    });
-    document.getElementById('bookingPanel').style.display = 'none';
-});
-
-document.getElementById('calPrev').addEventListener('click', () => {
-    if (dMonth === 0) { dMonth = 11; dYear--; } else dMonth--; dRender();
-});
-document.getElementById('calNext').addEventListener('click', () => {
-    if (dMonth === 11) { dMonth = 0; dYear++; } else dMonth++; dRender();
-});
-
-document.getElementById('bookBtn').addEventListener('click', async () => {
-    const vorname  = document.getElementById('bookVorname').value.trim();
-    const nachname = document.getElementById('bookNachname').value.trim();
-    const email    = document.getElementById('bookEmail').value.trim();
-    const firma    = document.getElementById('bookFirma').value.trim();
-    const thema    = document.getElementById('bookThema').value.trim();
-    const status   = document.getElementById('bookStatus');
-    const btn      = document.getElementById('bookBtn');
-    if (!vorname || !email || !dSelDate || !dSelSlot) {
-        showStatus(status, 'error', 'Bitte Vorname, E-Mail und einen Slot auswählen.'); return;
-    }
-    btn.disabled = true; btn.textContent = 'Wird gesendet…';
-    await sendBooking({ vorname, nachname, email, firma, thema, date: dSelDate, slot: dSelSlot, status, btn,
-        onSuccess: () => {
-            dSelDate = null; dSelSlot = null; dRender();
-            document.getElementById('slotsPanel').style.display = 'none';
-            document.getElementById('bookingPanel').style.display = 'none';
-            document.getElementById('calPlaceholder').style.display = 'flex';
+// Intersection Observer for Stats Animation
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const statItem = entry.target;
+            const numberElement = statItem.querySelector('.stat-item__number');
+            const target = statItem.dataset.target;
+            
+            // Add animation class
+            statItem.classList.add('animate');
+            
+            // Start counter animation
+            setTimeout(() => {
+                animateCounter(numberElement, target);
+            }, 200);
+            
+            // Unobserve after animation starts
+            statsObserver.unobserve(statItem);
         }
     });
+}, {
+    threshold: 0.3,
+    rootMargin: '0px 0px -100px 0px'
 });
 
-// ── MOBILE ────────────────────────────────────────────────────
-let mYear = today.getFullYear(), mMonth = today.getMonth();
-let mSelDate = null, mSelSlot = null;
-
-function mRender() { buildCalendar(mYear, mMonth, mSelDate, 'mCalDays', 'mCalMonthLabel'); }
-
-function mGoToStep(n) {
-    [1,2,3].forEach(i => {
-        document.getElementById(`mstep${i}`).style.display = i === n ? 'block' : 'none';
-        const ind = document.getElementById(`step${i}-indicator`);
-        ind.classList.remove('active','done');
-        if (i === n) ind.classList.add('active');
-        else if (i < n) ind.classList.add('done');
-    });
-    document.getElementById('tab-termin').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    // Update sel-bars
-    if (mSelDate) {
-        const ds = formatDate(mSelDate);
-        const b2 = document.getElementById('mSelBar2');
-        if (b2) { b2.innerHTML = `<strong>${ds}</strong>`; b2.classList.add('visible'); }
-        if (mSelSlot) {
-            const end = addMinutes(mSelSlot, 30);
-            const b3 = document.getElementById('mSelBar3');
-            if (b3) { b3.innerHTML = `<strong>${ds}</strong> · <strong>${mSelSlot} – ${end} Uhr</strong>`; b3.classList.add('visible'); }
-        }
-    }
-}
-
-document.getElementById('mCalDays').addEventListener('click', e => {
-    const day = e.target.closest('.cal-day');
-    if (!day || day.classList.contains('disabled') || day.classList.contains('empty') || !day.dataset.date) return;
-    mSelDate = new Date(day.dataset.date);
-    mSelSlot = null; mRender();
-    document.getElementById('mSlotsDayLabel').textContent = formatDate(mSelDate);
-    buildSlots('mSlotsGrid', mSelDate, time => { mSelSlot = time; mGoToStep(3); });
-    mGoToStep(2);
+// Observe all stat items
+document.querySelectorAll('.stat-item').forEach(item => {
+    statsObserver.observe(item);
 });
-
-document.getElementById('mCalPrev').addEventListener('click', () => {
-    if (mMonth === 0) { mMonth = 11; mYear--; } else mMonth--; mRender();
-});
-document.getElementById('mCalNext').addEventListener('click', () => {
-    if (mMonth === 11) { mMonth = 0; mYear++; } else mMonth++; mRender();
-});
-
-document.getElementById('mBackToStep1').addEventListener('click', () => { mSelSlot = null; mGoToStep(1); });
-document.getElementById('mBackToStep2').addEventListener('click', () => { mSelSlot = null; mGoToStep(2); buildSlots('mSlotsGrid', mSelDate, time => { mSelSlot = time; mGoToStep(3); }); });
-
-document.getElementById('mBookBtn').addEventListener('click', async () => {
-    const vorname  = document.getElementById('mBookVorname').value.trim();
-    const nachname = document.getElementById('mBookNachname').value.trim();
-    const email    = document.getElementById('mBookEmail').value.trim();
-    const firma    = document.getElementById('mBookFirma').value.trim();
-    const thema    = document.getElementById('mBookThema').value.trim();
-    const status   = document.getElementById('mBookStatus');
-    const btn      = document.getElementById('mBookBtn');
-    if (!vorname || !email) { showStatus(status, 'error', 'Bitte Vorname und E-Mail ausfüllen.'); return; }
-    btn.disabled = true; btn.textContent = 'Wird gesendet…';
-    await sendBooking({ vorname, nachname, email, firma, thema, date: mSelDate, slot: mSelSlot, status, btn,
-        onSuccess: () => {
-            mSelDate = null; mSelSlot = null; mRender(); mGoToStep(1);
-            document.querySelectorAll('#mstep3 input, #mstep3 textarea').forEach(el => el.value = '');
-        }
-    });
-});
-
-// ── Shared Formspree send ─────────────────────────────────────
-async function sendBooking({ vorname, nachname, email, firma, thema, date, slot, status, btn, onSuccess }) {
-    const ds  = formatDate(date);
-    const end = addMinutes(slot, 30);
-    try {
-        const res = await fetch('https://formspree.io/f/xeebgkbk', {
-            method: 'POST',
-            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                _subject: `Terminanfrage: ${ds}, ${slot} Uhr`,
-                name:     `${vorname} ${nachname}`,
-                email,
-                unternehmen: firma || '–',
-                termin:   `${ds}, ${slot} – ${end} Uhr`,
-                thema:    thema || '–'
-            })
-        });
-        if (res.ok) {
-            showStatus(status, 'success', `Anfrage gesendet – wir bestätigen deinen Wunschtermin innerhalb von 24h.`);
-            setTimeout(onSuccess, 2500);
-        } else {
-            showStatus(status, 'error', 'Etwas hat nicht geklappt. Versuch es nochmal.');
-        }
-    } catch {
-        showStatus(status, 'error', 'Keine Verbindung. Bitte prüf deine Internetverbindung.');
-    }
-    btn.disabled = false; btn.textContent = 'Termin anfragen';
-}
-
-// ── Contact form submit ──────────────────────────────────────
-document.getElementById('formSubmitBtn').addEventListener('click', async () => {
-    const vorname   = document.getElementById('fVorname').value.trim();
-    const nachname  = document.getElementById('fNachname').value.trim();
-    const email     = document.getElementById('fEmail').value.trim();
-    const thema     = document.getElementById('fThema').value;
-    const nachricht = document.getElementById('fNachricht').value.trim();
-    const firma     = document.getElementById('fFirma').value.trim();
-    const status    = document.getElementById('formStatus');
-    const btn       = document.getElementById('formSubmitBtn');
-
-    if (!vorname || !email || !nachricht) {
-        showStatus(status, 'error', 'Bitte mindestens Vorname, E-Mail und Nachricht ausfüllen.');
-        return;
-    }
-
-    btn.disabled = true;
-    btn.textContent = 'Wird gesendet…';
-
-    try {
-        const res = await fetch('https://formspree.io/f/xeebgkbk', {
-            method: 'POST',
-            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                name:       `${vorname} ${nachname}`,
-                email,
-                unternehmen: firma,
-                thema,
-                nachricht
-            })
-        });
-
-        if (res.ok) {
-            showStatus(status, 'success', 'Nachricht gesendet – wir melden uns innerhalb von 24 Stunden.');
-            document.querySelectorAll('#tab-nachricht input, #tab-nachricht select, #tab-nachricht textarea')
-                .forEach(el => el.value = '');
-        } else {
-            showStatus(status, 'error', 'Etwas hat nicht geklappt. Versuch es nochmal oder schreib uns direkt.');
-        }
-    } catch {
-        showStatus(status, 'error', 'Keine Verbindung. Bitte prüf deine Internetverbindung.');
-    }
-
-    btn.disabled = false;
-    btn.textContent = 'Nachricht senden';
-});
-
-function showStatus(el, type, msg) {
-    el.className = 'status-msg ' + type;
-    el.textContent = msg;
-}
-
-// Init
-dRender();
-mRender();
-mGoToStep(1);
-</script>
+   </script>
 </body>
 </html>
