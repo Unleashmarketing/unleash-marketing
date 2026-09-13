@@ -1640,6 +1640,123 @@
 .nav__item:nth-child(2) .nav__dropdown-icon {
     display: none !important;
 }
+    
+
+/* =========================================================
+   Mobile overhaul (September 2026) — shared nav + footer
+   Overrides scattered mobile rules earlier in this file.
+   ========================================================= */
+@media (max-width: 768px) {
+    /* ---- Container ---- */
+    .container {
+        padding: 0 20px !important;
+    }
+
+    /* ---- Header / Nav ---- */
+    .header {
+        padding: 0 12px !important;
+    }
+    .header__container {
+        background: rgba(18, 18, 18, 0.85) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.06) !important;
+        border-radius: 20px !important;
+        padding: 0 20px !important;
+        max-width: 100% !important;
+        margin-top: 12px !important;
+    }
+    .header__content {
+        padding: 10px 0 !important;
+        gap: 0 !important;
+    }
+    .header__center {
+        display: none !important;
+    }
+    .header__actions {
+        display: none !important;
+    }
+    .logo__image {
+        height: 26px !important;
+    }
+    .mobile-menu-toggle {
+        display: block !important;
+        margin: -8px -8px -8px 0;
+    }
+    .mobile-menu {
+        margin-top: 20px !important;
+        padding: 24px 20px 20px !important;
+        border-radius: 20px !important;
+    }
+    .mobile-nav__list {
+        gap: 20px !important;
+    }
+    .mobile-nav__link {
+        font-size: 17px !important;
+        padding: 6px 0;
+    }
+    .mobile-nav__buttons {
+        margin-top: 20px !important;
+        padding-top: 20px;
+        border-top: 1px solid #2A2A2A;
+    }
+    .mobile-nav__buttons .nav__button {
+        width: 100% !important;
+        justify-content: center;
+        padding: 14px 24px !important;
+        font-size: 15px !important;
+        height: auto !important;
+    }
+
+    /* ---- Footer ---- */
+    .footer {
+        padding: 40px 0 30px !important;
+    }
+    .footer__container {
+        padding: 0 12px !important;
+    }
+    .footer__content {
+        padding: 28px 24px !important;
+        border-radius: 20px !important;
+        gap: 24px !important;
+    }
+    .footer__top {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 20px !important;
+    }
+    .footer__brand {
+        gap: 6px !important;
+    }
+    .footer__brand .footer-logo__image {
+        height: 26px !important;
+    }
+    .footer__tagline {
+        font-size: 14px;
+    }
+    .footer__social {
+        gap: 10px !important;
+    }
+    .footer__bottom {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+        padding-top: 24px !important;
+        text-align: left !important;
+    }
+    .footer__copyright {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+    .footer__legal {
+        flex-wrap: wrap;
+        justify-content: flex-start !important;
+        gap: 18px !important;
+    }
+    .footer__legal a {
+        font-size: 13px !important;
+    }
+}
+
     </style>
 </head>
 <body>
