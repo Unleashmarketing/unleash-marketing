@@ -2399,6 +2399,292 @@
 .nav__item:nth-child(2) .nav__dropdown-icon {
     display: none !important;
 }
+
+/* =========================================================
+   Mobile overhaul (September 2026)
+   Consolidates and overrides the scattered @media blocks above
+   ========================================================= */
+@media (max-width: 768px) {
+    /* ---- Header / Nav ---- */
+    .header {
+        padding: 0 12px;
+    }
+    .header__container {
+        background: rgba(18, 18, 18, 0.85) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.06) !important;
+        border-radius: 20px !important;
+        padding: 0 20px !important;
+        max-width: 100% !important;
+        margin-top: 12px;
+    }
+    .header__content {
+        padding: 10px 0;
+        gap: 0;
+    }
+    .logo__image {
+        height: 26px !important;
+    }
+    .mobile-menu-toggle {
+        margin: -8px -8px -8px 0;
+    }
+    .mobile-menu {
+        margin-top: 20px;
+        padding: 24px 20px 20px;
+        border-radius: 20px;
+    }
+    .mobile-nav__list {
+        gap: 20px;
+    }
+    .mobile-nav__link {
+        font-size: 17px;
+        padding: 6px 0;
+    }
+    .mobile-nav__buttons {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid #2A2A2A;
+    }
+    .mobile-nav__buttons .nav__button {
+        width: 100%;
+        justify-content: center;
+        padding: 14px 24px;
+        font-size: 15px;
+        height: auto;
+    }
+
+    /* ---- Hero ---- */
+    .hero {
+        padding: 120px 0 60px;
+        min-height: auto;
+    }
+    .hero__content {
+        text-align: center;
+    }
+    .hero__announcement {
+        margin-bottom: 20px;
+    }
+    .announcement-badge {
+        font-size: 12px;
+    }
+    .hero__headline {
+        font-size: clamp(2rem, 9vw, 2.75rem) !important;
+        line-height: 1.15 !important;
+        margin-bottom: 20px !important;
+        letter-spacing: -0.02em;
+    }
+    .hero__description {
+        font-size: 15px !important;
+        line-height: 1.55 !important;
+        max-width: 92% !important;
+        margin: 0 auto 28px !important;
+        padding: 0 !important;
+    }
+    .hero__cta {
+        margin-bottom: 32px;
+    }
+    .hero__button {
+        display: inline-flex;
+        padding: 14px 32px !important;
+        font-size: 15px !important;
+        border-radius: 999px;
+    }
+    .hero__stats {
+        font-size: 13px;
+        line-height: 1.5;
+        margin-bottom: 40px !important;
+        color: var(--color-text-secondary);
+        padding: 0 12px;
+    }
+    .hero__stats-text strong {
+        color: var(--color-text-primary);
+    }
+
+    /* Client logos: strip inline max-widths, cleaner 2x2 */
+    .clients__container {
+        margin-top: 24px;
+    }
+    .clients__logos {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 28px 20px !important;
+        height: auto !important;
+        padding: 0 8px !important;
+        align-items: center;
+    }
+    .logo-slot {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 60px;
+    }
+    .clients__logos img {
+        max-width: 110px !important;
+        max-height: 50px !important;
+        width: auto !important;
+        height: auto !important;
+        object-fit: contain;
+        opacity: 0.85;
+    }
+
+    /* ---- About section ---- */
+    .about-section {
+        padding: 80px 0 !important;
+    }
+    .about__title {
+        font-size: clamp(1.75rem, 8vw, 2.25rem) !important;
+        line-height: 1.2;
+        text-align: left;
+        margin-bottom: 20px;
+    }
+    .about__description {
+        font-size: 15px;
+        line-height: 1.6;
+        text-align: left;
+    }
+    .about__cta {
+        margin-top: 24px;
+    }
+
+    /* ---- Services ---- */
+    .services {
+        padding: 80px 0 !important;
+    }
+    .services__content {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+    }
+    .services__left {
+        text-align: left !important;
+        order: -1;
+        margin-bottom: 8px;
+    }
+    .services__main-title {
+        font-size: clamp(1.75rem, 8vw, 2.25rem) !important;
+        line-height: 1.2;
+    }
+    .service-item {
+        margin-bottom: 20px;
+    }
+    .service-card {
+        padding: 28px 22px !important;
+        border-radius: 16px;
+    }
+    .service-card__title {
+        font-size: 1.15rem !important;
+        margin-bottom: 12px !important;
+    }
+    .service-card__text {
+        font-size: 14px !important;
+        line-height: 1.55;
+    }
+
+    /* ---- Process / FAQ / CTA sections ---- */
+    .process-section,
+    .faq-section {
+        padding: 80px 0 !important;
+    }
+    .faq__title {
+        font-size: clamp(1.75rem, 8vw, 2.25rem) !important;
+    }
+    .faq-item__question {
+        padding: 20px 0 !important;
+        font-size: 15px !important;
+        line-height: 1.4;
+    }
+    .cta-section {
+        padding: 80px 0 !important;
+    }
+    .cta__box {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+        padding: 36px 24px !important;
+        text-align: center;
+    }
+    .cta__title,
+    .cta__title-new {
+        font-size: clamp(1.5rem, 7vw, 2rem) !important;
+    }
+    .cta__team {
+        justify-content: center;
+    }
+    .cta__button-new {
+        width: 100%;
+        padding: 14px 24px !important;
+        font-size: 15px !important;
+    }
+
+    /* ---- Footer ---- */
+    .footer {
+        padding: 40px 0 30px !important;
+    }
+    .footer__container {
+        padding: 0 12px !important;
+    }
+    .footer__content {
+        padding: 28px 24px !important;
+        border-radius: 20px;
+        gap: 24px !important;
+    }
+    .footer__top {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 20px !important;
+    }
+    .footer__brand {
+        gap: 6px;
+    }
+    .footer__brand .footer-logo__image {
+        height: 26px !important;
+    }
+    .footer__tagline {
+        font-size: 14px;
+    }
+    .footer__social {
+        gap: 10px;
+    }
+    .footer__bottom {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+        padding-top: 24px !important;
+        text-align: left !important;
+    }
+    .footer__copyright {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+    .footer__legal {
+        flex-wrap: wrap;
+        justify-content: flex-start !important;
+        gap: 18px !important;
+    }
+    .footer__legal a {
+        font-size: 13px;
+    }
+}
+
+/* Very small phones */
+@media (max-width: 400px) {
+    .hero {
+        padding: 110px 0 50px;
+    }
+    .hero__headline {
+        font-size: clamp(1.75rem, 9vw, 2.25rem) !important;
+    }
+    .clients__logos {
+        gap: 24px 14px !important;
+    }
+    .clients__logos img {
+        max-width: 95px !important;
+        max-height: 42px !important;
+    }
+    .footer__content {
+        padding: 24px 20px !important;
+    }
+    .footer__legal {
+        gap: 14px !important;
+    }
+}
     </style>
 </head>
 <body>
