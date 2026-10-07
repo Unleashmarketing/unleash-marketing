@@ -1,0 +1,1605 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/bilder/logos/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/bilder/logos/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/bilder/logos/apple-touch-icon.png">
+    <meta name="theme-color" content="#FF5100">
+    <title>Projekte & Referenzen – Logo Design, Webdesign & Marketing | UNLEASH Mannheim</title>
+    <meta name="description" content="Referenzen von UNLEASH: Logo Design, Branding, Webdesign, Social Media Marketing, SEO und Conversion Rate Optimierung – ausgewählte Projekte einer Werbeagentur aus Mannheim.">
+    <meta name="keywords" content="Referenzen Werbeagentur Mannheim, Portfolio Logo Design, Webdesign Referenzen, Social Media Case Studies, Branding Projekte Mannheim">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://unleash-marketing.de/projekte/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Projekte & Referenzen – UNLEASH">
+    <meta property="og:description" content="Echte Projekte, echte Kunden, echte Ergebnisse. Branding, Web und Marketing in der Praxis.">
+    <meta property="og:url" content="https://unleash-marketing.de/projekte/">
+    <meta property="og:image" content="https://unleash-marketing.de/bilder/logos/og-image.jpg">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:site_name" content="UNLEASH">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Projekte & Referenzen – UNLEASH">
+    <meta name="twitter:description" content="Echte Projekte, echte Kunden, echte Ergebnisse. Branding, Web und Marketing in der Praxis.">
+    <meta name="twitter:image" content="https://unleash-marketing.de/bilder/logos/og-image.jpg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Projekte & Referenzen – UNLEASH",
+    "url": "https://unleash-marketing.de/projekte/",
+    "description": "Portfolio der UNLEASH GbR: Branding, Webdesign und Marketing für Unternehmen.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "UNLEASH GbR",
+      "url": "https://unleash-marketing.de"
+    }
+  }
+  </script>
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'FK Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
+            line-height: 1.6;
+            color: #FFFFFF;
+            background-color: #121212;
+            font-variant-numeric: tabular-nums;
+            position: relative;
+        }
+
+        /* Global Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #121212 0%, #1E1E1E 50%, #121212 100%);
+            background-image: 
+    repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 16px,
+        rgba(255, 81, 0, 0.12) 16px,
+        rgba(255, 81, 0, 0.12) 17px
+    );
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        /* Container & Grid System */
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 60px;
+        }
+
+        /* Grid Variables */
+        :root {
+            --grid-columns: 12;
+            --column-width: 72px;
+            --gutter: 24px;
+            --baseline: 8px;
+            
+            /* Colors */
+            --color-primary: #FF5100;
+            --color-bg-primary: #121212;
+            --color-bg-secondary: #1E1E1E;
+            --color-text-primary: #FFFFFF;
+            --color-text-secondary: #8E8E8E;
+            --color-text-invert: #F4F4F4;
+            
+            /* Typography */
+            --font-size-h1: clamp(2.5rem, 5vw, 4.5rem);
+            --font-size-h2: clamp(2rem, 4vw, 3rem);
+            --font-size-h3: clamp(1.25rem, 2.5vw, 1.5rem);
+            --font-size-body: 1rem;
+            --font-size-body-large: 1.125rem;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            width: 100%;
+            padding: 0 8px;
+        }
+
+        .header__nav {
+            transition: all 0.3s ease;
+        }
+
+        .header__container {
+            max-width: 1440px;
+            margin: 0 auto;
+            margin-top: 8px;
+            padding: 0 24px;
+            transition: all 0.3s ease;
+        }
+
+        /* Default state */
+        .header[data-state="inactive"] .header__container {
+            max-width: 1536px;
+            padding: 0 48px;
+        }
+
+        /* Scrolled state - only for desktop */
+        @media (min-width: 769px) {
+            .header[data-state="active"] .header__container {
+                max-width: 1024px;
+                background: rgba(18, 18, 18, 0.8);
+                backdrop-filter: blur(16px);
+                border: 1px solid #1E1E1E;
+                border-radius: 16px;
+                padding: 0 20px;
+            }
+        }
+
+        /* Mobile always has glass effect */
+        @media (max-width: 768px) {
+            .header__container {
+                background: rgba(18, 18, 18, 0.8) !important;
+                backdrop-filter: blur(16px) !important;
+                border: 1px solid #1E1E1E !important;
+                border-radius: 16px !important;
+                padding: 0 24px !important; 
+                max-width: 1440px !important;
+            }
+        }
+
+        .header__content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 24px;
+            padding: 12px 0;
+            position: relative;
+        }
+
+        .header__brand {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .header__center {
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            width: fit-content;
+            height: fit-content;
+            display: none;
+        }
+
+        .header__actions {
+            display: none;
+            align-items: center;
+            width: 100%;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 24px;
+            background: var(--color-bg-primary);
+            border: 1px solid #1E1E1E;
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            position: relative;
+            text-decoration: none;
+        }
+
+        .logo__image,
+        .footer-logo__image {
+            height: 32px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover .logo__image,
+        .logo:hover .footer-logo__image {
+            transform: scale(1.05);
+        }
+
+        .nav__list {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+
+        .nav__item {
+            position: relative;
+        }
+
+        .nav__link {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.15s ease;
+        }
+
+        .nav__link:hover,
+        .nav__link--active {
+            color: var(--color-primary);
+        }
+
+        .nav__button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            height: 36px;
+            padding: 0 12px;
+        }
+
+        .nav__button--primary {
+            background: var(--color-primary);
+            color: var(--color-text-primary);
+            border: 1px solid transparent;
+        }
+
+        .nav__button--primary:hover {
+            background: #E64600;
+            transform: translateY(-1px);
+        }
+
+        .nav__desktop-buttons {
+            display: flex;
+            gap: 12px;
+            width: 100%;
+            flex-direction: column;
+        }
+
+        .nav__scrolled-button {
+            display: none;
+        }
+
+        .mobile-menu-toggle {
+            position: relative;
+            z-index: 20;
+            margin: -10px -16px -10px -10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            display: block;
+        }
+
+        .menu-icon {
+            display: block;
+            width: 24px;
+            height: 24px;
+            position: relative;
+        }
+
+        .menu-icon::before,
+        .menu-icon::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 24px;
+            height: 2px;
+            background: var(--color-text-primary);
+            transition: all 0.2s ease;
+        }
+
+        .menu-icon::before {
+            top: 7px;
+        }
+
+        .menu-icon::after {
+            top: 15px;
+        }
+
+        .close-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-180deg) scale(0);
+            font-size: 24px;
+            color: var(--color-text-primary);
+            transition: all 0.2s ease;
+            opacity: 0;
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            display: none;
+            width: 100%;
+            background: var(--color-bg-primary);
+            border: 1px solid #1E1E1E;
+            border-radius: 24px;
+            padding: 24px;
+            margin-top: 24px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .mobile-menu__content {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .mobile-nav__list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .mobile-nav__item {
+            position: relative;
+        }
+
+        .mobile-nav__link {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.15s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: transparent;
+            border: none; 
+            gap: 10px;
+        }
+
+        .mobile-nav__link:hover {
+            color: var(--color-text-primary);
+        }
+
+        /* Desktop Navigation */
+        @media (min-width: 768px) {
+            .header__brand {
+                width: auto;
+            }
+            
+            .header__center {
+                display: block;
+            }
+            
+            .header__actions {
+                display: flex;
+                width: fit-content;
+                gap: 24px;
+                margin: 0;
+                background: transparent;
+                border: none;
+                border-radius: 0;
+                padding: 0;
+                box-shadow: none;
+                flex-direction: row;
+            }
+            
+            .nav__desktop-buttons {
+                flex-direction: row;
+                width: auto;
+            }
+            
+            .mobile-menu-toggle {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: none !important;
+            }
+            
+            /* Scrolled state for desktop */
+            .header[data-state="active"] .nav__desktop-buttons {
+                display: none;
+            }
+            
+            .header[data-state="active"] .nav__scrolled-button {
+                display: block;
+            }
+        }
+
+        /* Active mobile menu state - only when manually triggered */
+        .header[data-state="active"] .mobile-menu.manual-open {
+            display: block;
+        }
+
+        .header[data-state="active"] .menu-icon::before,
+        .header[data-state="active"] .menu-icon::after {
+            opacity: 0;
+            transform: rotate(180deg) scale(0);
+        }
+
+        .header[data-state="active"] .close-icon {
+            transform: translate(-50%, -50%) rotate(0deg) scale(1);
+            opacity: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 120px;
+            position: relative;
+        }
+
+        .hero__content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: end;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero__left {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero__right {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero__eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .hero__eyebrow::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: var(--color-primary);
+            flex-shrink: 0;
+        }
+
+        .hero__eyebrow span {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .hero__title {
+            font-size: var(--font-size-h1);
+            font-weight: 700;
+            color: var(--color-text-primary);
+            line-height: 1.1;
+            margin-bottom: 0;
+            letter-spacing: -0.02em;
+        }
+
+        .hero__description {
+            font-size: var(--font-size-body-large);
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            margin-bottom: 0;
+            max-width: none;
+        }
+
+        /* Projects Grid Section */
+        .projects-section {
+            padding: 80px 0;
+            background: transparent;
+            position: relative;
+        }
+
+        .projects__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project-card {
+            background: var(--color-bg-secondary);
+            border: 1px solid #2A2A2A;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--color-primary);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+.project-card__image {
+    width: 100%;
+    height: 350px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--color-primary) 0%, #FF7A40 100%);
+}
+
+.project-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-card__image img {
+    transform: scale(1.05);
+}
+
+
+        .project-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            z-index: 2;
+            position: relative;
+        }
+
+        .project-card__content {
+            padding: 32px;
+        }
+
+        .project-card__title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-text-primary);
+            margin-bottom: 16px;
+        }
+
+        .project-card__tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 0;
+        }
+
+        .project-tag {
+            background: transparent;
+            border: 1px solid var(--color-text-secondary);
+            color: var(--color-text-secondary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .project-tag {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+        }
+
+        /* References Section */
+        .references-section {
+            padding: 120px 0;
+            background: transparent;
+            position: relative;
+        }
+
+        .references__header {
+            text-align: left;
+            margin-bottom: 80px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .references__badge {
+            display: inline-block;
+            background: var(--color-primary);
+            color: var(--color-text-primary);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 32px;
+            text-transform: uppercase;
+        }
+
+        .references__title {
+            font-size: var(--font-size-h2);
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+            max-width: 600px;
+        }
+
+        .references__description {
+            font-size: var(--font-size-body-large);
+            color: var(--color-text-secondary);
+            max-width: 800px;
+            line-height: 1.7;
+        }
+
+        .references__grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .reference-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 80px;
+            background: var(--color-bg-secondary);
+            border: 1px solid #2A2A2A;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            opacity: 0.7;
+        }
+
+        .reference-item:hover {
+            opacity: 1;
+            border-color: var(--color-primary);
+            transform: translateY(-4px);
+        }
+
+.reference-logo {
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(100%) brightness(0) invert(1);
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+.reference-item:hover .reference-logo {
+    filter: none;
+    opacity: 1;
+}
+
+        /* CTA Cards Section */
+        .cta-cards-section {
+            padding: 120px 0;
+            background: transparent;
+        }
+
+        .cta-cards__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+
+        .cta-card {
+            padding: 60px;
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .cta-card--services {
+            background: var(--color-bg-secondary);
+            border: 1px solid #2A2A2A;
+        }
+
+        .cta-card--contact {
+            background: var(--color-primary);
+        }
+
+        .cta-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .cta-card__title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .cta-card--services .cta-card__title {
+            color: var(--color-text-primary);
+        }
+
+        .cta-card--contact .cta-card__title {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .cta-card__text {
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .cta-card--services .cta-card__text {
+            color: var(--color-text-secondary);
+        }
+
+        .cta-card--contact .cta-card__text {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .cta-card__button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .cta-card--services .cta-card__button {
+            background: transparent;
+            border: 1px solid var(--color-text-secondary);
+            color: var(--color-text-primary);
+        }
+
+        .cta-card--services .cta-card__button:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+
+        .cta-card--contact .cta-card__button {
+            background: white;
+            color: var(--color-primary);
+            border: 1px solid transparent;
+        }
+
+        .cta-card--contact .cta-card__button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 80px 0 40px;
+            background: transparent;
+        }
+
+        .footer__container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .footer__content {
+            background: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid #1E1E1E;
+            border-radius: 16px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .footer__top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer__brand {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer__brand .footer-logo__image {
+            height: 28px;
+            width: auto;
+        }
+
+        .footer__tagline {
+            color: var(--color-text-secondary);
+            margin: 0;
+        }
+
+        .footer__social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer__social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--color-bg-secondary);
+            border: 1px solid #2A2A2A;
+            border-radius: 50%;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer__social-link:hover {
+            background: var(--color-primary);
+            border-color: var(--color-primary);
+            color: var(--color-text-primary);
+            transform: translateY(-2px);
+        }
+
+        .footer__bottom {
+            border-top: 1px solid #2A2A2A;
+            padding-top: 32px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .footer__legal {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer__legal a {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer__legal a:hover {
+            color: var(--color-primary);
+        }
+
+        .footer__copyright {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Responsive Design für Desktop */
+        @media (min-width: 768px) {
+            .footer__bottom {
+                grid-template-columns: 1fr 1fr;
+                align-items: end;
+                justify-items: start;
+                min-height: 60px;
+            }
+
+            .footer__legal {
+                justify-content: flex-end;
+                justify-self: end;
+                align-self: end;
+            }
+
+            .footer__copyright {
+                text-align: left;
+                justify-self: start;
+                align-self: end;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .header__container {
+                padding: 0 20px;
+                max-width: calc(100% - 16px);
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                padding: 100px 0 80px;
+            }
+
+            .hero__content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .hero__left {
+                order: 1;
+            }
+
+            .hero__right {
+                order: 2;
+            }
+
+            .projects__grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .references__grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+
+            .cta-cards__grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .cta-card {
+                padding: 40px;
+            }
+            
+            .footer__container {
+                padding: 0 20px;
+            }
+            
+            .footer__content {
+                padding: 30px 20px;
+                text-align: center;
+            }
+            
+            .footer__top {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .footer__bottom {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                text-align: center;
+            }
+            
+            .footer__legal {
+                justify-content: center;
+                gap: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .projects__grid {
+                gap: 20px;
+            }
+
+            .project-card__content {
+                padding: 24px;
+            }
+
+            .references__grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .cta-card {
+                padding: 32px;
+            }
+        }
+    
+
+/* =========================================================
+   Mobile overhaul (September 2026) — shared nav + footer
+   Overrides scattered mobile rules earlier in this file.
+   ========================================================= */
+@media (max-width: 768px) {
+    /* ---- Container ---- */
+    .container {
+        padding: 0 20px !important;
+    }
+
+    /* ---- Header / Nav ---- */
+    .header {
+        padding: 0 12px !important;
+    }
+    .header__container {
+        background: rgba(18, 18, 18, 0.85) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.06) !important;
+        border-radius: 20px !important;
+        padding: 0 20px !important;
+        max-width: 100% !important;
+        margin-top: 12px !important;
+    }
+    .header__content {
+        padding: 10px 0 !important;
+        gap: 0 !important;
+    }
+    .header__center {
+        display: none !important;
+    }
+    .header__actions {
+        display: none !important;
+    }
+    .logo__image {
+        height: 26px !important;
+    }
+    .mobile-menu-toggle {
+        display: block !important;
+        margin: -8px -8px -8px 0;
+    }
+    .mobile-menu {
+        margin-top: 20px !important;
+        padding: 24px 20px 20px !important;
+        border-radius: 20px !important;
+    }
+    .mobile-nav__list {
+        gap: 20px !important;
+    }
+    .mobile-nav__link {
+        font-size: 17px !important;
+        padding: 6px 0;
+    }
+    .mobile-nav__buttons {
+        margin-top: 20px !important;
+        padding-top: 20px;
+        border-top: 1px solid #2A2A2A;
+    }
+    .mobile-nav__buttons .nav__button {
+        width: 100% !important;
+        justify-content: center;
+        padding: 14px 24px !important;
+        font-size: 15px !important;
+        height: auto !important;
+    }
+
+    /* ---- Footer ---- */
+    .footer {
+        padding: 40px 0 30px !important;
+    }
+    .footer__container {
+        padding: 0 12px !important;
+    }
+    .footer__content {
+        padding: 28px 24px !important;
+        border-radius: 20px !important;
+        gap: 24px !important;
+    }
+    .footer__top {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 20px !important;
+    }
+    .footer__brand {
+        gap: 6px !important;
+    }
+    .footer__brand .footer-logo__image {
+        height: 26px !important;
+    }
+    .footer__tagline {
+        font-size: 14px;
+    }
+    .footer__social {
+        gap: 10px !important;
+    }
+    .footer__bottom {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+        padding-top: 24px !important;
+        text-align: left !important;
+    }
+    .footer__copyright {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+    .footer__legal {
+        flex-wrap: wrap;
+        justify-content: flex-start !important;
+        gap: 18px !important;
+    }
+    .footer__legal a {
+        font-size: 13px !important;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" data-state="inactive">
+        <nav class="header__nav">
+            <div class="header__container">
+                <div class="header__content">
+                    <div class="header__brand">
+                        <a href="/" class="logo">
+                            <img src="/bilder/logos/Unleash_Logo_Orange.svg" alt="UNLEASH" class="logo__image">
+                        </a>
+
+                        <button class="mobile-menu-toggle" aria-label="Menu">
+                            <span class="menu-icon"></span>
+                            <span class="close-icon">×</span>
+                        </button>
+                    </div>
+
+                    <div class="header__center">
+                        <ul class="nav__list">
+                            <li class="nav__item"><a href="/team/" class="nav__link">Unser Team</a></li>
+                            <li class="nav__item"><a href="/services/" class="nav__link">Leistungen</a></li>
+                            <li class="nav__item"><a href="/projekte/" class="nav__link nav__link--active">Projekte</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="header__actions">
+                        <div class="nav__desktop-buttons">
+                            <a href="/kontakt/" class="nav__button nav__button--primary">Projekt anfragen</a>
+                        </div>
+                        <div class="nav__scrolled-button">
+                            <a href="/kontakt/" class="nav__button nav__button--primary">Projekt anfragen</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu -->
+                <div class="mobile-menu">
+                    <div class="mobile-menu__content">
+                        <ul class="mobile-nav__list">
+                            <li class="mobile-nav__item"><a href="/team/" class="mobile-nav__link">Unser Team</a></li>
+                            <li class="mobile-nav__item"><a href="/services/" class="mobile-nav__link">Leistungen</a></li>
+                            <li class="mobile-nav__item"><a href="/projekte/" class="mobile-nav__link">Projekte</a></li>
+                        </ul>
+                        <div class="mobile-nav__buttons">
+                            <a href="/kontakt/" class="nav__button nav__button--primary">Projekt anfragen</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero__content">
+                <div class="hero__left">
+                    <div class="hero__eyebrow">
+                        <span>Projekte</span>
+                    </div>
+                    <h1 class="hero__title">Projekte, auf die wir stolz sind</h1>
+                </div>
+                <div class="hero__right">
+                    <p class="hero__description">
+                        Hier siehst du, was Branding, Web und Marketing in der Praxis bedeuten – echte Projekte, echte Kunden, echte Ergebnisse.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Grid Section -->
+    <section class="projects-section">
+        <div class="container">
+            <div class="projects__grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-card__image">
+                        <img loading="lazy" src="/bilder/projekte/allianz.jpg" alt="Allianz Creative" style="object-position: left top;"></img>
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">Allianz</h3>
+                        <div class="project-card__tags">
+                            <span class="project-tag">Social Media</span>
+                            <span class="project-tag">Automation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-card__image">
+                        <img loading="lazy" src="/bilder/projekte/Asaeda.png" alt="Asaeda Flyer" style="object-position: center top;"></img>
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">Nobuhiko Asaeda</h3>
+                        <div class="project-card__tags">
+                            <span class="project-tag">Webdesign</span>
+                            <span class="project-tag">Fotografie</span>
+                            <span class="project-tag">Print</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-card__image">
+                        <img loading="lazy" src="/bilder/projekte/Joscot.png" alt="Joscot Sticker" style="object-position: center top;"></img>
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">Joscot</h3>
+                        <div class="project-card__tags">
+                            <span class="project-tag">Logo Design</span>
+                            <span class="project-tag">Branding</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-card__image">
+                        <img loading="lazy" src="/bilder/projekte/HPN.png" alt="Happy Pet Nutrition" style="object-position: center top;"></img>
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">Happy Pet Nutrition</h3>
+                        <div class="project-card__tags">
+                            <span class="project-tag">Produkt Design</span>
+                            <span class="project-tag">Social Media</span>
+                            <span class="project-tag">Fotografie</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card">
+                    <div class="project-card__image">
+                        <img loading="lazy" src="/bilder/projekte/Kantinchen.jpeg" alt="Kantinchen" style="object-position: center top;"></img>
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">Laras Kantinchen</h3>
+                        <div class="project-card__tags">
+                            <span class="project-tag">Perormance Marketing</span>
+                            <span class="project-tag">Fotografie</span>
+                            <span class="project-tag">Webdesign</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card">
+                    <div class="project-card__image">
+                        <img loading="lazy" src="/bilder/projekte/FAZ.jpg" alt="Frankfurter Allgemeine Zeitung" style="object-position: center top;"></img>
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">Frankfurter Allgemeine Zeitung</h3>
+                        <div class="project-card__tags">
+                            <span class="project-tag">Conversion Rate Optimierung</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 7 -->
+                <div class="project-card">
+                    <div class="project-card__image">
+                        <img loading="lazy" src="/bilder/projekte/Gagos.jpg" alt="Gagos Burrito" style="object-position: center 30%;"></img>
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">Gagos</h3>
+                        <div class="project-card__tags">
+                            <span class="project-tag">Branding</span>
+                            <span class="project-tag">Fotografie</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 8 -->
+                <div class="project-card">
+                    <div class="project-card__image">
+                        <img loading="lazy" src="/bilder/projekte/HM.png" alt="HM Sanierung" style="object-position: center top;"></img>
+                    </div>
+                    <div class="project-card__content">
+                        <h3 class="project-card__title">HM Sanierung</h3>
+                        <div class="project-card__tags">
+                            <span class="project-tag">Branding</span>
+                            <span class="project-tag">Webdesign</span>
+                            <span class="project-tag">Perormance Marketing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- References Section -->
+<section class="references-section">
+    <div class="container">
+        <div class="references__header">
+            <div class="references__badge">REFERENZEN</div>
+            <h2 class="references__title">Unternehmen, die uns vertrauen</h2>
+            <p class="references__description">
+                Seit 2020 arbeiten wir für Unternehmen aus verschiedensten Branchen – von lokalen Mittelständlern bis zu internationalen Marken. Was sie eint: der Wunsch, digital stärker aufzutreten. Was uns eint: das Interesse, das wirklich umzusetzen.
+            </p>
+        </div>
+
+        <div class="references__grid">
+            <!-- Row 1 -->
+            <div class="reference-item">
+                <img src="/bilder/logos/akad.svg.png" alt="McSHARK" class="reference-logo" style="max-width: 120px; max-height: 60px;">
+            </div>
+            <div class="reference-item">
+                <img src="/bilder/logos/allianz.png" alt="Bluecode" class="reference-logo" style="max-width: 100px; max-height: 50px;">
+            </div>
+            <div class="reference-item">
+                <img src="/bilder/logos/asano.png" alt="RHI Magnesita" class="reference-logo" style="max-width: 140px; max-height: 55px;">
+            </div>
+            <div class="reference-item">
+                <img src="/bilder/logos/charibee.png" alt="Lasselsberger" class="reference-logo" style="max-width: 130px; max-height: 50px;">
+            </div>
+            <div class="reference-item">
+                <img src="/bilder/logos/cuvee.svg" alt="Vienna Business School" class="reference-logo" style="max-width: 110px; max-height: 65px;">
+            </div>
+            <div class="reference-item">
+                <img src="/bilder/logos/cyclers.png" alt="Horvath's" class="reference-logo" style="max-width: 90px; max-height: 45px;">
+            </div>
+
+            <!-- Row 2 -->
+            <div class="reference-item">
+                <img src="/bilder/logos/gagos.png" alt="HAAI" class="reference-logo" style="max-width: 80px; max-height: 40px;">
+            </div>
+            <div class="reference-item">
+                <img src="/bilder/logos/hsf.png" alt="BMF" class="reference-logo" style="max-width: 85px; max-height: 50px;">
+            </div>
+            <div class="reference-item">
+                <img src="/bilder/logos/joscot.png" alt="CRRC" class="reference-logo" style="max-width: 95px; max-height: 45px;">
+            </div>
+            <div class="reference-item">
+                <img src="/bilder/logos/nobu.png" alt="FONDS" class="reference-logo" style="max-width: 100px; max-height: 55px;">
+            </div>
+            <div class="reference-item">
+                <img src="/bilder/logos/obama.png" alt="Xiaomi" class="reference-logo" style="max-width: 110px; max-height: 40px;">
+            </div>
+            <div class="reference-item">
+                <img src="/bilder/logos/saarland.png" alt="EcoProjekt" class="reference-logo" style="max-width: 120px; max-height: 50px;">
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- CTA Cards Section -->
+    <section class="cta-cards-section">
+        <div class="container">
+            <div class="cta-cards__grid">
+                <!-- Services Card -->
+                <div class="cta-card cta-card--services">
+                    <h3 class="cta-card__title">Branding, Webdesign und Marketing aus einer Hand – damit alles zusammenwirkt, statt nebeneinander herzulaufen.</h3>
+                    <p class="cta-card__text">Schau dir an, womit wir Unternehmen digital nach vorne bringen.</p>
+                    <a href="/services/" class="cta-card__button">
+                        Leistungen entdecken 
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Contact Card -->
+                <div class="cta-card cta-card--contact">
+                    <div class="cta-card__content">
+                        <p class="cta-card__text">Ruf einfach an oder schreib uns.</p>
+                        <h3 class="cta-card__title">Projekt starten</h3>
+                        <a href="/kontakt/" class="cta-card__button">
+                            Kontakt
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    </main>
+
+    <footer class="footer">
+        <div class="footer__container">
+            <div class="footer__content">
+                <div class="footer__top">
+                    <div class="footer__brand">
+                        <a href="/" class="logo">
+                            <img src="/bilder/logos/Unleash_Logo_Orange.svg" alt="UNLEASH" class="footer-logo__image">
+                        </a>
+                        <p class="footer__tagline">Kreativer Problemlöser</p>
+                    </div>
+                    <div class="footer__social">
+                        <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="footer__social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                                <path d="m15.5 6.5-1.1 1.1"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn" class="footer__social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect width="4" height="12" x="2" y="9"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer__bottom">
+                    <div class="footer__copyright">
+                        <div>© 2026 UNLEASH GbR</div>
+                        <div>Alle Rechte vorbehalten</div>
+                    </div>
+                    <div class="footer__legal">
+                        <a href="/datenschutz/">Datenschutz</a>
+                        <a href="/impressum/">Impressum</a>
+                        <a href="/agb/">AGB</a>
+                        <a href="/kontakt/">Kontakt</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect (same as index.html)
+        let isScrolled = false;
+        let menuState = false;
+
+        function updateHeaderState() {
+            const header = document.querySelector('.header');
+            isScrolled = window.scrollY > 50;
+            
+            // Only apply scrolled state on desktop
+            if (window.innerWidth >= 769) {
+                if (isScrolled) {
+                    header.setAttribute('data-state', 'active');
+                } else {
+                    header.setAttribute('data-state', 'inactive');
+                }
+            } else {
+                // On mobile, always keep inactive state unless menu is open
+                if (!menuState) {
+                    header.setAttribute('data-state', 'inactive');
+                }
+            }
+        }
+
+        window.addEventListener('scroll', updateHeaderState);
+
+        // Mobile menu toggle (same as index.html)
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const header = document.querySelector('.header');
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.querySelector('.mobile-menu');
+            menuState = !menuState;
+            
+            if (menuState) {
+                header.setAttribute('data-state', 'active');
+                mobileMenu.classList.add('manual-open');
+            } else {
+                // On mobile, always return to inactive when closing menu
+                if (window.innerWidth < 769) {
+                    header.setAttribute('data-state', 'inactive');
+                } else {
+                    header.setAttribute('data-state', isScrolled ? 'active' : 'inactive');
+                }
+                mobileMenu.classList.remove('manual-open');
+            }
+        }
+
+        mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+
+        // Close mobile menu when clicking nav links
+        document.querySelectorAll('.mobile-nav__link:not(button)').forEach(link => {
+            link.addEventListener('click', () => {
+                const mobileMenu = document.querySelector('.mobile-menu');
+                menuState = false;
+                
+                // On mobile, always return to inactive when closing menu
+                if (window.innerWidth < 769) {
+                    header.setAttribute('data-state', 'inactive');
+                } else {
+                    header.setAttribute('data-state', isScrolled ? 'active' : 'inactive');
+                }
+                mobileMenu.classList.remove('manual-open');
+            });
+        });
+
+        // Initialize header state
+        updateHeaderState();
+
+        // Logo hover effect
+        const logoImages = document.querySelectorAll('.logo__image, .footer-logo__image');
+
+        logoImages.forEach(logoImg => {
+            const logo = logoImg.parentElement;
+            
+            logo.addEventListener('mouseenter', () => {
+                logoImg.style.transform = 'scale(1.05)';
+            });
+            
+            logo.addEventListener('mouseleave', () => {
+                logoImg.style.transform = 'scale(1)';
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.querySelector('.header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Project card hover effects
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Reference item hover effects
+        document.querySelectorAll('.reference-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-4px) scale(1.05)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // CTA card hover effects
+        document.querySelectorAll('.cta-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
