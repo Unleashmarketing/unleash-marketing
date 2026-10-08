@@ -480,30 +480,6 @@
             position: relative;
         }
 
-        .case-hero__eyebrow {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-
-        .case-hero__eyebrow::before {
-            content: '';
-            display: block;
-            width: 40px;
-            height: 2px;
-            background: var(--color-primary);
-            flex-shrink: 0;
-        }
-
-        .case-hero__eyebrow span {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--color-text-secondary);
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-        }
-
         .case-hero__title {
             font-size: var(--font-size-h1);
             font-weight: 700;
@@ -725,21 +701,8 @@
             max-width: 640px;
         }
 
-        .showcase__badge {
-            display: inline-block;
-            background: var(--color-primary);
-            color: var(--color-text-primary);
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-bottom: 24px;
-            text-transform: uppercase;
-        }
-
         .showcase__title {
-            font-size: var(--font-size-h2);
+            font-size: var(--font-size-h3);
             font-weight: 700;
             color: var(--color-text-primary);
             letter-spacing: -0.02em;
@@ -871,21 +834,8 @@
             max-width: 640px;
         }
 
-        .gallery__badge {
-            display: inline-block;
-            background: var(--color-primary);
-            color: var(--color-text-primary);
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-bottom: 24px;
-            text-transform: uppercase;
-        }
-
         .gallery__title {
-            font-size: var(--font-size-h2);
+            font-size: var(--font-size-h3);
             font-weight: 700;
             color: var(--color-text-primary);
             letter-spacing: -0.02em;
@@ -1548,9 +1498,6 @@
         <!-- Case Hero -->
         <section class="case-hero">
             <div class="container">
-                <div class="case-hero__eyebrow">
-                    <span>Case Study</span>
-                </div>
                 <h1 class="case-hero__title">Laras Kantinchen: Vom Café zum Foodtruck</h1>
                 <p class="case-hero__description">
                     Elf Jahre lang war Laras ein Café in der Mannheimer Oststadt. 2016 kam der große Schritt: raus aus dem festen Laden, rein in einen gelben Citroën HY. Seitdem gibt es dort hausgemachte Pastrami-Sandwiches und mehr, mal hier, mal da in der Region.
@@ -1667,7 +1614,6 @@
         <section class="showcase-section">
             <div class="container">
                 <div class="showcase__header">
-                    <div class="showcase__badge">Das Ergebnis</div>
                     <h2 class="showcase__title">Die Website im Blick</h2>
                     <p class="showcase__description">
                         Eine Seite, die auf jedem Gerät funktioniert: Desktop für die ausführliche Recherche vorab, Mobile für den schnellen Blick unterwegs, kurz bevor der Truck gefunden wird.
@@ -1703,7 +1649,6 @@
         <section class="gallery-section">
             <div class="container">
                 <div class="gallery__header">
-                    <div class="gallery__badge">Impressionen</div>
                     <h2 class="gallery__title">Der Foodtruck in Aktion</h2>
                 </div>
                 <div class="gallery__grid">
