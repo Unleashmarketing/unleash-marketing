@@ -696,132 +696,45 @@
             padding: 0 0 96px;
         }
 
-        .showcase__header {
-            margin-bottom: 56px;
-            max-width: 640px;
-        }
-
-        .showcase__title {
-            font-size: var(--font-size-h3);
-            font-weight: 700;
-            color: var(--color-text-primary);
-            letter-spacing: -0.02em;
-            margin-bottom: 16px;
-        }
-
-        .showcase__description {
-            font-size: var(--font-size-body-large);
-            color: var(--color-text-secondary);
-            line-height: 1.7;
-        }
-
-        .showcase__devices {
+        .showcase__stage {
             position: relative;
-            display: flex;
-            align-items: flex-end;
-            gap: 48px;
+            max-width: 620px;
+            margin: 0 auto;
+            padding: 12px 0 72px;
         }
 
         .showcase__desktop {
-            flex: 1 1 auto;
-            min-width: 0;
-        }
-
-        .browser-frame {
-            background: var(--color-bg-secondary);
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
             border: 1px solid #2A2A2A;
-            border-radius: 16px;
-            overflow: hidden;
             box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+            transform: rotate(-2deg);
         }
 
-        .browser-frame__bar {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 16px;
-            background: #1A1A1A;
-            border-bottom: 1px solid #2A2A2A;
-        }
-
-        .browser-frame__dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .browser-frame__dot--red { background: #FF5F57; }
-        .browser-frame__dot--yellow { background: #FEBC2E; }
-        .browser-frame__dot--green { background: #28C840; }
-
-        .browser-frame__url {
-            margin-left: 12px;
-            flex: 1;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            background: #242424;
-            border-radius: 6px;
-            padding: 6px 14px;
-            font-size: 12px;
-            color: var(--color-text-secondary);
-        }
-
-        .browser-frame__screen {
-            line-height: 0;
-            max-height: 560px;
-            overflow: hidden;
-        }
-
-        .browser-frame__screen img {
+        .showcase__desktop img {
             width: 100%;
             display: block;
-            object-fit: cover;
-            object-position: top center;
         }
 
         .showcase__mobile {
-            width: 230px;
-            flex-shrink: 0;
-            margin-bottom: -32px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .phone-frame {
-            position: relative;
-            background: #000;
-            border: 1px solid #2A2A2A;
-            border-radius: 34px;
-            padding: 10px;
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
-        }
-
-        .phone-frame__notch {
             position: absolute;
-            top: 22px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 20px;
-            background: #000;
-            border-radius: 12px;
+            right: -16px;
+            bottom: 0;
+            width: 36%;
+            min-width: 150px;
+            max-width: 220px;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid #2A2A2A;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+            transform: rotate(3deg);
             z-index: 2;
         }
 
-        .phone-frame__screen {
-            position: relative;
-            aspect-ratio: 9 / 19.5;
-            border-radius: 24px;
-            overflow: hidden;
-        }
-
-        .phone-frame__screen img {
+        .showcase__mobile img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top center;
+            display: block;
         }
 
         /* Gallery / Impressionen */
@@ -1219,28 +1132,14 @@
                 padding: 0 0 56px;
             }
 
-            .showcase__header {
-                margin-bottom: 32px;
-            }
-
-            .showcase__devices {
-                flex-direction: column;
-                align-items: center;
-                gap: 24px;
-            }
-
-            .showcase__desktop {
-                width: 100%;
-            }
-
-            .browser-frame__screen {
-                max-height: 320px;
+            .showcase__stage {
+                padding: 4px 0 48px;
             }
 
             .showcase__mobile {
-                width: 170px;
-                margin-bottom: 0;
-                margin-top: -20px;
+                right: -6px;
+                width: 38%;
+                min-width: 120px;
             }
 
             .gallery-section {
@@ -1613,33 +1512,12 @@
         <!-- Showcase: Desktop / Mobile -->
         <section class="showcase-section">
             <div class="container">
-                <div class="showcase__header">
-                    <h2 class="showcase__title">Die Website im Blick</h2>
-                    <p class="showcase__description">
-                        Eine Seite, die auf jedem Gerät funktioniert: Desktop für die ausführliche Recherche vorab, Mobile für den schnellen Blick unterwegs, kurz bevor der Truck gefunden wird.
-                    </p>
-                </div>
-                <div class="showcase__devices">
+                <div class="showcase__stage">
                     <div class="showcase__desktop">
-                        <div class="browser-frame">
-                            <div class="browser-frame__bar">
-                                <span class="browser-frame__dot browser-frame__dot--red"></span>
-                                <span class="browser-frame__dot browser-frame__dot--yellow"></span>
-                                <span class="browser-frame__dot browser-frame__dot--green"></span>
-                                <div class="browser-frame__url">laras-kantinchen.de</div>
-                            </div>
-                            <div class="browser-frame__screen">
-                                <img src="/bilder/projekte/Kantinchen-site-desktop.jpg" alt="Desktop-Ansicht der Website laras-kantinchen.de" loading="lazy">
-                            </div>
-                        </div>
+                        <img src="/bilder/projekte/Kantinchen-site-desktop.jpg" alt="Desktop-Ansicht der Website laras-kantinchen.de" loading="lazy">
                     </div>
                     <div class="showcase__mobile">
-                        <div class="phone-frame">
-                            <div class="phone-frame__notch"></div>
-                            <div class="phone-frame__screen">
-                                <img src="/bilder/projekte/Kantinchen-site-mobile.jpg" alt="Mobile Ansicht der Website laras-kantinchen.de" loading="lazy">
-                            </div>
-                        </div>
+                        <img src="/bilder/projekte/Kantinchen-site-mobile.jpg" alt="Mobile Ansicht der Website laras-kantinchen.de" loading="lazy">
                     </div>
                 </div>
             </div>
