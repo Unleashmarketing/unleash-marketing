@@ -534,14 +534,21 @@
             text-decoration: underline;
         }
 
-        /* Hero Image */
+        /* Hero Image + Website Showcase */
         .case-media {
             padding: 0 0 80px;
         }
 
+        .case-media__grid {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
         .case-media__frame {
-            width: 100%;
-            aspect-ratio: 16/8;
+            flex: 1 1 54%;
+            min-width: 0;
+            aspect-ratio: 4/3;
             border-radius: 24px;
             overflow: hidden;
             border: 1px solid #2A2A2A;
@@ -692,15 +699,11 @@
         }
 
         /* Showcase: Desktop / Mobile website snippet */
-        .showcase-section {
-            padding: 0 0 96px;
-        }
-
         .showcase__stage {
             position: relative;
-            max-width: 620px;
-            margin: 0 auto;
-            padding: 12px 0 72px;
+            flex: 1 1 46%;
+            min-width: 0;
+            padding: 0 24px 56px 0;
         }
 
         .showcase__desktop {
@@ -1101,7 +1104,13 @@
                 padding: 0 0 48px;
             }
 
+            .case-media__grid {
+                flex-direction: column;
+                gap: 28px;
+            }
+
             .case-media__frame {
+                width: 100%;
                 aspect-ratio: 4/3;
                 border-radius: 16px;
             }
@@ -1128,12 +1137,9 @@
                 gap: 20px;
             }
 
-            .showcase-section {
-                padding: 0 0 56px;
-            }
-
             .showcase__stage {
-                padding: 4px 0 48px;
+                width: 100%;
+                padding: 0 12px 48px 0;
             }
 
             .showcase__mobile {
@@ -1422,11 +1428,21 @@
             </div>
         </section>
 
-        <!-- Hero Image -->
+        <!-- Hero Image + Website Showcase -->
         <section class="case-media">
             <div class="container">
-                <div class="case-media__frame">
-                    <img src="/bilder/projekte/Kantinchen.jpeg" alt="Laras Kantinchen Foodtruck, gelber Citroën HY mit Gästen am Verkaufsfenster">
+                <div class="case-media__grid">
+                    <div class="case-media__frame">
+                        <img src="/bilder/projekte/Kantinchen.jpeg" alt="Laras Kantinchen Foodtruck, gelber Citroën HY mit Gästen am Verkaufsfenster">
+                    </div>
+                    <div class="showcase__stage">
+                        <div class="showcase__desktop">
+                            <img src="/bilder/projekte/Kantinchen-site-desktop.jpg" alt="Desktop-Ansicht der Website laras-kantinchen.de" loading="lazy">
+                        </div>
+                        <div class="showcase__mobile">
+                            <img src="/bilder/projekte/Kantinchen-site-mobile.jpg" alt="Mobile Ansicht der Website laras-kantinchen.de" loading="lazy">
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1504,20 +1520,6 @@
                         <p class="approach-card__text">
                             Gezielte Sichtbarkeit in der Region, damit Leute vom Truck erfahren, auch wenn er gerade woanders steht als sonst.
                         </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Showcase: Desktop / Mobile -->
-        <section class="showcase-section">
-            <div class="container">
-                <div class="showcase__stage">
-                    <div class="showcase__desktop">
-                        <img src="/bilder/projekte/Kantinchen-site-desktop.jpg" alt="Desktop-Ansicht der Website laras-kantinchen.de" loading="lazy">
-                    </div>
-                    <div class="showcase__mobile">
-                        <img src="/bilder/projekte/Kantinchen-site-mobile.jpg" alt="Mobile Ansicht der Website laras-kantinchen.de" loading="lazy">
                     </div>
                 </div>
             </div>
