@@ -6,7 +6,8 @@
  *
  * Required secrets (Worker Settings -> Variables and Secrets):
  *   GITHUB_TOKEN            fine-grained PAT, contents:read/write on the repo
- *   NOTFAIR_WEBHOOK_SECRET  must match the bearer token NotFair sends
+ *   NOTFAIR_WEBHOOK_SECRET  the exact webhook secret NotFair shows you in
+ *                           its dashboard (NOT a value you make up yourself)
  */
 
 const REPO_OWNER = "Unleashmarketing";
@@ -20,9 +21,15 @@ export default {
       return json({ error: "method_not_allowed" }, 405);
     }
 
+    const contentType = request.headers.get("Content-Type") || "";
+    if (!contentType.toLowerCase().includes("application/json")) {
+      return json({ error: "unsupported_content_type" }, 415);
+    }
+
     const authHeader = request.headers.get("Authorization") || "";
-    const expected = `Bearer ${env.NOTFAIR_WEBHOOK_SECRET}`;
-    if (authHeader !== expected) {
+    const expected = `Bearer ${env.NOTFAIR_WEBHOOK_SECRET || ""}`;
+    const authorized = await timingSafeEqual(authHeader, expected);
+    if (!authorized) {
       return json({ error: "unauthorized" }, 401);
     }
 
@@ -38,18 +45,34 @@ export default {
     }
 
     const posts = payload?.data?.posts;
-    if (!Array.isArray(posts) || posts.length === 0) {
-      return json({ error: "no_posts_in_payload" }, 400);
+    if (!Array.isArray(posts) || posts.length < 1 || posts.length > 10) {
+      return json({ error: "invalid_posts_count" }, 400);
     }
 
+    const isTest = payload.test === true;
     for (const post of posts) {
-      if (!post.title || !post.slug || !post.content_html) {
+      const hasCoreFields =
+        post.id !== undefined &&
+        post.id !== null &&
+        post.title &&
+        post.slug &&
+        post.content_html &&
+        post.created_at;
+      if (!hasCoreFields) {
         return json({ error: "invalid_post_shape", postId: post.id ?? null }, 400);
+      }
+      // id:0 is reserved for NotFair's connection test; real posts need a
+      // positive integer id.
+      if (!isTest && !(Number.isInteger(post.id) && post.id > 0)) {
+        return json({ error: "invalid_post_id", postId: post.id }, 400);
+      }
+      if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(post.slug)) {
+        return json({ error: "invalid_slug", slug: post.slug }, 400);
       }
     }
 
     // Test deliveries: validate shape only, never touch GitHub.
-    if (payload.test === true) {
+    if (isTest) {
       return json({ ok: true, test: true, validatedPosts: posts.length }, 200);
     }
 
@@ -85,6 +108,30 @@ function json(body, status) {
     status,
     headers: { "Content-Type": "application/json" },
   });
+}
+
+// Constant-time string comparison: HMAC both inputs with a fixed key first
+// so we always compare two fixed-length 32-byte digests, regardless of the
+// length of the (attacker-controlled) Authorization header. This avoids
+// leaking secret length or content through response-time differences.
+async function timingSafeEqual(a, b) {
+  const enc = new TextEncoder();
+  const key = await crypto.subtle.importKey(
+    "raw",
+    enc.encode("notfair-webhook-constant-time-compare"),
+    { name: "HMAC", hash: "SHA-256" },
+    false,
+    ["sign"]
+  );
+  const [macA, macB] = await Promise.all([
+    crypto.subtle.sign("HMAC", key, enc.encode(a)),
+    crypto.subtle.sign("HMAC", key, enc.encode(b)),
+  ]);
+  const bufA = new Uint8Array(macA);
+  const bufB = new Uint8Array(macB);
+  let diff = 0;
+  for (let i = 0; i < bufA.length; i++) diff |= bufA[i] ^ bufB[i];
+  return diff === 0;
 }
 
 // ---------- GitHub Contents API helpers ----------
