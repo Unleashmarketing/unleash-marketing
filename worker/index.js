@@ -29,6 +29,25 @@ export default {
     const authHeader = request.headers.get("Authorization") || "";
     const expected = `Bearer ${env.NOTFAIR_WEBHOOK_SECRET || ""}`;
     const authorized = await timingSafeEqual(authHeader, expected);
+
+    // TEMPORARY DEBUG LOGGING — never logs the actual secret value, only
+    // lengths/prefixes, so it's safe to leave on briefly while diagnosing
+    // the 401. Remove once the webhook connection is confirmed working.
+    console.log(
+      JSON.stringify({
+        debug: "notfair_auth_check",
+        secretConfigured: Boolean(env.NOTFAIR_WEBHOOK_SECRET),
+        secretLength: (env.NOTFAIR_WEBHOOK_SECRET || "").length,
+        receivedHeaderPresent: authHeader.length > 0,
+        receivedHeaderLength: authHeader.length,
+        receivedStartsWithBearer: authHeader.startsWith("Bearer "),
+        receivedLast4: authHeader.slice(-4),
+        expectedLast4: expected.slice(-4),
+        lengthsMatch: authHeader.length === expected.length,
+        result: authorized ? "match" : "no_match",
+      })
+    );
+
     if (!authorized) {
       return json({ error: "unauthorized" }, 401);
     }

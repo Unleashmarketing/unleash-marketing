@@ -1,3 +1,7 @@
 name = "unleash-marketing"
 main = "worker/index.js"
 compatibility_date = "2024-01-01"
+
+[observability.logs]
+enabled = true
+invocation_logs = true
